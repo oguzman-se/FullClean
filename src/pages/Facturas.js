@@ -1,10 +1,10 @@
 // Facturas.js
 import React from 'react'
-
+import Layout from '../components/Layout'
 const Facturas = () => (
-  <section className="Facturas">
-    <h3>Hello Facturas</h3>
-  </section>
+  <Layout>
+    <h1>Hola Facturas</h1>
+  </Layout>
 )
 
 export default Facturas

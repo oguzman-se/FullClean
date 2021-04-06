@@ -1,10 +1,10 @@
 // Clientes.js
 import React from 'react'
-
+import Layout from '../components/Layout'
 const Clientes = () => (
-  <section className="Clientes">
-    <h3>Hello Clientes</h3>
-  </section>
+  <Layout>
+    <h1>Hola Clientes</h1>
+  </Layout>
 )
 
 export default Clientes
