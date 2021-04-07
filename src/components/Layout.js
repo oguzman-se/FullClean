@@ -1,6 +1,8 @@
 import Header from './Header'
 import Button from './Button'
 import '../App.css'
+
+import 'bootstrap/dist/css/bootstrap.css'
 function Layout(props) {
   
     return (
@@ -10,7 +12,7 @@ function Layout(props) {
           <Button class="sub-button">
             Nueva Compra
           </Button>
-          <Button class="sub-button" >
+          <Button class="sub-button">
             + Producto
           </Button>  
           </div><div>      
@@ -23,6 +25,8 @@ function Layout(props) {
         </div>
         <br></br>
         {props.children}
+      
+
       </div>
     );
     
