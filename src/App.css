@@ -31,6 +31,9 @@
   padding: 2px !important;
   border-radius: 0% !important;
 }
+.btn-custom:hover{
+  color: rgb(48, 45, 45) !important; 
+}
 .size-button{
   max-width: 100%;
   
