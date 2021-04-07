@@ -1,18 +1,21 @@
 // Home.js
-import React from 'react'
+
 import Layout from '../components/Layout'
 import Button from '../components/Button'
-import Example from '../components/Modal'
+import ModalCustom from '../components/ModalCustom'
+import React, {useState} from 'react'
 
 function Home() {
-  
+
+  const [show, setShow] = useState(false);
+
   return(
   <Layout>
     <div className="size-button">
           <Button className="sub-button">
             Nueva Compra
           </Button>
-          <Button className="sub-button">
+          <Button className="sub-button" onClick={()=>setShow(true)}>
             + Producto
           </Button>  
           </div><div>      
@@ -22,7 +25,7 @@ function Home() {
           <Button className="sub-button">
             + Categoria
           </Button>
-          <Example/>
+          <ModalCustom show={show} setShow={setShow}/>
         </div>
   </Layout>
 

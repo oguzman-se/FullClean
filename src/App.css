@@ -35,6 +35,20 @@
   color: rgb(48, 45, 45) !important; 
 }
 .size-button{
-  max-width: 100%;
-  
+  max-width: 100%; 
+}
+.modal-button-create{
+  background-color: rgba(255, 255, 255, 0);
+  border: rgba(158, 88, 88, 0);
+  color: rgba(240, 95, 117, 0.664) ;
+  font-weight: bold;
+}
+.modal-button-cancel{
+  background-color: rgba(255, 255, 255, 0);
+  border: rgba(158, 88, 88, 0);
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.664);
+}
+#modal-tittle{
+  font-weight: bolder;
 }
