@@ -1,8 +1,37 @@
+* {
+  padding: 0;
+  margin: 0;
+  }
 .nav{
   max-width: 100%;
   background-color: rgb(240, 95, 116);
   text-decoration: none;
+  box-shadow: 0 0 30px rgb(0,0,0);
+  font-size: 20px;
+  height: 2%;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 1.8% !important;
 }
 .nav-link{
   color: aliceblue;
+}
+.nav-link:hover{
+  color: rgb(48, 45, 45);
+  
+}
+.btn-custom {
+  width: 12%;
+  background-color: rgb(240, 95, 116) !important;
+  box-shadow: 0 0 1px rgb(0,0,0) !important;
+  margin-left: 1%;
+  margin-top: 1.5%;
+  color: aliceblue !important;
+  font-size: 20px !important;
+  padding: 2px !important;
+  border-radius: 0% !important;
+}
+.size-button{
+  max-width: 100%;
+  
 }
