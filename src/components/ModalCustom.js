@@ -1,4 +1,3 @@
-import Button from '../components/Button'
 import React from 'react'
 import {Modal} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.css';
