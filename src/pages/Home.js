@@ -5,6 +5,10 @@ import Button from '../components/home/Button'
 import Search from '../components/home/Search'
 import Barcode from '../components/home/Barcode'
 import Productos from '../components/home/Productos'
+import Label from '../components/home/Label'
+import Table from '../components/home/Table'
+import LabelBottomXL from '../components/home/LabelBottomXL'
+import LabelBottomSM from '../components/home/LabelBottomSM'
 import ModalCustom from '../components/home/ModalCustom'
 import React, {useState} from 'react'
 
@@ -79,6 +83,26 @@ function Home() {
           <div class="row">
               <div class="container-fluid">
                 <Barcode/>
+              </div>
+          </div>
+          <div class="row">
+              <div class="container-fluid">
+                <Label/>
+              </div>
+          </div>
+          <div class="row">
+              <div class="container-fluid tabla">
+                <Table/>
+              </div>
+          </div>
+          <div class="row">
+              <div class="container-fluid">
+                <LabelBottomXL/>
+              </div>
+          </div>
+          <div class="row">
+              <div class="container-fluid">
+                <LabelBottomSM/>
               </div>
           </div>
         </div>

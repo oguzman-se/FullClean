@@ -35,7 +35,19 @@
 .btn-custom:hover{
   color: rgb(48, 45, 45) !important; 
 }
-
+.btn-cross{
+  width: 25px;
+  height: 25px;
+  background-color: rgb(240, 95, 116) !important;
+  color: aliceblue !important;
+  border-radius: 50% !important;
+  border: none;
+  font-size: 10px !important;
+}
+.btn-cross:hover{
+  color: rgb(48, 45, 45) !important; 
+  background-color: rgb(247, 152, 167) !important;
+}
 .modal-button-create{
   background-color: rgba(255, 255, 255, 0);
   border: rgba(158, 88, 88, 0);
@@ -56,7 +68,10 @@
   border: 1.5px solid black !important;
 }
 .grilla{
-  padding: 4px;
+  padding: 10px;
+}
+.padding-label{
+  padding-top: 10px;
 }
 .productos{
   height: 600px !important;
@@ -72,4 +87,26 @@
   font-size: 45px;
   border: 3px solid rgb(240, 95, 116);
   width: 100%;
+}
+.label{
+  border-bottom: 1px solid rgb(182, 179, 179) !important;
+  width: 200px;
+  font-size: 20px;
+}
+.labelbottom{
+  border-bottom: 1px solid rgb(240, 95, 116) !important;
+  font-size: 30px;
+  font-weight:500
+  
+}
+.tabla{
+  padding-top: 20px !important;
+}
+.table{
+  border: 2px solid black;
+  font-size: 13px;
+  height: 400px;
+}
+.select-custom{
+  color: black !important;
 }
