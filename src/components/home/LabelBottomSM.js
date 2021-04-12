@@ -18,7 +18,7 @@ function LabelBottomSM(){
             <div class="row padding-label">
                 <div class="col-md-6">
                 <select class="custom-select">
-                    <option class="select-custom" selected>Efectivo</option>
+                    <option selected>Efectivo</option>
                     <option value="1">Tarjeta de credito</option>
                     <option value="2">Tarjeta de Debito</option>
                     <option value="3">Rapipago</option>
