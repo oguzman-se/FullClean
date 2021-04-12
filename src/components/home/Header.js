@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import '../../src/App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 function Header() {
     return(
