@@ -22,7 +22,7 @@ function Home() {
   <div className="container-fluid">
     <div className="row">
       <div className="col-lg-6">
-        <div className="container-fluid">
+        <div className="container group-vh-1">
           <div className="row group-1">
               <div className="col-md-3 button-1">
               <Button >
@@ -37,7 +37,7 @@ function Home() {
               </div>
           </div>
         </div>
-        <div className="container-fluid">
+        <div className="container group-vh-1">
         <div className="row">
               <div className="col-md-3 button-1">
               <Button >
@@ -60,7 +60,7 @@ function Home() {
         </div>
               <ModalCustom show={show} setShow={setShow}/>
           
-          <div>
+          <div className="group-vh-2">
             <Search/>
           </div>
           <div className="productos">
@@ -72,11 +72,7 @@ function Home() {
             <Productos/>
             <Productos/>
             <Productos/>
-            <Productos/>
-            <Productos/>
-            <Productos/>
-            <Productos/>
-            <Productos/>
+            
            
           </div>
         </div>
@@ -93,7 +89,7 @@ function Home() {
                 </div>
             </div>
             <div className="row">
-                <div className="col-lg-12 tabla">
+                <div className="col-lg-12">
                   <Table/>
                 </div>
             </div>

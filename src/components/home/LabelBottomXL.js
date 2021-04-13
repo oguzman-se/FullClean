@@ -3,7 +3,7 @@ function LabelBottomXL(){
 
     return(
         <div className="container-fluid">
-            <div className="row">
+            <div className="row group-vh-4">
                 <div className="col-md-5 labelbottom">
                     <label>7 unidades</label>
                 </div>

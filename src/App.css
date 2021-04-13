@@ -187,11 +187,11 @@
   background-color: rgb(240, 95, 116);
   text-decoration: none;
   box-shadow: 0 0 30px rgb(0,0,0);
-
-  height: 2%;
-  padding-top: 7px;
-  padding-bottom: 7px;
+  height: 7.5vh;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
   padding-left: 1.8% !important;
+  font-size: 2.4vh;
 }
 .nav-link{
   color: aliceblue;
@@ -200,14 +200,13 @@
   color: rgb(48, 45, 45);
   
 }
-.group-1{
-  margin-bottom: 4px;
-}
+
+
 .button-1{
-  margin-right: 4px;
+  margin-right: 1.5vh;
 }
 .btn-custom {
-  width: 150px;
+  width: 17vh;
   background-color: rgb(240, 95, 116) !important;
   box-shadow: 0 0 1px rgb(0,0,0) !important;
   margin-top: 5px ;
@@ -218,8 +217,8 @@
   color: rgb(48, 45, 45) !important; 
 }
 .btn-cross{
-  width: 25px;
-  height: 25px;
+  width: 15px;
+  height: 15px;
   background-color: rgb(240, 95, 116) !important;
   color: aliceblue !important;
   border-radius: 50% !important;
@@ -240,12 +239,14 @@
   border: rgba(158, 88, 88, 0);
   color: rgba(0, 0, 0, 0.664);
 }
-
 .search{
   margin-top: 10px;
   border: 1.5px solid black !important;
   border-radius: 0% !important;
   box-shadow: none !important;
+}
+.group-vh-2{
+  height: 10vh;
 }
 .grilla{
   margin-bottom: 7px;
@@ -253,9 +254,10 @@
 }
 .padding-label{
   padding-top: 10px;
+  height: 7vh;
 }
 .productos{
-  height: 600px !important;
+  height: 70vh !important;
   overflow:scroll;
   overflow-x: hidden;
 }
@@ -265,42 +267,50 @@
   width: 140px;
 }
 .barcode{
-  font-size: 45px;
+  font-size: 5.5vh;
+  height: 10vh;
   border: 3px solid rgb(240, 95, 116);
   width: 100%;
+  
 }
 .label{
   margin-top: 10px;
   border-bottom: 1px solid rgb(182, 179, 179) !important;
   width: 105%;
-  font-size: 20px;
+  font-size: 2.5vh;
+}
+.grop-vh-3{
+  height: 6vh;
+  width: 100%;
 }
 
 .labelbottom{
   border-bottom: 1px solid rgb(240, 95, 116) !important;
-  font-size: 30px;
-  font-weight:500
+  font-size: 3.7vh;
+  font-weight:500;
+  width: 100%;
   
+}
+.group-vh-4{
+  height: 6vh;
 }
 .tabla{
-  padding-top: 20px !important;
-  
-}
-.table{
-  border: 1px solid black;
-}
-.table thead{
-  border: 1px solid black !important;
-  font-size: 10px !important;
-  height: 10px !important;
-}
-.body td{
-  font-size: 10px !important;
-}
-.body th{
-  font-size: 10px !important;
+  min-height: 45vh;
+  border: 1px solid #383c44;
+  padding: 0%;
 }
 
+.table thead{
+  font-size: 1.2vh;
+}
+.table tbody{
+  font-size: 1.2vh;
+  max-height: min-content;
+}
+.table tbody td{
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+}
 
 .select{
   color: black !important;

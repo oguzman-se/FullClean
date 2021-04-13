@@ -5,7 +5,7 @@ function Label(){
 
     return(
         <div className="container-fluid">
-            <div className="row">
+            <div className="row grop-vh-3">
                 <div className="col-md-9 ">
                     <label className="label">Cliente: 00254 - Juan Perez</label>
                 </div>
@@ -13,7 +13,7 @@ function Label(){
                     <Button>Cargar Cliente</Button>
                 </div>
             </div>
-            <div className="row" >
+            <div className="row grop-vh-3" >
                 <div className="col-md-9">
                     <label className="label">Domicilio: Av. Mitre 159</label>
                 </div>
