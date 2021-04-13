@@ -5,7 +5,7 @@ import React from 'react'
 function Product(props){
 
     return(
-        <button type="button" class="btn btn-secundario">{props.children}</button>
+        <button type="button" className="btn btn-secundario">{props.children}</button>
     )
 }
 

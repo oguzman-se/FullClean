@@ -1,13 +1,13 @@
 import Header from './Header'
-
+import '../../App.css'
 function Layout(props) {
     return (
-      <div>
+    <div>
         <Header/>
         <br></br>
         {props.children}     
 
-      </div>
+    </div>
     );
     
   }

@@ -3,7 +3,7 @@ import React from 'react'
 function Barcode(){
 
     return(
-        <label className="col-lg-12 barcode ">84456468121213213468</label>
+        <input className="col-lg-12 barcode" value="84456468121213213468"/>
     )
 }
 

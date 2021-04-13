@@ -5,17 +5,17 @@ import Product from './Product'
 function Productos(){
 
     return(
-    <div class="row">
-        <div class="col-md-3 grilla">
+    <div className="row">
+        <div className="col-md-2 grilla">
         <Product>Alcohol Etilico 5lts.</Product>
         </div>
-        <div class="col-md-3 grilla">
+        <div className="col-md-2 grilla">
         <Product>Alcohol Etilico 5lts.</Product>
         </div>
-        <div class="col-md-3 grilla">
+        <div className="col-md-2 grilla">
         <Product>Alcohol Etilico 5lts.</Product>
         </div>
-        <div class="col-md-3 grilla">
+        <div className="col-md-2 grilla">
         <Product>Alcohol Etilico 5lts.</Product>
         </div>
     </div>

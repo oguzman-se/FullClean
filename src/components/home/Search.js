@@ -5,8 +5,8 @@ function Search(){
 
     return(
         <div>
-        <nav class="navbar row">
-            <input class="col-md-12 form-control search"  type="search" placeholder="Buscar" aria-label="Search"/>
+        <nav className="navbar row">
+            <input className="col-md-12 form-control search"  type="search" placeholder="Buscar" aria-label="Search"/>
         </nav>
       </div>
     )

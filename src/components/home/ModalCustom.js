@@ -22,25 +22,25 @@ function ModalCustom({show, setShow}) {
         <Modal.Body>
         <div>
           <label for="exampleInputEmail1">Titulo</label>
-          <input type="text" class="form-control" 
+          <input type="text" className="form-control" 
           placeholder="Username" aria-label="Username"/>
         </div>
         <div>
           <label for="exampleInputEmail1">Descripcion</label>
-          <input type="text" class="form-control" 
+          <input type="text" className="form-control" 
           placeholder="Descripcion"/>
         </div>
         <div>
           <label for="exampleInputEmail1">Categoria Padre</label>
-          <input type="text" class="form-control" 
+          <input type="text" className="form-control" 
           placeholder="Categoria Padre"/>
         </div>
         <div>
           <label for="exampleInputEmail1">Imagen</label>
-          <div class="custom-file">
+          <div className="custom-file">
             
-            <input type="file" class="custom-file-input" id="customFile"/>
-            <label class="custom-file-label" for="customFile">Choose file</label>
+            <input type="file" className="custom-file-input" id="customFile"/>
+            <label className="custom-file-label" for="customFile">Choose file</label>
           </div>
         </div>
         </Modal.Body>

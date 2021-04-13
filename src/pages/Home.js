@@ -19,53 +19,54 @@ function Home() {
 
   return(
   <Layout>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-6">
-          <div class="row">
-              <div class="col-md-3">
+  <div className="container-fluid">
+    <div className="row">
+      <div className="col-lg-6">
+        <div className="container-fluid">
+          <div className="row group-1">
+              <div className="col-md-3 button-1">
               <Button >
                       Nueva Compra
               </Button>
               </div>
 
-              <div class="col-md-3">
+              <div className="col-md-3">
               <Button onClick={()=>setShow(true)}>
                       + Producto
               </Button> 
               </div>
           </div>
-
-          <div class="row">
-              <div class="col-md-3">
+        </div>
+        <div className="container-fluid">
+        <div className="row">
+              <div className="col-md-3 button-1">
               <Button >
                         Nota de Credito
               </Button>
               </div>
 
-              <div class="col-md-3">
+              <div className="col-md-3">
               <Button >
                         + Categoria
               </Button>
               </div>
-
-              <div class="col-md-2">
-              
-              </div>
-
-              <div class="col-md-4">
+              <div className="col-md-2"></div>
+              <div className="col-md-3">
               <Button>
                 Buscar Productos
               </Button>
               </div>
-
-          </div>
+        </div>
+        </div>
               <ModalCustom show={show} setShow={setShow}/>
           
           <div>
             <Search/>
           </div>
-          <div class="productos">
+          <div className="productos">
+            <Productos/>
+            <Productos/>
+            <Productos/>
             <Productos/>
             <Productos/>
             <Productos/>
@@ -79,32 +80,35 @@ function Home() {
            
           </div>
         </div>
-        <div class="col-lg-6">
-          <div class="row">
-              <div class="container-fluid">
-                <Barcode/>
-              </div>
-          </div>
-          <div class="row">
-              <div class="container-fluid">
-                <Label/>
-              </div>
-          </div>
-          <div class="row">
-              <div class="container-fluid tabla">
-                <Table/>
-              </div>
-          </div>
-          <div class="row">
-              <div class="container-fluid">
-                <LabelBottomXL/>
-              </div>
-          </div>
-          <div class="row">
-              <div class="container-fluid">
-                <LabelBottomSM/>
-              </div>
-          </div>
+        <div className="col-lg-6">
+            <div className="container-fluid"> 
+            <div className="row">
+                <div className="col-lg-12">
+                  <Barcode/>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col-lg-12">
+                  <Label/>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col-lg-12 tabla">
+                  <Table/>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col-lg-12">
+                  <LabelBottomXL/>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col-lg-12">
+                  <LabelBottomSM/>
+                </div>
+            </div>
+            </div>
+          
         </div>
     </div>    
 </div>

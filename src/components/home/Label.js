@@ -4,22 +4,20 @@ import Button  from '../home/Button'
 function Label(){
 
     return(
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-9 ">
-                    <label class="label">Cliente:</label>
-                    <label class="label">00254 - Juan Perez</label>
+        <div className="container-fluid">
+            <div className="row">
+                <div className="col-md-9 ">
+                    <label className="label">Cliente: 00254 - Juan Perez</label>
                 </div>
-                <div class="col-md-3">
+                <div className="col-md-3">
                     <Button>Cargar Cliente</Button>
                 </div>
             </div>
-            <div class="row" >
-                <div class="col-md-9">
-                    <label class="label">Domicilio:</label>
-                    <label class="label">Av. Mitre 159</label>
+            <div className="row" >
+                <div className="col-md-9">
+                    <label className="label">Domicilio: Av. Mitre 159</label>
                 </div>
-                <div class="col-md-3">
+                <div className="col-md-3">
                     <Button>Vaciar Compra</Button>
                 </div>
             </div>

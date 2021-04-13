@@ -4,20 +4,20 @@ function Table(){
 
     return(
         <>
-        <table class="table">
-            <thead class="thead-dark">
+        <table className="table">
+            <thead className="thead-dark">
                 <tr>
-                <th scope="col">Codigo</th>
-                <th scope="col">Producto</th>
-                <th scope="col">Cantidad</th>
-                <th scope="col">Precio Un.</th>
-                <th scope="col">Total</th>
-                <th scope="col"></th>
+                    <th  scope="col">Codigo</th>
+                    <th scope="col">Producto</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Precio Un.</th>
+                    <th scope="col">Total</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                <th  scope="row">0001</th>
+            <tbody className="body">
+                <tr >
+                <th scope="row">0001</th>
                 <td >Alcohol Etilico x 5 lts.</td>
                 <td>520</td>
                 <td>520</td>
@@ -26,7 +26,7 @@ function Table(){
                     <CrossButton>X</CrossButton>
                 </td>
                 </tr>
-                <tr>
+                <tr >
                 <th  scope="row">0001</th>
                 <td >Alcohol Etilico x 5 lts.</td>
                 <td>520</td>

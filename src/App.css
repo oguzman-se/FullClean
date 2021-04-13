@@ -1,3 +1,183 @@
+@font-face {
+  font-family: "Gilroy";
+  src: url("assets/fonts/Gilroy-Black.woff2") format("woff2"),
+      url("assets/fonts/Gilroy-Black.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("assets/fonts/Gilroy-Bold.woff2") format("woff2"),
+      url("assets/fonts/Gilroy-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("assets/fonts/Gilroy-BoldItalic.woff2") format("woff2"),
+      url("assets/fonts/Gilroy-BoldItalic.woff") format("woff");
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("assets/fonts/Gilroy-BlackItalic.woff2") format("woff2"),
+      url("assets/fonts/Gilroy-BlackItalic.woff") format("woff");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("assets/fonts/Gilroy-LightItalic.woff2") format("woff2"),
+      url("assets/fonts/Gilroy-LightItalic.woff") format("woff");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("assets/fonts/Gilroy-Light.woff2") format("woff2"),
+      url("assets/fonts/Gilroy-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("assets/fonts/Gilroy-ExtraBold.woff2") format("woff2"),
+      url("assets/fonts/Gilroy-ExtraBold.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("assets/fonts/Gilroy-HeavyItalic.woff2") format("woff2"),
+      url("assets/fonts/Gilroy-HeavyItalic.woff") format("woff");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("assets/fonts/Gilroy-ExtraBoldItalic.woff2") format("woff2"),
+      url("assets/fonts/Gilroy-ExtraBoldItalic.woff") format("woff");
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("assets/fonts/Gilroy-Heavy.woff2") format("woff2"),
+      url("assets/fonts/Gilroy-Heavy.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy-RegularItalic";
+  src: url("assets/fonts/Gilroy-RegularItalic.woff2") format("woff2"),
+      url("assets/fonts/Gilroy-RegularItalic.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("assets/fonts/Gilroy-Regular.woff2") format("woff2"),
+      url("assets/fonts/Gilroy-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("assets/fonts/Gilroy-MediumItalic.woff2") format("woff2"),
+      url("assets/fonts/Gilroy-MediumItalic.woff") format("woff");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("assets/fonts/Gilroy-Medium.woff2") format("woff2"),
+      url("assets/fonts/Gilroy-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("assets/fonts/Gilroy-ThinItalic.woff2") format("woff2"),
+      url("assets/fonts/Gilroy-ThinItalic.woff") format("woff");
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("assets/fonts/Gilroy-Thin.woff2") format("woff2"),
+      url("assets/fonts/Gilroy-Thin.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("assets/fonts/Gilroy-UltraLight.woff2") format("woff2"),
+      url("assets/fonts/Gilroy-UltraLight.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("assets/fonts/Gilroy-SemiBoldItalic.woff2") format("woff2"),
+      url("assets/fonts/Gilroy-SemiBoldItalic.woff") format("woff");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("assets/fonts/Gilroy-SemiBold.woff2") format("woff2"),
+      url("assets/fonts/Gilroy-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("assets/fonts/Gilroy-UltraLightItalic.woff2") format("woff2"),
+      url("assets/fonts/Gilroy-UltraLightItalic.woff") format("woff");
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -7,7 +187,7 @@
   background-color: rgb(240, 95, 116);
   text-decoration: none;
   box-shadow: 0 0 30px rgb(0,0,0);
-  font-size: 16px;
+
   height: 2%;
   padding-top: 7px;
   padding-bottom: 7px;
@@ -20,16 +200,18 @@
   color: rgb(48, 45, 45);
   
 }
-
+.group-1{
+  margin-bottom: 4px;
+}
+.button-1{
+  margin-right: 4px;
+}
 .btn-custom {
-  width: 100%;
+  width: 150px;
   background-color: rgb(240, 95, 116) !important;
   box-shadow: 0 0 1px rgb(0,0,0) !important;
-  margin-left: 2px;
-  margin-top: 5px;
+  margin-top: 5px ;
   color: aliceblue !important;
-  font-size: 16px !important;
-  padding: 2px !important;
   border-radius: 0% !important;
 }
 .btn-custom:hover{
@@ -42,7 +224,6 @@
   color: aliceblue !important;
   border-radius: 50% !important;
   border: none;
-  font-size: 10px !important;
 }
 .btn-cross:hover{
   color: rgb(48, 45, 45) !important; 
@@ -52,36 +233,36 @@
   background-color: rgba(255, 255, 255, 0);
   border: rgba(158, 88, 88, 0);
   color: rgba(240, 95, 117, 0.664) ;
-  font-weight: bold;
+
 }
 .modal-button-cancel{
   background-color: rgba(255, 255, 255, 0);
   border: rgba(158, 88, 88, 0);
-  font-weight: bold;
   color: rgba(0, 0, 0, 0.664);
 }
-#modal-tittle{
-  font-weight: bolder;
-}
+
 .search{
   margin-top: 10px;
   border: 1.5px solid black !important;
+  border-radius: 0% !important;
+  box-shadow: none !important;
 }
 .grilla{
-  padding: 10px;
+  margin-bottom: 7px;
+  margin-right: 42px !important;
 }
 .padding-label{
   padding-top: 10px;
 }
 .productos{
   height: 600px !important;
-  overflow: scroll;
+  overflow:scroll;
   overflow-x: hidden;
 }
 .btn-secundario{
   background-color: rgb(173, 169, 169) !important;
   border-radius: 0% !important;
-  font-size: 14px !important;
+  width: 140px;
 }
 .barcode{
   font-size: 45px;
@@ -89,10 +270,12 @@
   width: 100%;
 }
 .label{
+  margin-top: 10px;
   border-bottom: 1px solid rgb(182, 179, 179) !important;
-  width: 200px;
+  width: 105%;
   font-size: 20px;
 }
+
 .labelbottom{
   border-bottom: 1px solid rgb(240, 95, 116) !important;
   font-size: 30px;
@@ -101,12 +284,39 @@
 }
 .tabla{
   padding-top: 20px !important;
+  
 }
 .table{
-  border: 2px solid black;
-  font-size: 13px;
-  height: 400px;
+  border: 1px solid black;
 }
-.custom-select{
+.table thead{
+  border: 1px solid black !important;
+  font-size: 10px !important;
+  height: 10px !important;
+}
+.body td{
+  font-size: 10px !important;
+}
+.body th{
+  font-size: 10px !important;
+}
+
+
+.select{
   color: black !important;
+  border: 0px !important;
+  border-radius: 0% !important;
+  box-shadow: none !important;
+  background-image: url(/src/assets/image/flecha.png) !important; 
+  background-repeat: no-repeat !important;
+  background-position: right center !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  -o-appearance: none !important;
+  appearance: none !important;
+  width: 100%;
+  outline:none;
+}
+.group-button-1{
+  margin-right: 30px;
 }
