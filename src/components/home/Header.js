@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css';
 function Header() {
     return(
-<nav className="nav">
+<nav className="nav col-md-12">
   <Link className="nav-link active" to="/" >FULL CLEAN</Link>
   <Link className="nav-link active" >|</Link>
   <Link className="nav-link active" to="/pedidos" >Pedidos</Link>

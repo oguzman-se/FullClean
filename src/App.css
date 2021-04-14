@@ -187,7 +187,7 @@
   background-color: rgb(240, 95, 116);
   text-decoration: none;
   box-shadow: 0 0 30px rgb(0,0,0);
-  height: 7.5vh;
+  min-height: 7.5vh;
   padding-top: 1vh;
   padding-bottom: 1vh;
   padding-left: 1.8% !important;
@@ -207,7 +207,7 @@
 .btn-custom {
   background-color: rgb(240, 95, 116) !important;
   box-shadow: 0 0 1px rgb(0,0,0) !important;
-  margin-top: 1.4vh ;
+  margin-top: 1.5vh ;
   margin-right: 1.7vh;
   color: aliceblue !important;
   border-radius: 0% !important;
@@ -240,7 +240,7 @@
   color: rgba(0, 0, 0, 0.664);
 }
 .search{
-  margin-top: 10px;
+  margin-top: 1vh;
   border: 1.5px solid black !important;
   border-radius: 0% !important;
   box-shadow: none !important;
@@ -265,6 +265,7 @@
   width: 140px;
 }
 .barcode{
+  margin-top: 1.5vh;
   font-size: 5.5vh;
   max-height: 10vh;
   border: 3px solid rgb(240, 95, 116);
@@ -277,11 +278,9 @@
   font-size: 2.5vh;
 }
 .combo-label{
-  margin-top: 1.4vh ;
+  margin-top: 1vh ;
 }
-.padding-bottom{
-  margin-top: 3vh;
-}
+
 .grop-vh-3{
   min-height: 6vh;
   width: 100%;
@@ -289,18 +288,19 @@
 
 .labelbottom{
   border-bottom: 1px solid rgb(240, 95, 116) !important;
-  font-size: 3.2vh;
+  font-size: 3vh;
   font-weight:500;
   width: 100%;
 }
 .group-vh-4{
-  max-height: 4vh;
+  margin-bottom: 0.5vh;
+  min-height: 5vh !important;
 }
 .tabla{
   min-height: 40vh;
   border: 1px solid #383c44;
   padding: 0%;
-  margin-top: 1.5vh;
+  margin-top: 1vh;
 }
 
 .table thead{
@@ -329,15 +329,19 @@
   appearance: none !important;
   width: 100%;
   outline:none;
+  font-size: 2vh;
 }
 
 .group-vh-5{
-  min-height: 8vh !important;
+  max-height: 4vh !important;
 }
 .group-button-1{
-  margin-top: 2vh;
   margin-right: 20px;
 }
 .group-button-2{
   margin-right: 20px;
+}
+.margin-labelsm{
+  margin-top: 1vh;
+  font-size: 2vh;
 }

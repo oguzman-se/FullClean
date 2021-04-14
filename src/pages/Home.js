@@ -21,10 +21,10 @@ function Home() {
   <Layout>
   <div className="container-fluid">
     <div className="row">
-      <div className="col-lg-6">
+      <div className="col-sm-12 col-md-6">
         <div className="container group-vh-1">
           <div className="row ">
-              <div className="col-md-8">
+              <div className="col-sm-12 col-md-8">
               <Button >
                       Nueva Compra
               </Button>             
@@ -36,7 +36,7 @@ function Home() {
         </div>
         <div className="container group-vh-1">
         <div className="row">
-        <div className="col-md-8">
+        <div className="col-sm-12 col-md-8">
               
                   <Button>
                           Nota de Credito
@@ -45,7 +45,7 @@ function Home() {
                           + Categoria
                   </Button> 
               </div>
-              <div className="col-md-4">
+              <div className="col-sm-12 col-md-4">
               <Button>
                 Buscar Productos
               </Button>
@@ -70,30 +70,30 @@ function Home() {
            
           </div>
         </div>
-        <div className="col-lg-6">
+        <div className="col-sm-12 col-md-6">
             <div className="container-fluid"> 
             <div className="row">
-                <div className="col-lg-12">
+                <div className="col-md-12">
                   <Barcode/>
                 </div>
             </div>
             <div className="row">
-                <div className="col-lg-12">
+                <div className="col-md-12">
                   <Label/>
                 </div>
             </div>
             <div className="row">
-                <div className="col-lg-12">
+                <div className="col-md-12">
                   <Table/>
                 </div>
             </div>
             <div className="row">
-                <div className="col-lg-12">
+                <div className="col-md-12">
                   <LabelBottomXL/>
                 </div>
             </div>
             <div className="row">
-                <div className="col-lg-12">
+                <div className="col-md-12">
                   <LabelBottomSM/>
                 </div>
             </div>

@@ -6,16 +6,16 @@ function Productos(){
 
     return(
     <div className="row">
-        <div className="col-md-2 grilla">
+        <div className="col-xs-4 col-sm-4 col-md-2 grilla">
         <Product>Alcohol Etilico 5lts.</Product>
         </div>
-        <div className="col-md-2 grilla">
+        <div className="col-xs-4 col-sm-4 col-md-2 grilla">
         <Product>Alcohol Etilico 5lts.</Product>
         </div>
-        <div className="col-md-2 grilla">
+        <div className="col-xs-4 col-sm-4 col-md-2 grilla">
         <Product>Alcohol Etilico 5lts.</Product>
         </div>
-        <div className="col-md-2 grilla">
+        <div className="col-xs-4 col-sm-4 col-md-2 grilla">
         <Product>Alcohol Etilico 5lts.</Product>
         </div>
     </div>

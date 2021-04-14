@@ -5,18 +5,18 @@ function LabelBottomSM(){
     return(
         <div className="container-fluid group-vh-5">
             <div className="row ">
-                <div className="col-md-5 padding-bottom">
+                <div className="col-xs-12 col-md-5 margin-labelsm">
                     <label className="label">Metodo de Pago:</label>
                 </div>
-                <div className="col-md-3 group-button-1">
+                <div className="col-xs-12 col-md-3 group-button-1">
                     <Button>Confirmar</Button>
                 </div>
-                <div className="col-md-3 group-button-1">
+                <div className="col-xs-12 col-md-3 group-button-1">
                     <Button>Remito</Button>
                 </div>
             </div>
             <div className="row ">
-                <div className="col-md-5 padding-bottom">
+                <div className="col-md-5 margin-labelsm " >
                 <select className="select">
                     <option selected>Efectivo</option>
                     <option value="1">Tarjeta de credito</option>
