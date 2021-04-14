@@ -1,12 +1,6 @@
 import React from 'react'
 function Table(props){
     const {cartItems, onRemove} = props;
-    const itemPrice = cartItems.map((item) => {
-        return(
-            item.price * item.qty
-            )
-    })
-
     return(
         <div className="tabla">
         <table className="table">
@@ -29,8 +23,8 @@ function Table(props){
                     <td>0001</td>
                     <td >{item.name}</td>
                     <td>{item.qty}</td>
-                    <td>{item.price}</td>
-                    <td>{itemPrice}</td>
+                    <td>${item.price.toFixed(2)}</td>
+                    <td>${(item.qty * item.price).toFixed(2)}</td>
                     <td>
                         <button className="btn-cross" onClick={()=>onRemove(item)}>X</button>
                     </td>

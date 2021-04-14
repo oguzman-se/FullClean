@@ -1,7 +1,6 @@
 // Home.js
 import Layout from '../components/home/Layout'
 import Button from '../components/home/Button'
-import Search from '../components/home/Search'
 import Barcode from '../components/home/Barcode'
 import Productos from '../components/home/Productos'
 import Label from '../components/home/Label'
@@ -81,10 +80,7 @@ function Home() {
         </div>
               <ModalCustom show={show} setShow={setShow}/>
           
-          <div className="group-vh-2">
-            <Search/>
-          </div>
-          <div className="productos">
+          <div>
             <Productos products={products} onAdd={onAdd}/>          
           </div>
         </div>

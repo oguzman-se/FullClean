@@ -7,11 +7,11 @@ function LabelBottomXL(props){
                 <div className="col-xs-12 col-md-5 labelbottom">
                     <label>{countCartItems} Unidades</label>
                 </div>
-                <div className="col-xs-12 col-md-4 labelbottom">
+                <div className="col-xs-12 col-md-3 labelbottom">
                     <label>Total</label>
                 </div>
-                <div className="col-xs-12 col-md-3 labelbottom">
-                    <label>$ {totalPrice}</label>
+                <div className="col-xs-12 col-md-4 labelbottom">
+                    <label>$ {totalPrice.toFixed(2)}</label>
                 </div>
             </div>
         </div>

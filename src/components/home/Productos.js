@@ -1,18 +1,37 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.css';
 import Product from './Product'
+import {useState} from 'react'
 
 function Productos(props){
     const {products, onAdd} = props;
+    const [searchTerm, setSearchTerm] = useState("");
+
     return(
-    <div className="row">
-        <div className="col-xs-6 col-sm-6 col-md-12 grilla">
-        {products.map((product)=>(
-            <Product key={product.id} product={product} onAdd={onAdd}></Product>
-        ))}
+    <div>
+        <div className="group-vh-2">
+        <input className="col-md-12 form-control search"  type="text"
+         placeholder="Buscar" aria-label="Search"
+         onChange={(event) => {
+             setSearchTerm(event.target.value);
+         }}
+        />
         </div>
-        
-        
+        <div className="row productos">   
+            <div className="col-xs-6 col-sm-6 col-md-12 grilla">
+
+
+            {products.filter((product)=> {
+                if (searchTerm === "") {
+                    return product
+                } else if (product.name.toLowerCase().includes(searchTerm.toLowerCase())){
+                    return product;
+                }
+            }).map((product)=>(
+                <Product key={product.id} product={product} onAdd={onAdd}></Product>
+            ))}
+            </div>
+        </div>
     </div>
     )
 }
