@@ -41,6 +41,7 @@ function Home() {
     }
   }
 
+  const totalPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
 
 
   return(
@@ -96,7 +97,7 @@ function Home() {
             </div>
             <div className="row">
                 <div className="col-md-12">
-                  <Label/>
+                  <Label />
                 </div>
             </div>
             <div className="row">
@@ -106,7 +107,7 @@ function Home() {
             </div>
             <div className="row">
                 <div className="col-md-12">
-                  <LabelBottomXL/>
+                  <LabelBottomXL countCartItems={cartItems.length} totalPrice={totalPrice}/>
                 </div>
             </div>
             <div className="row">
