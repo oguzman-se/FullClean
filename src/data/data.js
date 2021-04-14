@@ -32,7 +32,7 @@ const data = {
         },
         {
             id: 6,
-            name: "QUE SE YOOO",
+            name: "QUE QUE QUE QUE",
             price: 1234,
         },
         {
