@@ -1,5 +1,4 @@
 // Home.js
-
 import Layout from '../components/home/Layout'
 import Button from '../components/home/Button'
 import Search from '../components/home/Search'
@@ -11,11 +10,38 @@ import LabelBottomXL from '../components/home/LabelBottomXL'
 import LabelBottomSM from '../components/home/LabelBottomSM'
 import ModalCustom from '../components/home/ModalCustom'
 import React, {useState} from 'react'
-
+import data from '../data/data'
 
 function Home() {
-
+  const [cartItems, setCartItems] = useState([]);
   const [show, setShow] = useState(false);
+  const {products} = data;
+  const onAdd = (product) => {
+    const exist = cartItems.find(x=> x.id === product.id);
+    if (exist) {
+      setCartItems(
+        cartItems.map((x)=>
+        x.id === product.id ? { ...exist, qty: exist.qty + 1} : x
+        )
+      );
+    }else{
+      setCartItems([...cartItems, {...product, qty: 1}]);
+    }
+  };
+  const onRemove = (product) => {
+    const exist = cartItems.find((x) => x.id === product.id);
+    if (exist.qty === 1) {
+      setCartItems(cartItems.filter((x) => x.id !== product.id));
+    }else {
+      setCartItems(
+        cartItems.map((x)=>
+        x.id === product.id ? { ...exist, qty: exist.qty - 1} : x
+        )
+      );
+    }
+  }
+
+
 
   return(
   <Layout>
@@ -58,16 +84,7 @@ function Home() {
             <Search/>
           </div>
           <div className="productos">
-            <Productos/>
-            <Productos/>
-            <Productos/>
-            <Productos/>
-            <Productos/>
-            <Productos/>
-            <Productos/>
-            <Productos/>
-            
-           
+            <Productos products={products} onAdd={onAdd}/>          
           </div>
         </div>
         <div className="col-sm-12 col-md-6">
@@ -84,7 +101,7 @@ function Home() {
             </div>
             <div className="row">
                 <div className="col-md-12">
-                  <Table/>
+                  <Table cartItems={cartItems} onRemove={onRemove} />
                 </div>
             </div>
             <div className="row">
