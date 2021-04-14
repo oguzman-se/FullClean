@@ -2,7 +2,6 @@ import React from 'react'
 import Button  from '../home/Button'
 
 function Label(){
-
     return(
         <div className="container-fluid">
             <div className="row grop-vh-3">
