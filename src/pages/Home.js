@@ -23,14 +23,11 @@ function Home() {
     <div className="row">
       <div className="col-lg-6">
         <div className="container group-vh-1">
-          <div className="row group-1">
-              <div className="col-md-3 button-1">
+          <div className="row ">
+              <div className="col-md-8">
               <Button >
                       Nueva Compra
-              </Button>
-              </div>
-
-              <div className="col-md-3">
+              </Button>             
               <Button onClick={()=>setShow(true)}>
                       + Producto
               </Button> 
@@ -39,19 +36,16 @@ function Home() {
         </div>
         <div className="container group-vh-1">
         <div className="row">
-              <div className="col-md-3 button-1">
-              <Button >
-                        Nota de Credito
-              </Button>
+        <div className="col-md-8">
+              
+                  <Button>
+                          Nota de Credito
+                  </Button>             
+                  <Button onClick={()=>setShow(true)}>
+                          + Categoria
+                  </Button> 
               </div>
-
-              <div className="col-md-3">
-              <Button >
-                        + Categoria
-              </Button>
-              </div>
-              <div className="col-md-2"></div>
-              <div className="col-md-3">
+              <div className="col-md-4">
               <Button>
                 Buscar Productos
               </Button>
