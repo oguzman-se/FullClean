@@ -217,8 +217,8 @@
   color: rgb(48, 45, 45) !important; 
 }
 .btn-cross{
-  width: 15px;
-  height: 15px;
+  width: 20px;
+  height: 20px;
   background-color: rgb(240, 95, 116) !important;
   color: aliceblue !important;
   border-radius: 50% !important;
@@ -262,18 +262,25 @@
   background-color: rgb(173, 169, 169) !important;
   border-radius: 0% !important;
   width: 140px;
+  height: 60px;
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow: ellipsis;
+  margin: 4px;
 }
+
 .barcode{
   margin-top: 1.5vh;
   font-size: 5.5vh;
   max-height: 10vh;
   border: 3px solid rgb(240, 95, 116);
   width: 100%;
+  padding-left: 10px;
   
 }
 .label{
   border-bottom: 1px solid rgb(182, 179, 179) !important;
-  width: 105%;
+  width: 100%;
   font-size: 2.5vh;
 }
 .combo-label{
@@ -303,15 +310,25 @@
 }
 
 .table thead{
-  font-size: 1.2vh;
+  font-size: 1.5vh;
+}
+.table thead th{
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
 }
 .table tbody{
-  font-size: 1.2vh;
+  font-size: 1.6vh;
   max-height: min-content;
 }
 .table tbody td{
   padding-top: 4px !important;
   padding-bottom: 4px !important;
+}
+.name{
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow: ellipsis;
+  max-width: 200px;
 }
 
 .select{

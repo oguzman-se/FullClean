@@ -3,7 +3,7 @@ import Button  from '../home/Button'
 
 function Label(){
     return(
-        <div className="container-fluid">
+        <div >
             <div className="row grop-vh-3">
                 <div className="col-md-9 combo-label">
                     <label className="label">Cliente: 00254 - Juan Perez</label>

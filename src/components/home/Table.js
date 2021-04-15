@@ -21,7 +21,7 @@ function Table(props){
             {cartItems.map((item)=>(
                 <tr key={item.id}>
                     <td>0001</td>
-                    <td >{item.name}</td>
+                    <td className="name">{item.name}</td>
                     <td>{item.qty}</td>
                     <td>${item.price.toFixed(2)}</td>
                     <td>${(item.qty * item.price).toFixed(2)}</td>
