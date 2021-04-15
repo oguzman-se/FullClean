@@ -6,10 +6,10 @@ function LeftSide(props){
     const {onAdd, products, setShow, show} = props;
     return(
         <div>
-         <GroupButton setShow={setShow} show={show} />
+            <GroupButton setShow={setShow} show={show} />
         <div>
             <Productos products={products} onAdd={onAdd}/>          
-          </div>
+        </div>
         </div>
     )
 }
