@@ -267,6 +267,45 @@
   white-space:nowrap;
   text-overflow: ellipsis;
   margin: 4px;
+  position: relative;
+}
+.btn-secundario:hover .tooltext{
+  display: inline-block;
+}
+.btn-secundario:hover .btn-secundario{
+  overflow:visible;
+  white-space:normal;
+}
+
+
+.tooltext{
+  display: none;
+  position: absolute;
+  background-color: rgb(0,0,0);
+  line-height: 20px;
+  z-index: 500;
+  color: aliceblue;
+  text-align: center;
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  left: 0;
+  right: 0;
+  bottom: 30px;
+  overflow:visible;
+  white-space:normal;
+}
+.tooltext::after{
+  content:"" ;
+  display: block;
+  border-top: 7px solid #000;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  position: absolute;
+  bottom: -7px;
+  left: calc(50% - 7px);
+  overflow:visible;
+  white-space:normal;
 }
 
 .barcode{

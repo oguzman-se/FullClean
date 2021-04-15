@@ -19,7 +19,10 @@ function Productos(props){
         </div>
         <div className="row productos">   
             <div className="col-xs-6 col-sm-6 col-md-12 grilla">
-            {products.filter((product)=> {
+                
+            {
+            // eslint-disable-next-line
+            products.filter((product)=> {
                 if (searchTerm === "") {
                     return product
                 } else if (product.name.toLowerCase().includes(searchTerm.toLowerCase())){

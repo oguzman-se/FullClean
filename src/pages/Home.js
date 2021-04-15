@@ -1,17 +1,12 @@
 // Home.js
 import Layout from '../components/home/Layout'
-import Button from '../components/home/Button'
-import Barcode from '../components/home/Barcode'
-import Productos from '../components/home/Productos'
-import Label from '../components/home/Label'
-import Table from '../components/home/Table'
-import LabelBottomXL from '../components/home/LabelBottomXL'
-import LabelBottomSM from '../components/home/LabelBottomSM'
-import ModalCustom from '../components/home/ModalCustom'
 import React, {useState} from 'react'
 import data from '../data/data'
+import LeftSide from '../components/home/bigComponents/LeftSide'
+import RightSide from '../components/home/bigComponents/RightSide';
 
 function Home() {
+  
   const [cartItems, setCartItems] = useState([]);
   const [show, setShow] = useState(false);
   const {products} = data;
@@ -39,86 +34,30 @@ function Home() {
       );
     }
   }
-
   const totalPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
-
 
   return(
   <Layout>
-  <div className="container-fluid">
-    <div className="row">
-      <div className="col-sm-12 col-md-6">
-        <div className="container group-vh-1">
-          <div className="row ">
-              <div className="col-sm-12 col-md-8">
-              <Button >
-                      Nueva Compra
-              </Button>             
-              <Button onClick={()=>setShow(true)}>
-                      + Producto
-              </Button> 
-              </div>
-          </div>
-        </div>
-        <div className="container group-vh-1">
-        <div className="row">
-        <div className="col-sm-12 col-md-8">
-              
-                  <Button>
-                          Nota de Credito
-                  </Button>             
-                  <Button onClick={()=>setShow(true)}>
-                          + Categoria
-                  </Button> 
-              </div>
-              <div className="col-sm-12 col-md-4">
-              <Button>
-                Buscar Productos
-              </Button>
-              </div>
-        </div>
-        </div>
-              <ModalCustom show={show} setShow={setShow}/>
-          
-          <div>
-            <Productos products={products} onAdd={onAdd}/>          
-          </div>
+    <div className="container-fluid">
+      <div className="row">
+        <div className="col-sm-12 col-md-6">
+            <LeftSide
+            show={show}
+            setShow={setShow}
+            products={products}
+            onAdd={onAdd}
+            />
         </div>
         <div className="col-sm-12 col-md-6">
-            <div className="container-fluid"> 
-            <div className="row">
-                <div className="col-md-12">
-                  <Barcode/>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col-md-12">
-                  <Label />
-                </div>
-            </div>
-            <div className="row">
-                <div className="col-md-12">
-                  <Table cartItems={cartItems} onRemove={onRemove} />
-                </div>
-            </div>
-            <div className="row">
-                <div className="col-md-12">
-                  <LabelBottomXL countCartItems={cartItems.length} totalPrice={totalPrice}/>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col-md-12">
-                  <LabelBottomSM/>
-                </div>
-            </div>
-            </div>
-          
+              <RightSide
+              onRemove={onRemove}
+              totalPrice={totalPrice}
+              cartItems={cartItems}
+              />
         </div>
-    </div>    
-</div>
-    
+      </div>    
+    </div>
   </Layout>
-
   )}
 
 export default Home
