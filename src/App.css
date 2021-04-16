@@ -263,8 +263,6 @@
   border-radius: 0% !important;
   width: 140px;
   height: 60px;
-  white-space:nowrap;
-  text-overflow: ellipsis;
   margin: 4px;
   position: relative;
 }
@@ -275,8 +273,6 @@
   overflow:visible;
   white-space:normal;
 }
-
-
 .tooltext{
   display: none;
   position: absolute;
@@ -290,7 +286,7 @@
   border-radius: 5px;
   left: 0;
   right: 0;
-  bottom: 30px;
+  bottom: 45px;
   overflow:visible;
   white-space:normal;
 }
@@ -335,6 +331,7 @@
   font-size: 3vh;
   font-weight:500;
   width: 100%;
+  padding-top: 1vh;
 }
 .group-vh-4{
   margin-bottom: 0.5vh;
@@ -348,14 +345,14 @@
 }
 
 .table thead{
-  font-size: 1.5vh;
+  font-size: 14px;
 }
 .table thead th{
   padding-top: 4px !important;
   padding-bottom: 4px !important;
 }
 .table tbody{
-  font-size: 1.6vh;
+  font-size: 14px;
   max-height: min-content;
 }
 .table tbody td{
