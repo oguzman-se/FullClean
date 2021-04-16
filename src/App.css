@@ -177,7 +177,7 @@
   font-style: italic;
   font-display: swap;
 }
-
+/*HOME*/
 * {
   padding: 0;
   margin: 0;
@@ -212,6 +212,7 @@
   color: aliceblue !important;
   border-radius: 0% !important;
   width: 150px;
+  height: 40px;
 }
 .btn-custom:hover{
   color: rgb(48, 45, 45) !important; 
@@ -315,12 +316,10 @@
 .label{
   border-bottom: 1px solid rgb(182, 179, 179) !important;
   width: 100%;
-  font-size: 2.5vh;
+  font-size: 2.4vh;
+  margin-top: 1.5vh;
+  height: 40px;
 }
-.combo-label{
-  margin-top: 1vh ;
-}
-
 .grop-vh-3{
   min-height: 6vh;
   width: 100%;
@@ -396,3 +395,21 @@
   margin-top: 1vh;
   font-size: 2vh;
 }
+/*PEDIDOS*/
+.label-bottom-pedidos{
+  width: 100%;
+}
+.label-state{
+  color: red;
+  width: 100%;
+  font-size: 2.4vh;
+  margin-top: 1.5vh;
+  height: 40px;
+}
+.labelPedidos{
+  width: 100%;
+  font-size: 1.8vh;
+  height: 25px;
+  border-bottom: 1px solid rgb(182, 179, 179) !important;
+}
+
