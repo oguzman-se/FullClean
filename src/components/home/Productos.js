@@ -2,9 +2,10 @@ import React from 'react'
 import 'bootstrap/dist/css/bootstrap.css';
 import Product from './Product'
 import {useState} from 'react'
+import {useHome} from '../../context/home-context'
 
-function Productos(props){
-    const {products, onAdd} = props;
+function Productos(){
+    const {products, onAdd} = useHome();
     const [searchTerm, setSearchTerm] = useState("");
 
     return(

@@ -1,6 +1,9 @@
+import { useHome } from "../../context/home-context";
+
 
 function LabelBottomXL(props){
-    const {countCartItems, totalPrice} = props;
+    const {totalPrice} = useHome();
+    const {countCartItems} = props;
     return(
         <div className="container-fluid group-vh-4">
             <div className="row ">

@@ -6,7 +6,7 @@ import LabelBottomXL from '../LabelBottomXL'
 import LabelBottomSM from '../LabelBottomSM'
 
 function RightSide(props){
-    const {cartItems, totalPrice, onRemove} = props;
+    const {cartItems} = props;
     return(
         <div>
            <div className="container-fluid"> 
@@ -22,12 +22,12 @@ function RightSide(props){
             </div>
             <div className="row">
                 <div className="col-md-12">
-                  <Table cartItems={cartItems} onRemove={onRemove} />
+                  <Table/>
                 </div>
             </div>
             <div className="row">
                 <div className="col-md-12">
-                  <LabelBottomXL countCartItems={cartItems.length} totalPrice={totalPrice}/>
+                  <LabelBottomXL countCartItems={cartItems.length}/>
                 </div>
             </div>
             <div className="row">

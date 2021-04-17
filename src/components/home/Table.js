@@ -1,6 +1,9 @@
 import React from 'react'
-function Table(props){
-    const {cartItems, onRemove} = props;
+import {useHome} from '../../context/home-context'
+
+function Table(){
+    const {cartItems, onRemove} = useHome();
+    
     return(
         <div className="tabla">
         <table className="table">

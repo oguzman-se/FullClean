@@ -3,12 +3,11 @@ import Productos from '../Productos'
 import GroupButton from './SmallComponentsGroup/GroupButton';
 
 function LeftSide(props){
-    const {onAdd, products, setShow, show} = props;
     return(
         <div>
-         <GroupButton setShow={setShow} show={show} />
+            <GroupButton/>
         <div>
-            <Productos products={products} onAdd={onAdd}/>          
+            <Productos/>          
           </div>
         </div>
     )

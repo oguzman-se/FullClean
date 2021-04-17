@@ -2,8 +2,10 @@ import React from 'react'
 import ModalCustom from '../../ModalCustom'
 import Button from '../../Button'
 
-function GroupButton(props){
-    const {setShow, show} = props;
+import {useHome} from '../../../../context/home-context';
+
+function GroupButton(){
+    const {setShow} = useHome();
     return(
         
         <div>
@@ -30,7 +32,7 @@ function GroupButton(props){
                     </div>
                 </div>
             </div>
-              <ModalCustom show={show} setShow={setShow}/>
+              <ModalCustom/>
         </div>
     )
 }
