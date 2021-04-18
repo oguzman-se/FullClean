@@ -3,12 +3,7 @@ import Layout from '../components/home/Layout'
 import React from 'react'
 import LeftSide from '../components/home/bigComponents/LeftSide'
 import RightSide from '../components/home/bigComponents/RightSide';
-import {HomeProvider, useHome} from '../context/home-context'
-
-export default () => 
-<HomeProvider>
-  <Home></Home>
-</HomeProvider>
+import {useHome} from '../context/home-context'
 
 function Home() {
   const {cartItems} =useHome();
@@ -28,3 +23,5 @@ function Home() {
     </div>
   </Layout>
   )}
+
+  export default Home;
