@@ -396,8 +396,17 @@
   font-size: 2vh;
 }
 /*PEDIDOS*/
+.searchPedidos{
+  margin-top: 2vh;
+  height: 12vh;
+}
 .label-bottom-pedidos{
   width: 100%;
+  font-size: 2vh;
+  font-weight:500;
+  width: 100%;
+  padding-top: 1vh;
+  
 }
 .label-state{
   color: red;
@@ -416,24 +425,41 @@
   width: 45% !important;
   float:left;
   margin-right: 5%;
-  height: 40px;
+  height: 35px !important;
 }
 .state{
-  width: 30%;
-  height: 40px;
+  width: 20%;
   padding-top: 17px;
+  height: 35px;
 }
 .sel{
-  width: 35% !important;
-  height: 40px;
-  padding-top: 17px;
+  width: 37%;
+  height: 35px;
+  margin-right: 6%;
 }
 .boton{
-  width: 17% !important;
+  width: 37% !important;
   background-color: rgb(240, 95, 116) !important;
   box-shadow: 0 0 1px rgb(0,0,0) !important;
   color: aliceblue !important;
   border-radius: 0% !important;
-  height: 40px;
+  height: 35px;
+  border: 0;
+}
+.boton2{
+  width: 100% !important;
+  background-color: rgb(240, 95, 116) !important;
+  box-shadow: 0 0 1px rgb(0,0,0) !important;
+  color: aliceblue !important;
+  border-radius: 0% !important;
+  height: 35px;
+  border: 0;
+}
+
+.confirm{
+  color: green;
+}
+.pendiente{
+  color: red;
 }
 

@@ -22,8 +22,8 @@ return (
                     <td>00001</td>
                     <td>Consorcio Mitre</td>
                     <td>520</td>
-                    <td>Pendiente</td>
-                    <td>Confirmado</td>
+                    <td className="pendiente">Pendiente</td>
+                    <td className="confirm">Confirmado</td>
                 </tr>
             </tbody>            
             </table>

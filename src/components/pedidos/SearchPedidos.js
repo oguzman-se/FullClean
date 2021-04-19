@@ -2,7 +2,7 @@ import React from 'react'
 import Button from '../home/Button'
 function SearchPedidos(){
 return (
-<div>
+<div className="searchPedidos">
     <div className="container-fluid">
         <div className="row">
             <input className="col-md-12 form-control search" placeholder="Buscar pedido..."/>

@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from '../home/Button';
+
 
 function SubPedidosLeft(){
 return (
@@ -16,25 +16,27 @@ return (
                     <label>$ 1234.56</label>
                 </div>
             </div>
-            <div className="row">
+        
+        <div className="row">
                 <div className="col-md-3">
                     <label className="label-bottom-pedidos">Efectivo</label>
-                    <Button>$594.50</Button>
+                    <button className="boton2">$594.50</button>
                 </div>
                 <div className="col-md-3">
                     <label className="label-bottom-pedidos">Efectivo</label>
-                    <Button>$594.50</Button>
+                    <button className="boton2">$594.50</button>
                 </div>
                 <div className="col-md-3">
                     <label className="label-bottom-pedidos">Efectivo</label>
-                    <Button>$594.50</Button>
+                    <button className="boton2">$594.50</button>
                 </div>
                 <div className="col-md-3">
                     <label className="label-bottom-pedidos">Efectivo</label>
-                    <Button>$594.50</Button>
+                    <button className="boton2">$594.50</button>
                 </div>
             </div>
         </div>
+         
     </div>
 )}
 
