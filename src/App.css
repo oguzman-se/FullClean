@@ -412,4 +412,28 @@
   height: 25px;
   border-bottom: 1px solid rgb(182, 179, 179) !important;
 }
+.search{
+  width: 45% !important;
+  float:left;
+  margin-right: 5%;
+  height: 40px;
+}
+.state{
+  width: 30%;
+  height: 40px;
+  padding-top: 17px;
+}
+.sel{
+  width: 35% !important;
+  height: 40px;
+  padding-top: 17px;
+}
+.boton{
+  width: 17% !important;
+  background-color: rgb(240, 95, 116) !important;
+  box-shadow: 0 0 1px rgb(0,0,0) !important;
+  color: aliceblue !important;
+  border-radius: 0% !important;
+  height: 40px;
+}
 
