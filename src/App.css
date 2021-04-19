@@ -287,18 +287,18 @@
   border-radius: 5px;
   left: 0;
   right: 0;
-  bottom: 45px;
+  top: 45px;
   overflow:visible;
   white-space:normal;
 }
 .tooltext::after{
   content:"" ;
   display: block;
-  border-top: 7px solid #000;
+  border-bottom: 7px solid #000;
   border-left: 7px solid transparent;
   border-right: 7px solid transparent;
   position: absolute;
-  bottom: -7px;
+  top: -7px;
   left: calc(50% - 7px);
   overflow:visible;
   white-space:normal;

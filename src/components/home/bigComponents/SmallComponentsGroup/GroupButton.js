@@ -1,11 +1,12 @@
 import React from 'react'
 import ModalCustom from '../../ModalCustom'
+import ModalSearchProducts from '../../ModalSearchProducts'
 import Button from '../../Button'
 
 import {useHome} from '../../../../context/home-context';
 
 function GroupButton(){
-    const {setShow} = useHome();
+    const {setShow, setShowTable} = useHome();
     return(
         
         <div>
@@ -23,16 +24,17 @@ function GroupButton(){
                 <div className="row">
                     <div className="col-sm-12 col-md-8">
                         <Button>Nota de Credito</Button>             
-                        <Button onClick={()=>setShow(true)}>
+                        <Button >
                                 + Categoria
                         </Button> 
                     </div>
                     <div className="col-sm-12 col-md-4">
-                        <Button>Buscar Productos</Button>
+                        <Button onClick={()=>setShowTable(true)}>Buscar Productos</Button>
                     </div>
                 </div>
             </div>
               <ModalCustom/>
+              <ModalSearchProducts/>
         </div>
     )
 }

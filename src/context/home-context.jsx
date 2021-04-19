@@ -5,6 +5,7 @@ const HomeContext = React.createContext();
 export function HomeProvider(props){
     const [cartItems, setCartItems] = useState([]);
     const [show, setShow] = useState(false);
+    const [showTable, setShowTable] = useState(false);
     const {products} = data;
     const onAdd = (product) => {
     const exist = cartItems.find(x=> x.id === product.id);
@@ -30,6 +31,9 @@ export function HomeProvider(props){
       );
     }
   }
+  const onRemoveAll = () => {
+    setCartItems([])
+  }
   const totalPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
 
 
@@ -42,9 +46,12 @@ export function HomeProvider(props){
         products,
         onAdd,
         onRemove,
-        totalPrice
+        totalPrice,
+        onRemoveAll,
+        showTable,
+        setShowTable
       })
-  }, [cartItems,setCartItems,show,setShow, products, totalPrice])
+  }, [cartItems,setCartItems,show,setShow, products, totalPrice, showTable, setShowTable])
 
   return <HomeContext.Provider value={value} {...props} />
 }
