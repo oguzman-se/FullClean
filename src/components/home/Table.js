@@ -23,7 +23,7 @@ function Table(){
             </div>
             {cartItems.map((item)=>(
                 <tr key={item.id}>
-                    <td>0001</td>
+                    <td>{item.id}</td>
                     <td className="name">{item.name}</td>
                     <td>{item.qty}</td>
                     <td>${item.price.toFixed(2)}</td>

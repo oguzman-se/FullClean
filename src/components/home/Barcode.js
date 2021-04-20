@@ -1,9 +1,10 @@
 import React from 'react'
-
+import {useState, useEffect} from 'react'
 function Barcode(){
 
+    const [barcode, setBarcode] = useState([]); 
     return(
-        <input className="barcode" value="84456468121213213468"/>
+        <input className="barcode" ></input>
     )
 }
 

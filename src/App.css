@@ -421,11 +421,15 @@
   height: 25px;
   border-bottom: 1px solid rgb(182, 179, 179) !important;
 }
-.search{
+.searchPed{
   width: 45% !important;
   float:left;
   margin-right: 5%;
   height: 35px !important;
+  margin-top: 1vh;
+  border: 1.5px solid black !important;
+  border-radius: 0% !important;
+  box-shadow: none !important;
 }
 .state{
   width: 20%;

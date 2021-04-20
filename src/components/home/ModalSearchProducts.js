@@ -4,47 +4,60 @@ import 'bootstrap/dist/css/bootstrap.css';
 import {useHome} from '../../context/home-context';
 
 function ModalSearchProducts() {
-  const {showTable, setTable} = useHome();
-  const handleClose = () => setTable(false);
+  const {showTable, setShowTable} = useHome();
+  const handleClose = () => setShowTable(false);
+  const {prod, onAdd, term, setTerm} = useHome();
+
+  function searchingTerm(term){
+    return function(x){
+      return x.name.toLowerCase().includes(term) || !term; 
+    }
+  }
 
   return (
     <>
       <Modal
-        showTable={showTable}
+        show={showTable}
         onHide={handleClose}
         backdrop="static"
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title id="modal-tittle">BUSCAR</Modal.Title>
+          
+          <div className="">
+            <Modal.Title>Buscar Productos</Modal.Title>
+            {prod && (
+              <input className="col-md-12 form-control"  type="text"
+              placeholder="Buscar" aria-label="Search"
+              onChange={e => setTerm(e.target.value)}
+              />
+            )}
+              
+          </div>
         </Modal.Header>
         <Modal.Body>
-        <div>
-          <label for="exampleInputEmail1">Titulo</label>
-          <input type="text" className="form-control" 
-          placeholder="Username" aria-label="Username"/>
-        </div>
-        <div>
-          <label for="exampleInputEmail1">Descripcion</label>
-          <input type="text" className="form-control" 
-          placeholder="Descripcion"/>
-        </div>
-        <div>
-          <label for="exampleInputEmail1">Categoria Padre</label>
-          <input type="text" className="form-control" 
-          placeholder="Categoria Padre"/>
-        </div>
-        <div>
-          <label for="exampleInputEmail1">Imagen</label>
-          <div className="custom-file">
-            
-            <input type="file" className="custom-file-input" id="customFile"/>
-            <label className="custom-file-label" for="customFile">Choose file</label>
-          </div>
-        </div>
+
+          <table className="table">
+            <thead className="thead-dark">
+                <tr >
+                    <th  scope="col">Codigo</th>
+                    <th scope="col">Producto</th>
+                    <th scope="col">price Un.</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {prod.filter(searchingTerm(term)).map((item)=>(
+                    <tr key={item.id} onClick={()=> onAdd(item)}>
+                        <td>{item.id}</td>
+                        <td className="name">{item.name}</td>
+                        <td>${item.price.toFixed(2)}</td>
+                    </tr>
+                ))}
+            </tbody>            
+            </table>
         </Modal.Body>
         <Modal.Footer>
-          <button className="modal-button-create">Crear Producto</button>
           <button className="modal-button-cancel" onClick={handleClose}>
             Cancelar
           </button>

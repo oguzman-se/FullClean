@@ -1,18 +1,18 @@
 import React from 'react'
-import Button from '../home/Button'
+
 function SearchPedidos(){
 return (
 <div className="searchPedidos">
     <div className="container-fluid">
         <div className="row">
-            <input className="col-md-12 form-control search" placeholder="Buscar pedido..."/>
+            <input className="col-md-12 form-control searchPed" placeholder="Buscar pedido..."/>
         </div>
     </div>
     <div>
         <div className="row">
             <div className="col-md-6 ">
-                <input className="form-control search" placeholder="Desde"/>
-                <input className="form-control search" placeholder="Hasta"/>
+                <input className="form-control searchPed" placeholder="Desde"/>
+                <input className="form-control searchPed" placeholder="Hasta"/>
             </div>
             <div className="col-md-6">
                 <label className="state">Estado:</label>
