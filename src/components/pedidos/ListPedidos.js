@@ -3,10 +3,10 @@ import React from 'react'
 function ListPedidos(){
 return (
     <div>
-        <div>
+        <div className="lista">
             <h5>Lista de Pedidos</h5>
         </div>
-        <div className="tabla">
+        <div className="tabla2">
             <table className="table">
             <thead className="thead-dark">
                 <tr>

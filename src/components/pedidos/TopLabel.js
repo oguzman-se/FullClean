@@ -2,8 +2,8 @@ import React from 'react'
 import Button  from '../home/Button'
 function TopLabel(){
 return (
-    <div>
-        <div className="row grop-vh-3">
+    <div className="TopLabel">
+        <div className="row">
                 <div className="col-md-9">
                     <label className="label">N° Pedido 00001</label>
                 </div>

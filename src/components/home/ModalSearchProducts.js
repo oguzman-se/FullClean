@@ -25,18 +25,16 @@ function ModalSearchProducts() {
         <Modal.Header closeButton>
           
           <div className="">
-            <Modal.Title>Buscar Productos</Modal.Title>
-            {prod && (
-              <input className="col-md-12 form-control"  type="text"
+            <Modal.Title>Buscar Productos</Modal.Title>            
+          </div>
+        </Modal.Header>
+        <Modal.Body>
+          {prod && (
+              <input className="col-md-12 form-control modal-search"  type="text"
               placeholder="Buscar" aria-label="Search"
               onChange={e => setTerm(e.target.value)}
               />
             )}
-              
-          </div>
-        </Modal.Header>
-        <Modal.Body>
-
           <table className="table">
             <thead className="thead-dark">
                 <tr >
@@ -48,7 +46,7 @@ function ModalSearchProducts() {
             <tbody>
 
                 {prod.filter(searchingTerm(term)).map((item)=>(
-                    <tr key={item.id} onClick={()=> onAdd(item)}>
+                    <tr key={item.id} onClick={()=> onAdd(item)} className="trhover">
                         <td>{item.id}</td>
                         <td className="name">{item.name}</td>
                         <td>${item.price.toFixed(2)}</td>

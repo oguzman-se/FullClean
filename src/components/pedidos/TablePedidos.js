@@ -3,7 +3,7 @@ import React from 'react'
 function TablePedidos(){
 return (
     <div>
-        <div className="tabla">
+        <div className="tabla2">
             <table className="table">
             <thead className="thead-dark">
                 <tr>
