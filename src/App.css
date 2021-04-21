@@ -345,6 +345,7 @@
 .labelsm{
   font-size: 2.4vh;
   margin-top: 2vh ;
+  background-color: rgba(255, 255, 255, 0);
   
 }
 .grop-vh-3{
@@ -370,7 +371,9 @@
   padding: 0%;
   margin-top: 1vh;
 }
-
+.table{
+  min-height: 40vh;
+}
 .table thead{
   font-size: 14px;
 }
@@ -380,7 +383,6 @@
 }
 .table tbody{
   font-size: 14px;
-  max-height: min-content;
 }
 .table tbody td{
   padding-top: 4px !important;
@@ -433,14 +435,14 @@
 /*PEDIDOS*/
 .searchPedidos{
   margin-top: 2vh;
-  min-height: 12vh;
+  height: 12vh;
 }
 .TopLabel{
   margin-top: 2vh;
-  min-height: 17vh;
+  height: 17vh;
 }
 .lista{
-  min-height: 4vh;
+  height: 4vh;
   margin-top: 1vh;
 }
 .label-bottom-pedidos{
@@ -464,7 +466,7 @@
   border-bottom: 1px solid rgb(182, 179, 179) !important;
 }
 .tabla2{
-  min-height: 40vh;
+  height: 40vh;
   border: 1px solid #383c44;
   padding: 0%;
   margin-top: 1vh;
