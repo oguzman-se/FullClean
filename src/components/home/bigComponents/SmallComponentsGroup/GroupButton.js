@@ -11,7 +11,7 @@ function GroupButton(){
     return(
         
         <div>
-            <div className="container group-vh-1">
+            <div className="container-fluid group-vh-1">
                 <div className="row ">
                     <div className="col-sm-12 col-md-8">
                         <Button>Nueva Compra</Button>             

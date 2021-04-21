@@ -9,29 +9,29 @@ function RightSide(props){
     const {cartItems} = props;
     return(
         <div>
-           <div className="container-fluid"> 
-            <div className="row">
-                <div className="col-md-12">
+           <div > 
+            <div >
+                <div >
                   <Barcode/>
                 </div>
             </div>
-            <div className="row">
-                <div className="col-md-12">
+            <div >
+                <div >
                   <Label />
                 </div>
             </div>
-            <div className="row">
-                <div className="col-md-12">
+            <div>
+                <div >
                   <Table/>
                 </div>
             </div>
-            <div className="row">
-                <div className="col-md-12">
+            <div >
+                <div >
                   <LabelBottomXL countCartItems={cartItems.length}/>
                 </div>
             </div>
-            <div className="row">
-                <div className="col-md-12">
+            <div >
+                <div >
                   <LabelBottomSM/>
                 </div>
             </div>

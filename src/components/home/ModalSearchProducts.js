@@ -15,26 +15,27 @@ function ModalSearchProducts() {
   }
 
   return (
-    <>
+    <div>
       <Modal
         show={showTable}
         onHide={handleClose}
         backdrop="static"
         keyboard={false}
       >
-        <Modal.Header closeButton>
+        <Modal.Header>
           
           <div className="">
             <Modal.Title>Buscar Productos</Modal.Title>            
           </div>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body >
           {prod && (
               <input className="col-md-12 form-control modal-search"  type="text"
               placeholder="Buscar" aria-label="Search"
               onChange={e => setTerm(e.target.value)}
               />
             )}
+          <div className="modal-table">
           <table className="table">
             <thead className="thead-dark">
                 <tr >
@@ -54,15 +55,19 @@ function ModalSearchProducts() {
                 ))}
             </tbody>            
             </table>
+          </div>
+          
         </Modal.Body>
         <Modal.Footer>
           <button className="modal-button-cancel" onClick={handleClose}>
-            Cancelar
+            Cerrar
           </button>
           
         </Modal.Footer>
       </Modal>
-    </>
+    </div>
+      
+    
   );
 }
 

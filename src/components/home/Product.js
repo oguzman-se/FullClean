@@ -12,7 +12,7 @@ function Product(props){
     }else {
         return(
             <button type="button" className="btn btn-secundario" onClick={()=>onAdd(product)} >
-                {product.name.slice(0, 27) + "..."}
+                {product.name.slice(0, 15) + "..."}
                 <span className="tooltext">{product.name}</span>
             </button>
         )

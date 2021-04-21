@@ -9,20 +9,21 @@ function Productos(){
     const [searchTerm, setSearchTerm] = useState("");
 
     return(
-    <div>
-        <div className="group-vh-2">
-        <input className="col-md-12 form-control search"  type="text"
-         placeholder="Buscar" aria-label="Search"
-         onChange={(event) => {
-             setSearchTerm(event.target.value);
-         }}
-        />
+    <div className="container">
+        <div className="row group-vh-2">
+            <div className="col-md-12">
+                <input className="form-control search"  type="text"
+                placeholder="Buscar" aria-label="Search"
+                onChange={(event) => {
+                    setSearchTerm(event.target.value);
+                }}
+                />
+            </div>
+            
         </div>
-        <div className="row productos">   
-            <div className="col-xs-6 col-sm-6 col-md-12 grilla">
-                <div className="container-fluid">
-                    <div className="row">
-                        {
+        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4 productos">   
+            <div className="col-md-3">
+            {
                         // eslint-disable-next-line
                         products.filter((product)=> {
                             if (searchTerm === "") {
@@ -48,7 +49,7 @@ function Productos(){
                         .map((product) => (
                             
                                 <Product
-                                    className="col-3 "
+                                    
                                     key={product.id}
                                     product={product}
                                     onAdd={onAdd}
@@ -57,10 +58,6 @@ function Productos(){
                             
                         ))
                         }
-                    
-                    </div>
-                </div>
-            
             </div>
         </div>
     </div>

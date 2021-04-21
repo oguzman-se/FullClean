@@ -9,26 +9,23 @@ function Barcode() {
     };
     
     const searchProduct = () => {
+        let match;
         products.forEach(
             (product) =>{
-                const productChose = products.find(x=> x.id === product.id);
-                if(productChose === barcode){
-                    console.log(productChose)
-                }else(
-                    console.log("error")
-                )
-                return productChose;
-            }
             
+                if(product.id.toString() === barcode){
+                    match=product;
+                }else if (product.id === 'undefined'){
+                    console.log("error")
+                }                 
+            }
         )
-        
+        return match;
     }
     
     const onKeyPresed = (e) => {
         if (e.key === "Enter") {
-           searchProduct();
-           console.log(barcode)
-           console.log(products)
+           onAdd(searchProduct())
         }
     };
 

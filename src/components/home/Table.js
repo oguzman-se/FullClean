@@ -2,7 +2,7 @@ import React from 'react'
 import {useHome} from '../../context/home-context'
 
 function Table(){
-    const {cartItems, onRemove} = useHome();
+    const {cartItems, onRemove, onRemoveItem, onAdd} = useHome();
     
     return(
         <div className="tabla">
@@ -25,11 +25,15 @@ function Table(){
                 <tr key={item.id}>
                     <td>{item.id}</td>
                     <td className="name">{item.name}</td>
-                    <td>{item.qty}</td>
+                    <td>
+                        <button className="btn-minus" onClick={()=>onRemove(item)}>-</button>
+                        {item.qty}
+                        <button className="btn-plus" onClick={()=>onAdd(item)}>+</button>
+                    </td>
                     <td>${item.price.toFixed(2)}</td>
                     <td>${(item.qty * item.price).toFixed(2)}</td>
                     <td>
-                        <button className="btn-cross" onClick={()=>onRemove(item)}>X</button>
+                        <button className="btn-cross" onClick={()=>onRemoveItem(item)}>X</button>
                     </td>
                 </tr>
             ))}

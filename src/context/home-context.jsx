@@ -45,6 +45,9 @@ export function HomeProvider(props){
       );
     }
   }
+  const onRemoveItem = (product) => {
+    setCartItems(cartItems.filter((x) => x.id !== product.id));
+  }
   //VACIA EL CARRITO
   const onRemoveAll = () => {
     setCartItems([])
@@ -68,10 +71,11 @@ export function HomeProvider(props){
         prod,
         setProd,
         term,
-        setTerm
+        setTerm,
+        onRemoveItem
       })
   }, [cartItems,setCartItems,show,setShow, products, totalPrice, showTable,
-     setShowTable, prod, setProd, term, setTerm])
+     setShowTable, prod, setProd, term, setTerm, onRemoveItem])
 
   return <HomeContext.Provider value={value} {...props} />
 }
