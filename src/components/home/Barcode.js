@@ -8,19 +8,27 @@ function Barcode() {
         setBarcode(e.target.value);
     };
     
-    const searchProduct = (barcode) => {
-        Object.keys(products).forEach(
-            function(key){
-                if(products[key].id===barcode){
-                    return products[key]
-                }
+    const searchProduct = () => {
+        products.forEach(
+            (product) =>{
+                const productChose = products.find(x=> x.id === product.id);
+                if(productChose === barcode){
+                    console.log(productChose)
+                }else(
+                    console.log("error")
+                )
+                return productChose;
             }
+            
         )
+        
     }
-
+    
     const onKeyPresed = (e) => {
         if (e.key === "Enter") {
-            onAdd(searchProduct(barcode))
+           searchProduct();
+           console.log(barcode)
+           console.log(products)
         }
     };
 
