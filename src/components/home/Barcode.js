@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useHome } from '../../context/home-context'
 function Barcode() {
     const [barcode, setBarcode] = useState([]);
+    const [errorMatch, setErrorMatch] = useState([false]);
     const {onAdd, products} = useHome();
     const onChange = (e) => {
         setBarcode(e.target.value);
@@ -10,17 +11,28 @@ function Barcode() {
     
     const searchProduct = () => {
         let match;
+        let contador = 0;
         products.forEach(
             (product) =>{
             
                 if(product.id.toString() === barcode){
                     match=product;
-                }else if (product.id === 'undefined'){
+                    contador = 1;
+                }else if(errorMatch === false){
                     console.log("error")
                 }                 
             }
         )
-        return match;
+        if(contador === 1){
+            setErrorMatch(true);
+            return (match);
+        }else{
+            return {
+                id:"",
+                name:""
+            }
+        }
+        
     }
     
     const onKeyPresed = (e) => {
@@ -30,14 +42,17 @@ function Barcode() {
     };
 
     return (
-        <div>
-            <input
-            onKeyPress={onKeyPresed}
-            onChange={onChange}
-            className="barcode"
-            ></input>
+    <div className="container-fluid">
+        <div className="row">
+            <div className="col-md-12">
+                <input
+                onKeyPress={onKeyPresed}
+                onChange={onChange}
+                className="barcode"
+                ></input>
+            </div>
         </div>
-        
+    </div>    
         
     );
 }

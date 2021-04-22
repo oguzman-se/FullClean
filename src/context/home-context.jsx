@@ -54,6 +54,7 @@ export function HomeProvider(props){
   }
   //PRECIO TOTAL DE TODO EL CARRITO
   const totalPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
+  const qty = cartItems.reduce((a, c) => a + c.qty, 0 )
   //DECLARO QUIEN ES EL CONTEXT
   const value = useMemo(()=> {
       return ({
@@ -72,10 +73,11 @@ export function HomeProvider(props){
         setProd,
         term,
         setTerm,
-        onRemoveItem
+        onRemoveItem,
+        qty
       })
   }, [cartItems,setCartItems,show,setShow, products, totalPrice, showTable,
-     setShowTable, prod, setProd, term, setTerm, onRemoveItem])
+     setShowTable, prod, setProd, term, setTerm, onRemoveItem, qty])
 
   return <HomeContext.Provider value={value} {...props} />
 }

@@ -1,14 +1,13 @@
 import { useHome } from "../../context/home-context";
 
-
 function LabelBottomXL(props){
-    const {totalPrice} = useHome();
-    const {countCartItems} = props;
+    const {totalPrice, qty} = useHome();
+    //const {countCartItems} = props;
     return(
         <div className="container-fluid group-vh-4">
             <div className="row ">
                 <div className="col-xs-12 col-md-5 labelbottom">
-                    <label>{countCartItems} Unidades</label>
+                    <label>{qty} Unidades</label>
                 </div>
                 <div className="col-xs-12 col-md-3 labelbottom">
                     <label>Total</label>

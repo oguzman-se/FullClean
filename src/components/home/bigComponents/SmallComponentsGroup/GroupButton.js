@@ -19,10 +19,6 @@ function GroupButton(){
                                 + Producto
                         </Button> 
                     </div>
-                </div>
-            </div>
-            <div className="container group-vh-1">
-                <div className="row">
                     <div className="col-sm-12 col-md-8">
                         <Button>Nota de Credito</Button>             
                         <Button >

@@ -10,8 +10,6 @@ return (
                 <div className="col-md-3 ">
                     <label className="label-state">Pendiente</label>
                 </div>
-        </div>
-        <div className="row grop-vh-3">
                 <div className="col-md-9">
                     <label className="labelPedidos">Cliente: 00254 - Juan Perez</label>
                 </div>
@@ -21,7 +19,7 @@ return (
                 <div className="col-md-3">
                     <Button>Asociar Factura</Button>
                 </div>
-            </div>
+        </div>
     </div>
 )}
 export default TopLabel;

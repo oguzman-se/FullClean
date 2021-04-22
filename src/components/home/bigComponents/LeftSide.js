@@ -2,7 +2,7 @@ import React from 'react'
 import Productos from '../Productos'
 import GroupButton from './SmallComponentsGroup/GroupButton';
 
-function LeftSide(props){
+function LeftSide(){
     return(
         <div>
             <GroupButton/>

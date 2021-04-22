@@ -5,7 +5,7 @@ import {useHome} from '../../context/home-context'
 function Label(){
     const {onRemoveAll} = useHome();
     return(
-        <div className="container grop-vh-3">
+        <div className="container-fluid">
             <div className="row combo-label">
                 <div className="col-md-9 label">
                     <label>Cliente: 00254 - Juan Perez</label>
@@ -13,9 +13,6 @@ function Label(){
                 <div className="col-md-3">
                     <Button>Cargar Cliente</Button>
                 </div>
-            </div>
-        
-            <div className="row combo-label" >
                 <div className="col-md-9 label">
                     <label >Domicilio: Av. Mitre 159</label>
                 </div>

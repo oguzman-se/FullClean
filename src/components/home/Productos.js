@@ -9,7 +9,7 @@ function Productos(){
     const [searchTerm, setSearchTerm] = useState("");
 
     return(
-    <div className="container">
+    <div className="container-fluid">
         <div className="row group-vh-2">
             <div className="col-md-12">
                 <input className="form-control search"  type="text"
@@ -21,8 +21,8 @@ function Productos(){
             </div>
             
         </div>
-        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4 productos">   
-            <div className="col-md-3">
+        <div className="row productos">   
+            
             {
                         // eslint-disable-next-line
                         products.filter((product)=> {
@@ -47,18 +47,19 @@ function Productos(){
                             }
                         })
                         .map((product) => (
-                            
-                                <Product
-                                    
-                                    key={product.id}
-                                    product={product}
-                                    onAdd={onAdd}
-                                    >
-                                </Product>
-                            
+
+                                <div className="col-md-3 m-0">
+                                    <Product
+                                        className="col-md-3 m-5"
+                                        key={product.id}
+                                        product={product}
+                                        onAdd={onAdd}
+                                        >
+                                    </Product>
+                                </div>
                         ))
                         }
-            </div>
+        
         </div>
     </div>
     )
