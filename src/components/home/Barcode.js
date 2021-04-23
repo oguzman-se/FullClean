@@ -42,7 +42,7 @@ function Barcode() {
     };
 
     return (
-    <div className="container-fluid">
+    <div>
         <div className="row">
             <div className="col-md-12">
                 <input

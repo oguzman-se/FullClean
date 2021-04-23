@@ -5,10 +5,17 @@ import GroupButton from './SmallComponentsGroup/GroupButton';
 function LeftSide(){
     return(
         <div>
-            <GroupButton/>
-        <div>
-            <Productos/>          
-          </div>
+            <div>
+                <div>
+                    <GroupButton/>
+                </div>
+            </div>
+            
+            <div>
+                <div>
+                    <Productos/>          
+                </div>
+            </div>
         </div>
     )
 }

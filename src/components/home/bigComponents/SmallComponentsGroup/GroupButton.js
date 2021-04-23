@@ -9,11 +9,11 @@ function GroupButton(){
     const {setShow, setShowTable} = useHome();
     
     return(
-        
-        <div>
-            <div className="container-fluid group-vh-1">
+        <div className="group-vh-1">
+            
+            <div className="container-fluid">
                 <div className="row ">
-                    <div className="col-sm-12 col-md-8">
+                    <div className="col-md-8">
                         <Button>Nueva Compra</Button>             
                         <Button onClick={()=>setShow(true)}>
                                 + Producto
@@ -25,14 +25,16 @@ function GroupButton(){
                                 + Categoria
                         </Button> 
                     </div>
-                    <div className="col-sm-12 col-md-4">
+                    <div className="col-sm-12 col-md-3">
                         <Button onClick={()=>setShowTable(true)}>Buscar Productos</Button>
                     </div>
                 </div>
             </div>
-              <ModalCustom/>
-              <ModalSearchProducts/>
+            <ModalCustom/>
+            <ModalSearchProducts/>
+            
         </div>
+        
     )
 }
 export default GroupButton;

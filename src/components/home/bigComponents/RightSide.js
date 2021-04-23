@@ -10,11 +10,11 @@ function RightSide(props){
     return(
         <div>
            <div > 
-            <div className="container-fluid">
-                <div className="row">
+            <div >
+                <div >
                   <Barcode/>
                 </div>
-                <div className="row">
+                <div >
                   <Label />
                 </div>
             </div>

@@ -48,9 +48,8 @@ function Productos(){
                         })
                         .map((product) => (
 
-                                <div className="col-md-3 m-0">
+                                <div className="col-md-3 grilla">
                                     <Product
-                                        className="col-md-3 m-5"
                                         key={product.id}
                                         product={product}
                                         onAdd={onAdd}

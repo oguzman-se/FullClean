@@ -218,6 +218,7 @@
 .btn-custom:hover{
   color: rgb(48, 45, 45) !important; 
 }
+
 .btn-cross{
   width: 20px;
   height: 20px;
@@ -277,15 +278,19 @@
   min-height: 30vh !important;
   overflow:scroll;
   overflow-x: hidden;
-  margin-top: 25px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: 2vh;
 }
-
+.grilla{
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+}
 .boton-secundario{
   background-color: rgb(173, 169, 169) !important;
   border-radius: 0% !important;
   width: 100%;
   height: 60px;
-  margin: 0 !important;
   position: relative;
 }
 .boton-secundario:hover .tooltext{
@@ -337,10 +342,9 @@
 .label{
   border-bottom: 1px solid rgb(182, 179, 179) !important;
   width: 100%;
-  font-size: 2.4vh;
-  padding-top: 2vh;
+  font-size: 20px;
   padding-left: 0 !important;
-  height: 6vh;
+  padding-top: 10px;
 }
 .labelsm{
   font-size: 2.4vh;
@@ -349,11 +353,24 @@
   
 }
 .grop-vh-3{
-  min-height: 5vh;
+  min-height: 4vh;
 }
 .combo-label{
   width: 100%;
+  max-height: 16vh;
 }
+.btn-label {
+  background-color: rgb(240, 95, 116) !important;
+  box-shadow: 0 0 1px rgb(0,0,0) !important;
+  margin-top: 14px ;
+  color: aliceblue !important;
+  border-radius: 0% !important;
+  width: 100%;
+}
+.btn-label:hover{
+  color: rgb(48, 45, 45) !important; 
+}
+
 .labelbottom{
   border-bottom: 1px solid rgb(240, 95, 116) !important;
   font-size: 3vh;
