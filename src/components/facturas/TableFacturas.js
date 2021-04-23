@@ -3,7 +3,7 @@ import React from 'react'
 function TableFacturas() {
     return (
         <div>
-            <div className="tabla2">
+            <div className="tabla3 ">
                 <table className="table">
                 <thead className="thead-dark">
                     <tr>

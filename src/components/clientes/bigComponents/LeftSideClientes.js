@@ -4,7 +4,7 @@ import CargarClientes from '../CargarClientes'
 
 function LeftSideClientes() {
     return (
-        <div>
+        <div >
             <SearchClientes/>
             <CargarClientes/>
         </div>

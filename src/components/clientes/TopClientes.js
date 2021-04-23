@@ -2,21 +2,24 @@ import React from 'react'
 
 function TopClientes() {
     return (
-        <div>
-            <div>
-                <label>Cliente: Juan Perez</label>
-                <label>Domicilio: Av. Mitre</label>
+        <div className="container-fluid">
+            <div className="row">
+                <label className="col-md-12 label-border">Cliente: Juan Perez</label>
+                <label className="col-md-12 label-border-none">Domicilio: Av. Mitre</label>
+                <div>
+                    <button className="btn btn-custom-clientes-chicos">Perfil</button>
+                    <button className="btn btn-custom-clientes-chicos">Pedidos</button>
+                    <button className="btn btn-custom-clientes-chicos">Facturas</button>
+                    <button className="btn btn-custom-clientes-chicos">Nuevo Pago</button>
+                    <button className="btn btn-custom-clientes-chicos">Nuevo Pedido</button>
+                </div>
+                <div>
+                    <label className="label-deuda">Deuda: </label>
+                    <label className="label-deuda rojo">$17.758</label>
+                </div>
             </div>
-            <div>
-                <button>Perfil</button>
-                <button>Pedidos</button>
-                <button>Facturas</button>
-                <button>Nuevo Pago</button>
-                <button>Nuevo Pedido</button>
-            </div>
-            <div>
-                <label>Deuda: $17.758</label>
-            </div>
+            
+            
         </div>
     )
 }

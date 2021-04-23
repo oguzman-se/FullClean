@@ -1,3 +1,4 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css");
 @font-face {
   font-family: "Gilroy";
   src: url("assets/fonts/Gilroy-Black.woff2") format("woff2"),
@@ -468,6 +469,16 @@
   border: 1px solid #383c44;
   padding: 0%;
   margin-top: 1vh;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+.tabla3{
+  height: 55vh;
+  border: 1px solid #383c44;
+  padding: 0%;
+  margin-top: 1vh;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
 }
 .searchPed{
   width: 45% !important;
@@ -519,4 +530,101 @@
 .modal-table{
   min-height: 60vh;
   border: 1px solid #383c44;
+}
+/*CLIENTES*/
+.searchCli{
+  width: 45% !important;
+  float:left;
+  margin-right: 5%;
+  height: 35px !important;
+  margin-top: 1.5vh;
+  border: 1.5px solid black !important;
+  border-radius: 0% !important;
+  box-shadow: none !important;
+}
+.searchCargCli{
+  width: 100% !important;
+  float:left;
+  margin-right: 5%;
+  height: 35px !important;
+  margin-top: 1.5vh;
+  border: 1.5px solid black !important;
+  border-radius: 0% !important;
+  box-shadow: none !important;
+}
+
+.btn-custom-clientes {
+  background-color: rgb(240, 95, 116) !important;
+  box-shadow: 0 0 1px rgb(0,0,0) !important;
+  margin-top: 1.5vh ;
+  margin-right: 1.7vh;
+  color: aliceblue !important;
+  border-radius: 0% !important;
+  width: 100%;
+  height: 35px !important;
+}
+.btn-custom-clientes:hover{
+  color: rgb(48, 45, 45) !important; 
+}
+.labelCharge{
+  font-weight: 500;
+  font-size: 18px;
+}
+.label-border{
+  font-size: 30px;
+  border-bottom: 1px solid grey;
+  padding-left: 0px !important;
+}
+.label-border-none{
+  font-size: 30px;
+  padding-left: 0px !important;
+}
+.btn-custom-clientes-chicos {
+  background-color: rgb(240, 95, 116) !important;
+  box-shadow: 0 0 1px rgb(0,0,0) !important;
+  margin-top: 1.5vh ;
+  margin-right: 0.5vh;
+  color: aliceblue !important;
+  border-radius: 0% !important;
+  width: fit-content;
+  height: 35px !important;
+
+}
+.btn-custom-clientes-chicos:hover{
+  color: rgb(48, 45, 45) !important; 
+}
+.label-deuda{
+  font-size: 22px;
+  padding-left: 0px !important;
+}
+.rojo{
+  color: red;
+  margin-left: 0.8vh;
+}
+
+.custom-file-label{
+  margin-top: 1.5vh;
+  border: 1px solid black !important;
+  border-radius: 0% !important;
+}
+.custom-file-label::after{
+  content: "Archivo" !important;
+  background-color: rgba(245, 222, 179, 0) !important;
+}
+.btn-facturas {
+  background-color: rgb(240, 95, 116) !important;
+  box-shadow: 0 0 1px rgb(0,0,0) !important;
+  margin-top: 1.5vh ;
+  margin-left: 2vh;
+  color: aliceblue !important;
+  border-radius: 0% !important;
+  height: 35px !important;
+  
+}
+.btn-facturas:hover{
+  color: rgb(48, 45, 45) !important; 
+}
+.label-facturas{
+  font-size: 20px;
+  padding-left: 0px !important;
 }

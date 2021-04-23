@@ -43,7 +43,9 @@ function ListClientes() {
                         <td>Consorcio Mitre</td>
                         <td>520</td>
                         <td className="pendiente">Pendiente</td>
-                        <td className="confirm">Confirmado</td>
+                        <td >
+                            <i class="bi bi-search"></i>
+                        </td>
                     </tr>
                 </tbody>            
                 </table>
