@@ -618,12 +618,16 @@
   color: red;
   margin-left: 0.8vh;
 }
-
+.custom-input{
+  border: 1px solid black !important;
+  border-radius: 0% !important;
+}
 .custom-file-label{
   margin-top: 1.5vh;
   border: 1px solid black !important;
   border-radius: 0% !important;
 }
+
 .custom-file-label::after{
   content: "Archivo" !important;
   background-color: rgba(245, 222, 179, 0) !important;

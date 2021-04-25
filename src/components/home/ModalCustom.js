@@ -21,17 +21,17 @@ function ModalCustom() {
         <Modal.Body>
         <div>
           <label for="exampleInputEmail1">Titulo</label>
-          <input type="text" className="form-control" 
+          <input type="text" className="form-control custom-input" 
           placeholder="Username" aria-label="Username"/>
         </div>
         <div>
           <label for="exampleInputEmail1">Descripcion</label>
-          <input type="text" className="form-control" 
+          <input type="text" className="form-control custom-input" 
           placeholder="Descripcion"/>
         </div>
         <div>
           <label for="exampleInputEmail1">Categoria Padre</label>
-          <input type="text" className="form-control" 
+          <input type="text" className="form-control custom-input" 
           placeholder="Categoria Padre"/>
         </div>
         <div>
