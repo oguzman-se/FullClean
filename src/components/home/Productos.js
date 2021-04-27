@@ -1,7 +1,7 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.css';
 import Product from './Product'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import {useHome} from '../../context/home-context'
 
 function Productos(){
@@ -30,19 +30,19 @@ function Productos(){
                             products.filter((product)=> {
                                 if (searchTerm === "") {
                                     return product
-                                } else if (product.name.toLowerCase().includes(searchTerm.toLowerCase())){
+                                } else if (product.nombre.toLowerCase().includes(searchTerm.toLowerCase())){
                                     
-                                    if (product.name.length < 15) {
+                                    if (product.nombre.length < 15) {
                                         return (
                                             <button type="button" className="btn btn-secundario" onClick={()=>onAdd(product)}>
-                                            {product.name}
+                                            {product.nombre}
                                             </button>
                                         )
                                     }else {
                                         return(
                                             <button type="button" className="btn btn-secundario" onClick={()=>onAdd(product)} >
-                                                {product.name.slice(0, 27) + "..."}
-                                                <span className="tooltext">{product.name}</span>
+                                                {product.nombre.slice(0, 27) + "..."}
+                                                <span className="tooltext">{product.nombre}</span>
                                             </button>
                                         )
                                     };

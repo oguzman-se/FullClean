@@ -24,14 +24,14 @@ function Table(){
             {cartItems.map((item)=>(
                 <tr key={item.id}>
                     <td>{item.id}</td>
-                    <td className="name">{item.name}</td>
+                    <td className="name">{item.nombre}</td>
                     <td>
                         <button className="btn-minus" onClick={()=>onRemove(item)}>-</button>
                         {item.qty}
                         <button className="btn-plus" onClick={()=>onAdd(item)}>+</button>
                     </td>
-                    <td>${item.price.toFixed(2)}</td>
-                    <td>${(item.qty * item.price).toFixed(2)}</td>
+                    <td>${item.precio.toFixed(2)}</td>
+                    <td>${(item.qty * item.precio).toFixed(2)}</td>
                     <td>
                         <button className="btn-cross" onClick={()=>onRemoveItem(item)}>X</button>
                     </td>

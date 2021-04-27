@@ -29,7 +29,7 @@ function Barcode() {
         }else{
             return {
                 id:"",
-                name:""
+                nombre:""
             }
         }
         

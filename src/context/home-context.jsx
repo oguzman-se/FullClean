@@ -1,6 +1,8 @@
 import React, { useState, useMemo, useEffect} from 'react';
-import data from '../data/data'
+import clienteAxios from '../config/clienteAxios'
+import axios from 'axios'
 const HomeContext = React.createContext();
+
 
 export function HomeProvider(props){
   // ESTE ESTADO ES PARA LOS ITEMS DEL CARRITO, LOS PRODUCTOS.
@@ -9,8 +11,21 @@ export function HomeProvider(props){
     const [show, setShow] = useState(false);
   //ESRE ESTADO SIRVE PARA ABRIR Y CERRAR EL MODAL DE "BUSCAR PRODUCTOS"
     const [showTable, setShowTable] = useState(false);
-  //OBTENGO LOS PRODUCTOS A TRAVES DE UN JSON
-    const {products} = data;
+//PRODUCTOS API
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        obtenerDatos()
+    }, [])
+
+    const obtenerDatos = async () => {
+     await clienteAxios.get('/productos')
+      .then(res => {
+        console.log(res.data)
+        setProducts(res.data)
+      })
+    }
+
   //USEEFFECT Y USESTATE DEL MODAL DE BUSCAR PRODUCTOS,
   // SE USA PARA MOSTRAR LOS PRODUCTOS Y PARA SU BUSCADOR
   const [prod, setProd] = useState([]);

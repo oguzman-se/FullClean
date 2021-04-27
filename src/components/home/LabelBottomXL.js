@@ -1,6 +1,6 @@
 import { useHome } from "../../context/home-context";
 
-function LabelBottomXL(props){
+function LabelBottomXL(){
     const {totalPrice, qty} = useHome();
     //const {countCartItems} = props;
     return(

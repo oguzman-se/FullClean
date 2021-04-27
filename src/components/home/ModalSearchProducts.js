@@ -10,7 +10,7 @@ function ModalSearchProducts() {
 
   function searchingTerm(term){
     return function(x){
-      return x.name.toLowerCase().includes(term) || !term; 
+      return x.nombre.toLowerCase().includes(term) || !term; 
     }
   }
 
@@ -49,8 +49,8 @@ function ModalSearchProducts() {
                 {prod.filter(searchingTerm(term)).map((item)=>(
                     <tr key={item.id} onClick={()=> onAdd(item)} className="trhover">
                         <td>{item.id}</td>
-                        <td className="name">{item.name}</td>
-                        <td>${item.price.toFixed(2)}</td>
+                        <td className="name">{item.nombre}</td>
+                        <td>${item.precio.toFixed(2)}</td>
                     </tr>
                 ))}
             </tbody>            
