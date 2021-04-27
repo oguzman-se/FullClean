@@ -1,7 +1,7 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.css';
 import Product from './Product'
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 import {useHome} from '../../context/home-context'
 
 function Productos(){

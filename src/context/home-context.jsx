@@ -1,6 +1,5 @@
 import React, { useState, useMemo, useEffect} from 'react';
 import clienteAxios from '../config/clienteAxios'
-import axios from 'axios'
 const HomeContext = React.createContext();
 
 
@@ -11,6 +10,8 @@ export function HomeProvider(props){
     const [show, setShow] = useState(false);
   //ESRE ESTADO SIRVE PARA ABRIR Y CERRAR EL MODAL DE "BUSCAR PRODUCTOS"
     const [showTable, setShowTable] = useState(false);
+  //ESRE ESTADO SIRVE PARA ABRIR Y CERRAR EL MODAL DE "+ CATEGORIA"
+  const [showCategoria, setShowCategoria] = useState(false);
 //PRODUCTOS API
     const [products, setProducts] = useState([]);
 
@@ -89,10 +90,12 @@ export function HomeProvider(props){
         term,
         setTerm,
         onRemoveItem,
-        qty
+        qty,
+        showCategoria,
+        setShowCategoria
       })
   }, [cartItems,setCartItems,show,setShow, products, totalPrice, showTable,
-     setShowTable, prod, setProd, term, setTerm, onRemoveItem, qty])
+     setShowTable, prod, setProd, term, setTerm, onRemoveItem, qty, showCategoria, setShowCategoria])
 
   return <HomeContext.Provider value={value} {...props} />
 }

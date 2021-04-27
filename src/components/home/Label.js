@@ -1,5 +1,4 @@
 import React from 'react'
-import Button  from '../home/Button'
 import {useHome} from '../../context/home-context'
 
 function Label(){

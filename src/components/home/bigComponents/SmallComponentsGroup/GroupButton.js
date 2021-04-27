@@ -1,12 +1,13 @@
 import React from 'react'
-import ModalCustom from '../../ModalCustom'
-import ModalSearchProducts from '../../ModalSearchProducts'
+import ModalCustom from '../../modals/ModalCustom'
+import ModalCategoria from '../../modals/ModalCategoria'
+import ModalSearchProducts from '../../modals/ModalSearchProducts'
 import Button from '../../Button'
 
 import {useHome} from '../../../../context/home-context';
 
 function GroupButton(){
-    const {setShow, setShowTable} = useHome();
+    const {setShow, setShowTable, setShowCategoria} = useHome();
     
     return(
         <div className="group-vh-1">
@@ -26,7 +27,9 @@ function GroupButton(){
                     <Button>Nota de Credito</Button>     
                     </div>
                     <div className="col-3 ajuste">        
-                        <Button >
+                        <Button 
+                        onClick={()=>setShowCategoria(true)}
+                        >
                                 + Categoria
                         </Button>
                     </div>
@@ -36,16 +39,10 @@ function GroupButton(){
                     </div>
                 </div>
             </div>
-                        
-            
-                        
-                    
-                     
-                   
-               
                     
             <ModalCustom/>
             <ModalSearchProducts/>
+            <ModalCategoria/>
             
         </div>
         
