@@ -11,13 +11,13 @@ function Label(){
                 <div className="col-md-8 label">
                 <label>Cliente: 00254 - Juan Perez</label>
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-4 ajuste-label">
                     <button className="btn btn-label">Cargar Cliente</button>
                 </div>
                 <div className="col-md-8 label">
                     <label >Domicilio: Av. Mitre 159</label>
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-4 ajuste-label">
                     <button className="btn btn-label"
                     onClick={onRemoveAll}
                     >Vaciar Compra</button>

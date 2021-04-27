@@ -208,16 +208,21 @@
 }
 .group-vh-1{
   min-height: 6vh;
+  margin-top: 1.5vh;
+  
 }
 .btn-custom {
   background-color: rgb(240, 95, 116) !important;
   box-shadow: 0 0 1px rgb(0,0,0) !important;
-  margin-top: 1.5vh ;
-  margin-right: 1.7vh;
   color: aliceblue !important;
   border-radius: 0% !important;
-  width: 150px;
+  width: 100%;
   height: 40px;
+}
+.ajuste{
+  padding-right: 5px !important;
+  padding-left: 5px !important;
+  padding-bottom: 10px !important;
 }
 .btn-custom:hover{
   color: rgb(48, 45, 45) !important; 
@@ -234,6 +239,15 @@
 .btn-cross:hover{
   color: rgb(48, 45, 45) !important; 
   background-color: rgb(247, 152, 167) !important;
+}
+.barcode{
+  margin-top: 1.5vh;
+  font-size: 5.5vh;
+  max-height: 10vh;
+  border: 3px solid rgb(240, 95, 116);
+  width: 100% !important;
+  padding-left: 10px;
+  
 }
 .btn-minus{
   width: 20px;
@@ -275,11 +289,15 @@
 }
 
 .productos{
-  overflow:scroll;
-  overflow-x: hidden;
+  
   padding-left: 15px;
   padding-right: 15px;
   margin-top: 2vh;
+}
+.altura{
+  height: 60vh;
+  overflow:scroll;
+  overflow-x: hidden;
 }
 .grilla{
   padding-right: 5px !important;
@@ -331,15 +349,7 @@
   white-space:normal;
 }
 
-.barcode{
-  margin-top: 1.5vh;
-  font-size: 5.5vh;
-  max-height: 10vh;
-  border: 3px solid rgb(240, 95, 116);
-  width: 100% !important;
-  padding-left: 10px;
-  
-}
+
 .label{
   border-bottom: 1px solid rgb(182, 179, 179) !important;
   width: 100%;
@@ -349,7 +359,6 @@
 }
 .labelsm{
   font-size: 2.4vh;
-  margin-top: 2vh ;
   background-color: rgba(255, 255, 255, 0);
   
 }
@@ -366,6 +375,10 @@
   color: aliceblue !important;
   border-radius: 0% !important;
   width: 100%;
+  
+}
+.ajuste-label{
+  padding-right: 0px !important;
 }
 .btn-label:hover{
   color: rgb(48, 45, 45) !important; 
@@ -382,9 +395,7 @@
   margin-bottom: 0.5vh;
   min-height: 5vh !important;
 }
-.altura{
-  height: 60vh;
-}
+
 .tabla{
   min-height: 40vh;
   border: 1px solid #383c44;

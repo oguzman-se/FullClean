@@ -10,26 +10,40 @@ function GroupButton(){
     
     return(
         <div className="group-vh-1">
-            
             <div className="container-fluid">
-                <div className="row ">
-                    <div className="col-md-8">
-                        <Button>Nueva Compra</Button>             
-                        <Button onClick={()=>setShow(true)}>
-                                + Producto
-                        </Button> 
+                <div className="row">
+                    <div className="col-3 ajuste">
+                    <Button>Nueva Compra</Button>             
                     </div>
-                    <div className="col-sm-12 col-md-8">
-                        <Button>Nota de Credito</Button>             
+                    <div className="col-3 ajuste">
+                    <Button onClick={()=>setShow(true)}>
+                            + Producto
+                    </Button> 
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-3 ajuste">
+                    <Button>Nota de Credito</Button>     
+                    </div>
+                    <div className="col-3 ajuste">        
                         <Button >
                                 + Categoria
-                        </Button> 
+                        </Button>
                     </div>
-                    <div className="col-sm-12 col-md-3">
-                        <Button onClick={()=>setShowTable(true)}>Buscar Productos</Button>
+                    <div className="col-2 ajuste"></div>
+                    <div className="col-4 ajuste">
+                    <Button onClick={()=>setShowTable(true)}>Buscar Productos</Button>
                     </div>
                 </div>
             </div>
+                        
+            
+                        
+                    
+                     
+                   
+               
+                    
             <ModalCustom/>
             <ModalSearchProducts/>
             
