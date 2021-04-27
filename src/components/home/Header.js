@@ -4,7 +4,7 @@ function Header() {
     return(
 <nav className="nav col-md-12">
   <Link className="nav-link active" to="/" >FULL CLEAN</Link>
-  <Link className="nav-link active" >|</Link>
+  <label className="nav-link2 active" >|</label>
   <Link className="nav-link active" to="/pedidos" >Pedidos</Link>
   <Link className="nav-link active" to="/clientes" >Clientes</Link>
   <Link className="nav-link active" to="/facturas" >Facturas</Link>

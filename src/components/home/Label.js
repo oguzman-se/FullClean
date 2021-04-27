@@ -17,7 +17,7 @@ function Label(){
                 <div className="col-md-8 label">
                     <label >Domicilio: Av. Mitre 159</label>
                 </div>
-                <div className="col-md-4 ">
+                <div className="col-md-4">
                     <button className="btn btn-label"
                     onClick={onRemoveAll}
                     >Vaciar Compra</button>

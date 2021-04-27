@@ -202,6 +202,10 @@
   
 }
 
+.nav-link2{
+  padding-top: 0.9vh;
+  color: aliceblue;
+}
 .group-vh-1{
   min-height: 6vh;
 }
@@ -269,13 +273,8 @@
 .boxsearch{
   padding-left: 2vh !important;
 }
-.group-vh-2{
-  height: 7vh;
-}
 
 .productos{
-  max-height: 60vh !important;
-  min-height: 30vh !important;
   overflow:scroll;
   overflow-x: hidden;
   padding-left: 15px;
@@ -283,8 +282,10 @@
   margin-top: 2vh;
 }
 .grilla{
-  padding-right: 0px !important;
-  padding-left: 0px !important;
+  padding-right: 5px !important;
+  padding-left: 5px !important;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
 }
 .boton-secundario{
   background-color: rgb(173, 169, 169) !important;
@@ -356,7 +357,6 @@
   min-height: 4vh;
 }
 .combo-label{
-  width: 100%;
   max-height: 16vh;
 }
 .btn-label {
@@ -381,6 +381,9 @@
 .group-vh-4{
   margin-bottom: 0.5vh;
   min-height: 5vh !important;
+}
+.altura{
+  height: 60vh;
 }
 .tabla{
   min-height: 40vh;

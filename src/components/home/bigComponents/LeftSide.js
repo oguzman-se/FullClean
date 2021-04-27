@@ -12,7 +12,7 @@ function LeftSide(){
             </div>
             
             <div>
-                <div>
+                <div >
                     <Productos/>          
                 </div>
             </div>
