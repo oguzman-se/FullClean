@@ -1,34 +1,46 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import {Modal} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.css';
 import {useHome} from '../../../context/home-context'
 import clienteAxios from '../../../config/clienteAxios'
+import tablaGetCategorias from './tablaGetCategorias'
+
 
 function ModalCustom() {
   const {setShowCategoria, showCategoria} = useHome();
   const handleClose = () => setShowCategoria(false);
-  const [categoria, setCategoria] = useState({
+  const [categorias, setCategoria] = useState({
     id: "",
     nombre:""
   })
 
-  const submit = async (e) => {
-    e.preventDefault();
+  const submit = async () => {
     await clienteAxios.post('/categorias', {
-      nombre: categoria.nombre
+      nombre: categorias.nombre
     })
-    .then(res => {
-      console.log(res.categoria)
+    .then((res) => {
+      console.log(res.data)
     })
-    .catch ((e) => {
-      console.log(e)
+    .then(async () => {
+      await clienteAxios
+      .get('/categorias')
+      .then((r)=>{
+        setCategoria(r.data)
+        console.log("este es", categorias)
+      })
+      .catch((r)=>{
+        console.log("error get", r)
+      })
     })
+    .catch((err)=>{
+      console.log("error post", err)
+    })
+    
   }
   function handle(e){
-      const newCategoria = {...categoria}
+      const newCategoria = {...categorias}
       newCategoria[e.target.id] = e.target.value
       setCategoria(newCategoria)
-      console.log(newCategoria)
   }
   
   return (
@@ -43,13 +55,14 @@ function ModalCustom() {
           <Modal.Title id="modal-tittle">Nuevo Producto</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <form >
-          <label for="exampleInputEmail1">Crear Categoria</label>
-          <input type="text" className="form-control custom-input" 
-          placeholder="" aria-label="Username"
-          onChange={(e) => handle(e)} id="nombre" value={categoria.nombre}
-          />
-        </form>
+          <form >
+            <label for="exampleInputEmail1">Crear Categoria</label>
+            <input type="text" className="form-control custom-input" 
+            placeholder="" aria-label="Username"
+            onChange={(e) => handle(e)} id="nombre" value={categorias.nombre}
+            />
+          </form>
+        
         </Modal.Body>
         <Modal.Footer>
           <button className="modal-button-create"

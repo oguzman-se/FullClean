@@ -1,20 +1,40 @@
-import React from 'react'
-
+import React, {useState} from 'react'
+import ModalDetalleProducto from './modals/ModalDetalleProducto'
 function Product(props){
-
-    const {product, onAdd} = props;
-    if (product.nombre.length < 15) {
+    const [showDetalleProd, setShowDetalleProd] = useState(false);
+    const {product, onAdd,} = props;
+    if (product.nombre.length < 20) {
         return (
-            <button type="button" className="btn boton-secundario" onClick={()=>onAdd(product)}>
-            {product.nombre}
-            </button>
+            <div>
+                <button type="button" className="btn boton-secundario"
+                onClick={()=>setShowDetalleProd(true)}
+                >
+                {product.nombre}
+                </button>
+                <ModalDetalleProducto
+                    showDetalleProd={showDetalleProd}
+                    setShowDetalleProd={setShowDetalleProd}
+                    product={product}
+                    onAdd={onAdd}
+                />
+            </div>
         )
     }else { 
         return(
-            <button type="button" className="btn boton-secundario" onClick={()=>onAdd(product)} >
-                {product.nombre.slice(0, 15) + "..."}
+            <div>
+                <button type="button" className="btn boton-secundario" 
+                onClick={()=>setShowDetalleProd(true)}
+                >
+                {product.nombre.slice(0, 25) + "..."}
                 <span className="tooltext">{product.nombre}</span>
-            </button>
+                </button>
+                <ModalDetalleProducto
+                    showDetalleProd={showDetalleProd}
+                    setShowDetalleProd={setShowDetalleProd}
+                    product={product}
+                    onAdd={onAdd}
+                />
+            </div>
         )
     }
 }

@@ -32,7 +32,7 @@ function Productos(){
                                     return product
                                 } else if (product.nombre.toLowerCase().includes(searchTerm.toLowerCase())){
                                     
-                                    if (product.nombre.length < 15) {
+                                    if (product.nombre.length < 20) {
                                         return (
                                             <button type="button" className="btn btn-secundario" onClick={()=>onAdd(product)}>
                                             {product.nombre}
@@ -41,7 +41,7 @@ function Productos(){
                                     }else {
                                         return(
                                             <button type="button" className="btn btn-secundario" onClick={()=>onAdd(product)} >
-                                                {product.nombre.slice(0, 27) + "..."}
+                                                {product.nombre.slice(0, 25) + "..."}
                                                 <span className="tooltext">{product.nombre}</span>
                                             </button>
                                         )

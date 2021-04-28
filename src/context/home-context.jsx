@@ -92,10 +92,11 @@ export function HomeProvider(props){
         onRemoveItem,
         qty,
         showCategoria,
-        setShowCategoria
+        setShowCategoria,
+        setProducts
       })
   }, [cartItems,setCartItems,show,setShow, products, totalPrice, showTable,
-     setShowTable, prod, setProd, term, setTerm, onRemoveItem, qty, showCategoria, setShowCategoria])
+     setShowTable, prod, setProd, term, setTerm, onRemoveItem, qty, showCategoria, setShowCategoria, setProducts])
 
   return <HomeContext.Provider value={value} {...props} />
 }

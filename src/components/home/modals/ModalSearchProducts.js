@@ -50,7 +50,7 @@ function ModalSearchProducts() {
                     <tr key={item.id} onClick={()=> onAdd(item)} className="trhover">
                         <td>{item.id}</td>
                         <td className="name">{item.nombre}</td>
-                        <td>${item.precio.toFixed(2)}</td>
+                        <td>${item.precio}</td>
                     </tr>
                 ))}
             </tbody>            
