@@ -21,15 +21,31 @@ function ModalCustom() {
     await clienteAxios.post('/productos', {
       nombre: productos.nombre,
       costo: productos.costo,
-      precio: productos.precio
+      precio: productos.precio,
+      categoria_id: "0",
+      destacado: "0"
     })
-    .then((res) => {
+    .then((res) =>{
       console.log(res.data)
-
+      const getProd = async () => {
+        await clienteAxios
+        .get('/productos')
+        .then((r) => {
+          setProducts(r.data)
+          setProductos(r.data)
+          console.log("setProducts",products)
+          console.log("setProductos",productos)
+        })
+        .catch((r) => {
+          console.log("error get", r);
+          console.log(products)
+        });
+      };
+      getProd();
     })
-    .catch((err)=>{
-      console.log("error post", err)
-    })
+    .catch((err) => {
+      console.log("error post", err);
+    });
     
   }
   function handle(e){
@@ -72,14 +88,7 @@ function ModalCustom() {
           onChange={(e) => handle(e)} id="precio" value={productos.precio}
           />
         </div>
-        <div>
-          <label for="exampleInputEmail1">Imagen</label>
-          <div className="custom-file">
-            
-            <input type="file" className="custom-file-input" id="customFile"/>
-            <label className="custom-file-label" for="customFile">Choose file</label>
-          </div>
-        </div>
+        
         </form>
         </Modal.Body>
         <Modal.Footer>
