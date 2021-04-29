@@ -3,6 +3,7 @@ import {useHome} from '../../context/home-context'
 import ModalCargarCliente from './modals/ModalCargarCliente';
 
 function Label(){
+    const {labelCliente} = useHome([]);
     const [showCargarCliente, setShowCargarCliente] = useState(false);
     const {onRemoveAll} = useHome();
     return(
@@ -10,7 +11,7 @@ function Label(){
             <div className="row combo-label">
                 
                 <div className="col-md-8 label">
-                <label>Cliente: 00254 - Juan Perez</label>
+                <label>Cliente: {labelCliente.nombre}</label>
                 </div>
                 <div className="col-md-4 ajuste-label">
                     <button className="btn btn-label"

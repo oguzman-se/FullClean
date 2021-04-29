@@ -98,6 +98,13 @@ const obtenerClientes = async () => {
   //PRECIO TOTAL DE TODO EL CARRITO
   const totalPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
   const qty = cartItems.reduce((a, c) => a + c.qty, 0 )
+  //FUNCION PARA AGREGAR CLIENTE
+  const [labelCliente, setLabelCliente] = useState([]);
+  const onAddCliente = (clientes) => {
+    setLabelCliente(clientes)
+    console.log(labelCliente)
+    
+  };
   //DECLARO QUIEN ES EL CONTEXT
   const value = useMemo(()=> {
       return ({
@@ -124,11 +131,14 @@ const obtenerClientes = async () => {
         AllCategorias,
         SetAllCategorias,
         Allclientes,
-        setAllClientes
+        setAllClientes,
+        labelCliente,
+        setLabelCliente,
+        onAddCliente
       })
   }, [cartItems,setCartItems,show,setShow, products, totalPrice, showTable,
      setShowTable, prod, setProd, term, setTerm, onRemoveItem, qty, showCategoria, setShowCategoria, setProducts,
-     AllCategorias, SetAllCategorias, Allclientes, setAllClientes])
+     AllCategorias, SetAllCategorias, Allclientes, setAllClientes, labelCliente, setLabelCliente])
 
   return <HomeContext.Provider value={value} {...props} />
 }

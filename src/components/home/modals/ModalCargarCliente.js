@@ -7,6 +7,7 @@ import clienteAxios from '../../../config/clienteAxios'
 
 function ModalCargarCliente(props) {
   const {showCargarCliente, setShowCargarCliente} = props;
+  const {Allclientes, onAddCliente, setLabelCliente, labelCliente} = useHome([]);
   const handleClose = () => setShowCargarCliente(false);  
 
 
@@ -50,23 +51,29 @@ function ModalCargarCliente(props) {
           <Modal.Title id="modal-tittle">Cargar Cliente</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form >
-            <label >Nombre</label>
-            <input type="text" className="form-control custom-input" 
-            placeholder="" aria-label="Username"
-            onChange={(e) => handle(e)} id="nombre" value={clientes.nombre}
-            />
-            <label >Domicilio</label>
-            <input type="text" className="form-control custom-input" 
-            placeholder="" aria-label="Username"
-            onChange={(e) => handle(e)} id="domicilio" value={clientes.domicilio}
-            />
-            <label >Telefono</label>
-            <input type="text" className="form-control custom-input" 
-            placeholder="" aria-label="Username"
-            onChange={(e) => handle(e)} id="telefono" value={clientes.telefono}
-            />
-          </form>
+        <div className="tabla2">
+                <table className="table">
+                <thead className="thead-dark">
+                    <tr >
+                        <th  scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Domicilio</th>
+                        <th scope="col">Telefono</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {Allclientes.map((clientes) => (
+                    <tr onClick={()=>onAddCliente(clientes)}>
+                        <td>{clientes.id}</td>
+                        <td>{clientes.nombre}</td>
+                        <td>{clientes.domicilio}</td>
+                        <td>{clientes.telefono}</td>
+                    </tr>
+                    ))}
+                    
+                </tbody>            
+                </table>
+        </div>
         
         </Modal.Body>
         <Modal.Footer>

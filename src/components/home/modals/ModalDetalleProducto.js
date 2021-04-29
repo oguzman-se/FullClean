@@ -1,8 +1,6 @@
 import React, {useState} from 'react'
 import {Modal} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.css';
-import {useHome} from '../../../context/home-context'
-import clienteAxios from '../../../config/clienteAxios'
 
 
 function ModalDetalleProducto(props) {
