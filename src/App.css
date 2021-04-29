@@ -502,7 +502,10 @@
   margin-top: 1vh;
   padding-left: 0px !important;
   padding-right: 0px !important;
+  overflow:scroll;
+  overflow-x: hidden;
 }
+
 .tabla3{
   height: 55vh;
   border: 1px solid #383c44;

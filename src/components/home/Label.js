@@ -11,7 +11,7 @@ function Label(){
             <div className="row combo-label">
                 
                 <div className="col-md-8 label">
-                <label>Cliente: {labelCliente.nombre}</label>
+                <label>Cliente: {labelCliente.id} - {labelCliente.nombre}</label>
                 </div>
                 <div className="col-md-4 ajuste-label">
                     <button className="btn btn-label"
@@ -19,7 +19,7 @@ function Label(){
                     >Cargar Cliente</button>
                 </div>
                 <div className="col-md-8 label">
-                    <label >Domicilio: Av. Mitre 159</label>
+                    <label >Domicilio: {labelCliente.domicilio}</label>
                 </div>
                 <div className="col-md-4 ajuste-label">
                     <button className="btn btn-label"

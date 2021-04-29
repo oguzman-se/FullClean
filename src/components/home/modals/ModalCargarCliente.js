@@ -63,7 +63,9 @@ function ModalCargarCliente(props) {
                 </thead>
                 <tbody>
                 {Allclientes.map((clientes) => (
-                    <tr onClick={()=>onAddCliente(clientes)}>
+                    <tr onClick={async()=>
+                    await onAddCliente(clientes)
+                    }>
                         <td>{clientes.id}</td>
                         <td>{clientes.nombre}</td>
                         <td>{clientes.domicilio}</td>
@@ -77,9 +79,6 @@ function ModalCargarCliente(props) {
         
         </Modal.Body>
         <Modal.Footer>
-          <button className="modal-button-create"
-          onClick={(e)=> submit(e)}
-          >Crear Producto</button>
           <button className="modal-button-cancel" onClick={handleClose}>
             Cancelar
           </button>
