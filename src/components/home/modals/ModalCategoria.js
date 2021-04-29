@@ -3,11 +3,11 @@ import {Modal} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.css';
 import {useHome} from '../../../context/home-context'
 import clienteAxios from '../../../config/clienteAxios'
-import tablaGetCategorias from './tablaGetCategorias'
 
 
-function ModalCustom() {
+function ModalCategoria() {
   const {setShowCategoria, showCategoria} = useHome();
+  const {AllCategorias, SetAllCategorias} = useHome();
   const handleClose = () => setShowCategoria(false);
   const [categorias, setCategoria] = useState({
     id: "",
@@ -18,23 +18,27 @@ function ModalCustom() {
     await clienteAxios.post('/categorias', {
       nombre: categorias.nombre
     })
-    .then((res) => {
+    .then((res) =>{
       console.log(res.data)
+      const getCats = async () => {
+        await clienteAxios
+        .get('/categorias')
+        .then((r) => {
+          SetAllCategorias(r.data)
+          setCategoria(r.data)
+          console.log("SetAllCategorias",AllCategorias)
+          console.log("categorias",categorias)
+        })
+        .catch((r) => {
+          console.log("error get", r);
+          console.log(AllCategorias)
+        });
+      };
+      getCats();
     })
-    .then(async () => {
-      await clienteAxios
-      .get('/categorias')
-      .then((r)=>{
-        setCategoria(r.data)
-        console.log("este es", categorias)
-      })
-      .catch((r)=>{
-        console.log("error get", r)
-      })
-    })
-    .catch((err)=>{
-      console.log("error post", err)
-    })
+    .catch((err) => {
+      console.log("error post", err);
+    });
     
   }
   function handle(e){
@@ -52,7 +56,7 @@ function ModalCustom() {
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title id="modal-tittle">Nuevo Producto</Modal.Title>
+          <Modal.Title id="modal-tittle">Crear Categoria</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form >
@@ -62,7 +66,11 @@ function ModalCustom() {
             onChange={(e) => handle(e)} id="nombre" value={categorias.nombre}
             />
           </form>
-        
+          {AllCategorias.map((category) => (
+            <div>
+                {category.nombre}
+            </div>
+          ))}
         </Modal.Body>
         <Modal.Footer>
           <button className="modal-button-create"
@@ -71,11 +79,10 @@ function ModalCustom() {
           <button className="modal-button-cancel" onClick={handleClose}>
             Cancelar
           </button>
-          
         </Modal.Footer>
       </Modal>
     </>
   );
 }
 
-export default ModalCustom;
+export default ModalCategoria;

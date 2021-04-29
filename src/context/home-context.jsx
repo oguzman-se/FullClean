@@ -13,19 +13,33 @@ export function HomeProvider(props){
   //ESRE ESTADO SIRVE PARA ABRIR Y CERRAR EL MODAL DE "+ CATEGORIA"
   const [showCategoria, setShowCategoria] = useState(false);
 //PRODUCTOS API
-    const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([]);
 
-    useEffect(() => {
-        obtenerDatos()
-    }, [])
+  useEffect(() => {
+      obtenerDatos()
+  }, [])
 
-    const obtenerDatos = async () => {
-     await clienteAxios.get('/productos')
-      .then(res => {
-        console.log(res.data)
-        setProducts(res.data)
-      })
-    }
+  const obtenerDatos = async () => {
+    await clienteAxios.get('/productos')
+    .then(res => {
+      setProducts(res.data)
+      console.log("products", products)
+    })
+  }
+  //CATEGORIAS API
+  const [AllCategorias, SetAllCategorias] = useState([]);
+
+  useEffect(() => {
+    obtenerCategorias()
+  }, [])
+
+  const obtenerCategorias = async () => {
+    await clienteAxios.get('/categorias')
+    .then(res => {
+      SetAllCategorias(res.data)
+      console.log("AllCategorias", AllCategorias)
+    })
+  }
 
   //USEEFFECT Y USESTATE DEL MODAL DE BUSCAR PRODUCTOS,
   // SE USA PARA MOSTRAR LOS PRODUCTOS Y PARA SU BUSCADOR
@@ -93,10 +107,13 @@ export function HomeProvider(props){
         qty,
         showCategoria,
         setShowCategoria,
-        setProducts
+        setProducts,
+        AllCategorias,
+        SetAllCategorias
       })
   }, [cartItems,setCartItems,show,setShow, products, totalPrice, showTable,
-     setShowTable, prod, setProd, term, setTerm, onRemoveItem, qty, showCategoria, setShowCategoria, setProducts])
+     setShowTable, prod, setProd, term, setTerm, onRemoveItem, qty, showCategoria, setShowCategoria, setProducts,
+     AllCategorias, SetAllCategorias])
 
   return <HomeContext.Provider value={value} {...props} />
 }
