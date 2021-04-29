@@ -40,7 +40,20 @@ export function HomeProvider(props){
       console.log("AllCategorias", AllCategorias)
     })
   }
+//CLIENTES API
+const [Allclientes, setAllClientes] = useState([]);
 
+useEffect(() => {
+  obtenerClientes()
+}, [])
+
+const obtenerClientes = async () => {
+  await clienteAxios.get('/clientes')
+  .then(res => {
+    setAllClientes(res.data)
+    console.log("clientes", Allclientes)
+  })
+}
   //USEEFFECT Y USESTATE DEL MODAL DE BUSCAR PRODUCTOS,
   // SE USA PARA MOSTRAR LOS PRODUCTOS Y PARA SU BUSCADOR
   const [prod, setProd] = useState([]);
@@ -109,11 +122,13 @@ export function HomeProvider(props){
         setShowCategoria,
         setProducts,
         AllCategorias,
-        SetAllCategorias
+        SetAllCategorias,
+        Allclientes,
+        setAllClientes
       })
   }, [cartItems,setCartItems,show,setShow, products, totalPrice, showTable,
      setShowTable, prod, setProd, term, setTerm, onRemoveItem, qty, showCategoria, setShowCategoria, setProducts,
-     AllCategorias, SetAllCategorias])
+     AllCategorias, SetAllCategorias, Allclientes, setAllClientes])
 
   return <HomeContext.Provider value={value} {...props} />
 }
