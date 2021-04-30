@@ -1,43 +1,13 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {Modal} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.css';
 import {useHome} from '../../../context/home-context'
-import clienteAxios from '../../../config/clienteAxios'
 
 
 function ModalCargarCliente(props) {
   const {showCargarCliente, setShowCargarCliente} = props;
-  const {Allclientes, onAddCliente, setLabelCliente, labelCliente} = useHome([]);
+  const {Allclientes, onAddCliente} = useHome([]);
   const handleClose = () => setShowCargarCliente(false);  
-
-
-  const [clientes, setClientes] = useState({
-    id: "",
-    nombre:"",
-    domicilio:"",
-    telefono: ""
-  })
-
-  const submit = async () => {
-    await clienteAxios.post('/clientes', {
-      nombre: clientes.nombre,
-      domicilio: clientes.domicilio,
-      telefono: clientes.telefono
-    })
-    .then((res) => {
-      console.log(res.data)
-    })
-    .catch((err)=>{
-      console.log("error post", err)
-    })
-    
-  }
-  function handle(e){
-      const newCliente = {...clientes}
-      newCliente[e.target.id] = e.target.value
-      setClientes(newCliente)
-  }
-
 
   return (
     <>

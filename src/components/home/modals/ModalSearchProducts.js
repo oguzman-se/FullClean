@@ -6,11 +6,10 @@ import clienteAxios from '../../../config/clienteAxios'
 
 
 function ModalSearchProducts() {
-  const {showDetalleProd, setShowDetalleProd} = useHome();
   const {showTable, setShowTable} = useHome();
   const handleClose = () => setShowTable(false);
-  const {prod, onAdd, term, setTerm, products, setProducts} = useHome();
- const {productos, setProductos} = useHome();
+  const {prod, onAdd, term, setTerm} = useHome();
+ const {productos } = useHome();
   function searchingTerm(term){
     return function(x){
       return x.nombre.toLowerCase().includes(term) || !term; 

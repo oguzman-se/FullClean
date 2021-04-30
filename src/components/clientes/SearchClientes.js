@@ -2,7 +2,7 @@ import React from 'react'
 import {useHome} from '../../context/home-context'
 
 function SearchClientes() {
-    const {Allclientes, setAllClientes} = useHome([]);
+    const {Allclientes} = useHome([]);
     return (
         
         <div >

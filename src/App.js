@@ -15,6 +15,7 @@ import { ClientesProvider } from './context/clientes-context'
 function App() {
   return (
       <Router>
+      
           <HomeProvider>
           
               <Route exact path="/" component={Home} />
@@ -23,6 +24,7 @@ function App() {
               <Route exact path="/facturas" component={Facturas} />
           
           </HomeProvider>
+        
       </Router>
     
   );

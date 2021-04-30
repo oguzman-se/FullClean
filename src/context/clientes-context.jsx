@@ -1,5 +1,5 @@
-import React, { useState, useMemo, useEffect} from 'react';
-import clienteAxios from '../config/clienteAxios'
+import React, { useMemo } from 'react';
+
 const ClientesContext = React.createContext();
 
 
