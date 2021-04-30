@@ -23,9 +23,11 @@ export function HomeProvider(props){
     await clienteAxios.get('/productos')
     .then(res => {
       setProducts(res.data)
-      console.log("products", products)
     })
   }
+  //MODAL SEARCH PRODUCTOS
+  const [showDetalleProd, setShowDetalleProd] = useState(false);
+  const [productos, setProductos] = useState({})
   //CATEGORIAS API
   const [AllCategorias, SetAllCategorias] = useState([]);
 
@@ -54,6 +56,7 @@ const obtenerClientes = async () => {
     console.log("clientes", Allclientes)
   })
 }
+
   //USEEFFECT Y USESTATE DEL MODAL DE BUSCAR PRODUCTOS,
   // SE USA PARA MOSTRAR LOS PRODUCTOS Y PARA SU BUSCADOR
   const [prod, setProd] = useState([]);
@@ -96,7 +99,7 @@ const obtenerClientes = async () => {
     setCartItems([])
   }
   //PRECIO TOTAL DE TODO EL CARRITO
-  const totalPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
+  const totalPrice = cartItems.reduce((a, c) => a + c.precio * c.qty, 0);
   const qty = cartItems.reduce((a, c) => a + c.qty, 0 )
   //FUNCION PARA AGREGAR CLIENTE
   const [labelCliente, setLabelCliente] = useState([]);
@@ -134,11 +137,15 @@ const obtenerClientes = async () => {
         setAllClientes,
         labelCliente,
         setLabelCliente,
-        onAddCliente
+        onAddCliente,
+        productos, setProductos,
+        showDetalleProd,
+        setShowDetalleProd
       })
   }, [cartItems,setCartItems,show,setShow, products, totalPrice, showTable,
      setShowTable, prod, setProd, term, setTerm, onRemoveItem, qty, showCategoria, setShowCategoria, setProducts,
-     AllCategorias, SetAllCategorias, Allclientes, setAllClientes, labelCliente, setLabelCliente])
+     AllCategorias, SetAllCategorias, Allclientes, setAllClientes, labelCliente, setLabelCliente,
+     productos, setProductos, showDetalleProd, setShowDetalleProd])
 
   return <HomeContext.Provider value={value} {...props} />
 }

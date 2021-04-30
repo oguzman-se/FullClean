@@ -6,6 +6,36 @@ function Label(){
     const {labelCliente} = useHome([]);
     const [showCargarCliente, setShowCargarCliente] = useState(false);
     const {onRemoveAll} = useHome();
+    if (!labelCliente.nombre) {
+    return(
+        <div className="container-fluid">
+            <div className="row combo-label">
+                
+                <div className="col-md-8 label">
+                <label>Cliente: Consumidor Final</label>
+                </div>
+                <div className="col-md-4 ajuste-label">
+                    <button className="btn btn-label"
+                    onClick={()=>setShowCargarCliente(true)}
+                    >Cargar Cliente</button>
+                </div>
+                <div className="col-md-8 label">
+                    <label >Domicilio: {labelCliente.domicilio}</label>
+                </div>
+                <div className="col-md-4 ajuste-label">
+                    <button className="btn btn-label"
+                    onClick={onRemoveAll}
+                    >Vaciar Compra</button>
+                </div>
+                
+            </div>
+            <ModalCargarCliente
+                showCargarCliente={showCargarCliente}
+                setShowCargarCliente={setShowCargarCliente}
+            />
+        </div>
+    )
+}else{
     return(
         <div className="container-fluid">
             <div className="row combo-label">
@@ -34,6 +64,7 @@ function Label(){
             />
         </div>
     )
+}
 }
 
 export default Label;

@@ -8,22 +8,15 @@ function ModalCustom() {
   const {setShow, show} = useHome();
   const {products, setProducts} = useHome();
   const handleClose = () => setShow(false);
-  const [productos, setProductos] = useState({
-    id: "",
-    nombre: "",
-    costo: "",
-    precio: "",
-    categoria_id: "",
-    destacado: ""
-  })
+  const {productos, setProductos} = useHome();
   
   const submit = async () => {
     await clienteAxios.post('/productos', {
       nombre: productos.nombre,
       costo: productos.costo,
       precio: productos.precio,
-      categoria_id: "0",
-      destacado: "0"
+      categoria_id: 0,
+      destacado: false
     })
     .then((res) =>{
       console.log(res.data)
