@@ -66,16 +66,26 @@ function ModalCategoria() {
             onChange={(e) => handle(e)} id="nombre" value={categorias.nombre}
             />
           </form>
+          
           {AllCategorias.map((category) => (
             <div>
-                {category.nombre}
+              <ol class="list-group list-group-numbered">
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                
+                  <div class="ms-2 me-auto">
+                    <div class="fw-bold">{category.nombre}</div>
+                  </div>
+                  <span class="badge bg-primary rounded-pill">ID: {category.id}</span>
+                </li>
+              </ol>
+                
             </div>
           ))}
         </Modal.Body>
         <Modal.Footer>
           <button className="modal-button-create"
           onClick={(e)=> submit(e)}
-          >Crear Producto</button>
+          >Crear Categoria</button>
           <button className="modal-button-cancel" onClick={handleClose}>
             Cancelar
           </button>

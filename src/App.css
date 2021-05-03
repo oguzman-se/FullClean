@@ -556,7 +556,18 @@
   border-radius: 0 !important;
   width: 120% !important;
 }
-
+.boton-modal-buscar{
+  border: transparent;
+  background-color: rgb(240, 95, 116);
+  color: aliceblue;
+  padding: 1px;
+}
+.boton-modal-buscar:hover{
+  border: transparent;
+  background-color: rgb(243, 155, 168);
+  color: rgb(76, 76, 77);
+  padding: 1px;
+}
 .confirm{
   color: green;
 }

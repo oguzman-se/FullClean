@@ -1,10 +1,12 @@
 import React from 'react'
 import {Modal} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.css';
+import {useHome} from '../../../context/home-context'
 
 
-function ModalDetalleProducto(props) {
-  const {showDetalleProd, setShowDetalleProd, product, onAdd} = props;
+function ModalCargarCliente(props) {
+  const {showDetalleProd, setShowDetalleProd} = props;
+  const {products} = useHome();
   const handleClose = () => setShowDetalleProd(false);  
 
   return (
@@ -16,21 +18,19 @@ function ModalDetalleProducto(props) {
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title id="modal-tittle">Detalle del Producto</Modal.Title>
+          <Modal.Title id="modal-tittle">Detalle producto</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <ul class="list-group">
-          <li class="list-group-item">Id: {product.id}</li>
-          <li class="list-group-item">Nombre: {product.nombre}</li>
-          <li class="list-group-item">Costo: ${product.costo}</li>
-          <li class="list-group-item">Precio: ${product.precio}</li>
-        </ul>
-        
+        {products.map((product)=>(
+          <tr key={product.id} className="trhover">
+              <td>{product.id}</td>
+              <td className="name">{product.nombre}</td>
+              <td>${product.precio}</td>
+                        
+          </tr>
+        ))}      
         </Modal.Body>
         <Modal.Footer>
-          <button className="modal-button-create"
-          onClick={()=>onAdd(product)}
-          >Agregar Producto</button>
           <button className="modal-button-cancel" onClick={handleClose}>
             Cancelar
           </button>
@@ -41,4 +41,4 @@ function ModalDetalleProducto(props) {
   );
 }
 
-export default ModalDetalleProducto;
+export default ModalCargarCliente;

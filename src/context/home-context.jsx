@@ -59,10 +59,7 @@ const obtenerClientes = async () => {
 
   //USEEFFECT Y USESTATE DEL MODAL DE BUSCAR PRODUCTOS,
   // SE USA PARA MOSTRAR LOS PRODUCTOS Y PARA SU BUSCADOR
-  const [prod, setProd] = useState([]);
-    useEffect( () => {
-      setProd(products)
-    }, [products] )
+  
   const [term, setTerm] = useState("");
   //FUNCION PARA AGREGAR PRODUCTOS AL CARRITO
     const onAdd = (product) => {
@@ -122,8 +119,6 @@ const obtenerClientes = async () => {
         onRemoveAll,
         showTable,
         setShowTable,
-        prod,
-        setProd,
         term,
         setTerm,
         onRemoveItem,
@@ -139,13 +134,12 @@ const obtenerClientes = async () => {
         setLabelCliente,
         onAddCliente,
         productos, setProductos,
-        showDetalleProd,
-        setShowDetalleProd
+        
       })
   }, [cartItems,setCartItems,show,setShow, products, totalPrice, showTable,
-     setShowTable, prod, setProd, term, setTerm, onRemoveItem, qty, showCategoria, setShowCategoria, setProducts,
+     setShowTable, term, setTerm, onRemoveItem, qty, showCategoria, setShowCategoria, setProducts,
      AllCategorias, SetAllCategorias, Allclientes, setAllClientes, labelCliente, setLabelCliente,
-     productos, setProductos, showDetalleProd, setShowDetalleProd])
+     productos, setProductos])
 
   return <HomeContext.Provider value={value} {...props} />
 }

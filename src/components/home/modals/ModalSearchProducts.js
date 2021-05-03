@@ -1,32 +1,39 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Modal} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.css';
 import {useHome} from '../../../context/home-context';
 import clienteAxios from '../../../config/clienteAxios'
-
+import ModaleDetalleProducto from './ModalDetalleProducto'
 
 function ModalSearchProducts() {
+  const [showDetalleProd, setShowDetalleProd] = useState(false);
   const {showTable, setShowTable} = useHome();
   const handleClose = () => setShowTable(false);
-  const {prod, onAdd, term, setTerm} = useHome();
- const {productos } = useHome();
+  const {products, onAdd, term, setTerm} = useHome();
   function searchingTerm(term){
     return function(x){
       return x.nombre.toLowerCase().includes(term) || !term; 
     }
   }
   
-  const submit = async () => {
-    await clienteAxios.put("/productos/" + productos.id, {
-      nombre: productos.nombre,
-      costo: productos.costo,
-      precio: productos.precio,
-      categoria_id: 0,
+  const destacar = async (producto) => {
+    await clienteAxios.put(`/productos/${producto.id}`, {
       destacado: true
     })
     .then((res) =>{
       console.log(res.data)
-      console.log(productos.id)
+    })
+    .catch((err) => {
+      console.log("error put", err);
+    });
+    
+  }
+  const noDestacar = async (producto) => {
+    await clienteAxios.put(`/productos/${producto.id}`, {
+      destacado: false
+    })
+    .then((res) =>{
+      console.log(res.data)
     })
     .catch((err) => {
       console.log("error put", err);
@@ -50,7 +57,7 @@ function ModalSearchProducts() {
           </div>
         </Modal.Header>
         <Modal.Body >
-          {prod && (
+          {products && (
               <input className="col-md-12 form-control modal-search"  type="text"
               placeholder="Buscar" aria-label="Search"
               onChange={e => setTerm(e.target.value)}
@@ -70,30 +77,36 @@ function ModalSearchProducts() {
             </thead>
             <tbody>
 
-                {prod.filter(searchingTerm(term)).map((item)=>(
-                    <tr key={item.id} className="trhover">
-                        <td>{item.id}</td>
-                        <td className="name">{item.nombre}</td>
-                        <td>${item.precio}</td>
+                {products.filter(searchingTerm(term)).map((product)=>(
+                    <tr key={product.id} className="trhover">
+                        <td>{product.id}</td>
+                        <td className="name">{product.nombre}</td>
+                        <td>${product.precio}</td>
                         <td>
                           <button
-                          
+                          className="boton-modal-buscar"
+                          onClick={()=>setShowDetalleProd(true)}
                           >Editar</button>
+                          
                         </td>
                         <td>
                           <button
-                          onClick={()=> onAdd(item)}
+                          className="boton-modal-buscar"
+                          onClick={()=> onAdd(product)}
                           >Agregar</button>
                         </td>
                         <td>
-                          <button
-                          onClick={(e)=> submit(e)}
-                          >Destacar</button>
+                        <button
+                        className="boton-modal-buscar"
+                          onClick={()=> destacar(product)}
+                          >Destacar
+                          </button>
                         </td>
                     </tr>
                 ))}
             </tbody>            
             </table>
+            
           </div>
           
         </Modal.Body>
@@ -104,6 +117,10 @@ function ModalSearchProducts() {
           
         </Modal.Footer>
       </Modal>
+      <ModaleDetalleProducto
+        showDetalleProd={showDetalleProd}
+        setShowDetalleProd={setShowDetalleProd}
+      />
     </div>
       
     
