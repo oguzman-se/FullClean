@@ -8,14 +8,14 @@ function ModalCustom() {
   const {setShow, show} = useHome();
   const {products, setProducts} = useHome();
   const handleClose = () => setShow(false);
-  const {productos, setProductos} = useHome();
+  const {productos, setProductos, AllCategorias} = useHome();
   
   const submit = async () => {
     await clienteAxios.post('/productos', {
       nombre: productos.nombre,
       costo: productos.costo,
       precio: productos.precio,
-      categoria_id: 0,
+      categoria_id: 0/*productos.categoria_id*/,
       destacado: false
     })
     .then((res) =>{
@@ -81,7 +81,15 @@ function ModalCustom() {
           onChange={(e) => handle(e)} id="precio" value={productos.precio}
           />
         </div>
-        
+        <div>
+          <label for="exampleInputEmail1">Categoria</label>
+          <select class="form-select form-control custom-input" aria-label="Default select example">
+            {AllCategorias.map((category) => (
+              <option value={category.id}>{category.nombre}</option>
+            ))}
+            
+          </select>
+        </div>
         </form>
         </Modal.Body>
         <Modal.Footer>

@@ -21,7 +21,7 @@ function LabelBottomSM(){
                     <option selected>Efectivo</option>
                     <option value="1">Tarjeta de credito</option>
                     <option value="2">Tarjeta de Debito</option>
-                    <option value="3">Rapipago</option>
+                    <option value="3">Cuenta Corriente</option>
                 </select>
                 </div>
                 <div className="col-3 ajuste">

@@ -21,6 +21,10 @@ function GroupButton(){
                             + Producto
                     </Button> 
                     </div>
+                    <div className="col-2 ajuste"></div>
+                    <div className="col-4 ajuste">
+                    <Button>Pendiente</Button>
+                    </div>
                 </div>
                 <div className="row">
                     <div className="col-3 ajuste">

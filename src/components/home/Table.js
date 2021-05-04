@@ -2,8 +2,15 @@ import React from 'react'
 import {useHome} from '../../context/home-context'
 
 function Table(){
-    const {cartItems, onRemove, onRemoveItem, onAdd} = useHome();
-    
+    const {cartItems, setCartItems, onRemove, onRemoveItem, onAdd} = useHome();
+    const handleChange = e=> {
+        const {name, value} = e.target;
+        setCartItems((prevState)=>({
+          ...prevState,
+          [name]: value
+        }))
+        console.log(cartItems);
+      }
     return(
         <div className="tabla">
         <table className="table">
@@ -30,7 +37,12 @@ function Table(){
                         {item.qty}
                         <button className="btn-plus" onClick={()=>onAdd(item)}>+</button>
                     </td>
-                    <td>${item.precio.toFixed(2)}</td>
+                    <td>
+                        <input 
+                        name="precio"
+                        onChange={handleChange}
+                        value={item.precio.toFixed(2)}/>
+                    </td>
                     <td>${(item.qty * item.precio).toFixed(2)}</td>
                     <td>
                         <button className="btn-cross" onClick={()=>onRemoveItem(item)}>X</button>

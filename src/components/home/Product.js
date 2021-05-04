@@ -1,7 +1,7 @@
 import React from 'react'
 function Product(props){
     const {product, onAdd,} = props;
-    if (product.nombre.length < 20 && product.destacado === 1) {
+    if (product.nombre.length < 20) {
         return (
             <div>
                 <button type="button" className="btn boton-secundario"

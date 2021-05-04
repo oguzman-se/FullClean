@@ -48,17 +48,22 @@ function Productos(){
                                     };
                                 }
                             })
-                            .map((product) => (
-
-                                    <div className="col-md-3 grilla">
-                                        <Product
-                                            key={product.id}
-                                            product={product}
-                                            onAdd={onAdd}
-                                            >
-                                        </Product>
-                                    </div>
-                            ))
+                            .map((product) => 
+                                   {
+                                    if(product.destacado === 1){
+                                        return(
+                                            <div className="col-md-3 grilla">
+                                                <Product
+                                                    key={product.id}
+                                                    product={product}
+                                                    onAdd={onAdd}
+                                                    >
+                                                </Product>
+                                            </div>
+                                        )
+                                    }
+                                   }
+                            )
                             }
             
             </div>

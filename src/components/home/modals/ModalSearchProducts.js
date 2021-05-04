@@ -9,31 +9,31 @@ function ModalSearchProducts() {
   const [showDetalleProd, setShowDetalleProd] = useState(false);
   const {showTable, setShowTable} = useHome();
   const handleClose = () => setShowTable(false);
-  const {products, onAdd, term, setTerm} = useHome();
+  const [currentProducto, setCurrentProducto] = useState({})
+  const {products, onAdd, term, setTerm, setProducts} = useHome();
   function searchingTerm(term){
     return function(x){
       return x.nombre.toLowerCase().includes(term) || !term; 
     }
   }
   
-  const destacar = async (producto) => {
+  const destacar = async (producto, destacado) => {
     await clienteAxios.put(`/productos/${producto.id}`, {
-      destacado: true
+      destacado: destacado
     })
     .then((res) =>{
       console.log(res.data)
-    })
-    .catch((err) => {
-      console.log("error put", err);
-    });
-    
-  }
-  const noDestacar = async (producto) => {
-    await clienteAxios.put(`/productos/${producto.id}`, {
-      destacado: false
-    })
-    .then((res) =>{
-      console.log(res.data)
+      const getProduct = async () => {
+        await clienteAxios
+        .get('/productos')
+        .then((r) => {
+          setProducts(r.data)
+        })
+        .catch((r) => {
+          console.log("error get", r);
+        });
+      };
+      getProduct();
     })
     .catch((err) => {
       console.log("error put", err);
@@ -69,7 +69,8 @@ function ModalSearchProducts() {
                 <tr >
                     <th  scope="col">Codigo</th>
                     <th scope="col">Producto</th>
-                    <th scope="col">price Un.</th>
+                    <th scope="col">Costo</th>
+                    <th scope="col">Precio</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
                     <th scope="col"></th>
@@ -82,10 +83,15 @@ function ModalSearchProducts() {
                         <td>{product.id}</td>
                         <td className="name">{product.nombre}</td>
                         <td>${product.precio}</td>
+                        <td>${product.costo}</td>
                         <td>
                           <button
                           className="boton-modal-buscar"
-                          onClick={()=>setShowDetalleProd(true)}
+                          onClick={()=>{
+                            setCurrentProducto(product)
+                            setShowDetalleProd(true)
+                          
+                          }}
                           >Editar</button>
                           
                         </td>
@@ -96,11 +102,17 @@ function ModalSearchProducts() {
                           >Agregar</button>
                         </td>
                         <td>
-                        <button
-                        className="boton-modal-buscar"
-                          onClick={()=> destacar(product)}
+                        {product.destacado === 1 ?
+                          <button
+                          className="boton-modal-buscar"
+                          onClick={()=> destacar(product, false)}
+                          >No Destacar
+                          </button> : 
+                          <button
+                          className="boton-modal-buscar"
+                          onClick={()=> destacar(product, true)}
                           >Destacar
-                          </button>
+                          </button>}
                         </td>
                     </tr>
                 ))}
@@ -120,6 +132,9 @@ function ModalSearchProducts() {
       <ModaleDetalleProducto
         showDetalleProd={showDetalleProd}
         setShowDetalleProd={setShowDetalleProd}
+        currentProducto={currentProducto}
+        setCurrentProducto={setCurrentProducto}
+        destacar={destacar}
       />
     </div>
       
