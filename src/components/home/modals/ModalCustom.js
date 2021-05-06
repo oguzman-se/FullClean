@@ -8,14 +8,14 @@ function ModalCustom() {
   const {setShow, show} = useHome();
   const {products, setProducts} = useHome();
   const handleClose = () => setShow(false);
-  const {productos, setProductos, AllCategorias} = useHome();
+  const {currentProducto, setCurrentProducto, AllCategorias} = useHome();
   
   const submit = async () => {
     await clienteAxios.post('/productos', {
-      nombre: productos.nombre,
-      costo: productos.costo,
-      precio: productos.precio,
-      categoria_id: 0/*productos.categoria_id*/,
+      nombre: currentProducto.nombre,
+      costo: currentProducto.costo,
+      precio: currentProducto.precio,
+      categoria_id: currentProducto.categoria_id,
       destacado: false
     })
     .then((res) =>{
@@ -25,9 +25,6 @@ function ModalCustom() {
         .get('/productos')
         .then((r) => {
           setProducts(r.data)
-          setProductos(r.data)
-          console.log("setProducts",products)
-          console.log("setProductos",productos)
         })
         .catch((r) => {
           console.log("error get", r);
@@ -42,9 +39,9 @@ function ModalCustom() {
     
   }
   function handle(e){
-      const newProducto = {...productos}
-      newProducto[e.target.id] = e.target.value
-      setProductos(newProducto)
+      const newProducto = {...currentProducto}
+      newProducto[e.target.name] = e.target.value
+      setCurrentProducto(newProducto)
   }
   return (
     <>
@@ -64,26 +61,27 @@ function ModalCustom() {
           <label for="exampleInputEmail1">Nombre del Producto</label>
           <input type="text" className="form-control custom-input" 
           placeholder="Nombre" aria-label="Username"
-          onChange={(e) => handle(e)} id="nombre" value={productos.nombre}
+          onChange={(e) => handle(e)} name="nombre" value={currentProducto.nombre}
           />
         </div>
         <div>
           <label for="exampleInputEmail1">Costo del Producto</label>
           <input type="text" className="form-control custom-input" 
           placeholder="Costo"
-          onChange={(e) => handle(e)} id="costo" value={productos.costo}
+          onChange={(e) => handle(e)} name="costo" value={currentProducto.costo}
           />
         </div>
         <div>
           <label for="exampleInputEmail1">Precio del Producto</label>
           <input type="text" className="form-control custom-input" 
           placeholder="Precio"
-          onChange={(e) => handle(e)} id="precio" value={productos.precio}
+          onChange={(e) => handle(e)} name="precio" value={currentProducto.precio}
           />
         </div>
         <div>
           <label for="exampleInputEmail1">Categoria</label>
-          <select class="form-select form-control custom-input" aria-label="Default select example">
+          <select class="form-select form-control custom-input" aria-label="Default select example"
+          onChange={(e) => handle(e)} name="category_id">
             {AllCategorias.map((category) => (
               <option value={category.id}>{category.nombre}</option>
             ))}

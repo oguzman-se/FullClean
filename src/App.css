@@ -561,13 +561,19 @@
   border: transparent;
   background-color: rgb(240, 95, 116);
   color: aliceblue;
-  padding: 1px;
+  padding: 3px;
+  margin: 4px;
 }
+
 .boton-modal-buscar:hover{
   border: transparent;
   background-color: rgb(243, 155, 168);
   color: rgb(76, 76, 77);
-  padding: 1px;
+  padding: 3px;
+}
+.fondo{
+  background-color: rgb(240, 95, 116) !important;
+  color: aliceblue;
 }
 .confirm{
   color: green;

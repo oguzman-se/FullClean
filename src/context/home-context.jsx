@@ -6,61 +6,66 @@ const HomeContext = React.createContext();
 export function HomeProvider(props){
   // ESTE ESTADO ES PARA LOS ITEMS DEL CARRITO, LOS PRODUCTOS.
     const [cartItems, setCartItems] = useState([]);
+
   //ESTE ESTADO SIRVE PARA ABRIR Y CERRAR EL MODL DE "+PRODUCTOS"
     const [show, setShow] = useState(false);
-  //ESRE ESTADO SIRVE PARA ABRIR Y CERRAR EL MODAL DE "BUSCAR PRODUCTOS"
+    //ESTADO DEL CURRENT PRODUCTO CUANDO SE CREA
+      const [currentProducto, setCurrentProducto] = useState({})
+
+  //ESTE ESTADO SIRVE PARA ABRIR Y CERRAR EL MODAL DE "BUSCAR PRODUCTOS"
     const [showTable, setShowTable] = useState(false);
+
   //ESRE ESTADO SIRVE PARA ABRIR Y CERRAR EL MODAL DE "+ CATEGORIA"
-  const [showCategoria, setShowCategoria] = useState(false);
-//PRODUCTOS API
-  const [products, setProducts] = useState([]);
+    const [showCategoria, setShowCategoria] = useState(false);
 
-  useEffect(() => {
-      obtenerDatos()
-  }, [])
+  //API
 
-  const obtenerDatos = async () => {
-    await clienteAxios.get('/productos')
-    .then(res => {
-      setProducts(res.data)
-    })
-  }
-  //MODAL SEARCH PRODUCTOS
-  const [showDetalleProd, setShowDetalleProd] = useState(false);
-  const [productos, setProductos] = useState({})
-  //CATEGORIAS API
-  const [AllCategorias, SetAllCategorias] = useState([]);
+    //PRODUCTOS API
+    const [products, setProducts] = useState([]);
+    useEffect(() => {
+        obtenerDatos()
+    }, [])
+    const obtenerDatos = async () => {
+      await clienteAxios.get('/productos')
+      .then(res => {
+        setProducts(res.data)
+      })
+    }
+  
+    //CATEGORIAS API
+    const [AllCategorias, SetAllCategorias] = useState([]);
 
-  useEffect(() => {
-    obtenerCategorias()
-  }, [])
+    useEffect(() => {
+      obtenerCategorias()
+    }, [])
 
-  const obtenerCategorias = async () => {
-    await clienteAxios.get('/categorias')
-    .then(res => {
-      SetAllCategorias(res.data)
-      console.log("AllCategorias", AllCategorias)
-    })
-  }
-//CLIENTES API
-const [Allclientes, setAllClientes] = useState([]);
+    const obtenerCategorias = async () => {
+      await clienteAxios.get('/categorias')
+      .then(res => {
+        SetAllCategorias(res.data)
+        console.log("AllCategorias", AllCategorias)
+      })
+    }
 
-useEffect(() => {
-  obtenerClientes()
-}, [])
+    //CLIENTES API
+    const [Allclientes, setAllClientes] = useState([]);
 
-const obtenerClientes = async () => {
-  await clienteAxios.get('/clientes')
-  .then(res => {
-    setAllClientes(res.data)
-    console.log("clientes", Allclientes)
-  })
-}
+    useEffect(() => {
+      obtenerClientes()
+    }, [])
+
+    const obtenerClientes = async () => {
+      await clienteAxios.get('/clientes')
+      .then(res => {
+        setAllClientes(res.data)
+        console.log("clientes", Allclientes)
+      })
+    }
 
   //USEEFFECT Y USESTATE DEL MODAL DE BUSCAR PRODUCTOS,
   // SE USA PARA MOSTRAR LOS PRODUCTOS Y PARA SU BUSCADOR
-  
-  const [term, setTerm] = useState("");
+   const [term, setTerm] = useState("");
+
   //FUNCION PARA AGREGAR PRODUCTOS AL CARRITO
     const onAdd = (product) => {
     const exist = cartItems.find(x=> x.id === product.id);
@@ -96,8 +101,22 @@ const obtenerClientes = async () => {
     setCartItems([])
   }
   //PRECIO TOTAL DE TODO EL CARRITO
-  const totalPrice = cartItems.reduce((a, c) => a + c.precio * c.qty, 0);
-  const qty = cartItems.reduce((a, c) => a + c.qty, 0 )
+  useEffect(() => {
+    let PrecioTotal = 0
+    let QtyTotal = 0
+    cartItems.map((item)=>{
+      PrecioTotal= PrecioTotal + item.precio * item.qty;
+      QtyTotal = QtyTotal + item.qty;
+    return ""
+  })
+  setTotalPrice(PrecioTotal)
+  setQty(QtyTotal)
+  console.log(cartItems)
+  }, [cartItems])
+  let [totalPrice, setTotalPrice] = useState(0);
+  let [qty, setQty] = useState(0);
+  
+  
   //FUNCION PARA AGREGAR CLIENTE
   const [labelCliente, setLabelCliente] = useState([]);
   const onAddCliente = (clientes) => {
@@ -105,9 +124,11 @@ const obtenerClientes = async () => {
     console.log(labelCliente)
     
   };
+
+
   //DECLARO QUIEN ES EL CONTEXT
-  const value = useMemo(()=> {
-      return ({
+  const value = 
+    {
         cartItems,
         setCartItems,
         show,
@@ -133,14 +154,10 @@ const obtenerClientes = async () => {
         labelCliente,
         setLabelCliente,
         onAddCliente,
-        productos, setProductos,
+        currentProducto,
+        setCurrentProducto,
         
-      })
-  }, [cartItems,setCartItems,show,setShow, products, totalPrice, showTable,
-     setShowTable, term, setTerm, onRemoveItem, qty, showCategoria, setShowCategoria, setProducts,
-     AllCategorias, SetAllCategorias, Allclientes, setAllClientes, labelCliente, setLabelCliente,
-     productos, setProductos])
-
+      }
   return <HomeContext.Provider value={value} {...props} />
 }
 //EXPORTO EL CONTEXT

@@ -1,10 +1,15 @@
-import React from 'react'
-import {Modal} from 'react-bootstrap'
+import React, {useState} from 'react'
+import {Modal, ModalFooter} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.css';
 import {useHome} from '../../../context/home-context'
 import clienteAxios from '../../../config/clienteAxios'
 
 function ModalCargarCliente(props) {
+  const [productoscodigo, setProductoscodigo] = useState({
+    id: "",
+    codigo:"",
+    producto_id: ""
+  })
   const {setProducts} = useHome();
   const {showDetalleProd, setShowDetalleProd, currentProducto,
      setCurrentProducto, destacar} = props;
@@ -17,7 +22,11 @@ function ModalCargarCliente(props) {
     }))
     console.log(currentProducto);
   }
-
+  const handleChangeBarcode = e=> {
+    const {name, value} = e.target;
+    setProductoscodigo({...productoscodigo, [name]:value})
+    console.log(productoscodigo);
+  }
   const actualizar = async (producto) => {
     await clienteAxios.put(`/productos/${producto.id}`, {
       nombre: currentProducto.nombre,
@@ -46,7 +55,31 @@ function ModalCargarCliente(props) {
     
   }
 
-
+  const submit = async () => {
+    await clienteAxios.post('/productoscodigo', {
+      codigo: productoscodigo.codigo,
+      producto_id: currentProducto.id
+    })
+    .then((res) =>{
+      console.log("respuesta",res.data)
+      const getCod = async () => {
+        await clienteAxios
+        .get('/productoscodigo')
+        .then((r) => {
+          console.log("GET",r.data)
+        })
+        .catch((r) => {
+          console.log("error get", r);
+          console.log(productoscodigo)
+        });
+      };
+      getCod();
+    })
+    .catch((err) => {
+      console.log("error post", err);
+    });
+    
+  }
 
   return (
     <>
@@ -89,22 +122,28 @@ function ModalCargarCliente(props) {
           onChange={handleChange}
           />
         </div>
-        <div>
-          <label for="exampleInputEmail1">Agregar BarCode</label>
-          <input type="text" className="form-control custom-input" 
-          name="barcode" 
-          />
-        </div>
-        </form>
-        </Modal.Body>
-        <Modal.Footer>
+        <ModalFooter>
           <button className="modal-button-create"
           onClick={()=> actualizar(currentProducto)}
           >Actualizar Producto</button>
           <button className="modal-button-cancel" onClick={handleClose}>
             Cancelar
           </button>
-          
+        </ModalFooter>
+        
+        <div>
+          <label for="exampleInputEmail1">Agregar BarCode</label>
+          <input type="text" className="form-control custom-input" 
+          name="codigo" onChange={handleChangeBarcode}
+          value={productoscodigo.codigo}
+          />
+        </div>
+        </form>
+        </Modal.Body>
+        <Modal.Footer>
+          <button className="modal-button-create"
+          onClick={submit}
+          >Agregar Barcode</button>          
         </Modal.Footer>
       </Modal>
     </>

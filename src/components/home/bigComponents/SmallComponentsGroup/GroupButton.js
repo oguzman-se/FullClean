@@ -23,7 +23,7 @@ function GroupButton(){
                     </div>
                     <div className="col-2 ajuste"></div>
                     <div className="col-4 ajuste">
-                    <Button>Pendiente</Button>
+                    <Button>Pedidos Pendientes</Button>
                     </div>
                 </div>
                 <div className="row">

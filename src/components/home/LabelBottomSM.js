@@ -1,5 +1,5 @@
 import Button  from '../home/Button'
-
+import ButtonDisabled from '../home/ButtonDisabled'
 function LabelBottomSM(){
 
     return(
@@ -12,7 +12,7 @@ function LabelBottomSM(){
                     <Button>Confirmar</Button>           
                 </div>
                 <div className="col-3 ajuste">
-                    <Button>Remito</Button>
+                    <ButtonDisabled>Remito</ButtonDisabled>
                 </div>
             </div>
             <div className="row ">
@@ -28,7 +28,7 @@ function LabelBottomSM(){
                     <Button>Pendiente</Button>
                 </div>
                 <div className="col-3 ajuste">
-                    <Button>Ticket</Button>
+                    <ButtonDisabled >Ticket</ButtonDisabled>
                 </div>
             </div>
         </div>

@@ -25,14 +25,15 @@ function ModalCategoria() {
     })
     .then((res) =>{
       console.log(res.data)
+      setCategoria({
+        id: "",
+        nombre:""
+      })
       const getCats = async () => {
         await clienteAxios
         .get('/categorias')
         .then((r) => {
           SetAllCategorias(r.data)
-          setCategoria(r.data)
-          console.log("SetAllCategorias",AllCategorias)
-          console.log("categorias",categorias)
         })
         .catch((r) => {
           console.log("error get", r);
@@ -54,21 +55,22 @@ function ModalCategoria() {
   }
   
 
-  const actualizar = async (categorias) => {
-    await clienteAxios.put(`/categorias/${categorias.id}`, {
-      nombre: categorias.nombre
+  const actualizar = async () => {
+    await clienteAxios.put(`/categorias/${currentCategoria.id}`, {
+      nombre: currentCategoria.nombre
     })
     .then((res) =>{
       console.log(res.data)
-      handleClose()
       const getCats = async () => {
         await clienteAxios
         .get('/categorias')
         .then((r) => {
           SetAllCategorias(r.data)
-          setCategoria(r.data)
-          console.log("SetAllCategorias",AllCategorias)
-          console.log("categorias",categorias)
+          setCategoria({
+            id: "",
+            nombre:""
+          })
+          setEditar(false)
         })
         .catch((r) => {
           console.log("error get", r);
@@ -109,10 +111,11 @@ function ModalCategoria() {
     
   }
   function handle(e){
-    const newCategoria = {...categorias}
-    newCategoria[e.target.id] = e.target.value
-    setCategoria(newCategoria)
-    console.log(newCategoria)
+    if(editar === true){
+      setCurrentCategoria({...currentCategoria, [e.target.name]:e.target.value})
+    }else{
+      setCategoria({...categorias, [e.target.name]:e.target.value})
+    }
 }
   return (
     <>
@@ -123,20 +126,29 @@ function ModalCategoria() {
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title id="modal-tittle">Crear Categoria</Modal.Title>
+
+          <Modal.Title id="modal-tittle">
+          {editar === false ?
+            "Crear Categoria":
+            "Actualizar Categoria"
+          }
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form >
-          <label for="exampleInputEmail1">Crear Categoria</label>
+          {/*editar === false ?
+            <label for="exampleInputEmail1">Crear Categoria</label>:
+            <label for="exampleInputEmail1">Actualizar Categoria</label>
+          */}
           {editar === false ?
             <input type="text" className="form-control custom-input" 
             placeholder="" aria-label="Username"
-            onChange={(e) => handle(e)} id="nombre" value={categorias.nombre} 
+            onChange={(e) => handle(e)} value={categorias.nombre} 
             name="nombre"
             />: 
             <input type="text" className="form-control custom-input" 
             placeholder="" aria-label="Username"
-            onChange={(e) => handle(e)} id="nombre" value={currentCategoria.nombre} 
+            onChange={(e) => handle(e)} value={currentCategoria.nombre} 
             name="nombre"
             />
             }
@@ -153,14 +165,16 @@ function ModalCategoria() {
                   </div>
                   <div>
                     <button
+                    className="boton-modal-buscar"
                     onClick={()=> {
                       setCurrentCategoria(category)
                       setEditar(true)}}
                     >Editar</button>
                     <button
+                    className="boton-modal-buscar"
                      onClick={()=> eliminar(category)}
                     >Eliminar</button>
-                    <span class="badge bg-primary rounded-pill">ID: {category.id}</span>
+                    <span class="badge fondo rounded-pill">ID: {category.id}</span>
                   </div>
                   
                 </li>
@@ -175,7 +189,7 @@ function ModalCategoria() {
           onClick={(e)=> submit(e)}
           >Crear Categoria</button> : 
           <button className="modal-button-create"
-          onClick={()=> actualizar(categorias)}
+          onClick={actualizar}
           >Actualizar</button>}
           
           <button className="modal-button-cancel" onClick={handleClose}>

@@ -10,12 +10,12 @@ import Pedidos from './pages/Pedidos'
 import Clientes from './pages/Clientes'
 import Facturas from './pages/Facturas'
 import { HomeProvider } from './context/home-context';
-import { ClientesProvider } from './context/clientes-context'
+import { PedidosProvider } from './context/pedidos-context'
 
 function App() {
   return (
       <Router>
-      
+        <PedidosProvider>
           <HomeProvider>
           
               <Route exact path="/" component={Home} />
@@ -24,7 +24,7 @@ function App() {
               <Route exact path="/facturas" component={Facturas} />
           
           </HomeProvider>
-        
+      </PedidosProvider>  
       </Router>
     
   );

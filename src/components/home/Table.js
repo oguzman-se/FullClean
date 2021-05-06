@@ -5,10 +5,7 @@ function Table(){
     const {cartItems, setCartItems, onRemove, onRemoveItem, onAdd} = useHome();
     const handleChange = e=> {
         const {name, value} = e.target;
-        setCartItems((prevState)=>({
-          ...prevState,
-          [name]: value
-        }))
+        setCartItems({...cartItems, [name]:value})
         console.log(cartItems);
       }
     return(
@@ -25,9 +22,7 @@ function Table(){
             </tr>
         </thead>
         <tbody>
-            <div>
-                {cartItems.lenght === 0 && <div></div>}
-            </div>
+            
             {cartItems.map((item)=>(
                 <tr key={item.id}>
                     <td>{item.id}</td>

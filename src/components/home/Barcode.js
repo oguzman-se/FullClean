@@ -1,6 +1,8 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useHome } from '../../context/home-context'
+import clienteAxios from '../../config/clienteAxios'
+
 function Barcode() {
     const [barcode, setBarcode] = useState([]);
     const [errorMatch, setErrorMatch] = useState([false]);
@@ -8,15 +10,27 @@ function Barcode() {
     const onChange = (e) => {
         setBarcode(e.target.value);
     };
+
+    const [productCod, setProductCod] = useState([]);
     
+    useEffect(() => {
+        obtenerDatos()
+    }, [])
+
+    const obtenerDatos = async () => {
+        await clienteAxios.get('/productoscodigo')
+        .then(res => {
+            setProductCod(res.data)
+        })
+    }
     const searchProduct = () => {
         let match;
         let contador = 0;
-        products.forEach(
-            (product) =>{
+        productCod.forEach(
+            (UnitCod) =>{
             
-                if(product.id.toString() === barcode){
-                    match=product;
+                if(UnitCod.codigo.toString() === barcode){
+                    match=UnitCod;
                     contador = 1;
                 }else if(errorMatch === false){
                     console.log("error")
