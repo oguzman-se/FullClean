@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect} from 'react';
+import React, { useState, useEffect} from 'react';
 import clienteAxios from '../config/clienteAxios'
 const HomeContext = React.createContext();
 
@@ -37,7 +37,9 @@ export function HomeProvider(props){
 
     useEffect(() => {
       obtenerCategorias()
-    }, [])
+    },
+    // eslint-disable-next-line
+    [])
 
     const obtenerCategorias = async () => {
       await clienteAxios.get('/categorias')
@@ -52,7 +54,9 @@ export function HomeProvider(props){
 
     useEffect(() => {
       obtenerClientes()
-    }, [])
+    },
+    // eslint-disable-next-line
+    [])
 
     const obtenerClientes = async () => {
       await clienteAxios.get('/clientes')

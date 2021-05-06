@@ -47,12 +47,6 @@ function ModalCategoria() {
     });
     
   }
-  function handle(e){
-      const newCategoria = {...categorias}
-      newCategoria[e.target.id] = e.target.value
-      setCategoria(newCategoria)
-      console.log(newCategoria)
-  }
   
 
   const actualizar = async () => {
@@ -110,7 +104,7 @@ function ModalCategoria() {
     });
     
   }
-  function handle(e){
+  function handleCheck(e){
     if(editar === true){
       setCurrentCategoria({...currentCategoria, [e.target.name]:e.target.value})
     }else{
@@ -143,12 +137,12 @@ function ModalCategoria() {
           {editar === false ?
             <input type="text" className="form-control custom-input" 
             placeholder="" aria-label="Username"
-            onChange={(e) => handle(e)} value={categorias.nombre} 
+            onChange={(e) => handleCheck(e)} value={categorias.nombre} 
             name="nombre"
             />: 
             <input type="text" className="form-control custom-input" 
             placeholder="" aria-label="Username"
-            onChange={(e) => handle(e)} value={currentCategoria.nombre} 
+            onChange={(e) => handleCheck(e)} value={currentCategoria.nombre} 
             name="nombre"
             />
             }

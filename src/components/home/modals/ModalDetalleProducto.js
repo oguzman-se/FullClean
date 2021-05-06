@@ -12,7 +12,7 @@ function ModalCargarCliente(props) {
   })
   const {setProducts} = useHome();
   const {showDetalleProd, setShowDetalleProd, currentProducto,
-     setCurrentProducto, destacar} = props;
+     setCurrentProducto} = props;
   const handleClose = () => setShowDetalleProd(false);  
   const handleChange = e=> {
     const {name, value} = e.target;

@@ -6,7 +6,7 @@ import clienteAxios from '../../config/clienteAxios'
 function Barcode() {
     const [barcode, setBarcode] = useState([]);
     const [errorMatch, setErrorMatch] = useState([false]);
-    const {onAdd, products} = useHome();
+    const {onAdd} = useHome();
     const onChange = (e) => {
         setBarcode(e.target.value);
     };
