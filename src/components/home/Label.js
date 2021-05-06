@@ -3,9 +3,8 @@ import {useHome} from '../../context/home-context'
 import ModalCargarCliente from './modals/ModalCargarCliente';
 
 function Label(){
-    const {labelCliente} = useHome([]);
+    const {labelCliente, onRemoveAll} = useHome([]);
     const [showCargarCliente, setShowCargarCliente] = useState(false);
-    const {onRemoveAll} = useHome();
     if (!labelCliente.nombre) {
     return(
         <div className="container-fluid">

@@ -1,14 +1,24 @@
-import React /*, {useState, useEffect} */from 'react';
-//import clienteAxios from '../config/clienteAxios'
+import React , {useState, useEffect} from 'react';
+import clienteAxios from '../config/clienteAxios'
 const PedidosContext = React.createContext();
 
-
 export function PedidosProvider(props){
- 
+  //PRODUCTOS API
+  const [pedidos, setPedidos] = useState([]);
+  useEffect(() => {
+      obtenerDatos()
+  }, [])
+  const obtenerDatos = async () => {
+    await clienteAxios.get('/pedidos')
+    .then(res => {
+      setPedidos(res.data)
+    })
+  }
+    
   //DECLARO QUIEN ES EL CONTEXT
   const value = 
     {
-        
+      pedidos, setPedidos
       }
   return <PedidosContext.Provider value={value} {...props} />
 }
