@@ -1,9 +1,11 @@
 import React from 'react'
 import {useHome} from '../../context/home-context'
+import {usePedidos} from '../../context/pedidos-context'
 
 function Table(){
     const {cartItems, setCartItems, onRemove, onRemoveItem, onAdd} = useHome();
-    const handleChange = e=> {
+    const {array, setArray} = usePedidos()
+    const handleChange = (e, item )=> {
         const {name, value} = e.target;
         setCartItems({...cartItems, [name]:value})
         console.log(cartItems);
@@ -35,7 +37,7 @@ function Table(){
                     <td>
                         <input 
                         name="precio"
-                        onChange={handleChange}
+                        onChange={(e)=>{handleChange(e, item)}}
                         value={item.precio.toFixed(2)}/>
                     </td>
                     <td>${(item.qty * item.precio).toFixed(2)}</td>

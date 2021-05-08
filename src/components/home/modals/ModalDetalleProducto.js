@@ -5,11 +5,14 @@ import {useHome} from '../../../context/home-context'
 import clienteAxios from '../../../config/clienteAxios'
 
 function ModalCargarCliente(props) {
-  const [productoscodigo, setProductoscodigo] = useState({
-    id: "",
-    codigo:"",
-    producto_id: ""
-  })
+  const {AllCodigos, setAllCodigos} = useHome([])
+  const [currentcodigo, setCurrentcodigo] = useState(
+    {
+      id: "",
+      codigo:"",
+      producto_id: ""
+    }
+  )
   const {setProducts} = useHome();
   const {showDetalleProd, setShowDetalleProd, currentProducto,
      setCurrentProducto} = props;
@@ -24,8 +27,8 @@ function ModalCargarCliente(props) {
   }
   const handleChangeBarcode = e=> {
     const {name, value} = e.target;
-    setProductoscodigo({...productoscodigo, [name]:value})
-    console.log(productoscodigo);
+    setCurrentcodigo({...currentcodigo, [name]:value})
+    console.log(currentcodigo);
   }
   const actualizar = async (producto) => {
     await clienteAxios.put(`/productos/${producto.id}`, {
@@ -57,7 +60,7 @@ function ModalCargarCliente(props) {
 
   const submit = async () => {
     await clienteAxios.post('/productoscodigo', {
-      codigo: productoscodigo.codigo,
+      codigo: currentcodigo.codigo,
       producto_id: currentProducto.id
     })
     .then((res) =>{
@@ -66,11 +69,12 @@ function ModalCargarCliente(props) {
         await clienteAxios
         .get('/productoscodigo')
         .then((r) => {
-          console.log("GET",r.data)
+          setAllCodigos(r.data)
+          console.log("GET", currentcodigo)
         })
         .catch((r) => {
           console.log("error get", r);
-          console.log(productoscodigo)
+          console.log(currentcodigo)
         });
       };
       getCod();
@@ -135,8 +139,15 @@ function ModalCargarCliente(props) {
           <label for="exampleInputEmail1">Agregar BarCode</label>
           <input type="text" className="form-control custom-input" 
           name="codigo" onChange={handleChangeBarcode}
-          value={productoscodigo.codigo}
+          value={currentcodigo.codigo}
           />
+          {AllCodigos.map((codigo)=>
+            (
+              <div>
+                {codigo.codigo}
+              </div>
+            )
+          )}
         </div>
         </form>
         </Modal.Body>

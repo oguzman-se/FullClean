@@ -5,48 +5,43 @@ import { useHome } from '../../context/home-context'
 import { usePedidos } from '../../context/pedidos-context';
 
 function LabelBottomSM(){
-    const {labelCliente, totalPrice} = useHome();
-    const {pedidos, setPedidos} = usePedidos()
+    const {labelCliente, totalPrice, cartItems} = useHome();
+    const {pedidos, setPedidos, array, setArray} = usePedidos()
+    const getPedido = async () => {
+        await clienteAxios
+        .get('/pedidos')
+        .then((r) => {
+            setPedidos(r.data)
+            console.log("confirmar",pedidos)
+        })
+        .catch((r) => {
+          console.log("error get", r);
+        });
+      };
     if (!labelCliente.nombre){
         labelCliente.id = 0
     }
-    const estadoConfirmado = async () => {
-        await clienteAxios.post('/pedidos', {
+    const handleEstado = async (estado) => {
+        try {
+        let data = {
             cliente_id: labelCliente.id,
-            estado: "confirmado",
+            estado: estado,
             valor_total:totalPrice,
             notas: "",
             fechayhora:"",
             metodo_pago:"",
             metodo_envio:""
-        })
-        .then((res) =>{
+        }
+        let res = await clienteAxios.post('/pedidos', data )
           console.log(res.data)
-          setPedidos(res.data)
-        })
-        .catch((err) => {
-          console.log("error post", err);
-        });
-        
-      }
-      const estadoPendiente = async () => {
-        await clienteAxios.post('/pedidos', {
-            cliente_id: labelCliente.id,
-            estado: "pendiente",
-            valor_total: totalPrice,
-            notas: "",
-            fechayhora:"",
-            metodo_pago:"",
-            metodo_envio:""
-        })
-        .then((res) =>{
-            console.log(res.data)
-        })
-        .catch((err) => {
-          console.log("error post", err);
-        });
-        
-      }
+          let dataArray = [data, ...cartItems]
+          setArray(dataArray)
+          console.log("array", dataArray)
+          getPedido();
+        }
+        catch (error) {
+                console.log(error)
+        }}
     return(
         <div className="container group-vh-5">
             <div className="row ">
@@ -55,7 +50,7 @@ function LabelBottomSM(){
                 </div>
                 <div className="col-3 ajuste">
                     <Button
-                    onClick={estadoConfirmado}
+                    onClick={()=>{handleEstado("confirmado")}}
                     >Confirmar</Button>           
                 </div>
                 <div className="col-3 ajuste">
@@ -73,7 +68,7 @@ function LabelBottomSM(){
                 </div>
                 <div className="col-3 ajuste">
                     <Button
-                    onClick={estadoPendiente}
+                    onClick={()=>{handleEstado("pendiente")}}
                     >Pendiente</Button>
                 </div>
                 <div className="col-3 ajuste">

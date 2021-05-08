@@ -31,7 +31,24 @@ export function HomeProvider(props){
         setProducts(res.data)
       })
     }
-  
+  //PRODUCTOS CODIGO API
+  const [AllCodigos, setAllCodigos] = useState([])
+    useEffect(() => {
+        obtenerCodigo()
+    }, [])
+    const obtenerCodigo = async () => {
+      await clienteAxios.get('/productoscodigo')
+      .then(res => {
+        setAllCodigos(res.data)
+      })
+    }
+    const [currentcodigo, setCurrentcodigo] = useState(
+      {
+        id: "",
+        codigo:"",
+        producto_id: ""
+      }
+    )
     //CATEGORIAS API
     const [AllCategorias, SetAllCategorias] = useState([]);
 
@@ -160,7 +177,10 @@ export function HomeProvider(props){
         onAddCliente,
         currentProducto,
         setCurrentProducto,
-        
+        AllCodigos,
+        setAllCodigos,
+        currentcodigo,
+        setCurrentcodigo
       }
   return <HomeContext.Provider value={value} {...props} />
 }

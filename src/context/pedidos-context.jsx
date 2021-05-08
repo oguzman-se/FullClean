@@ -5,6 +5,7 @@ const PedidosContext = React.createContext();
 export function PedidosProvider(props){
   //PRODUCTOS API
   const [pedidos, setPedidos] = useState([]);
+
   useEffect(() => {
       obtenerDatos()
   }, [])
@@ -14,11 +15,13 @@ export function PedidosProvider(props){
       setPedidos(res.data)
     })
   }
-    
+  //ARRAY DE PEDIDOS
+    const [array, setArray] = useState([]);
   //DECLARO QUIEN ES EL CONTEXT
   const value = 
     {
-      pedidos, setPedidos
+      pedidos, setPedidos,
+      array, setArray
       }
   return <PedidosContext.Provider value={value} {...props} />
 }

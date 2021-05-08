@@ -4,49 +4,41 @@ import { useHome } from '../../context/home-context'
 import clienteAxios from '../../config/clienteAxios'
 
 function Barcode() {
+    const {AllCodigos, setAllCodigos} = useHome([])
     const [barcode, setBarcode] = useState([]);
     const [errorMatch, setErrorMatch] = useState([false]);
-    const {onAdd} = useHome();
+    const {onAdd, products} = useHome();
     const onChange = (e) => {
         setBarcode(e.target.value);
     };
 
-    const [productCod, setProductCod] = useState([]);
-    
-    useEffect(() => {
-        obtenerDatos()
-    }, [])
-
-    const obtenerDatos = async () => {
-        await clienteAxios.get('/productoscodigo')
-        .then(res => {
-            setProductCod(res.data)
-        })
-    }
     const searchProduct = () => {
         let match;
         let contador = 0;
-        productCod.forEach(
-            (UnitCod) =>{
-            
-                if(UnitCod.codigo.toString() === barcode){
-                    match=UnitCod;
+        AllCodigos.forEach(
+            (cod) =>{
+
+                if(cod.id.toString() === barcode){
+                    match=cod;
+                }else if (cod.id === 'undefined'){
                     contador = 1;
                 }else if(errorMatch === false){
                     console.log("error")
                 }                 
             }
+            
         )
+        return match;
         if(contador === 1){
             setErrorMatch(true);
             return (match);
         }else{
             return {
                 id:"",
-                nombre:""
+                name:""
             }
         }
-        
+
     }
     
     const onKeyPresed = (e) => {
