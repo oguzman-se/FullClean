@@ -11,11 +11,12 @@ function ModalCustom() {
   const {currentProducto, setCurrentProducto, AllCategorias} = useHome();
   
   const submit = async () => {
+    console.log(currentProducto)
     await clienteAxios.post('/productos', {
       nombre: currentProducto.nombre,
       costo: currentProducto.costo,
       precio: currentProducto.precio,
-      categoria_id: currentProducto.categoria_id,
+      category: currentProducto.categoria_id,
       destacado: false
     })
     .then((res) =>{
@@ -39,7 +40,7 @@ function ModalCustom() {
     
   }
   function handle(e){
-      const newProducto = {...currentProducto}
+      let newProducto = {...currentProducto}
       newProducto[e.target.name] = e.target.value
       setCurrentProducto(newProducto)
   }

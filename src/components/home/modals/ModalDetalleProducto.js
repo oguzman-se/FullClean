@@ -142,11 +142,14 @@ function ModalCargarCliente(props) {
           value={currentcodigo.codigo}
           />
           {AllCodigos.map((codigo)=>
-            (
-              <div>
+            {
+              if(codigo.producto_id === currentProducto.id)
+              return(
+                <div>
                 {codigo.codigo}
-              </div>
-            )
+                </div>
+              )
+            }
           )}
         </div>
         </form>

@@ -17,18 +17,31 @@ function Barcode() {
         let contador = 0;
         AllCodigos.forEach(
             (cod) =>{
-
-                if(cod.id.toString() === barcode){
-                    match=cod;
-                }else if (cod.id === 'undefined'){
-                    contador = 1;
-                }else if(errorMatch === false){
+                console.log(cod)
+                if(cod.codigo !== null){
+                     if (cod.codigo === undefined){
+                        contador = 1;
+                    }else if(cod.codigo.toString() === barcode){
+                        match=cod.producto_id;
+                        console.log()
+                    }else if(errorMatch === false){
+                        console.log("error")
+                    }    
+                }else{
                     console.log("error")
-                }                 
+                }
+                             
             }
             
         )
-        return match;
+        let returnProduct;
+        {products.map((product)=>{
+            if(match === product.id){
+                returnProduct = product;
+            }
+        })}
+        console.log(returnProduct)
+        return returnProduct;
         if(contador === 1){
             setErrorMatch(true);
             return (match);
