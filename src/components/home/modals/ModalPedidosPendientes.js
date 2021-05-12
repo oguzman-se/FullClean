@@ -2,11 +2,14 @@ import React from 'react'
 import {Modal} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.css';
 import Button from '../Button';
-
+import PedidoPendiente from '../PedidoPendiente'
 
 function ModalPedidosPendientes(props) {
-  const handleClose = () => setShowPedidosPendientes(false);  
   const {showPedidosPendientes, setShowPedidosPendientes} = props;
+  const handleClose = () => {
+    setShowPedidosPendientes(false);
+  }
+  
 
   return (
     <>
@@ -20,9 +23,7 @@ function ModalPedidosPendientes(props) {
           <Modal.Title id="modal-tittle">Pedidos Pendientes</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <h3>
-        ****PEDIDOS OENTIENTES****
-        </h3>
+          <PedidoPendiente/>
         </Modal.Body>
         <Modal.Footer>
         

@@ -3,7 +3,7 @@ import clienteAxios from '../config/clienteAxios'
 const PedidosContext = React.createContext();
 
 export function PedidosProvider(props){
-  //PRODUCTOS API
+  //PEDIDOS API
   const [pedidos, setPedidos] = useState([]);
 
   useEffect(() => {
@@ -15,6 +15,18 @@ export function PedidosProvider(props){
       setPedidos(res.data)
     })
   }
+  //PEDIDOS DETALLE API
+  const [pedidoDetalle, setPedidoDetalle] = useState([]);
+
+  useEffect(() => {
+      obtenerDetalle()
+  }, [])
+  const obtenerDetalle = async () => {
+    await clienteAxios.get('/pedidodetalles')
+    .then(res => {
+      setPedidoDetalle(res.data)
+    })
+  }
   //ARRAY DE PEDIDOS
     const [array, setArray] = useState([]);
   //ARRAY DONDE SE GUARDAN LOS PEDIDOS
@@ -24,7 +36,8 @@ export function PedidosProvider(props){
     {
       pedidos, setPedidos,
       array, setArray,
-      bigArray, setBigArray
+      bigArray, setBigArray,
+      pedidoDetalle, setPedidoDetalle
       }
   return <PedidosContext.Provider value={value} {...props} />
 }
