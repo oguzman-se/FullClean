@@ -65,32 +65,41 @@ function ModalCargarCliente(props) {
   }
 
   const submit = async () => {
-    await clienteAxios.post('/productoscodigo', {
-      codigo: currentcodigo.codigo.toLowerCase(),
-      producto_id: currentProducto.id
-    })
-    .then((res) =>{
-      console.log("respuesta",res.data)
-      const getCod = async () => {
-        await clienteAxios
-        .get('/productoscodigo')
-        .then((r) => {
-          setAllCodigos(r.data)
-          addToast("Barcode creado", {
-            appearance: "success",
-            autoDismiss: true,
-        });
-        })
-        .catch((r) => {
-          console.log("error get", r);
-          console.log(currentcodigo)
-        });
-      };
-      getCod();
-    })
-    .catch((err) => {
-      console.log("error post", err);
+    const exist = AllCodigos.find(x=> x.codigo === currentcodigo.codigo.toLowerCase())
+    if(exist === undefined){
+     await clienteAxios.post('/productoscodigo', {
+        codigo: currentcodigo.codigo.toLowerCase(),
+        producto_id: currentProducto.id
+      })
+      .then((res) =>{
+        console.log("respuesta",res.data)
+        const getCod = async () => {
+          await clienteAxios
+          .get('/productoscodigo')
+          .then((r) => {
+            setAllCodigos(r.data)
+            addToast("Barcode creado", {
+              appearance: "success",
+              autoDismiss: true,
+          });
+          })
+          .catch((r) => {
+            console.log("error get", r);
+            console.log(currentcodigo)
+          });
+        };
+        getCod();
+      })
+      .catch((err) => {
+        console.log("error post", err);
+      });
+    }else{
+      addToast("El barcode ya existe", {
+        appearance: "error",
+        autoDismiss: true,
     });
+    }
+    
     
   }
   const eliminar = async (currentcodigo) => {
