@@ -3,13 +3,20 @@ import {Modal} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.css';
 import {useHome} from '../../../context/home-context'
 import clienteAxios from '../../../config/clienteAxios'
+import { useToasts } from "react-toast-notifications";
+import Select from 'react-select'
 
 function ModalCustom() {
+  const { addToast } = useToasts();
   const {setShow, show} = useHome();
-  const {products, setProducts} = useHome();
+  const {setProducts} = useHome();
   const handleClose = () => setShow(false);
   const {currentProducto, setCurrentProducto, AllCategorias} = useHome();
-  
+  const options = [
+    { value: 'chocolate', label: 'Chocolate' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' }
+  ]
   const submit = async () => {
     console.log(currentProducto)
     await clienteAxios.post('/productos', {
@@ -26,16 +33,27 @@ function ModalCustom() {
         .get('/productos')
         .then((r) => {
           setProducts(r.data)
+          handleClose()
+          addToast("Producto creado", {
+            appearance: "success",
+            autoDismiss: true,
+        });
+        setCurrentProducto("")
         })
         .catch((r) => {
-          console.log("error get", r);
-          console.log(products)
+          addToast(r.data, {
+            appearance: "error",
+            autoDismiss: true,
+        });
         });
       };
       getProd();
     })
-    .catch((err) => {
-      console.log("error post", err);
+    .catch((e) => {
+      addToast(e.data, {
+        appearance: "error",
+        autoDismiss: true,
+    });
     });
     
   }
@@ -67,20 +85,21 @@ function ModalCustom() {
         </div>
         <div>
           <label for="exampleInputEmail1">Costo del Producto</label>
-          <input type="text" className="form-control custom-input" 
+          <input type="number" className="form-control custom-input" 
           placeholder="Costo"
           onChange={(e) => handle(e)} name="costo" value={currentProducto.costo}
           />
         </div>
         <div>
           <label for="exampleInputEmail1">Precio del Producto</label>
-          <input type="text" className="form-control custom-input" 
+          <input type="number" className="form-control custom-input" 
           placeholder="Precio"
           onChange={(e) => handle(e)} name="precio" value={currentProducto.precio}
           />
         </div>
         <div>
           <label for="exampleInputEmail1">Categoria</label>
+          <Select options={options} />
           <select class="form-select form-control custom-input" aria-label="Default select example"
           onChange={(e) => handle(e)} name="category_id">
             {AllCategorias.map((category) => (

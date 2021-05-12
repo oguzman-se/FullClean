@@ -427,6 +427,9 @@
   padding-top: 4px !important;
   padding-bottom: 4px !important;
 }
+.table th, .table td {
+  padding: 0 !important;
+}
 .name{
   overflow:hidden;
   white-space:nowrap;
@@ -564,14 +567,15 @@
 }
 .modal-content{
   border-radius: 0 !important;
-  width: 140% !important;
 }
-
+.modal-dialog{
+  max-width: 700px !important;
+}
 .boton-modal-buscar{
   border: transparent;
   background-color: rgb(240, 95, 116);
   color: aliceblue;
-  padding: 3px;
+  padding: 7px;
   margin: 4px;
 }
 
@@ -579,7 +583,7 @@
   border: transparent;
   background-color: rgb(243, 155, 168);
   color: rgb(76, 76, 77);
-  padding: 3px;
+  padding: 7px;
 }
 .fondo{
   background-color: rgb(240, 95, 116) !important;

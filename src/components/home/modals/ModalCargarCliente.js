@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Modal} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.css';
 import {useHome} from '../../../context/home-context'
@@ -7,11 +7,21 @@ import {useHome} from '../../../context/home-context'
 function ModalCargarCliente(props) {
   const {showCargarCliente, setShowCargarCliente} = props;
   const {Allclientes, setLabelCliente} = useHome([]);
+  const [searchCli, setSearchCli] = useState("");
   const handleClose = () => setShowCargarCliente(false);  
   const onAddCliente = (clientes) => {
     setLabelCliente(clientes)
     handleClose()
   };
+  function searchingCli(searchCli){
+    return function(x){
+      return (
+        x.nombre.toLowerCase().includes(searchCli) || !searchCli ||
+        x.telefono.toLowerCase().includes(searchCli) || !searchCli ||
+        x.domicilio.toLowerCase().includes(searchCli) || !searchCli
+      ) 
+    }
+  }
   return (
     <>
       <Modal
@@ -24,6 +34,13 @@ function ModalCargarCliente(props) {
           <Modal.Title id="modal-tittle">Cargar Cliente</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+        {Allclientes && (
+            <input className="col-md-12 form-control modal-search"  type="text"
+            placeholder="Buscar" aria-label="Search"
+            onChange={e => setSearchCli(e.target.value.toLowerCase())}
+            />
+            )}
+
         <div className="tabla2">
                 <table className="table">
                 <thead className="thead-dark">
@@ -41,7 +58,7 @@ function ModalCargarCliente(props) {
                         <td></td>
                         <td></td>
                     </tr>
-                {Allclientes.map((clientes) => (
+                {Allclientes.filter(searchingCli(searchCli)).map((clientes) => (
                     <tr onClick={async()=>
                     await onAddCliente(clientes)
                     }>

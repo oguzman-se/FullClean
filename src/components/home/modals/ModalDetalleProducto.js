@@ -66,8 +66,7 @@ function ModalCargarCliente(props) {
 
   const submit = async () => {
     await clienteAxios.post('/productoscodigo', {
-      id: currentcodigo.id,
-      codigo: currentcodigo.codigo,
+      codigo: currentcodigo.codigo.toLowerCase(),
       producto_id: currentProducto.id
     })
     .then((res) =>{
@@ -77,7 +76,10 @@ function ModalCargarCliente(props) {
         .get('/productoscodigo')
         .then((r) => {
           setAllCodigos(r.data)
-          console.log("GET", currentcodigo)
+          addToast("Barcode creado", {
+            appearance: "success",
+            autoDismiss: true,
+        });
         })
         .catch((r) => {
           console.log("error get", r);
@@ -101,7 +103,10 @@ function ModalCargarCliente(props) {
         .get('/productoscodigo')
         .then((r) => {
           setAllCodigos(r.data)
-          console.log("GET", currentcodigo)
+          addToast("Barcode eliminado", {
+            appearance: "success",
+            autoDismiss: true,
+        });
         })
         .catch((r) => {
           console.log("error get", r);
@@ -176,7 +181,23 @@ function ModalCargarCliente(props) {
               if(codigo.producto_id === currentProducto.id)
               return(
                 <div>
-                {codigo.codigo}
+                    <ol class="list-group list-group-numbered">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">
+                                    {codigo.codigo.toUpperCase()}
+                                </div>
+                            </div>
+                            <div>
+                                <button
+                                    className="boton-modal-buscar"
+                                     onClick={() => eliminar(codigo)}
+                                >
+                                    Eliminar
+                                </button>
+                            </div>
+                        </li>
+                    </ol>
                 </div>
               )
             }

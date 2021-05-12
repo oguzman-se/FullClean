@@ -22,7 +22,7 @@ function Barcode() {
                      if (cod.codigo === undefined){
                         contador = 1;
                         console.log("aaa")
-                    }else if(cod.codigo.toString() === barcode){
+                    }else if(cod.codigo.toString() === barcode.toLowerCase()){
                         match=cod.producto_id;
                         console.log()
                     }else if(errorMatch === false){

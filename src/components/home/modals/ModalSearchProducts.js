@@ -13,7 +13,10 @@ function ModalSearchProducts() {
   const {products, onAdd, term, setTerm, setProducts} = useHome();
   function searchingTerm(term){
     return function(x){
-      return x.nombre.toLowerCase().includes(term) || !term; 
+      return (
+        x.nombreCat.toLowerCase().includes(term) || !term ||
+        x.nombre.toLowerCase().includes(term) || !term
+      ) 
     }
   }
   
@@ -40,8 +43,6 @@ function ModalSearchProducts() {
     });
     
   }
- 
-
   return (
     <div>
       <Modal
