@@ -7,6 +7,7 @@ import Button from '../Button';
 
 function ModalNuevaCompra(props) {
   const {onRemoveAll, setLabelCliente} = useHome()
+
   const handleClose = () => setShowNuevaCompra(false);  
   const {showNuevaCompra, setShowNuevaCompra} = props;
   const yes = ()=>{
