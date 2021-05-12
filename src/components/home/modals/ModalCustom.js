@@ -95,14 +95,7 @@ function ModalCustom() {
         </div>
         <div>
           <label for="exampleInputEmail1">Categoria</label>
-          <SelectCategoria/>
-          <select class="form-select form-control custom-input" aria-label="Default select example"
-          onChange={(e) => handle(e)} name="category_id">
-            {AllCategorias.map((category) => (
-              <option value={category.id}>{category.nombre}</option>
-            ))}
-            
-          </select>
+          <SelectCategoria currentProducto={currentProducto} setCurrentProducto={setCurrentProducto} cats={AllCategorias}/>
         </div>
         </form>
         </Modal.Body>

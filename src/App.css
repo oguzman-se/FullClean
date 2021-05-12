@@ -703,3 +703,9 @@
   font-size: 20px;
   padding-left: 0px !important;
 }
+
+.css-yk16xz-control{
+    border-color: black !important;
+    border-radius: 0 !important;
+    cursor: pointer !important;
+}
