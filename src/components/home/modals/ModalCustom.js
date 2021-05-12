@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import {useHome} from '../../../context/home-context'
 import clienteAxios from '../../../config/clienteAxios'
 import { useToasts } from "react-toast-notifications";
-import Select from 'react-select'
+import SelectCategoria from '../selectCategoria';
 
 function ModalCustom() {
   const { addToast } = useToasts();
@@ -12,11 +12,7 @@ function ModalCustom() {
   const {setProducts} = useHome();
   const handleClose = () => setShow(false);
   const {currentProducto, setCurrentProducto, AllCategorias} = useHome();
-  const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' }
-  ]
+  
   const submit = async () => {
     console.log(currentProducto)
     await clienteAxios.post('/productos', {
@@ -99,7 +95,7 @@ function ModalCustom() {
         </div>
         <div>
           <label for="exampleInputEmail1">Categoria</label>
-          <Select options={options} />
+          <SelectCategoria/>
           <select class="form-select form-control custom-input" aria-label="Default select example"
           onChange={(e) => handle(e)} name="category_id">
             {AllCategorias.map((category) => (

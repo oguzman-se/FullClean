@@ -21,26 +21,29 @@ function Barcode() {
                 if(cod.codigo !== null){
                      if (cod.codigo === undefined){
                         contador = 1;
-                        console.log("aaa")
+                        console.log("hola")
                     }else if(cod.codigo.toString() === barcode.toLowerCase()){
                         match=cod.producto_id;
-                        console.log()
                     }else if(errorMatch === false){
-                        console.log("error")
+                        console.log("no encuentra")
                     }    
                 }else{
-                    console.log("error")
+                    console.log("cod.cod != null")
                 }     
             }
-
         )
         let returnProduct;
-        {products.map((product)=>{
-            if(match === product.id){
-                returnProduct = product;
-            }
-        })}
-        console.log(returnProduct)
+        if(match !== undefined){
+            {products.map((product)=>{
+                if(match === product.id){
+                    returnProduct = product;
+                }
+            })}
+        }else{
+            alert("abrir barcode")
+        }
+        
+        console.log("return",returnProduct)
         return returnProduct;
     }
     
