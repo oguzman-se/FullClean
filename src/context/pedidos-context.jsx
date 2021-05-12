@@ -17,11 +17,14 @@ export function PedidosProvider(props){
   }
   //ARRAY DE PEDIDOS
     const [array, setArray] = useState([]);
+  //ARRAY DONDE SE GUARDAN LOS PEDIDOS
+    const [bigArray, setBigArray] = useState([]);
   //DECLARO QUIEN ES EL CONTEXT
   const value = 
     {
       pedidos, setPedidos,
-      array, setArray
+      array, setArray,
+      bigArray, setBigArray
       }
   return <PedidosContext.Provider value={value} {...props} />
 }

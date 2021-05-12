@@ -1,15 +1,11 @@
 import React from 'react'
 import {useHome} from '../../context/home-context'
 import {usePedidos} from '../../context/pedidos-context'
+import TableItem from './tableItem';
 
 function Table(){
-    const {cartItems, setCartItems, onRemove, onRemoveItem, onAdd} = useHome();
-    const {array, setArray} = usePedidos()
-    const handleChange = (e, item )=> {
-        const {name, value} = e.target;
-        setCartItems({...cartItems, [name]:value})
-        console.log(cartItems);
-      }
+    const {cartItems} = useHome();
+
     return(
         <div className="tabla">
         <table className="table">
@@ -26,25 +22,9 @@ function Table(){
         <tbody>
             
             {cartItems.map((item)=>(
-                <tr key={item.id}>
-                    <td>{item.id}</td>
-                    <td className="name">{item.nombre}</td>
-                    <td>
-                        <button className="btn-minus" onClick={()=>onRemove(item)}>-</button>
-                        {item.qty}
-                        <button className="btn-plus" onClick={()=>onAdd(item)}>+</button>
-                    </td>
-                    <td>
-                        <input 
-                        name="precio"
-                        onChange={(e)=>{handleChange(e, item)}}
-                        value={item.precio.toFixed(2)}/>
-                    </td>
-                    <td>${(item.qty * item.precio).toFixed(2)}</td>
-                    <td>
-                        <button className="btn-cross" onClick={()=>onRemoveItem(item)}>X</button>
-                    </td>
-                </tr>
+                <TableItem
+                    item={item}
+                />
             ))}
         </tbody>            
         </table>

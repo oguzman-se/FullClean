@@ -6,7 +6,7 @@ import { usePedidos } from '../../context/pedidos-context';
 
 function LabelBottomSM(){
     const {labelCliente, totalPrice, cartItems} = useHome();
-    const {pedidos, setPedidos, array, setArray} = usePedidos()
+    const {pedidos, setPedidos, setArray, bigArray, setBigArray} = usePedidos()
     const getPedido = async () => {
         await clienteAxios
         .get('/pedidos')
@@ -32,11 +32,9 @@ function LabelBottomSM(){
             metodo_pago:"",
             metodo_envio:""
         }
-        let res = await clienteAxios.post('/pedidos', data )
-          console.log(res.data)
           let dataArray = [data, ...cartItems]
           setArray(dataArray)
-          console.log("array", dataArray)
+          await clienteAxios.post('/pedidos/array', {arr: dataArray})
           getPedido();
         }
         catch (error) {

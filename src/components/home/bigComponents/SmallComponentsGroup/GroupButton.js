@@ -8,27 +8,23 @@ import {usePedidos} from '../../../../context/pedidos-context'
 import ModalNuevaCompra from '../../modals/ModalNuevaCompra'
 import ModalPedidosPendientes from '../../modals/ModalPedidosPendientes'
 function GroupButton(){
-    const {setShow, setShowTable, setShowCategoria, onRemoveAll} = useHome();
-    const {pedidos} = usePedidos();
+    const {setShow, setShowTable, setShowCategoria, cartItems, setLabelCliente} = useHome();
     const [showNuevaCompra, setShowNuevaCompra] = useState(false);
     const [showPedidosPendientes, setShowPedidosPendientes] = useState(false);
-   /* const nuevaCompra = ()=>{
-        pedidos.map((pedido)=>{
-            if( pedido.estado.lenght > 0){
-                setShowNuevaCompra(true)
-            }else{
-                onRemoveAll()
-            }
-        })
-        
-    }
-    */
+    const nuevaCompra = ()=>{
+        console.log(cartItems)
+        if(cartItems.length > 0){
+            setShowNuevaCompra(true)
+        }else{
+            setLabelCliente({})
+        }
+    }    
     return(
         <div className="group-vh-1">
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-3 ajuste">
-                    <Button onClick={()=>setShowNuevaCompra(true)}>Nueva Compra</Button>             
+                    <Button onClick={nuevaCompra}>Nueva Venta</Button>             
                     </div>
                     <div className="col-3 ajuste">
                     <Button onClick={()=>setShow(true)}>
@@ -36,7 +32,7 @@ function GroupButton(){
                     </Button> 
                     </div>
                     <div className="col-2 ajuste"></div>
-                    <div className="col-4 ajuste">
+                    <div className="col-4 ajuste2">
                     <Button onClick={()=>setShowPedidosPendientes(true)}>
                             Pedidos Pendientes
                     </Button>
@@ -54,7 +50,7 @@ function GroupButton(){
                         </Button>
                     </div>
                     <div className="col-2 ajuste"></div>
-                    <div className="col-4 ajuste">
+                    <div className="col-4 ajuste2">
                     <Button onClick={()=>setShowTable(true)}>Buscar Productos</Button>
                     </div>
                 </div>

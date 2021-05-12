@@ -140,11 +140,7 @@ export function HomeProvider(props){
   
   //FUNCION PARA AGREGAR CLIENTE
   const [labelCliente, setLabelCliente] = useState([]);
-  const onAddCliente = (clientes) => {
-    setLabelCliente(clientes)
-    console.log(labelCliente)
-    
-  };
+  
 
 
   //DECLARO QUIEN ES EL CONTEXT
@@ -174,13 +170,13 @@ export function HomeProvider(props){
         setAllClientes,
         labelCliente,
         setLabelCliente,
-        onAddCliente,
         currentProducto,
         setCurrentProducto,
         AllCodigos,
         setAllCodigos,
         currentcodigo,
-        setCurrentcodigo
+        setCurrentcodigo,
+        setTotalPrice
       }
   return <HomeContext.Provider value={value} {...props} />
 }

@@ -6,9 +6,12 @@ import {useHome} from '../../../context/home-context'
 
 function ModalCargarCliente(props) {
   const {showCargarCliente, setShowCargarCliente} = props;
-  const {Allclientes, onAddCliente} = useHome([]);
+  const {Allclientes, setLabelCliente} = useHome([]);
   const handleClose = () => setShowCargarCliente(false);  
-
+  const onAddCliente = (clientes) => {
+    setLabelCliente(clientes)
+    handleClose()
+  };
   return (
     <>
       <Modal
@@ -32,6 +35,12 @@ function ModalCargarCliente(props) {
                     </tr>
                 </thead>
                 <tbody>
+                    <tr onClick={onAddCliente}>
+                        <td>0</td>
+                        <td>Consumidor Final</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
                 {Allclientes.map((clientes) => (
                     <tr onClick={async()=>
                     await onAddCliente(clientes)

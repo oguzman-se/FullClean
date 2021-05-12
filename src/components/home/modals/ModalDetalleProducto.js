@@ -3,8 +3,10 @@ import {Modal, ModalFooter} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.css';
 import {useHome} from '../../../context/home-context'
 import clienteAxios from '../../../config/clienteAxios'
+import { useToasts } from "react-toast-notifications";
 
 function ModalCargarCliente(props) {
+  const { addToast } = useToasts();
   const {AllCodigos, setAllCodigos} = useHome([])
   const [currentcodigo, setCurrentcodigo] = useState(
     {
@@ -45,6 +47,10 @@ function ModalCargarCliente(props) {
         .get('/productos')
         .then((r) => {
           setProducts(r.data)
+          addToast("Producto actualizado", {
+            appearance: "success",
+            autoDismiss: true,
+        });
         })
         .catch((r) => {
           console.log("error get", r);
@@ -60,6 +66,7 @@ function ModalCargarCliente(props) {
 
   const submit = async () => {
     await clienteAxios.post('/productoscodigo', {
+      id: currentcodigo.id,
       codigo: currentcodigo.codigo,
       producto_id: currentProducto.id
     })
@@ -84,7 +91,30 @@ function ModalCargarCliente(props) {
     });
     
   }
-
+  const eliminar = async (currentcodigo) => {
+    await clienteAxios.delete(`/productoscodigo/${currentcodigo.id}`)
+    .then((res) =>{
+      console.log(res.data)
+      //handleClose()
+      const getCod = async () => {
+        await clienteAxios
+        .get('/productoscodigo')
+        .then((r) => {
+          setAllCodigos(r.data)
+          console.log("GET", currentcodigo)
+        })
+        .catch((r) => {
+          console.log("error get", r);
+          console.log(currentcodigo)
+        });
+      };
+      getCod();
+    })
+    .catch((err) => {
+      console.log("error delete", err);
+    });
+    
+  }
   return (
     <>
       <Modal
@@ -97,7 +127,7 @@ function ModalCargarCliente(props) {
           <Modal.Title id="modal-tittle">Detalle producto</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <form>
+        <div>
         <div>
           <label for="exampleInputEmail1">ID del Producto</label>
           <input type="text" className="form-control custom-input" 
@@ -114,14 +144,14 @@ function ModalCargarCliente(props) {
         </div>
         <div>
           <label for="exampleInputEmail1">Costo del Producto</label>
-          <input type="text" className="form-control custom-input" 
+          <input type="number" className="form-control custom-input" 
           name="costo" value={currentProducto.costo}
           onChange={handleChange}
           />
         </div>
         <div>
           <label for="exampleInputEmail1">Precio del Producto</label>
-          <input type="text" className="form-control custom-input" 
+          <input type="number" className="form-control custom-input" 
           name="precio" value={currentProducto.precio}
           onChange={handleChange}
           />
@@ -152,7 +182,7 @@ function ModalCargarCliente(props) {
             }
           )}
         </div>
-        </form>
+        </div>
         </Modal.Body>
         <Modal.Footer>
           <button className="modal-button-create"

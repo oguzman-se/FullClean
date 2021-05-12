@@ -1,12 +1,12 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useHome } from '../../context/home-context'
-import clienteAxios from '../../config/clienteAxios'
+
 
 function Barcode() {
-    const {AllCodigos, setAllCodigos} = useHome([])
+    const {AllCodigos} = useHome([])
     const [barcode, setBarcode] = useState([]);
-    const [errorMatch, setErrorMatch] = useState([false]);
+    const [errorMatch] = useState([false]);
     const {onAdd, products} = useHome();
     const onChange = (e) => {
         setBarcode(e.target.value);
@@ -21,6 +21,7 @@ function Barcode() {
                 if(cod.codigo !== null){
                      if (cod.codigo === undefined){
                         contador = 1;
+                        console.log("aaa")
                     }else if(cod.codigo.toString() === barcode){
                         match=cod.producto_id;
                         console.log()
@@ -29,10 +30,9 @@ function Barcode() {
                     }    
                 }else{
                     console.log("error")
-                }
-                             
+                }     
             }
-            
+
         )
         let returnProduct;
         {products.map((product)=>{
@@ -42,16 +42,6 @@ function Barcode() {
         })}
         console.log(returnProduct)
         return returnProduct;
-        if(contador === 1){
-            setErrorMatch(true);
-            return (match);
-        }else{
-            return {
-                id:"",
-                name:""
-            }
-        }
-
     }
     
     const onKeyPresed = (e) => {

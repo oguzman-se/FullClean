@@ -16,7 +16,7 @@ function ModalCustom() {
       nombre: currentProducto.nombre,
       costo: currentProducto.costo,
       precio: currentProducto.precio,
-      category: currentProducto.categoria_id,
+      categoria_id: currentProducto.category_id,
       destacado: false
     })
     .then((res) =>{
