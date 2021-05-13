@@ -1,7 +1,23 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {usePedidos} from '../../context/pedidos-context'
+
 function PedidoPendiente() {
-    const {pedidos} = usePedidos()
+    const {pedidoDetalle, pedidos} = usePedidos()
+    const [detalle, setDetalle] = useState()
+    
+    useEffect(() => {
+        funcionDetalle()
+        },
+        // eslint-disable-next-line
+        [detalle])
+    
+        const funcionDetalle = () => {
+        pedidoDetalle.filter(product => product.pedido_id === 133).map((product)=> {
+                setDetalle(product)
+                console.log("detalle", detalle)
+            })
+        }
+
     return (
         <div className="tabla2">
                 <table className="table">
@@ -21,8 +37,7 @@ function PedidoPendiente() {
                             <td>{pedido.id}</td>
                             <td>{pedido.cliente_id}</td>
                             <td>{pedido.estado}</td>
-                            <td>{pedido.valor_total}</td>
-                            <button>Agregar</button>
+                            <td>{pedido.valor_total}</td>                            
                         </tr>
                         ))}
                     

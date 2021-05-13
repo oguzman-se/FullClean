@@ -573,17 +573,48 @@
 }
 .boton-modal-buscar{
   border: transparent;
-  background-color: rgb(240, 95, 116);
-  color: aliceblue;
-  padding: 7px;
+  background-color: rgb(255, 255, 255);
+  color: #383c44;
+  width: 75%;
   margin: 4px;
+  font-weight: bold;
+  border-radius: 100%;
 }
 
 .boton-modal-buscar:hover{
   border: transparent;
-  background-color: rgb(243, 155, 168);
+  border-radius: 100%;
+  background-color: rgb(175, 162, 164);
   color: rgb(76, 76, 77);
-  padding: 7px;
+}
+.boton-modal-buscar2{
+  border: transparent;
+  background-color: rgb(255, 255, 255);
+  color: #383c44;
+  width: 100%;
+  margin: 4px;
+  font-weight: bold;
+  border-radius: 100%;
+}
+
+.boton-modal-buscar2:hover{
+  border: transparent;
+  border-radius: 100%;
+  background-color: rgb(175, 162, 164);
+  color: rgb(76, 76, 77);
+}
+.iconos{
+  border: transparent;
+  background-color: rgb(255, 255, 255);
+  color: #383c44;
+  border-radius: 100%;
+  width: 70%;
+}
+.iconos:hover{
+  border: transparent;
+  border-radius: 100%;
+  background-color: rgb(175, 162, 164);
+  color: rgb(76, 76, 77);
 }
 .fondo{
   background-color: rgb(240, 95, 116) !important;

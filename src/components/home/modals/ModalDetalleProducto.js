@@ -199,10 +199,10 @@ function ModalCargarCliente(props) {
                             </div>
                             <div>
                                 <button
-                                    className="boton-modal-buscar"
+                                    className="boton-modal-buscar2"
                                      onClick={() => eliminar(codigo)}
                                 >
-                                    Eliminar
+                                    <i class="bi bi-x-octagon"></i>
                                 </button>
                             </div>
                         </li>

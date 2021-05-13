@@ -167,29 +167,26 @@ function ModalCategoria() {
                             <ol class="list-group list-group-numbered">
                                 <li class="list-group-item d-flex justify-content-between align-items-start">
                                     <div class="ms-2 me-auto">
-                                        <div class="fw-bold">
+                                        <div class="fw-bold categoriaNombre">
                                             {category.nombre}
                                         </div>
                                     </div>
                                     <div>
                                         <button
-                                            className="boton-modal-buscar"
+                                            className="iconos"
                                             onClick={() => {
                                                 setCurrentCategoria(category);
                                                 setEditar(true);
                                             }}
                                         >
-                                            Editar
+                                            <i class="bi bi-pencil-square"></i>
                                         </button>
                                         <button
-                                            className="boton-modal-buscar"
+                                            className="iconos"
                                             onClick={() => eliminar(category)}
                                         >
-                                            Eliminar
+                                            <i class="bi bi-x-octagon"></i>
                                         </button>
-                                        <span class="badge fondo rounded-pill">
-                                            ID: {category.id}
-                                        </span>
                                     </div>
                                 </li>
                             </ol>

@@ -14,7 +14,7 @@ function ModalSearchProducts() {
   function searchingTerm(term){
     return function(x){
       return (
-        x.nombreCat.toLowerCase().includes(term) || !term ||
+        x.nombreCat.toLowerCase().includes(term.toLowerCase()) || !term ||
         x.nombre.toLowerCase().includes(term) || !term
       ) 
     }
@@ -93,26 +93,26 @@ function ModalSearchProducts() {
                             setShowDetalleProd(true)
                           
                           }}
-                          >Editar</button>
+                          ><i class="bi bi-pencil-square"></i></button>
                           
                         </td>
                         <td>
                           <button
                           className="boton-modal-buscar"
                           onClick={()=> onAdd(product)}
-                          >Agregar</button>
+                          ><i class="bi bi-plus-circle-fill"></i></button>
                         </td>
                         <td>
                         {product.destacado === 1 ?
                           <button
                           className="boton-modal-buscar"
                           onClick={()=> destacar(product, false)}
-                          >No Destacar
+                          ><i class="bi bi-star-fill"></i>
                           </button> : 
                           <button
                           className="boton-modal-buscar"
                           onClick={()=> destacar(product, true)}
-                          >Destacar
+                          ><i class="bi bi-star"></i>
                           </button>}
                         </td>
                     </tr>

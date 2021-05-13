@@ -36,7 +36,7 @@ function LabelBottomSM(){
           setArray(dataArray)
           await clienteAxios.post('/pedidos/array', {arr: dataArray})
           setPedidos(dataArray)
-          console.log(dataArray)
+          
           getPedido();
         }
         catch (error) {
