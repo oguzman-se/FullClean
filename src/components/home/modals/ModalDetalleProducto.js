@@ -4,7 +4,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import {useHome} from '../../../context/home-context'
 import clienteAxios from '../../../config/clienteAxios'
 import { useToasts } from "react-toast-notifications";
-
 function ModalCargarCliente(props) {
   const { addToast } = useToasts();
   const {AllCodigos, setAllCodigos} = useHome([])
@@ -99,8 +98,6 @@ function ModalCargarCliente(props) {
         autoDismiss: true,
     });
     }
-    
-    
   }
   const eliminar = async (currentcodigo) => {
     await clienteAxios.delete(`/productoscodigo/${currentcodigo.id}`)
@@ -170,7 +167,12 @@ function ModalCargarCliente(props) {
           onChange={handleChange}
           />
         </div>
-        
+        <div>
+          <label for="exampleInputEmail1">Stock</label>
+          <input type="text" className="form-control custom-input" 
+          placeholder="Stock" aria-label="Username"
+          />
+        </div>
         <ModalFooter>
           <button className="modal-button-create"
           onClick={()=> actualizar(currentProducto)}

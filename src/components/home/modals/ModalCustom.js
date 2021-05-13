@@ -71,7 +71,7 @@ function ModalCustom() {
         </Modal.Header>
         <Modal.Body>
 
-        <form>
+        <div>
         <div>
           <label for="exampleInputEmail1">Nombre del Producto</label>
           <input type="text" className="form-control custom-input" 
@@ -94,10 +94,16 @@ function ModalCustom() {
           />
         </div>
         <div>
+          <label for="exampleInputEmail1">Stock</label>
+          <input type="text" className="form-control custom-input" 
+          placeholder="Stock" aria-label="Username"
+          />
+        </div>
+        <div>
           <label for="exampleInputEmail1">Categoria</label>
           <SelectCategoria currentProducto={currentProducto} setCurrentProducto={setCurrentProducto} cats={AllCategorias}/>
         </div>
-        </form>
+        </div>
         </Modal.Body>
         <Modal.Footer>
           <button className="modal-button-create"

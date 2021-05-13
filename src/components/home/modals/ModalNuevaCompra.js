@@ -6,7 +6,7 @@ import Button from '../Button';
 
 
 function ModalNuevaCompra(props) {
-  const {onRemoveAll, setLabelCliente} = useHome()
+  const {onRemoveAll, setLabelCliente, setEnable} = useHome()
 
   const handleClose = () => setShowNuevaCompra(false);  
   const {showNuevaCompra, setShowNuevaCompra} = props;
@@ -14,6 +14,7 @@ function ModalNuevaCompra(props) {
     onRemoveAll()
     handleClose()
     setLabelCliente({})
+    setEnable(false)
   }
   return (
     <>

@@ -6,7 +6,8 @@ const HomeContext = React.createContext();
 export function HomeProvider(props){
   // ESTE ESTADO ES PARA LOS ITEMS DEL CARRITO, LOS PRODUCTOS.
     const [cartItems, setCartItems] = useState([]);
-
+  //DISABLED BOTONES
+    const [enable, setEnable] = useState(false);
   //ESTE ESTADO SIRVE PARA ABRIR Y CERRAR EL MODL DE "+PRODUCTOS"
     const [show, setShow] = useState(false);
     //ESTADO DEL CURRENT PRODUCTO CUANDO SE CREA
@@ -176,7 +177,8 @@ export function HomeProvider(props){
         setAllCodigos,
         currentcodigo,
         setCurrentcodigo,
-        setTotalPrice
+        setTotalPrice,
+        enable, setEnable
       }
   return <HomeContext.Provider value={value} {...props} />
 }

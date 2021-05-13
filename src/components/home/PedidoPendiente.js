@@ -4,7 +4,7 @@ import {usePedidos} from '../../context/pedidos-context'
 import {useHome} from '../../context/home-context'
 import ModalPendienteConf from './modals/ModalPedidoPendienteConfirmar'
 function PedidoPendiente({setShowPedidosPendientes}) {
-    const {onAdd, products, cartItems, Allclientes, setLabelCliente} = useHome()
+    const {onAdd, products, cartItems,setCartItems, Allclientes, setLabelCliente, setEnable} = useHome()
     const {pedidos} = usePedidos()
     const [showPendiente, setShowPendiente] = useState(false);
     const [currentPedido, setCurrentPedido] = useState(0)
@@ -13,8 +13,9 @@ function PedidoPendiente({setShowPedidosPendientes}) {
         await clienteAxios.get(`/pedidodetalles/pedido/${id}`)
         .then((res)=>{
             let arr = res.data;
+            let ArrayFinal = []
             arr.map((item)=> {
-                let dataProduct = products.filter((p)=> p.id === item.producto_id)
+                let dataProduct = products.filter((p)=> p.id === item.producto_id) 
                 if(dataProduct[0]){
                     let productoIdeal = {
                         id: dataProduct[0].id,
@@ -22,9 +23,11 @@ function PedidoPendiente({setShowPedidosPendientes}) {
                         precio: item.precio,
                         qty: item.cantidad,
                     }
-                    onAdd(productoIdeal)
+                    ArrayFinal.push(productoIdeal)
                 }
             })
+            setCartItems(ArrayFinal)
+            setEnable(true)
         })
         .catch((e)=>{
             console.log(e)
@@ -47,6 +50,7 @@ function PedidoPendiente({setShowPedidosPendientes}) {
             setLabelCliente(currentCliente[0])
             onSubmit(pedido.id)
             setShowPedidosPendientes(false)
+            
         }
     }
     return (

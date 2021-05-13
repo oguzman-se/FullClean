@@ -608,13 +608,10 @@
   background-color: rgb(255, 255, 255);
   color: #383c44;
   border-radius: 100%;
-  width: 70%;
+  padding-right: 20px;
 }
 .iconos:hover{
-  border: transparent;
-  border-radius: 100%;
-  background-color: rgb(175, 162, 164);
-  color: rgb(76, 76, 77);
+  color: rgb(240, 95, 116);
 }
 .fondo{
   background-color: rgb(240, 95, 116) !important;

@@ -1,30 +1,29 @@
 import React from "react";
 import { useState } from "react";
 import { useHome } from '../../context/home-context'
+import ModalBarcode from "./modals/ModalBarcode";
 
 
 function Barcode() {
     const {AllCodigos} = useHome([])
     const [barcode, setBarcode] = useState([]);
+    const [showBarcode, setShowBarcode] = useState(false);
     const [errorMatch] = useState([false]);
     const {onAdd, products} = useHome();
     const onChange = (e) => {
         setBarcode(e.target.value);
     };
-    let returnProduct;
-    const [validacionBarcode, setValidacionBarcode] = useState(false);
+    
     const searchProduct = () => {
-        let match;
-        let contador = 0;
+        let returnProduct;
         AllCodigos.forEach(
             (cod) =>{
                 console.log(cod)
                 if(cod.codigo !== null){
                      if (cod.codigo === undefined){
-                        contador = 1;
                         console.log("hola")
                     }else if(cod.codigo.toString() === barcode.toLowerCase()){
-                        match=cod.producto_id;
+                        returnProduct=cod.producto_id;
                     }else if(errorMatch === false){
                         console.log("no encuentra")
                     }    
@@ -33,25 +32,24 @@ function Barcode() {
                 }     
             }
         )
-        
-        if(match !== undefined){
-            {products.map((product)=>{
-                if(match === product.id){
-                     returnProduct = product;
-                 }
-                
-            })}
-        }else{
-            alert("abrir barcode")
-        }
-        console.log("return",returnProduct)
         return returnProduct;
     }
     
     const onKeyPresed = (e) => {
         if (e.key === "Enter") {
-            console.log("validacionBarcode",validacionBarcode)
-            onAdd(searchProduct())
+            let match = searchProduct()
+            let producto;
+            if(match !== undefined){
+                {products.map((product)=>{
+                    if(match === product.id){
+                        producto = product;
+                    }
+                })}
+                onAdd(producto)
+            }else{
+                setShowBarcode(true)
+            }
+           
         }
     };
 
@@ -66,6 +64,11 @@ function Barcode() {
                 ></input>
             </div>
         </div>
+        <ModalBarcode
+            showBarcode={showBarcode}
+            setShowBarcode={setShowBarcode}
+            barcode={barcode}
+        />
     </div>    
         
     );

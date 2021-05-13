@@ -1,12 +1,11 @@
 import Button  from '../home/Button'
-import ButtonDisabled from '../home/ButtonDisabled'
 import clienteAxios from '../../config/clienteAxios'
 import { useHome } from '../../context/home-context'
 import { usePedidos } from '../../context/pedidos-context';
 
 function LabelBottomSM(){
-    const {labelCliente, totalPrice, cartItems} = useHome();
-    const {pedidos, setPedidos, setArray, bigArray, setBigArray} = usePedidos()
+    const {labelCliente, totalPrice, cartItems, enable, setEnable} = useHome();
+    const {pedidos, setPedidos, setArray} = usePedidos()
     const getPedido = async () => {
         await clienteAxios
         .get('/pedidos')
@@ -34,6 +33,7 @@ function LabelBottomSM(){
         }
           let dataArray = [data, ...cartItems]
           setArray(dataArray)
+          setEnable(true)
           await clienteAxios.post('/pedidos/array', {arr: dataArray})
           setPedidos(dataArray)
           
@@ -54,7 +54,9 @@ function LabelBottomSM(){
                     >Confirmar</Button>           
                 </div>
                 <div className="col-3 ajuste">
-                    <ButtonDisabled>Remito</ButtonDisabled>
+                    {enable === false
+                    ? <button type="button" className="btn btn-custom" disabled>Remito</button>
+                    : <button type="button" className="btn btn-custom" >Remito</button>}
                 </div>
             </div>
             <div className="row ">
@@ -72,7 +74,10 @@ function LabelBottomSM(){
                     >Pendiente</Button>
                 </div>
                 <div className="col-3 ajuste">
-                    <ButtonDisabled >Ticket</ButtonDisabled>
+                {enable === false
+                ? <button type="button" className="btn btn-custom" disabled>Ticket</button>
+                : <button type="button" className="btn btn-custom" >Ticket</button>}
+                
                 </div>
             </div>
         </div>

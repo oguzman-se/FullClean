@@ -70,6 +70,10 @@ function ModalCategoria() {
                                 nombre: "",
                             });
                             setEditar(false);
+                            addToast("Categoria actualizada", {
+                                appearance: "success",
+                                autoDismiss: true,
+                            });
                         })
                         .catch((r) => {
                             console.log("error get", r);
@@ -94,8 +98,10 @@ function ModalCategoria() {
                         .then((r) => {
                             SetAllCategorias(r.data);
                             setCategoria(r.data);
-                            console.log("SetAllCategorias", AllCategorias);
-                            console.log("categorias", categorias);
+                            addToast("Categoria eliminada", {
+                                appearance: "success",
+                                autoDismiss: true,
+                            });
                         })
                         .catch((r) => {
                             console.log("error get", r);

@@ -70,6 +70,7 @@ function ModalSearchProducts() {
                 <tr >
                     <th  scope="col">Codigo</th>
                     <th scope="col">Producto</th>
+                    <th scope="col">Categoria</th>
                     <th scope="col">Costo</th>
                     <th scope="col">Precio</th>
                     <th scope="col"></th>
@@ -83,6 +84,7 @@ function ModalSearchProducts() {
                     <tr key={product.id} className="trhover">
                         <td>{product.id}</td>
                         <td className="name">{product.nombre}</td>
+                        <td className="name">{product.nombreCat}</td>
                         <td>${product.precio}</td>
                         <td>${product.costo}</td>
                         <td>

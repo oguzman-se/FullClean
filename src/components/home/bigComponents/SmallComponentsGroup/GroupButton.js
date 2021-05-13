@@ -8,15 +8,17 @@ import {usePedidos} from '../../../../context/pedidos-context'
 import ModalNuevaCompra from '../../modals/ModalNuevaCompra'
 import ModalPedidosPendientes from '../../modals/ModalPedidosPendientes'
 function GroupButton(){
-    const {setShow, setShowTable, setShowCategoria, cartItems, setLabelCliente} = useHome();
+    const {setShow, setShowTable, setShowCategoria, cartItems, setLabelCliente, enable, onRemoveAll, setEnable} = useHome();
     const {showNuevaCompra, setShowNuevaCompra} = usePedidos()
     const [showPedidosPendientes, setShowPedidosPendientes] = useState(false);
     const nuevaCompra = ()=>{
         console.log(cartItems)
-        if(cartItems.length > 0){
+        if(cartItems.length > 0 && enable === false){
             setShowNuevaCompra(true)
         }else{
             setLabelCliente({})
+            onRemoveAll()
+            setEnable(false)
         }
     }    
     return(
