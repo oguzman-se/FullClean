@@ -15,18 +15,8 @@ export function PedidosProvider(props){
       setPedidos(res.data)
     })
   }
-  //PEDIDOS DETALLE API
-  const [pedidoDetalle, setPedidoDetalle] = useState([]);
-
-  useEffect(() => {
-      obtenerDetalle()
-  }, [])
-  const obtenerDetalle = async () => {
-    await clienteAxios.get('/pedidodetalles')
-    .then(res => {
-      setPedidoDetalle(res.data)
-    })
-  }
+  //STATE PARA MODAL NUEVA VENTA
+  const [showNuevaCompra, setShowNuevaCompra] = useState(false);
   //ARRAY DE PEDIDOS
     const [array, setArray] = useState([]);
   //ARRAY DONDE SE GUARDAN LOS PEDIDOS
@@ -37,7 +27,7 @@ export function PedidosProvider(props){
       pedidos, setPedidos,
       array, setArray,
       bigArray, setBigArray,
-      pedidoDetalle, setPedidoDetalle
+      showNuevaCompra, setShowNuevaCompra
       }
   return <PedidosContext.Provider value={value} {...props} />
 }

@@ -23,7 +23,9 @@ function ModalPedidosPendientes(props) {
           <Modal.Title id="modal-tittle">Pedidos Pendientes</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <PedidoPendiente/>
+          <PedidoPendiente
+            setShowPedidosPendientes={setShowPedidosPendientes}
+          />
         </Modal.Body>
         <Modal.Footer>
         

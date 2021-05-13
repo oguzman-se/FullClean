@@ -9,7 +9,7 @@ import ModalNuevaCompra from '../../modals/ModalNuevaCompra'
 import ModalPedidosPendientes from '../../modals/ModalPedidosPendientes'
 function GroupButton(){
     const {setShow, setShowTable, setShowCategoria, cartItems, setLabelCliente} = useHome();
-    const [showNuevaCompra, setShowNuevaCompra] = useState(false);
+    const {showNuevaCompra, setShowNuevaCompra} = usePedidos()
     const [showPedidosPendientes, setShowPedidosPendientes] = useState(false);
     const nuevaCompra = ()=>{
         console.log(cartItems)

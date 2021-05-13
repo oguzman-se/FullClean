@@ -11,7 +11,8 @@ function Barcode() {
     const onChange = (e) => {
         setBarcode(e.target.value);
     };
-
+    let returnProduct;
+    const [validacionBarcode, setValidacionBarcode] = useState(false);
     const searchProduct = () => {
         let match;
         let contador = 0;
@@ -32,24 +33,25 @@ function Barcode() {
                 }     
             }
         )
-        let returnProduct;
+        
         if(match !== undefined){
             {products.map((product)=>{
                 if(match === product.id){
-                    returnProduct = product;
-                }
+                     returnProduct = product;
+                 }
+                
             })}
         }else{
             alert("abrir barcode")
         }
-        
         console.log("return",returnProduct)
         return returnProduct;
     }
     
     const onKeyPresed = (e) => {
         if (e.key === "Enter") {
-           onAdd(searchProduct())
+            console.log("validacionBarcode",validacionBarcode)
+            onAdd(searchProduct())
         }
     };
 

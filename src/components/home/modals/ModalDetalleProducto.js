@@ -170,6 +170,7 @@ function ModalCargarCliente(props) {
           onChange={handleChange}
           />
         </div>
+        
         <ModalFooter>
           <button className="modal-button-create"
           onClick={()=> actualizar(currentProducto)}
