@@ -358,10 +358,20 @@
   overflow:visible;
   white-space:normal;
 }
-
+.size{
+  font-size: 25px !important;
+}
 
 .label{
   border-bottom: 1px solid rgb(182, 179, 179) !important;
+  width: 100%;
+  font-size: 20px;
+  padding-left: 0 !important;
+  padding-top: 10px;
+}
+.label2{
+  border-bottom: 1px solid rgb(182, 179, 179) !important;
+  margin-bottom: 0 !important;
   width: 100%;
   font-size: 20px;
   padding-left: 0 !important;
@@ -377,6 +387,9 @@
 }
 .combo-label{
   max-height: 16vh;
+}
+.combo-label2{
+  max-height: 25vh;
 }
 .btn-label {
   background-color: rgb(240, 95, 116) !important;
@@ -527,6 +540,12 @@
   padding-left: 0px !important;
   padding-right: 0px !important;
 }
+.subpedidosright{
+  margin-top: 1vh;
+}
+.label-pendiente-h5{
+  padding-top: 10px;
+}
 .searchPed{
   width: 45% !important;
   float:left;
@@ -648,10 +667,7 @@
   border-radius: 0% !important;
   box-shadow: none !important;
 }
-.table tr:hover{
-  cursor: pointer;
-   background-color: rgb(202, 199, 199);
-}
+
 .btn-custom-clientes {
   background-color: rgb(240, 95, 116) !important;
   box-shadow: 0 0 1px rgb(0,0,0) !important;

@@ -3,8 +3,12 @@ import {useHome} from '../../context/home-context'
 import ModalCargarCliente from './modals/ModalCargarCliente';
 
 function Label(){
-    const {labelCliente, onRemoveAll} = useHome([]);
+    const {labelCliente, onRemoveAll, setEnable} = useHome([]);
     const [showCargarCliente, setShowCargarCliente] = useState(false);
+    const vaciarCompra = () =>{
+        setEnable(false)
+        onRemoveAll()
+    }
     if (!labelCliente.nombre) {
     return(
         <div className="container-fluid">
@@ -23,7 +27,7 @@ function Label(){
                 </div>
                 <div className="col-md-4 ajuste-label">
                     <button className="btn btn-label"
-                    onClick={onRemoveAll}
+                    onClick={vaciarCompra}
                     >Vaciar Compra</button>
                 </div>
                 

@@ -8,17 +8,19 @@ import {usePedidos} from '../../../../context/pedidos-context'
 import ModalNuevaCompra from '../../modals/ModalNuevaCompra'
 import ModalPedidosPendientes from '../../modals/ModalPedidosPendientes'
 function GroupButton(){
-    const {setShow, setShowTable, setShowCategoria, cartItems, setLabelCliente, enable, onRemoveAll, setEnable} = useHome();
+    const {setShow, setShowTable, setShowCategoria, cartItems, setLabelCliente, enable, onRemoveAll,
+         setEnable, pendiente, setPendiente} = useHome();
     const {showNuevaCompra, setShowNuevaCompra} = usePedidos()
     const [showPedidosPendientes, setShowPedidosPendientes] = useState(false);
     const nuevaCompra = ()=>{
         console.log(cartItems)
-        if(cartItems.length > 0 && enable === false){
+        if(cartItems.length > 0 && enable === false && pendiente === false){
             setShowNuevaCompra(true)
         }else{
             setLabelCliente({})
             onRemoveAll()
             setEnable(false)
+            setPendiente(false)
         }
     }    
     return(
@@ -30,7 +32,7 @@ function GroupButton(){
                     </div>
                     <div className="col-3 ajuste">
                     <Button onClick={()=>setShow(true)}>
-                            + Producto
+                            Crear Producto
                     </Button> 
                     </div>
                     <div className="col-2 ajuste"></div>
@@ -48,7 +50,7 @@ function GroupButton(){
                         <Button 
                         onClick={()=>setShowCategoria(true)}
                         >
-                                + Categoria
+                                Crear Categoria
                         </Button>
                     </div>
                     <div className="col-2 ajuste"></div>

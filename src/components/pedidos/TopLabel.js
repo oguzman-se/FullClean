@@ -2,24 +2,35 @@ import React from 'react'
 import Button  from '../home/Button'
 function TopLabel(){
 return (
-    <div className="TopLabel">
-        <div className="row">
-                <div className="col-md-9">
-                    <label className="label">N° Pedido 00001</label>
+    <div className="container-fluid">
+            <div className="row combo-label2">
+                
+                <div className="col-md-8 label size">
+                <label>N° de Pedido 0001</label>
                 </div>
-                <div className="col-md-3 ">
-                    <label className="label-state">Pendiente</label>
+                <div className="col-md-4 ajuste-label label-pendiente-h5">
+                <h5 className="pendiente "
+                    >Pendiente</h5>
                 </div>
-                <div className="col-md-9">
-                    <label className="labelPedidos">Cliente: 00254 - Juan Perez</label>
+
+                <div className="col-md-8 label2">
+                    <label >Cliente:</label>
                 </div>
-                <div className="col-md-9">
-                    <label className="labelPedidos">Domicilio: Av. Mitre 159</label>
+                <div className="col-md-4 ajuste-label">
+                    <button className="btn btn-label"
+
+                    >Vaciar Compra</button>
                 </div>
-                <div className="col-md-3">
-                    <Button>Asociar Factura</Button>
+                
+                <div className="col-md-8 label2">
+                    <label >Domicilio:</label>
                 </div>
+                <div className="col-md-4 ajuste-label">
+                    <button className="btn btn-label"
+
+                    >Vaciar Compra</button>
+                </div>
+            </div>
         </div>
-    </div>
 )}
 export default TopLabel;

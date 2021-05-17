@@ -4,7 +4,7 @@ import {usePedidos} from '../../context/pedidos-context'
 import {useHome} from '../../context/home-context'
 import ModalPendienteConf from './modals/ModalPedidoPendienteConfirmar'
 function PedidoPendiente({setShowPedidosPendientes}) {
-    const {onAdd, products, cartItems,setCartItems, Allclientes, setLabelCliente, setEnable} = useHome()
+    const {onAdd, products, cartItems,setCartItems, Allclientes, setLabelCliente, setEnable, pendiente} = useHome()
     const {pedidos} = usePedidos()
     const [showPendiente, setShowPendiente] = useState(false);
     const [currentPedido, setCurrentPedido] = useState(0)
@@ -35,7 +35,7 @@ function PedidoPendiente({setShowPedidosPendientes}) {
     }
     const masterSubmit = (pedido)=>{
         setCurrentPedido(pedido)
-        if(cartItems.length > 0){
+        if(cartItems.length > 0 && pendiente === false){
             setShowPendiente(true)
         }else{
             let currentCliente ;
@@ -62,16 +62,23 @@ function PedidoPendiente({setShowPedidosPendientes}) {
                         <th scope="col">Cliente ID</th>
                         <th scope="col">Estado</th>
                         <th scope="col">Valor Total</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
                     
                     {pedidos.filter(pedido => pedido.estado === "pendiente").map((pedido)=>(
-                        <tr onClick={()=>masterSubmit(pedido)}>
+                        <tr >
                             <td>{pedido.id}</td>
                             <td>{pedido.cliente_id}</td>
                             <td className="pendiente">{pedido.estado.toUpperCase()}</td>
-                            <td>${pedido.valor_total}</td>                            
+                            <td>${pedido.valor_total}</td>  
+                            <button className="iconos"
+                            onClick={()=>masterSubmit(pedido)}
+                            ><i class="bi bi-plus-circle-fill"></i></button>  
+                            <button className="iconos"
+                            ><i class="bi bi-stickies"></i></button>                          
                         </tr>
                         ))}
                     

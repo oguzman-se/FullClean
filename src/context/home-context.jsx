@@ -8,6 +8,8 @@ export function HomeProvider(props){
     const [cartItems, setCartItems] = useState([]);
   //DISABLED BOTONES
     const [enable, setEnable] = useState(false);
+    //SIRVE PARA EL BOTON DE NUEVA COMPRA, PARA SABER CUANDO MOSTRAR EL MODAL
+    const [pendiente, setPendiente] = useState(false);
   //ESTE ESTADO SIRVE PARA ABRIR Y CERRAR EL MODL DE "+PRODUCTOS"
     const [show, setShow] = useState(false);
     //ESTADO DEL CURRENT PRODUCTO CUANDO SE CREA
@@ -178,7 +180,8 @@ export function HomeProvider(props){
         currentcodigo,
         setCurrentcodigo,
         setTotalPrice,
-        enable, setEnable
+        enable, setEnable,
+        pendiente, setPendiente
       }
   return <HomeContext.Provider value={value} {...props} />
 }

@@ -1,11 +1,16 @@
+import React, {useState} from 'react'
 import Button  from '../home/Button'
 import clienteAxios from '../../config/clienteAxios'
 import { useHome } from '../../context/home-context'
 import { usePedidos } from '../../context/pedidos-context';
+import { useToasts } from "react-toast-notifications";
+import ModalConfirmarPedido from './modals/ModalConfirmarPedido';
 
 function LabelBottomSM(){
-    const {labelCliente, totalPrice, cartItems, enable, setEnable} = useHome();
+    const {labelCliente, totalPrice, cartItems, enable, setEnable, setPendiente} = useHome();
     const {pedidos, setPedidos, setArray} = usePedidos()
+    const [showModalConfirmar, setShowModalConfirmar] = useState(false);
+    const { addToast } = useToasts();
     const getPedido = async () => {
         await clienteAxios
         .get('/pedidos')
@@ -33,7 +38,23 @@ function LabelBottomSM(){
         }
           let dataArray = [data, ...cartItems]
           setArray(dataArray)
-          setEnable(true)
+          if(data.estado === 'confirmado'){
+            setEnable(true)
+            setShowModalConfirmar(false)
+            addToast("Pedido confirmado", {
+                appearance: "success",
+                autoDismiss: true,
+            });
+            
+          }else{
+            
+            addToast("Pedido pendiente", {
+                appearance: "success",
+                autoDismiss: true,
+            });
+            setPendiente(true)
+          }
+          
           await clienteAxios.post('/pedidos/array', {arr: dataArray})
           setPedidos(dataArray)
           
@@ -49,9 +70,12 @@ function LabelBottomSM(){
                     <label className="labelsm">Metodo de Pago:</label>
                 </div>
                 <div className="col-3 ajuste">
-                    <Button
-                    onClick={()=>{handleEstado("confirmado")}}
-                    >Confirmar</Button>           
+                   {cartItems.length > 0
+                    ? <Button onClick={()=>{setShowModalConfirmar(true)}}
+                    >Confirmar</Button>
+                    : <Button
+                    disabled
+                    >Confirmar</Button>    }          
                 </div>
                 <div className="col-3 ajuste">
                     {enable === false
@@ -69,9 +93,12 @@ function LabelBottomSM(){
                 </select>
                 </div>
                 <div className="col-3 ajuste">
-                    <Button
-                    onClick={()=>{handleEstado("pendiente")}}
+                {cartItems.length > 0
+                    ? <Button onClick={()=>{handleEstado("pendiente")}}
                     >Pendiente</Button>
+                    : <Button
+                    disabled
+                    >Pendiente</Button>    }
                 </div>
                 <div className="col-3 ajuste">
                 {enable === false
@@ -80,6 +107,11 @@ function LabelBottomSM(){
                 
                 </div>
             </div>
+            <ModalConfirmarPedido
+                handleEstado={handleEstado}
+                showModalConfirmar={showModalConfirmar}
+                setShowModalConfirmar={setShowModalConfirmar}
+            />
         </div>
     )
 }

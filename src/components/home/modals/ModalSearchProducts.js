@@ -81,7 +81,7 @@ function ModalSearchProducts() {
             <tbody>
 
                 {products.filter(searchingTerm(term)).map((product)=>(
-                    <tr key={product.id} className="trhover">
+                    <tr key={product.id}>
                         <td>{product.id}</td>
                         <td className="name">{product.nombre}</td>
                         <td className="name">{product.nombreCat}</td>
@@ -89,7 +89,7 @@ function ModalSearchProducts() {
                         <td>${product.costo}</td>
                         <td>
                           <button
-                          className="boton-modal-buscar"
+                          className="iconos"
                           onClick={()=>{
                             setCurrentProducto(product)
                             setShowDetalleProd(true)
@@ -100,19 +100,19 @@ function ModalSearchProducts() {
                         </td>
                         <td>
                           <button
-                          className="boton-modal-buscar"
+                          className="iconos"
                           onClick={()=> onAdd(product)}
                           ><i class="bi bi-plus-circle-fill"></i></button>
                         </td>
                         <td>
                         {product.destacado === 1 ?
                           <button
-                          className="boton-modal-buscar"
+                          className="iconos"
                           onClick={()=> destacar(product, false)}
                           ><i class="bi bi-star-fill"></i>
                           </button> : 
                           <button
-                          className="boton-modal-buscar"
+                          className="iconos"
                           onClick={()=> destacar(product, true)}
                           ><i class="bi bi-star"></i>
                           </button>}
