@@ -2,11 +2,13 @@ import React, {useState} from 'react'
 import {Modal} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.css';
 import {useHome} from '../../../context/home-context'
+import ModalNuevoCliente from './ModalNuevoCliente';
 
 
 function ModalCargarCliente(props) {
   const {showCargarCliente, setShowCargarCliente} = props;
-  const {Allclientes, setLabelCliente} = useHome([]);
+  const {Allclientes, setLabelCliente,
+    showNuevoCliente, setShowNuevoCliente} = useHome([]);
   const [searchCli, setSearchCli] = useState("");
   const handleClose = () => setShowCargarCliente(false);  
   const onAddCliente = (clientes) => {
@@ -52,7 +54,7 @@ function ModalCargarCliente(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr onClick={onAddCliente}>
+                    <tr className="hover-tr" onClick={onAddCliente}>
                         <td>0</td>
                         <td>Consumidor Final</td>
                         <td></td>
@@ -61,7 +63,7 @@ function ModalCargarCliente(props) {
                 {Allclientes.filter(searchingCli(searchCli)).map((clientes) => (
                     <tr onClick={async()=>
                     await onAddCliente(clientes)
-                    }>
+                    } className="hover-tr">
                         <td>{clientes.id}</td>
                         <td>{clientes.nombre}</td>
                         <td>{clientes.domicilio}</td>
@@ -75,12 +77,19 @@ function ModalCargarCliente(props) {
         
         </Modal.Body>
         <Modal.Footer>
+          <button className="modal-button-create" onClick={()=> setShowNuevoCliente(true)}>
+            Nuevo Cliente
+          </button>
           <button className="modal-button-cancel" onClick={handleClose}>
             Cancelar
           </button>
           
         </Modal.Footer>
       </Modal>
+      <ModalNuevoCliente
+        showNuevoCliente={showNuevoCliente}
+        setShowNuevoCliente={setShowNuevoCliente}
+      />
     </>
   );
 }

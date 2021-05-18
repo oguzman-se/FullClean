@@ -14,7 +14,8 @@ export function HomeProvider(props){
     const [show, setShow] = useState(false);
     //ESTADO DEL CURRENT PRODUCTO CUANDO SE CREA
       const [currentProducto, setCurrentProducto] = useState({})
-
+  //MODAL DE CREAR UN NUEVO CLIENTE
+  const [showNuevoCliente, setShowNuevoCliente] = useState(false);
   //ESTE ESTADO SIRVE PARA ABRIR Y CERRAR EL MODAL DE "BUSCAR PRODUCTOS"
     const [showTable, setShowTable] = useState(false);
 
@@ -144,7 +145,8 @@ export function HomeProvider(props){
   //FUNCION PARA AGREGAR CLIENTE
   const [labelCliente, setLabelCliente] = useState([]);
   
-
+  //CURRENT METODOOOO
+  const [currentMetodo, setCurrentMetodo] = useState({})
 
   //DECLARO QUIEN ES EL CONTEXT
   const value = 
@@ -181,7 +183,9 @@ export function HomeProvider(props){
         setCurrentcodigo,
         setTotalPrice,
         enable, setEnable,
-        pendiente, setPendiente
+        pendiente, setPendiente,
+        showNuevoCliente, setShowNuevoCliente,
+        currentMetodo, setCurrentMetodo
       }
   return <HomeContext.Provider value={value} {...props} />
 }

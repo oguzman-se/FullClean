@@ -26,7 +26,7 @@ function ListClientes() {
                 </div>
             </div>
         </div>
-        <div className="tabla2">
+        <div className="tabla5">
                 <table className="table">
                 <thead className="thead-dark">
                     <tr>

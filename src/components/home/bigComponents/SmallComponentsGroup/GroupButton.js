@@ -9,7 +9,7 @@ import ModalNuevaCompra from '../../modals/ModalNuevaCompra'
 import ModalPedidosPendientes from '../../modals/ModalPedidosPendientes'
 function GroupButton(){
     const {setShow, setShowTable, setShowCategoria, cartItems, setLabelCliente, enable, onRemoveAll,
-         setEnable, pendiente, setPendiente} = useHome();
+         setEnable, pendiente, setPendiente, setCurrentMetodo} = useHome();
     const {showNuevaCompra, setShowNuevaCompra} = usePedidos()
     const [showPedidosPendientes, setShowPedidosPendientes] = useState(false);
     const nuevaCompra = ()=>{
@@ -21,6 +21,7 @@ function GroupButton(){
             onRemoveAll()
             setEnable(false)
             setPendiente(false)
+            setCurrentMetodo("efectivo")
         }
     }    
     return(

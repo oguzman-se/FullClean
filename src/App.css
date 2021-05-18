@@ -185,6 +185,7 @@
   }
 .nav{
   max-width: 100%;
+  margin-bottom: 5px !important;
   background-color: rgb(240, 95, 116);
   text-decoration: none;
   box-shadow: 0 0 30px rgb(0,0,0);
@@ -531,7 +532,26 @@
   overflow:scroll;
   overflow-x: hidden;
 }
-
+.tabla4{
+  height: 80vh;
+  border: 1px solid #383c44;
+  padding: 0%;
+  margin-top: 1vh;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  overflow:scroll;
+  overflow-x: hidden;
+}
+.tabla5{
+  height: 50vh;
+  border: 1px solid #383c44;
+  padding: 0%;
+  margin-top: 1vh;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  overflow:scroll;
+  overflow-x: hidden;
+}
 .tabla3{
   height: 55vh;
   border: 1px solid #383c44;
@@ -650,7 +670,6 @@
 .searchCli{
   width: 45% !important;
   float:left;
-  margin-right: 5%;
   height: 35px !important;
   margin-top: 1.5vh;
   border: 1.5px solid black !important;
@@ -667,12 +686,14 @@
   border-radius: 0% !important;
   box-shadow: none !important;
 }
-
+.hover-tr:hover{
+background-color: rgb(166, 168, 168);
+cursor: pointer;
+}
 .btn-custom-clientes {
   background-color: rgb(240, 95, 116) !important;
   box-shadow: 0 0 1px rgb(0,0,0) !important;
   margin-top: 1.5vh ;
-  margin-right: 1.7vh;
   color: aliceblue !important;
   border-radius: 0% !important;
   width: 100%;

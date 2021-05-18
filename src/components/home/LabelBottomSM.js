@@ -7,7 +7,8 @@ import { useToasts } from "react-toast-notifications";
 import ModalConfirmarPedido from './modals/ModalConfirmarPedido';
 
 function LabelBottomSM(){
-    const {labelCliente, totalPrice, cartItems, enable, setEnable, setPendiente} = useHome();
+    const {labelCliente, totalPrice, cartItems, enable, setEnable, setPendiente,
+         setShowNuevoCliente, currentMetodo, setCurrentMetodo} = useHome();
     const {pedidos, setPedidos, setArray} = usePedidos()
     const [showModalConfirmar, setShowModalConfirmar] = useState(false);
     const { addToast } = useToasts();
@@ -22,8 +23,8 @@ function LabelBottomSM(){
           console.log("error get", r);
         });
       };
-    if (!labelCliente.nombre){
-        labelCliente.id = 0
+    if (currentMetodo.metodo === "cuenta corriente" && !labelCliente.nombre){
+        setShowNuevoCliente(true)
     }
     const handleEstado = async (estado) => {
         try {
@@ -33,7 +34,7 @@ function LabelBottomSM(){
             valor_total:totalPrice,
             notas: "",
             fechayhora:"",
-            metodo_pago:"",
+            metodo_pago: currentMetodo.metodo,
             metodo_envio:""
         }
           let dataArray = [data, ...cartItems]
@@ -63,6 +64,12 @@ function LabelBottomSM(){
         catch (error) {
                 console.log(error)
         }}
+    function handle(e){
+        let newMetodo = {...currentMetodo}
+        newMetodo[e.target.name] = e.target.value
+        console.log(newMetodo)
+        setCurrentMetodo(newMetodo)
+    }
     return(
         <div className="container group-vh-5">
             <div className="row ">
@@ -85,11 +92,12 @@ function LabelBottomSM(){
             </div>
             <div className="row ">
                 <div className="col-md-6" >
-                <select className="select labelsm">
-                    <option selected>Efectivo</option>
-                    <option value="1">Tarjeta de credito</option>
-                    <option value="2">Tarjeta de Debito</option>
-                    <option value="3">Cuenta Corriente</option>
+                <select className="select labelsm"
+                 onChange={(e) => handle(e)} name="metodo">
+                    <option value="efectivo" selected>Efectivo</option>
+                    <option value="tarjeta credito">Tarjeta de credito</option>
+                    <option value="tarjeta debito">Tarjeta de Debito</option>
+                    <option value="cuenta corriente">Cuenta Corriente</option>
                 </select>
                 </div>
                 <div className="col-3 ajuste">

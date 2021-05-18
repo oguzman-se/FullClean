@@ -62,6 +62,7 @@ function PedidoPendiente({setShowPedidosPendientes}) {
                         <th scope="col">Cliente ID</th>
                         <th scope="col">Estado</th>
                         <th scope="col">Valor Total</th>
+                        <th scope="col">Metodo de Pago</th>
                         <th scope="col"></th>
                         <th scope="col"></th>
                     </tr>
@@ -74,6 +75,7 @@ function PedidoPendiente({setShowPedidosPendientes}) {
                             <td>{pedido.cliente_id}</td>
                             <td className="pendiente">{pedido.estado.toUpperCase()}</td>
                             <td>${pedido.valor_total}</td>  
+                            <td>{pedido.metodo_pago.toUpperCase()}</td>  
                             <button className="iconos"
                             onClick={()=>masterSubmit(pedido)}
                             ><i class="bi bi-plus-circle-fill"></i></button>  

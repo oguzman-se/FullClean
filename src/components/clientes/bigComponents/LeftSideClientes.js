@@ -6,7 +6,6 @@ function LeftSideClientes() {
     return (
         <div >
             <SearchClientes/>
-            <CargarClientes/>
         </div>
     )
 }
