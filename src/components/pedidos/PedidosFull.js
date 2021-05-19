@@ -2,13 +2,12 @@ import React, {useState, useEffect} from 'react'
 import clienteAxios from '../../config/clienteAxios'
 import {usePedidos} from '../../context/pedidos-context'
 import {useHome} from '../../context/home-context'
-import ModalPendienteConf from './modals/ModalPedidoPendienteConfirmar'
-function PedidoPendiente({setShowPedidosPendientes, showPedidosPendientes}) {
+import ModalPendienteConf from '../home/modals/ModalPedidoPendienteConfirmar'
+function PedidosFull({setShowPedidosPendientes, showPedidosPendientes}) {
     const {products, cartItems,setCartItems, Allclientes, setLabelCliente, setEnable, pendiente} = useHome()
-    const {pedidos} = usePedidos()
+    const {pedidos, buscarPedidos, buscadorPedidos} = usePedidos()
     const [showPendiente, setShowPendiente] = useState(false);
     const [currentPedido, setCurrentPedido] = useState(0)
-
     const onSubmit = async(id)=>{
         await clienteAxios.get(`/pedidodetalles/pedido/${id}`)
         .then((res)=>{
@@ -56,7 +55,11 @@ function PedidoPendiente({setShowPedidosPendientes, showPedidosPendientes}) {
         }
     }
     return (
-        <div className="tabla2">
+        <div>
+            <div className="lista">
+                <h5>Lista de Pedidos</h5>
+            </div>
+            <div className="tabla">
                 <table className="table">
                 <thead className="thead-dark">
                     <tr >
@@ -71,11 +74,14 @@ function PedidoPendiente({setShowPedidosPendientes, showPedidosPendientes}) {
                 </thead>
                 <tbody>
                     
-                    {pedidos.filter(pedido => pedido.estado === "pendiente").map((pedido)=>(
+                    {pedidos.filter(buscadorPedidos(buscarPedidos)).map((pedido)=>(
                         <tr >
                             <td>{pedido.id}</td>
                             <td>{pedido.cliente_id}</td>
-                            <td className="pendiente">{pedido.estado.toUpperCase()}</td>
+                            {pedido.estado === "pendiente"
+                            ? <td className="pendiente">{pedido.estado.toUpperCase()}</td>
+                            : <td className="confirm">{pedido.estado.toUpperCase()}</td>}
+                            
                             <td>${pedido.valor_total}</td>  
                             <td>{pedido.metodo_pago.toUpperCase()}</td>  
                             <button className="iconos"
@@ -97,7 +103,9 @@ function PedidoPendiente({setShowPedidosPendientes, showPedidosPendientes}) {
                     showPedidosPendientes={showPedidosPendientes}
                 />
         </div>
+        </div>
+        
     )
 }
 
-export default PedidoPendiente
+export default PedidosFull;

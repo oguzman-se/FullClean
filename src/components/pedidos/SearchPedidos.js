@@ -1,14 +1,20 @@
 import React from 'react'
-
+import {usePedidos} from '../../context/pedidos-context'
 function SearchPedidos(){
+    const {setBuscarPedidos, pedidos} = usePedidos();
+    
 return (
 <div className="searchPedidos">
     <div className="container-fluid">
         <div className="row">
-            <input className="col-md-12 form-control searchPed" placeholder="Buscar pedido..."/>
+            {pedidos && (
+                <input className="col-md-12 form-control searchPed" placeholder="Buscar pedido..."
+                    onChange={e => setBuscarPedidos(e.target.value.toLowerCase())}
+                />
+            )}
         </div>
     </div>
-    <div>
+    
         <div className="row">
             <div className="col-md-6 ">
                 <input className="form-control searchPed" placeholder="Desde"/>
@@ -27,7 +33,7 @@ return (
                 
             </div>
         </div>
-    </div>
+    
 </div>
 )}
 

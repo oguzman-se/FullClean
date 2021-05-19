@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import { Link } from "react-router-dom";
 import {useHome} from '../../context/home-context'
 import ModalDetalleCliente from './ModalDetalleCliente';
 function TopClientes() {
@@ -19,7 +20,7 @@ function TopClientes() {
                     <button className="btn btn-custom-clientes-chicos">Pedidos</button>
                     <button className="btn btn-custom-clientes-chicos">Facturas</button>
                     <button className="btn btn-custom-clientes-chicos">Nuevo Pago</button>
-                    <button className="btn btn-custom-clientes-chicos">Nuevo Pedido</button>
+                    <Link className="btn btn-custom-clientes-chicos" to="/" >Nuevo Pedido</Link>
                 </div>
                 <div>
                     <label className="label-deuda">Deuda: </label>

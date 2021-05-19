@@ -1,4 +1,5 @@
 import React from 'react'
+import PedidoPendiente from '../home/PedidoPendiente'
 
 function ListClientes() {
     return (
@@ -26,30 +27,7 @@ function ListClientes() {
                 </div>
             </div>
         </div>
-        <div className="tabla5">
-                <table className="table">
-                <thead className="thead-dark">
-                    <tr>
-                        <th  scope="col">ID</th>
-                        <th scope="col">Empresa</th>
-                        <th scope="col">Total</th>
-                        <th scope="col">Estado</th>
-                        <th scope="col">Estado</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>00001</td>
-                        <td>Consorcio Mitre</td>
-                        <td>520</td>
-                        <td className="pendiente">Pendiente</td>
-                        <td >
-                            <i class="bi bi-search"></i>
-                        </td>
-                    </tr>
-                </tbody>            
-                </table>
-        </div>
+        <PedidoPendiente/>
     </div>
     )
 }

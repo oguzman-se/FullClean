@@ -34,7 +34,7 @@ function LabelBottomSM(){
             valor_total:totalPrice,
             notas: "",
             fechayhora:"",
-            metodo_pago: currentMetodo.metodo,
+            metodo_pago: currentMetodo.metodo || "efectivo",
             metodo_envio:""
         }
           let dataArray = [data, ...cartItems]

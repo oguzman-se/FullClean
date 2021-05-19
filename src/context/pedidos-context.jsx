@@ -21,13 +21,24 @@ export function PedidosProvider(props){
     const [array, setArray] = useState([]);
   //ARRAY DONDE SE GUARDAN LOS PEDIDOS
     const [bigArray, setBigArray] = useState([]);
+    //BUSCADOR DE PEDIDOS
+    const [buscarPedidos, setBuscarPedidos] = useState("");
+    function buscadorPedidos(buscarPedidos){
+      return function(x){
+        return (
+          x.estado.toLowerCase().includes(buscarPedidos) || !buscarPedidos
+        ) 
+      }
+    }
   //DECLARO QUIEN ES EL CONTEXT
   const value = 
     {
       pedidos, setPedidos,
       array, setArray,
       bigArray, setBigArray,
-      showNuevaCompra, setShowNuevaCompra
+      showNuevaCompra, setShowNuevaCompra,
+      buscarPedidos, setBuscarPedidos,
+      buscadorPedidos
       }
   return <PedidosContext.Provider value={value} {...props} />
 }

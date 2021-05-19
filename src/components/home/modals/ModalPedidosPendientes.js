@@ -25,6 +25,7 @@ function ModalPedidosPendientes(props) {
         <Modal.Body>
           <PedidoPendiente
             setShowPedidosPendientes={setShowPedidosPendientes}
+            showPedidosPendientes={showPedidosPendientes}
           />
         </Modal.Body>
         <Modal.Footer>

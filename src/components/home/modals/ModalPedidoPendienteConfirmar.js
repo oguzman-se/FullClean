@@ -9,7 +9,7 @@ function ModalPendienteConf(props) {
   const {onRemoveAll, setLabelCliente, Allclientes} = useHome()
 
   const handleClose = () => setShowPendiente(false);  
-  const {showPendiente, setShowPendiente, onSubmit, currentPedido, setShowPedidosPendientes} = props;
+  const {showPendiente, setShowPendiente, onSubmit, currentPedido, setShowPedidosPendientes, showPedidosPendientes} = props;
   const yes = ()=>{
     let currentCliente ;
             if (currentPedido.cliente_id !== 0){
@@ -26,7 +26,9 @@ function ModalPendienteConf(props) {
     console.log("currentPedido", currentPedido)
     setLabelCliente(currentCliente[0])
     onSubmit(currentPedido.id)
-    setShowPedidosPendientes(false)
+    if(showPedidosPendientes === true){
+      setShowPedidosPendientes(false)
+  }
   }
   return (
     <>
