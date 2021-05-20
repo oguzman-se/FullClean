@@ -9,8 +9,6 @@ function ModalPedidosPendientes(props) {
   const handleClose = () => {
     setShowPedidosPendientes(false);
   }
-  
-
   return (
     <>
       <Modal

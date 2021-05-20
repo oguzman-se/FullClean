@@ -7,7 +7,6 @@ function LeftSidePedidos(){
 return (
     <div>
         <div>
-            <div><SearchPedidos/></div>
             <div><ListPedidos/></div> 
         </div>
         <div>

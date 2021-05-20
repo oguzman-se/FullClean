@@ -5,9 +5,8 @@ import {useHome} from '../../context/home-context'
 import ModalPendienteConf from './modals/ModalPedidoPendienteConfirmar'
 function PedidoPendiente({setShowPedidosPendientes, showPedidosPendientes}) {
     const {products, cartItems,setCartItems, Allclientes, setLabelCliente, setEnable, pendiente} = useHome()
-    const {pedidos} = usePedidos()
+    const {pedidos, currentPedido, setCurrentPedido} = usePedidos()
     const [showPendiente, setShowPendiente] = useState(false);
-    const [currentPedido, setCurrentPedido] = useState(0)
 
     const onSubmit = async(id)=>{
         await clienteAxios.get(`/pedidodetalles/pedido/${id}`)

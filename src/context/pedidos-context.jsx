@@ -5,7 +5,7 @@ const PedidosContext = React.createContext();
 export function PedidosProvider(props){
   //PEDIDOS API
   const [pedidos, setPedidos] = useState([]);
-
+  let qtyPedidos = pedidos.length;
   useEffect(() => {
       obtenerDatos()
   }, [])
@@ -15,21 +15,27 @@ export function PedidosProvider(props){
       setPedidos(res.data)
     })
   }
+  //BUSCADOR DE PEDIDOS
+  const [buscarPedidos, setBuscarPedidos] = useState("");
+  function buscadorPedidos(buscarPedidos){
+    return function(y){
+      return (
+        y.estado.toLowerCase().includes(buscarPedidos) || !buscarPedidos
+      ) 
+    }
+  }
   //STATE PARA MODAL NUEVA VENTA
   const [showNuevaCompra, setShowNuevaCompra] = useState(false);
   //ARRAY DE PEDIDOS
     const [array, setArray] = useState([]);
   //ARRAY DONDE SE GUARDAN LOS PEDIDOS
     const [bigArray, setBigArray] = useState([]);
-    //BUSCADOR DE PEDIDOS
-    const [buscarPedidos, setBuscarPedidos] = useState("");
-    function buscadorPedidos(buscarPedidos){
-      return function(x){
-        return (
-          x.estado.toLowerCase().includes(buscarPedidos) || !buscarPedidos
-        ) 
-      }
-    }
+  
+  //VALORES DE EFECTIVO, CTA. CTE, DEBITO Y CREDITO
+ // let valorEfectivo = 0;
+  const [valorEfectivo, setValorEfectivo] = useState(0)
+  //CURRENT PEDIDO PENDIENTE
+  const [currentPedido, setCurrentPedido] = useState(0)
   //DECLARO QUIEN ES EL CONTEXT
   const value = 
     {
@@ -37,8 +43,11 @@ export function PedidosProvider(props){
       array, setArray,
       bigArray, setBigArray,
       showNuevaCompra, setShowNuevaCompra,
-      buscarPedidos, setBuscarPedidos,
-      buscadorPedidos
+      qtyPedidos, buscarPedidos, setBuscarPedidos,
+      buscadorPedidos, valorEfectivo, setValorEfectivo,
+      currentPedido, setCurrentPedido
+      
+      
       }
   return <PedidosContext.Provider value={value} {...props} />
 }

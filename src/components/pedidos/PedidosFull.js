@@ -1,13 +1,14 @@
 import React, {useState, useEffect} from 'react'
 import clienteAxios from '../../config/clienteAxios'
-import {usePedidos} from '../../context/pedidos-context'
 import {useHome} from '../../context/home-context'
 import ModalPendienteConf from '../home/modals/ModalPedidoPendienteConfirmar'
-function PedidosFull({setShowPedidosPendientes, showPedidosPendientes}) {
+import PedidosItem from './PedidosItem'
+import {usePedidos} from '../../context/pedidos-context'
+function PedidosFull(props) {
+    const {pedidos, currentPedido, setCurrentPedido} = usePedidos()
     const {products, cartItems,setCartItems, Allclientes, setLabelCliente, setEnable, pendiente} = useHome()
-    const {pedidos, buscarPedidos, buscadorPedidos} = usePedidos()
     const [showPendiente, setShowPendiente] = useState(false);
-    const [currentPedido, setCurrentPedido] = useState(0)
+    const {setShowPedidosPendientes, showPedidosPendientes, buscadorPedidos, buscarPedidos, } = props;
     const onSubmit = async(id)=>{
         await clienteAxios.get(`/pedidodetalles/pedido/${id}`)
         .then((res)=>{
@@ -56,6 +57,7 @@ function PedidosFull({setShowPedidosPendientes, showPedidosPendientes}) {
     }
     return (
         <div>
+            
             <div className="lista">
                 <h5>Lista de Pedidos</h5>
             </div>
@@ -64,34 +66,26 @@ function PedidosFull({setShowPedidosPendientes, showPedidosPendientes}) {
                 <thead className="thead-dark">
                     <tr >
                         <th  scope="col">ID</th>
-                        <th scope="col">Cliente ID</th>
+                        <th scope="col">Nombre del Cliente</th>
                         <th scope="col">Estado</th>
                         <th scope="col">Valor Total</th>
-                        <th scope="col">Metodo de Pago</th>
+                        <th scope="col">Fecha y Hora</th>
                         <th scope="col"></th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    
-                    {pedidos.filter(buscadorPedidos(buscarPedidos)).map((pedido)=>(
-                        <tr >
-                            <td>{pedido.id}</td>
-                            <td>{pedido.cliente_id}</td>
-                            {pedido.estado === "pendiente"
-                            ? <td className="pendiente">{pedido.estado.toUpperCase()}</td>
-                            : <td className="confirm">{pedido.estado.toUpperCase()}</td>}
-                            
-                            <td>${pedido.valor_total}</td>  
-                            <td>{pedido.metodo_pago.toUpperCase()}</td>  
-                            <button className="iconos"
-                            onClick={()=>masterSubmit(pedido)}
-                            ><i class="bi bi-plus-circle-fill"></i></button>  
-                            <button className="iconos"
-                            ><i class="bi bi-stickies"></i></button>                          
-                        </tr>
-                        ))}
-                    
+                {pedidos.filter(buscadorPedidos(buscarPedidos)).map((pedido)=>{
+                return(
+                    <PedidosItem
+                            Allclientes={Allclientes}
+                            masterSubmit={masterSubmit}
+                            pedido={pedido}
+                        />
+                )
+                }
+                )}
+                        
                 </tbody>            
                 </table>
                 <ModalPendienteConf

@@ -86,7 +86,7 @@ export function HomeProvider(props){
         console.log("clientes", Allclientes)
       })
     }
-
+    
   //USEEFFECT Y USESTATE DEL MODAL DE BUSCAR PRODUCTOS,
   // SE USA PARA MOSTRAR LOS PRODUCTOS Y PARA SU BUSCADOR
    const [term, setTerm] = useState("");

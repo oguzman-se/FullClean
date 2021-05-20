@@ -1,20 +1,27 @@
 import React from 'react'
-import Button  from '../home/Button'
+import {useHome} from '../../context/home-context'
+import {usePedidos} from '../../context/pedidos-context'
 function TopLabel(){
+    const {labelCliente} = useHome([]);
+    const {currentPedido} = usePedidos()
 return (
     <div className="container-fluid">
             <div className="row combo-label2">
                 
                 <div className="col-md-8 label size">
-                <label>N° de Pedido 0001</label>
+                <label>N° de Pedido {currentPedido.id}</label>
                 </div>
                 <div className="col-md-4 ajuste-label label-pendiente-h5">
-                <h5 className="pendiente "
-                    >Pendiente</h5>
+                {!currentPedido.estado
+                ?<h5 className="pendiente "></h5>
+                :currentPedido.estado === "pendiente"
+                ? <h5 className="pendiente ">{currentPedido.estado.toUpperCase()}</h5>
+                :<h5 className="confirm ">{currentPedido.estado.toUpperCase()}</h5>}
+                
                 </div>
 
                 <div className="col-md-8 label2">
-                    <label >Cliente:</label>
+                <label>Cliente: {labelCliente.id} - {labelCliente.nombre}</label>
                 </div>
                 <div className="col-md-4 ajuste-label">
                     <button className="btn btn-label"
@@ -23,7 +30,7 @@ return (
                 </div>
                 
                 <div className="col-md-8 label2">
-                    <label >Domicilio:</label>
+                    <label >Domicilio: {labelCliente.domicilio}</label>
                 </div>
                 <div className="col-md-4 ajuste-label">
                     <button className="btn btn-label"

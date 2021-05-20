@@ -1,15 +1,17 @@
 import React from 'react'
+import {useHome} from '../../context/home-context'
 import {usePedidos} from '../../context/pedidos-context'
-function SearchPedidos(){
-    const {setBuscarPedidos, pedidos} = usePedidos();
-    
+function SearchPedidos(props){
+    const {setBuscarPedidos} = props;
+    const {pedidos} = usePedidos()
 return (
 <div className="searchPedidos">
     <div className="container-fluid">
         <div className="row">
             {pedidos && (
                 <input className="col-md-12 form-control searchPed" placeholder="Buscar pedido..."
-                    onChange={e => setBuscarPedidos(e.target.value.toLowerCase())}
+                aria-label="Search"
+                type="text" onChange={e => setBuscarPedidos(e.target.value.toLowerCase())}
                 />
             )}
         </div>
@@ -23,7 +25,8 @@ return (
             <div className="col-md-6">
                 <label className="state">Estado:</label>
                 <select className="sel">
-                    <option selected>Efectivo</option>
+                    <option selected>Todos</option>
+                    <option value="0">Efectivo</option>
                     <option value="1">Tarjeta de credito</option>
                     <option value="2">Tarjeta de Debito</option>
                     <option value="3">Rapipago</option>
