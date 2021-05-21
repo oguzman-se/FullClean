@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import clienteAxios from '../../config/clienteAxios'
 import {usePedidos} from '../../context/pedidos-context'
 import {useHome} from '../../context/home-context'
@@ -24,6 +24,7 @@ function PedidoPendiente({setShowPedidosPendientes, showPedidosPendientes}) {
                     }
                     ArrayFinal.push(productoIdeal)
                 }
+                return ""
             })
             setCartItems(ArrayFinal)
             setEnable(true)

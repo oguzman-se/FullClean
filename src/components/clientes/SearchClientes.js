@@ -3,7 +3,7 @@ import {useHome} from '../../context/home-context'
 import ModalCargarCliente from '../home/modals/ModalCargarCliente'
 import { useToasts } from "react-toast-notifications";
 function SearchClientes() {
-    const {Allclientes, setShowNuevoCliente, labelCliente, setLabelCliente} = useHome([]);
+    const {Allclientes, setShowNuevoCliente, setLabelCliente} = useHome([]);
     const [buscarCliente, setBuscarCliente] = useState("");
     const { addToast } = useToasts();
     function buscadorClientes(buscarCliente){

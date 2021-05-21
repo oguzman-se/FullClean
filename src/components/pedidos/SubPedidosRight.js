@@ -1,7 +1,8 @@
 import React from 'react'
 import Button from '../home/Button';
-
+import {usePedidos} from '../../context/pedidos-context'
 function SubPedidosRight(){
+    const {currentPedido} = usePedidos()
 return (
     <div className="container group-vh-5 subpedidosright">
             <div className="row ">
@@ -9,13 +10,14 @@ return (
                     <label className="labelsm">Metodo de Pago:</label>
                 </div>
                 <div className="col-3 ajuste">
-                    <Button
-                    >Confirmar</Button>           
+                {currentPedido.estado === "confirmado"
+                ? <Button disabled>Confirmar</Button>
+                : <Button>Confirmar</Button>}
                 </div>
                 <div className="col-3 ajuste">
-                    
-                     <button type="button" className="btn btn-custom" >Remito</button>
-                     
+                {currentPedido.estado === "pendiente"
+                ? <Button disabled>Remito</Button>
+                : <Button>Remito</Button>}
                 </div>
             </div>
             <div className="row ">
@@ -29,7 +31,9 @@ return (
                 </div>
                 <div className="col-3 ajuste"></div>
                 <div className="col-3 ajuste">
-                 <button type="button" className="btn btn-custom" >Ticket</button>
+                {currentPedido.estado === "pendiente"
+                ? <Button disabled>Ticket</Button>
+                : <Button>Ticket</Button>}
                 </div>
             </div>
         </div>

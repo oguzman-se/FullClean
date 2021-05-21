@@ -1,5 +1,4 @@
 import React from 'react'
-import {useHome} from '../../context/home-context'
 import {usePedidos} from '../../context/pedidos-context'
 function SearchPedidos(props){
     const {setBuscarPedidos} = props;

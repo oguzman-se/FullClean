@@ -1,5 +1,4 @@
 import React from 'react'
-import SearchPedidos from '../SearchPedidos'
 import ListPedidos from '../ListPedidos'
 import SubPedidosLeft from '../SubPedidosLeft'
 

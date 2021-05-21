@@ -10,6 +10,7 @@ function TableItem(props) {
     }
     useEffect(() => {
       setTotalPrice(totalPrice + item.precio)
+      // eslint-disable-next-line
       }, [])
     return (
         <tr key={item.id}>

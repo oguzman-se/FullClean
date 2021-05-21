@@ -9,7 +9,7 @@ import ModalConfirmarPedido from './modals/ModalConfirmarPedido';
 function LabelBottomSM(){
     const {labelCliente, totalPrice, cartItems, enable, setEnable, setPendiente,
          setShowNuevoCliente, currentMetodo, setCurrentMetodo} = useHome();
-    const {pedidos, setPedidos, setArray} = usePedidos()
+    const {pedidos, setPedidos, setArray, currentPedido} = usePedidos()
     const [showModalConfirmar, setShowModalConfirmar] = useState(false);
     const { addToast } = useToasts();
     const getPedido = async () => {
@@ -77,7 +77,7 @@ function LabelBottomSM(){
                     <label className="labelsm">Metodo de Pago:</label>
                 </div>
                 <div className="col-3 ajuste">
-                   {cartItems.length > 0
+                   {cartItems.length > 0 && currentPedido.estado !== "confirmado"
                     ? <Button onClick={()=>{setShowModalConfirmar(true)}}
                     >Confirmar</Button>
                     : <Button
@@ -85,7 +85,7 @@ function LabelBottomSM(){
                     >Confirmar</Button>    }          
                 </div>
                 <div className="col-3 ajuste">
-                    {enable === false
+                    {enable === false || currentPedido.estado === "pendiente"
                     ? <button type="button" className="btn btn-custom" disabled>Remito</button>
                     : <button type="button" className="btn btn-custom" >Remito</button>}
                 </div>
@@ -101,7 +101,7 @@ function LabelBottomSM(){
                 </select>
                 </div>
                 <div className="col-3 ajuste">
-                {cartItems.length > 0
+                {cartItems.length > 0 && currentPedido.estado !== "pendiente"
                     ? <Button onClick={()=>{handleEstado("pendiente")}}
                     >Pendiente</Button>
                     : <Button
@@ -109,7 +109,7 @@ function LabelBottomSM(){
                     >Pendiente</Button>    }
                 </div>
                 <div className="col-3 ajuste">
-                {enable === false
+                {enable === false || currentPedido.estado === "pendiente"
                 ? <button type="button" className="btn btn-custom" disabled>Ticket</button>
                 : <button type="button" className="btn btn-custom" >Ticket</button>}
                 

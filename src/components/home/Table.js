@@ -1,6 +1,5 @@
 import React from 'react'
 import {useHome} from '../../context/home-context'
-import {usePedidos} from '../../context/pedidos-context'
 import TableItem from './tableItem';
 
 function Table(){

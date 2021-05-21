@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {Modal, ModalFooter} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.css';
 import clienteAxios from '../../config/clienteAxios'
@@ -7,7 +7,7 @@ import { useToasts } from "react-toast-notifications";
 
 function ModalDetalleCliente(props) {
   const { addToast } = useToasts();
-  const {Allclientes, setAllClientes} = useHome([]);
+  const {setAllClientes} = useHome([]);
   const {showDetalleCliente, setShowDetalleCliente, labelCliente, setLabelCliente} = props;
   const handleClose = ()=> setShowDetalleCliente(false)
   const handleChange = e=> {

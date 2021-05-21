@@ -40,10 +40,12 @@ function Barcode() {
             let match = searchProduct()
             let producto;
             if(match !== undefined){
+                // eslint-disable-next-line
                 {products.map((product)=>{
                     if(match === product.id){
                         producto = product;
                     }
+                    return ""
                 })}
                 onAdd(producto)
             }else{

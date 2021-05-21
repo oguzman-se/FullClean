@@ -13,7 +13,7 @@ return (
                 </div>
                 <div className="col-md-4 ajuste-label label-pendiente-h5">
                 {!currentPedido.estado
-                ?<h5 className="pendiente "></h5>
+                ?<h5>Sin Estado</h5>
                 :currentPedido.estado === "pendiente"
                 ? <h5 className="pendiente ">{currentPedido.estado.toUpperCase()}</h5>
                 :<h5 className="confirm ">{currentPedido.estado.toUpperCase()}</h5>}

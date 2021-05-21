@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import PedidosFull from './PedidosFull';
 import SearchPedidos from './SearchPedidos';
 import {usePedidos} from '../../context/pedidos-context'

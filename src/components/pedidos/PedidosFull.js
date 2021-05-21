@@ -1,11 +1,11 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import clienteAxios from '../../config/clienteAxios'
 import {useHome} from '../../context/home-context'
 import ModalPendienteConf from '../home/modals/ModalPedidoPendienteConfirmar'
 import PedidosItem from './PedidosItem'
 import {usePedidos} from '../../context/pedidos-context'
 function PedidosFull(props) {
-    const {pedidos, currentPedido, setCurrentPedido} = usePedidos()
+    const {pedidos, currentPedido, setCurrentPedido,  modalCorrection, setModalCorrection} = usePedidos()
     const {products, cartItems,setCartItems, Allclientes, setLabelCliente, setEnable, pendiente} = useHome()
     const [showPendiente, setShowPendiente] = useState(false);
     const {setShowPedidosPendientes, showPedidosPendientes, buscadorPedidos, buscarPedidos, } = props;
@@ -25,6 +25,7 @@ function PedidosFull(props) {
                     }
                     ArrayFinal.push(productoIdeal)
                 }
+                return ""
             })
             setCartItems(ArrayFinal)
             setEnable(true)
@@ -33,7 +34,7 @@ function PedidosFull(props) {
             console.log(e)
         })
     }
-    const masterSubmit = (pedido)=>{
+    const masterSubmit = async(pedido)=>{
         setCurrentPedido(pedido)
         if(cartItems.length > 0 && pendiente === false){
             setShowPendiente(true)
@@ -89,6 +90,7 @@ function PedidosFull(props) {
                 </tbody>            
                 </table>
                 <ModalPendienteConf
+                    setModalCorrection={setModalCorrection}
                     showPendiente={showPendiente} 
                     setShowPendiente={setShowPendiente}
                     onSubmit={onSubmit}

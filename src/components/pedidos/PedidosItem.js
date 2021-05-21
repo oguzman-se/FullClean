@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 
 function PedidosItem(props) {
     const {pedido, Allclientes, masterSubmit} = props;
@@ -17,6 +17,7 @@ function PedidosItem(props) {
                             cliente.nombre
                         )
                     }
+                    return ""
                 })}</td>
                 {pedido.estado === "pendiente"
                 ? <td className="pendiente">{pedido.estado.toUpperCase()}</td>

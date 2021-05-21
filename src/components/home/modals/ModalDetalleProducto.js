@@ -212,6 +212,7 @@ function ModalCargarCliente(props) {
                     </ol>
                 </div>
               )
+              return ""
             }
           )}
         </div>

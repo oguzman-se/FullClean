@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {Modal} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.css';
 import CargarClientes from '../../clientes/CargarClientes'

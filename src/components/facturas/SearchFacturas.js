@@ -6,7 +6,7 @@ function SearchFacturas() {
             <div className="container-fluid">
         <div className="row">
             <input className="col-md-12 form-control searchPed" placeholder="Buscar pedido..."/>
-            <input className="col-md-12 form-control searchPed" placeholder="Buscar pedido..."/>
+            <input className="col-md-12 form-control searchPed" placeholder="Buscar por numero de pedido..."/>
         </div>
         </div>
         <div>
