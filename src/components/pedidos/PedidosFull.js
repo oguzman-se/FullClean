@@ -5,7 +5,7 @@ import ModalPendienteConf from '../home/modals/ModalPedidoPendienteConfirmar'
 import PedidosItem from './PedidosItem'
 import {usePedidos} from '../../context/pedidos-context'
 function PedidosFull(props) {
-    const {pedidos, currentPedido, setCurrentPedido,  modalCorrection, setModalCorrection} = usePedidos()
+    const {pedidos, currentPedido, setCurrentPedido, helpCurrentPedido, setHelpCurrentPedido} = usePedidos()
     const {products, cartItems,setCartItems, Allclientes, setLabelCliente, setEnable, pendiente} = useHome()
     const [showPendiente, setShowPendiente] = useState(false);
     const {setShowPedidosPendientes, showPedidosPendientes, buscadorPedidos, buscarPedidos, } = props;
@@ -35,10 +35,11 @@ function PedidosFull(props) {
         })
     }
     const masterSubmit = async(pedido)=>{
-        setCurrentPedido(pedido)
         if(cartItems.length > 0 && pendiente === false){
             setShowPendiente(true)
+            setHelpCurrentPedido(pedido)
         }else{
+            setCurrentPedido(pedido)
             let currentCliente ;
             if (pedido.cliente_id !== 0){
                 currentCliente = Allclientes.filter((c)=> c.id === pedido.cliente_id)
@@ -90,7 +91,8 @@ function PedidosFull(props) {
                 </tbody>            
                 </table>
                 <ModalPendienteConf
-                    setModalCorrection={setModalCorrection}
+                setCurrentPedido={setCurrentPedido}
+                    helpCurrentPedido={helpCurrentPedido}
                     showPendiente={showPendiente} 
                     setShowPendiente={setShowPendiente}
                     onSubmit={onSubmit}

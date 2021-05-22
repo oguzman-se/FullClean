@@ -5,6 +5,7 @@ const PedidosContext = React.createContext();
 export function PedidosProvider(props){
   //PEDIDOS API
   const [pedidos, setPedidos] = useState([]);
+  const [helpCurrentPedido, setHelpCurrentPedido] = useState([]);
   let qtyPedidos = pedidos.length;
   useEffect(() => {
       obtenerDatos()
@@ -45,8 +46,8 @@ export function PedidosProvider(props){
       showNuevaCompra, setShowNuevaCompra,
       qtyPedidos, buscarPedidos, setBuscarPedidos,
       buscadorPedidos, valorEfectivo, setValorEfectivo,
-      currentPedido, setCurrentPedido
-      
+      currentPedido, setCurrentPedido,
+      helpCurrentPedido, setHelpCurrentPedido      
       
       }
   return <PedidosContext.Provider value={value} {...props} />

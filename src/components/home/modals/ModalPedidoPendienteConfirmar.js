@@ -9,8 +9,10 @@ function ModalPendienteConf(props) {
   const {onRemoveAll, setLabelCliente, Allclientes} = useHome()
 
   const handleClose = () => setShowPendiente(false);  
-  const {showPendiente, setShowPendiente, onSubmit, currentPedido, setShowPedidosPendientes, showPedidosPendientes} = props;
+  const {showPendiente, setShowPendiente, onSubmit, currentPedido,
+     setShowPedidosPendientes, showPedidosPendientes, helpCurrentPedido,setCurrentPedido} = props;
   const yes = ()=>{
+    setCurrentPedido(helpCurrentPedido)
     let currentCliente ;
             if (currentPedido.cliente_id !== 0){
                 currentCliente = Allclientes.filter((c)=> c.id === currentPedido.cliente_id)
