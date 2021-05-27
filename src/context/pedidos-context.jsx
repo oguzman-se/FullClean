@@ -16,15 +16,7 @@ export function PedidosProvider(props){
       setPedidos(res.data)
     })
   }
-  //BUSCADOR DE PEDIDOS
-  const [buscarPedidos, setBuscarPedidos] = useState("");
-  function buscadorPedidos(buscarPedidos){
-    return function(y){
-      return (
-        y.estado.toLowerCase().includes(buscarPedidos) || !buscarPedidos
-      ) 
-    }
-  }
+  
   //STATE PARA MODAL NUEVA VENTA
   const [showNuevaCompra, setShowNuevaCompra] = useState(false);
   //ARRAY DE PEDIDOS
@@ -44,8 +36,7 @@ export function PedidosProvider(props){
       array, setArray,
       bigArray, setBigArray,
       showNuevaCompra, setShowNuevaCompra,
-      qtyPedidos, buscarPedidos, setBuscarPedidos,
-      buscadorPedidos, valorEfectivo, setValorEfectivo,
+      qtyPedidos, valorEfectivo, setValorEfectivo,
       currentPedido, setCurrentPedido,
       helpCurrentPedido, setHelpCurrentPedido      
       

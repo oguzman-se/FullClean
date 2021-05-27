@@ -1,15 +1,13 @@
-import React from 'react'
-
+import React, {useState} from 'react'
+import ModalNota from '../pedidos/modales/ModalNota'
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+import Tooltip from 'react-bootstrap/Tooltip'
 function PedidosItem(props) {
     const {pedido, Allclientes, masterSubmit} = props;
-    let valorEfectivo = 0;
-    if(pedido.metodo_pago === "efectivo"){
-        console.log("EFECTIVO")
-        valorEfectivo = valorEfectivo + pedido.valor_total;
-        console.log(valorEfectivo)
-    }
+    const [showNota, setShowNota] = useState(false);
     return (
-            <tr key={pedido.id}>
+        
+            <tr>
                 <td>{pedido.id}</td>
                 <td>{Allclientes.map((cliente)=>{
                     if(cliente.id === pedido.cliente_id){
@@ -20,7 +18,12 @@ function PedidosItem(props) {
                     return ""
                 })}</td>
                 {pedido.estado === "pendiente"
-                ? <td className="pendiente">{pedido.estado.toUpperCase()}</td>
+                ? 
+                <OverlayTrigger overlay={<Tooltip id="tooltip-disabled">{pedido.notas}</Tooltip>}>
+                <span className="d-inline-block">
+                    <td className="pendiente">{pedido.estado.toUpperCase()}</td>
+                </span>
+                </OverlayTrigger>
                 : <td className="confirm">{pedido.estado.toUpperCase()}</td>}
                 
                 <td>${pedido.valor_total}</td>  
@@ -29,7 +32,14 @@ function PedidosItem(props) {
                 onClick={()=>masterSubmit(pedido)}
                 ><i class="bi bi-plus-circle-fill"></i></button>  
                 <button className="iconos"
-                ><i class="bi bi-stickies"></i></button>                          
+                onClick={()=>setShowNota(true)}
+                ><i class="bi bi-stickies"></i></button> 
+                
+                <ModalNota
+                    setShowNota={setShowNota}
+                    showNota={showNota}
+                    pedido={pedido}
+                />                       
             </tr>
     )
 }

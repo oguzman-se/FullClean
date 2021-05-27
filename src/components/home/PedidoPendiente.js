@@ -1,12 +1,11 @@
 import React, {useState} from 'react'
 import clienteAxios from '../../config/clienteAxios'
 import {useHome} from '../../context/home-context'
-import ModalPendienteConf from '../home/modals/ModalPedidoPendienteConfirmar'
-import PedidosItem from '../pedidos/PedidosItem'
+import PedidosPendientesBody from '../home/PedidoPendienteBody'
 import {usePedidos} from '../../context/pedidos-context'
 function PedidosFull(props) {
-    const {pedidos, currentPedido, setCurrentPedido, helpCurrentPedido, setHelpCurrentPedido} = usePedidos()
     const {products, cartItems,setCartItems, Allclientes, setLabelCliente, setEnable, pendiente} = useHome()
+    const {setCurrentPedido, setHelpCurrentPedido} = usePedidos()
     const [showPendiente, setShowPendiente] = useState(false);
     const {setShowPedidosPendientes, showPedidosPendientes} = props;
     const onSubmit = async(id)=>{
@@ -57,52 +56,28 @@ function PedidosFull(props) {
             
         }
     }
+    //BUSCADOR DE PEDIDOS
+    const [buscarPedidos, setBuscarPedidos] = useState("");
+    const buscadorPedidos = (buscarPedidos) => {
+        return function(x){
+        return (
+            x.estado.toLowerCase().includes(buscarPedidos) || !buscarPedidos
+        ) 
+        }
+    }
     return (
-        <div>
+        <PedidosPendientesBody
+            buscarPedidos={buscarPedidos}
+            setBuscarPedidos={setBuscarPedidos}
+            buscadorPedidos={buscadorPedidos}
+            masterSubmit={masterSubmit}
+            showPendiente={showPendiente}
+            setShowPendiente={setShowPendiente}
+            onSubmit={onSubmit}
+            showPedidosPendientes={showPedidosPendientes}
+            setShowPedidosPendientes={setShowPedidosPendientes}
             
-            <div className="lista">
-                <h5>Lista de Pedidos</h5>
-            </div>
-            <div className="tabla">
-                <table className="table">
-                <thead className="thead-dark">
-                    <tr >
-                        <th  scope="col">ID</th>
-                        <th scope="col">Nombre del Cliente</th>
-                        <th scope="col">Estado</th>
-                        <th scope="col">Valor Total</th>
-                        <th scope="col">Fecha y Hora</th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                {pedidos.filter(pedido => pedido.estado === "pendiente").map((pedido)=>{
-                return(
-                    <PedidosItem
-                            Allclientes={Allclientes}
-                            masterSubmit={masterSubmit}
-                            pedido={pedido}
-                        />
-                )
-                }
-                )}
-                        
-                </tbody>            
-                </table>
-                <ModalPendienteConf
-                setCurrentPedido={setCurrentPedido}
-                    helpCurrentPedido={helpCurrentPedido}
-                    showPendiente={showPendiente} 
-                    setShowPendiente={setShowPendiente}
-                    onSubmit={onSubmit}
-                    currentPedido={currentPedido}
-                    setShowPedidosPendientes={setShowPedidosPendientes}
-                    showPedidosPendientes={showPedidosPendientes}
-                />
-        </div>
-        </div>
-        
+        />
     )
 }
 

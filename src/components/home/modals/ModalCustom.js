@@ -20,7 +20,8 @@ function ModalCustom() {
       costo: currentProducto.costo,
       precio: currentProducto.precio,
       categoria_id: currentProducto.category_id,
-      destacado: false
+      destacado: false,
+      stock:currentProducto.stock
     })
     .then((res) =>{
       console.log(res.data)
@@ -81,10 +82,16 @@ function ModalCustom() {
         </div>
         <div>
           <label for="exampleInputEmail1">Costo del Producto</label>
-          <input type="number" className="form-control custom-input" 
+          <label for="exampleInputEmail1" className=" costoMargen" >Margen del Producto</label>
+          <input type="number" className="form-control custom-input costoMargen" 
+          placeholder="Margen"
+          onChange={(e) => handle(e)} name="margen" value={currentProducto.margen}
+          />
+          <input type="number" className="form-control custom-input costoMargen" 
           placeholder="Costo"
           onChange={(e) => handle(e)} name="costo" value={currentProducto.costo}
           />
+          
         </div>
         <div>
           <label for="exampleInputEmail1">Precio del Producto</label>
@@ -95,8 +102,9 @@ function ModalCustom() {
         </div>
         <div>
           <label for="exampleInputEmail1">Stock</label>
-          <input type="text" className="form-control custom-input" 
+          <input type="number" className="form-control custom-input" 
           placeholder="Stock" aria-label="Username"
+          onChange={(e) => handle(e)} name="stock" value={currentProducto.stock}
           />
         </div>
         <div>

@@ -492,6 +492,9 @@
 .searchPedidos{
   margin-top: 1.5vh;
 }
+.ajustes{
+  margin-top: 1.5vh;
+}
 .TopLabel{
   margin-top: 2vh;
   height: 23vh;
@@ -662,6 +665,13 @@
 .pendiente{
   color: red;
   font-weight: 500;
+}
+.pendiente:hover{
+  cursor: pointer;
+}
+.costoMargen{
+  width: 50% !important;
+  float: right;
 }
 .modal-table{
   min-height: 60vh;

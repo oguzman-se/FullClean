@@ -6,7 +6,7 @@ function ListClientes() {
     <div>
         <div className="container-fluid">
         <div className="row">
-            <input className="col-md-12 form-control searchPed" placeholder="Buscar pedido..."/>
+            <input className="col-md-12 form-control searchPed ajustes" placeholder="Buscar pedido..."/>
         </div>
         </div>
         <div>

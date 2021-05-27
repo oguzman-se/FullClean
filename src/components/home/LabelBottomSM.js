@@ -9,7 +9,7 @@ import ModalConfirmarPedido from './modals/ModalConfirmarPedido';
 function LabelBottomSM(){
     const {labelCliente, totalPrice, cartItems, enable, setEnable, setPendiente,
          setShowNuevoCliente, currentMetodo, setCurrentMetodo} = useHome();
-    const {pedidos, setPedidos, setArray, currentPedido} = usePedidos()
+    const {pedidos, setPedidos, currentPedido} = usePedidos()
     const [showModalConfirmar, setShowModalConfirmar] = useState(false);
     const { addToast } = useToasts();
     const getPedido = async () => {
@@ -38,7 +38,7 @@ function LabelBottomSM(){
             metodo_envio:""
         }
           let dataArray = [data, ...cartItems]
-          setArray(dataArray)
+          console.log("dataArray", dataArray)
           if(data.estado === 'confirmado'){
             setEnable(true)
             setShowModalConfirmar(false)
@@ -46,23 +46,20 @@ function LabelBottomSM(){
                 appearance: "success",
                 autoDismiss: true,
             });
-            
           }else{
-            
             addToast("Pedido pendiente", {
                 appearance: "success",
                 autoDismiss: true,
             });
             setPendiente(true)
           }
-          
           await clienteAxios.post('/pedidos/array', {arr: dataArray})
           setPedidos(dataArray)
-          
           getPedido();
         }
         catch (error) {
-                console.log(error)
+            console.log(error)
+            console.log("pedidos", pedidos)
         }}
     function handle(e){
         let newMetodo = {...currentMetodo}
