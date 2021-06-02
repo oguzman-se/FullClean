@@ -14,14 +14,14 @@ function ModalPendienteConf(props) {
   const yes = ()=>{
     setCurrentPedido(helpCurrentPedido)
     let currentCliente ;
-            if (currentPedido.cliente_id !== 0){
-                currentCliente = Allclientes.filter((c)=> c.id === currentPedido.cliente_id)
-            } else{
-                currentCliente = [{
-                    id: 0,
-                    cliente: "Consumidor Final"
-                }]
-            }
+    if (currentPedido.cliente_id !== 0){
+        currentCliente = Allclientes.filter((c)=> c.id === currentPedido.cliente_id)
+    } else{
+        currentCliente = [{
+            id: 0,
+            cliente: "Consumidor Final"
+        }]
+    }
     onRemoveAll()
     handleClose()
     console.log("currentCliente", currentCliente)

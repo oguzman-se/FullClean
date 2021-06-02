@@ -3,18 +3,23 @@ import {Modal} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.css';
 import {useHome} from '../../../context/home-context'
 import Button from '../Button';
-
+import { useToasts } from "react-toast-notifications";
 
 function ModalNuevaCompra(props) {
   const {onRemoveAll, setLabelCliente, setEnable} = useHome()
-
+  const { addToast } = useToasts();
   const handleClose = () => setShowNuevaCompra(false);  
-  const {showNuevaCompra, setShowNuevaCompra} = props;
+  const {showNuevaCompra, setShowNuevaCompra, setVentaCredito} = props;
   const yes = ()=>{
     onRemoveAll()
     handleClose()
     setLabelCliente({})
     setEnable(false)
+    setVentaCredito("venta")
+    addToast("Nueva Venta Seteada", {
+      appearance: "success",
+      autoDismiss: true,
+  });
   }
   return (
     <>

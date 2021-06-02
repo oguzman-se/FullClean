@@ -16,17 +16,64 @@ export function PedidosProvider(props){
       setPedidos(res.data)
     })
   }
-  
+  //NUEVA VENTA NOTA DE CREDITO
+  const [ventaCredito, setVentaCredito] = useState({});
   //STATE PARA MODAL NUEVA VENTA
   const [showNuevaCompra, setShowNuevaCompra] = useState(false);
+  //STATE PARA MODAL REMITO
+  const [showRemito, setShowRemito] = useState(false);
+  //STATE PARA MODAL TICKET
+  const [showTicket, setShowTicket] = useState(false);
   //ARRAY DE PEDIDOS
     const [array, setArray] = useState([]);
   //ARRAY DONDE SE GUARDAN LOS PEDIDOS
     const [bigArray, setBigArray] = useState([]);
   
   //VALORES DE EFECTIVO, CTA. CTE, DEBITO Y CREDITO
- // let valorEfectivo = 0;
-  const [valorEfectivo, setValorEfectivo] = useState(0)
+  // EFECTIVO
+    const [valorEfectivo, setValorEfectivo] = useState(0);
+    useEffect(() => {
+      let PrecioEfectivo = 0
+      pedidos.filter((p)=> p.metodo_pago === "efectivo").map((p)=>{
+        PrecioEfectivo = PrecioEfectivo + p.valor_total;
+      return ""
+    })
+    setValorEfectivo(PrecioEfectivo)
+    }, [pedidos])
+
+  // TARJETA DE CREDITO
+  const [valorCredito, setValorCredito] = useState(0);
+  useEffect(() => {
+    let PrecioCredito = 0
+    pedidos.filter((p)=> p.metodo_pago === "tarjeta credito").map((p)=>{
+      PrecioCredito = PrecioCredito + p.valor_total;
+    return ""
+  })
+  setValorCredito(PrecioCredito)
+  }, [pedidos])
+
+  // TARJETA DE DEBITO
+  const [valorDebito, setValorDebito] = useState(0);
+  useEffect(() => {
+    let PrecioDebito = 0
+    pedidos.filter((p)=> p.metodo_pago === "tarjeta debito").map((p)=>{
+    PrecioDebito = PrecioDebito + p.valor_total;
+    return ""
+  })
+  setValorDebito(PrecioDebito)
+  }, [pedidos])
+
+  // CUENTA CORRIENTE
+  const [valorCorriente, setValorCorriente] = useState(0);
+  useEffect(() => {
+    let PrecioCorriente = 0
+    pedidos.filter((p)=> p.metodo_pago === "cuenta corriente").map((p)=>{
+      PrecioCorriente = PrecioCorriente + p.valor_total;
+    return ""
+  })
+  setValorCorriente(PrecioCorriente)
+  }, [pedidos])
+
   //CURRENT PEDIDO PENDIENTE
   const [currentPedido, setCurrentPedido] = useState(0)
   //DECLARO QUIEN ES EL CONTEXT
@@ -36,10 +83,13 @@ export function PedidosProvider(props){
       array, setArray,
       bigArray, setBigArray,
       showNuevaCompra, setShowNuevaCompra,
-      qtyPedidos, valorEfectivo, setValorEfectivo,
+      qtyPedidos, valorEfectivo, valorCredito,
+      valorDebito,valorCorriente,
       currentPedido, setCurrentPedido,
-      helpCurrentPedido, setHelpCurrentPedido      
-      
+      helpCurrentPedido, setHelpCurrentPedido,
+      ventaCredito, setVentaCredito,
+      showRemito, setShowRemito,
+      showTicket, setShowTicket
       }
   return <PedidosContext.Provider value={value} {...props} />
 }

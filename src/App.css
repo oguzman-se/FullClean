@@ -785,3 +785,28 @@ cursor: pointer;
     border-radius: 0 !important;
     cursor: pointer !important;
 }
+
+.bordes{
+  border: 1px solid rgba(0, 0, 0, 0.664);
+}
+.bt{
+  border-top: 1px solid rgba(0, 0, 0, 0.664);
+}
+.bb{
+  border-bottom: 1px solid rgba(0, 0, 0, 0.664);
+}
+.br{
+  border-right: 1px solid rgba(0, 0, 0, 0.664);
+}
+.bl{
+  border-left: 1px solid rgba(0, 0, 0, 0.664);
+}
+.hidden{
+  visibility: hidden;
+}
+.table6{
+  margin-left: -15px !important;
+  margin-right: -15px !important;
+  margin-top: 0 !important;
+  border: 0px transparent ;
+}

@@ -21,7 +21,9 @@ function ModalCustom() {
       precio: currentProducto.precio,
       categoria_id: currentProducto.category_id,
       destacado: false,
-      stock:currentProducto.stock
+      stock:currentProducto.stock,
+      margen: currentProducto.margen,
+      alerta: currentProducto.alerta
     })
     .then((res) =>{
       console.log(res.data)
@@ -55,9 +57,14 @@ function ModalCustom() {
     
   }
   function handle(e){
-      let newProducto = {...currentProducto}
+    console.log(currentProducto)
+      if(e.target.name === "margen" || e.target.name === "costo"){
+        setCurrentProducto({...currentProducto, [e.target.name] : e.target.value,  precio: parseFloat(currentProducto.margen) *  parseFloat(currentProducto.costo)})
+      }else{
+        let newProducto = {...currentProducto}
       newProducto[e.target.name] = e.target.value
       setCurrentProducto(newProducto)
+      }
   }
   return (
     <>
@@ -103,8 +110,13 @@ function ModalCustom() {
         <div>
           <label for="exampleInputEmail1">Stock</label>
           <input type="number" className="form-control custom-input" 
-          placeholder="Stock" aria-label="Username"
+          placeholder="Stock" aria-label="Stock"
           onChange={(e) => handle(e)} name="stock" value={currentProducto.stock}
+          />
+          <label for="exampleInputEmail1">Alerta</label>
+          <input type="number" className="form-control custom-input" 
+          placeholder="Alerta" aria-label="Alerta"
+          onChange={(e) => handle(e)} name="alerta" value={currentProducto.alerta}
           />
         </div>
         <div>

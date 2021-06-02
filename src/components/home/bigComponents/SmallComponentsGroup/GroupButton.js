@@ -7,10 +7,12 @@ import {useHome} from '../../../../context/home-context';
 import {usePedidos} from '../../../../context/pedidos-context'
 import ModalNuevaCompra from '../../modals/ModalNuevaCompra'
 import ModalPedidosPendientes from '../../modals/ModalPedidosPendientes'
+import { useToasts } from "react-toast-notifications";
 function GroupButton(){
+    const { addToast } = useToasts();
     const {setShow, setShowTable, setShowCategoria, cartItems, setLabelCliente, enable, onRemoveAll,
          setEnable, pendiente, setPendiente, setCurrentMetodo} = useHome();
-    const {showNuevaCompra, setShowNuevaCompra} = usePedidos()
+    const {showNuevaCompra, setShowNuevaCompra, setVentaCredito} = usePedidos()
     const [showPedidosPendientes, setShowPedidosPendientes] = useState(false);
     const nuevaCompra = ()=>{
         console.log(cartItems)
@@ -22,6 +24,11 @@ function GroupButton(){
             setEnable(false)
             setPendiente(false)
             setCurrentMetodo("efectivo")
+            setVentaCredito("venta")
+            addToast("Nueva Venta Seteada", {
+                appearance: "success",
+                autoDismiss: true,
+            });
         }
     }    
     return(
@@ -45,7 +52,13 @@ function GroupButton(){
                 </div>
                 <div className="row">
                     <div className="col-3 ajuste">
-                    <Button>Nota de Credito</Button>     
+                    <Button onClick={()=>{
+                        setVentaCredito("notadecredito")
+                        addToast("Nota de Credito Seteada", {
+                                appearance: "success",
+                                autoDismiss: true,
+                            });
+                        }}>Nota de Credito</Button>     
                     </div>
                     <div className="col-3 ajuste">        
                         <Button 
@@ -67,6 +80,7 @@ function GroupButton(){
             <ModalNuevaCompra
                 showNuevaCompra={showNuevaCompra}
                 setShowNuevaCompra={setShowNuevaCompra}
+                setVentaCredito={setVentaCredito}
             />
             <ModalPedidosPendientes
                 showPedidosPendientes={showPedidosPendientes}

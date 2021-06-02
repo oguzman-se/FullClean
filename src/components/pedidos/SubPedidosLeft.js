@@ -2,7 +2,7 @@ import React from 'react'
 import {usePedidos} from '../../context/pedidos-context'
 
 function SubPedidosLeft(){
-    const {qtyPedidos} = usePedidos();
+    const {qtyPedidos, valorEfectivo, valorCredito, valorDebito, valorCorriente} = usePedidos();
 return (
     <div>
         <div className="container-fluid">
@@ -15,19 +15,19 @@ return (
         <div className="row">
                 <div className="col-md-3">
                     <label className="label-bottom-pedidos">Efectivo</label>
-                    <button className="boton2">$594.50</button>
+                    <button className="boton2">${valorEfectivo.toFixed(2)}</button>
                 </div>
                 <div className="col-md-3">
                     <label className="label-bottom-pedidos">Tarjeta de Credito</label>
-                    <button className="boton2">$594.50</button>
+                    <button className="boton2">${valorCredito.toFixed(2)}</button>
                 </div>
                 <div className="col-md-3">
                     <label className="label-bottom-pedidos">Tarjeta de Debito</label>
-                    <button className="boton2">$594.50</button>
+                    <button className="boton2">${valorDebito.toFixed(2)}</button>
                 </div>
                 <div className="col-md-3">
                     <label className="label-bottom-pedidos">Cuenta Corriente</label>
-                    <button className="boton2">$594.50</button>
+                    <button className="boton2">${valorCorriente.toFixed(2)}</button>
                 </div>
             </div>
         </div>

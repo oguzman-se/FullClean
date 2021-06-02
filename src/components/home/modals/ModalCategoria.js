@@ -4,12 +4,14 @@ import "bootstrap/dist/css/bootstrap.css";
 import { useHome } from "../../../context/home-context";
 import clienteAxios from "../../../config/clienteAxios";
 import { useToasts } from "react-toast-notifications";
+import ModalIconos from '../modals/ModalIncreaseCategory'
 
 function ModalCategoria() {
     const { addToast } = useToasts();
     const { setShowCategoria, showCategoria } = useHome();
     const { AllCategorias, SetAllCategorias } = useHome();
     const [currentCategoria, setCurrentCategoria] = useState({});
+    const [showIconoCategory, setShowIconosCategory] = useState(false);
     const handleClose = () => {
         setShowCategoria(false);
         setEditar(false);
@@ -193,6 +195,15 @@ function ModalCategoria() {
                                         >
                                             <i class="bi bi-x-octagon"></i>
                                         </button>
+                                        <button
+                                            className="iconos"
+                                            onClick={() => {
+                                                setCurrentCategoria(category);
+                                                setShowIconosCategory(true)
+                                                }}
+                                        >
+                                            <i class="bi bi-arrow-up-square-fill"></i>
+                                        </button>
                                     </div>
                                 </li>
                             </ol>
@@ -224,6 +235,11 @@ function ModalCategoria() {
                     </button>
                 </Modal.Footer>
             </Modal>
+            <ModalIconos
+            currentCategoria={currentCategoria}
+            showIconoCategory={showIconoCategory}
+            setShowIconosCategory={setShowIconosCategory}
+            />
         </>
     );
 }

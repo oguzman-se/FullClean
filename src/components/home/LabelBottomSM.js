@@ -5,11 +5,12 @@ import { useHome } from '../../context/home-context'
 import { usePedidos } from '../../context/pedidos-context';
 import { useToasts } from "react-toast-notifications";
 import ModalConfirmarPedido from './modals/ModalConfirmarPedido';
-
+import ButtonToPrint from './ButtonToPrint'
+import ModalRemito from './modals/ModalRemito';
 function LabelBottomSM(){
     const {labelCliente, totalPrice, cartItems, enable, setEnable, setPendiente,
          setShowNuevoCliente, currentMetodo, setCurrentMetodo} = useHome();
-    const {pedidos, setPedidos, currentPedido} = usePedidos()
+    const {pedidos, setPedidos, currentPedido, ventaCredito, showRemito, setShowRemito} = usePedidos()
     const [showModalConfirmar, setShowModalConfirmar] = useState(false);
     const { addToast } = useToasts();
     const getPedido = async () => {
@@ -33,11 +34,19 @@ function LabelBottomSM(){
             estado: estado,
             valor_total:totalPrice,
             notas: "",
-            fechayhora:"",
+            tipo_pedido: ventaCredito || "venta",
             metodo_pago: currentMetodo.metodo || "efectivo",
             metodo_envio:""
         }
-          let dataArray = [data, ...cartItems]
+        let detallePedido = [];
+        cartItems.forEach( c => {
+            detallePedido.push({
+                producto_id: c.id,
+                precio: c.precio,
+                cantidad: c.qty
+            })
+        })
+          let dataArray = [data, ...detallePedido]
           console.log("dataArray", dataArray)
           if(data.estado === 'confirmado'){
             setEnable(true)
@@ -53,7 +62,7 @@ function LabelBottomSM(){
             });
             setPendiente(true)
           }
-          await clienteAxios.post('/pedidos/array', {arr: dataArray})
+          await clienteAxios.post('/pedidos/array', dataArray)
           setPedidos(dataArray)
           getPedido();
         }
@@ -84,7 +93,7 @@ function LabelBottomSM(){
                 <div className="col-3 ajuste">
                     {enable === false || currentPedido.estado === "pendiente"
                     ? <button type="button" className="btn btn-custom" disabled>Remito</button>
-                    : <button type="button" className="btn btn-custom" >Remito</button>}
+                    : <button type="button" className="btn btn-custom" onClick={()=>setShowRemito(true)}>Remito</button>}
                 </div>
             </div>
             <div className="row ">
@@ -109,13 +118,16 @@ function LabelBottomSM(){
                 {enable === false || currentPedido.estado === "pendiente"
                 ? <button type="button" className="btn btn-custom" disabled>Ticket</button>
                 : <button type="button" className="btn btn-custom" >Ticket</button>}
-                
                 </div>
             </div>
             <ModalConfirmarPedido
                 handleEstado={handleEstado}
                 showModalConfirmar={showModalConfirmar}
                 setShowModalConfirmar={setShowModalConfirmar}
+            />
+            <ModalRemito
+                showRemito={showRemito}
+                setShowRemito={setShowRemito}
             />
         </div>
     )
