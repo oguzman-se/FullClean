@@ -12,7 +12,7 @@ function PedidoPendienteBody(props) {
         <div>
         <div>
             {pedidos && (
-            <input className="col-md-12 form-control modal-search"  type="text"
+            <input className="col-md-12 form-control modal-search ajustes9"  type="text"
             placeholder="Buscar" aria-label="Search"
             onChange={e => setBuscarPedidos(e.target.value.toLowerCase())}
             />

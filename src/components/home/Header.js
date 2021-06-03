@@ -8,6 +8,7 @@ function Header() {
   <Link className="nav-link active" to="/pedidos" >Pedidos</Link>
   <Link className="nav-link active" to="/clientes" >Clientes</Link>
   <Link className="nav-link active" to="/facturas" >Facturas</Link>
+  <Link className="nav-link active" to="/alertas" >Alertas</Link>
 </nav>
 )}
 

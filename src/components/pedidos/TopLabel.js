@@ -25,7 +25,6 @@ return (
                 </div>
                 <div className="col-md-4 ajuste-label">
                     <button className="btn btn-label"
-
                     >Vaciar Compra</button>
                 </div>
                 

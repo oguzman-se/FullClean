@@ -804,6 +804,11 @@ cursor: pointer;
 .hidden{
   visibility: hidden;
 }
+.ajustes9{
+  margin-top: 1.5vh;
+  padding-right: 0px !important;
+}
+
 .table6{
   margin-left: -15px !important;
   margin-right: -15px !important;

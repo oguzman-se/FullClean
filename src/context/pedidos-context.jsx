@@ -16,6 +16,18 @@ export function PedidosProvider(props){
       setPedidos(res.data)
     })
   }
+
+   //FACTURAS API
+   const [facturas, setFacturas] = useState([]);
+   useEffect(() => {
+    obtenerFacturas()
+   }, [])
+   const obtenerFacturas = async () => {
+     await clienteAxios.get('/facturas')
+     .then(res => {
+      setFacturas(res.data)
+     })
+   }
   //NUEVA VENTA NOTA DE CREDITO
   const [ventaCredito, setVentaCredito] = useState({});
   //STATE PARA MODAL NUEVA VENTA
@@ -89,7 +101,7 @@ export function PedidosProvider(props){
       helpCurrentPedido, setHelpCurrentPedido,
       ventaCredito, setVentaCredito,
       showRemito, setShowRemito,
-      showTicket, setShowTicket
+      showTicket, setShowTicket, facturas
       }
   return <PedidosContext.Provider value={value} {...props} />
 }

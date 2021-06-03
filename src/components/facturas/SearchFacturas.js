@@ -1,12 +1,14 @@
-import React from 'react'
-
+import React, {useState} from 'react'
+import ModalCrearFactura from './modales/ModalCrearFactura'
 function SearchFacturas() {
+    const [showFactura, setShowFactura] = useState(false)
     return (
         <div>
             <div className="container-fluid">
-        <div className="row">
-            <input className="col-md-12 form-control searchPed" placeholder="Buscar pedido..."/>
-            <input className="col-md-12 form-control searchPed" placeholder="Buscar por numero de pedido..."/>
+        
+        <div className="row ajustes9">
+            <input className="col-md-8 form-control searchPed" placeholder="Buscar por numero de pedido..."/>
+            <button className="col-md-3 boton" onClick={()=>setShowFactura(true)}>Crear Factura</button> 
         </div>
         </div>
         <div>
@@ -29,6 +31,10 @@ function SearchFacturas() {
                 
             </div>
         </div>
+        <ModalCrearFactura
+            showFactura={showFactura}
+            setShowFactura={setShowFactura}
+        />
         </div>
     )
 }
