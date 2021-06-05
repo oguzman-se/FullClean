@@ -27,7 +27,6 @@ const eliminar = async (a) => {
                 <thead className="thead-dark">
                     <tr>
                         <th  scope="col">ID</th>
-                        <th scope="col">Tipo</th>
                         <th scope="col">Producto</th>
                         <th scope="col">Fecha y Hora</th>
                         <th scope="col"></th>
@@ -37,13 +36,21 @@ const eliminar = async (a) => {
                 {alertas.map((a)=>(
                     <tr>
                         <td>{a.id}</td>
-                        <td>{a.tipo}</td>
                         {products.map((p)=>{
+                        if(a.tipo === "stock"){
                             if(p.id === a.producto_id){
                                 return(
-                                    <td>{p.nombre}</td>
+                                    <td>El producto <label className="titulo45">{p.nombre}</label> se esta quedando sin stock</td>
                                 )
                             }
+                        }else{
+                            if(p.id === a.producto_id){
+                                return(
+                                    <td>El producto {p.nombre} se le cambio el precio</td>
+                                )
+                            }
+                        }
+                            
                         })}
                         <td>{a.fechayhora}</td>
                         <button className="iconos"
