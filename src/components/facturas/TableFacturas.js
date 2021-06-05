@@ -15,7 +15,7 @@ function TableFacturas() {
       };
     return (
         <div>
-            <div className="tabla3 ">
+            <div className="tabla80 ">
                 <table className="table">
                 <thead className="thead-dark">
                     <tr>
@@ -40,7 +40,7 @@ function TableFacturas() {
                         }</td>
                         <td>${f.valor_total}</td>
                         <td>${f.valor_cubierto}</td>
-                        <td>{f.pedido_id}</td>
+                        <td>{f.pedido_id === 0 ? "No esta asociada a un pedido" : f.pedido_id}</td>
                         <button className="iconos"
                         onClick={()=>onAddFactura(f)}
                         ><i class="bi bi-plus-circle-fill"></i></button>  

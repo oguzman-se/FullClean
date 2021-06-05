@@ -1,7 +1,9 @@
 import React, {useState} from 'react'
 import ModalCrearFactura from './modales/ModalCrearFactura'
+
 function SearchFacturas() {
     const [showFactura, setShowFactura] = useState(false)
+
     return (
         <div>
             <div className="container-fluid">

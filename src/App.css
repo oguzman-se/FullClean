@@ -554,6 +554,16 @@
   overflow:scroll;
   overflow-x: hidden;
 }
+.tabla80{
+  height: 60vh;
+  border: 1px solid #383c44;
+  padding: 0%;
+  margin-top: 1vh;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  overflow:scroll;
+  overflow-x: hidden;
+}
 .tabla4{
   height: 80vh;
   border: 1px solid #383c44;

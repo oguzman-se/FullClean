@@ -117,7 +117,7 @@ export function PedidosProvider(props){
       ventaCredito, setVentaCredito,
       showRemito, setShowRemito,
       showTicket, setShowTicket, facturas,
-      currentFactura, setCurrentFactura, alertas, setAlertas
+      currentFactura, setCurrentFactura, alertas, setAlertas, obtenerFacturas
       }
   return <PedidosContext.Provider value={value} {...props} />
 }
