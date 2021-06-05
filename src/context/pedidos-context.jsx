@@ -30,6 +30,8 @@ export function PedidosProvider(props){
    }
   //NUEVA VENTA NOTA DE CREDITO
   const [ventaCredito, setVentaCredito] = useState({});
+  //CURRENT FACTURA
+  const [currentFactura, setCurrentFactura] = useState({});
   //STATE PARA MODAL NUEVA VENTA
   const [showNuevaCompra, setShowNuevaCompra] = useState(false);
   //STATE PARA MODAL REMITO
@@ -101,7 +103,8 @@ export function PedidosProvider(props){
       helpCurrentPedido, setHelpCurrentPedido,
       ventaCredito, setVentaCredito,
       showRemito, setShowRemito,
-      showTicket, setShowTicket, facturas
+      showTicket, setShowTicket, facturas,
+      currentFactura, setCurrentFactura
       }
   return <PedidosContext.Provider value={value} {...props} />
 }

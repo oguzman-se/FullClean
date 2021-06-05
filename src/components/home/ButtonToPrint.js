@@ -1,9 +1,10 @@
 import React, { useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
-
+import {useHome} from '../../context/home-context'
 import { ComponentToPrint } from './Remito';
 
 const Example = () => {
+  const { cartItems } = useHome();
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
@@ -11,7 +12,9 @@ const Example = () => {
 
   return (
     <div>
-      <ComponentToPrint ref={componentRef}  />
+      <ComponentToPrint ref={componentRef} 
+      cartItems={cartItems}
+      />
       <br></br>
       <button className="btn btn-custom" onClick={()=>handlePrint()}>Print this out!</button>
     </div>

@@ -1,16 +1,33 @@
-import React from 'react'
-
+import React, {useState} from 'react'
+import {usePedidos} from '../../context/pedidos-context'
+import {useHome} from '../../context/home-context'
+import ModalAsociarFactura from './modales/ModalAsociarFactura'
 function LabelFacturas() {
+    const [showAsociar, setShowAsociar] = useState(false);
+    const {currentFactura} = usePedidos()
+    const {Allclientes} = useHome()
     return (
         <div className="container-fluid">
             <div className="row">
                 
-                <label className="col-md-12 label-border">Factura: 1-65468449</label>
-                <label className="col-md-12 label-border">Cliente: Juan Perez</label>
-                <label className="col-md-12 label-border">Domicilio: Av. Mitre 159</label>
+                <label className="col-md-12 label-border">Factura: {currentFactura.id}</label>
+                <label className="col-md-12 label-border">Cliente: {
+                    Allclientes.map((c)=>{
+                        if(c.id === currentFactura.cliente_id){
+                            return(c.nombre)
+                        }
+                    })
+                }</label>
+                <label className="col-md-12 label-border">Domicilio: {
+                    Allclientes.map((c)=>{
+                        if(c.id === currentFactura.cliente_id){
+                            return(c.domicilio)
+                        }
+                    })
+                }</label>
                 
-                <label className="col-md-7 label-border">Importe: $15.354</label>
-                <button className="col-md-4 btn btn-facturas">Asociar Pedido</button>
+                <label className="col-md-7 label-border">Importe: ${currentFactura.valor_total}</label>
+                <button className="col-md-4 btn btn-facturas" onClick={()=>setShowAsociar(true)}>Asociar Pedido</button>
         
             </div>
             
@@ -42,6 +59,10 @@ function LabelFacturas() {
                 </div>
         
             </div>
+            <ModalAsociarFactura
+                showAsociar={showAsociar}
+                setShowAsociar={setShowAsociar}
+            />
         </div>
     )
 }
