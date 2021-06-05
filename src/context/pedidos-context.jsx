@@ -17,6 +17,19 @@ export function PedidosProvider(props){
     })
   }
 
+
+  const [alertas, setAlertas] = useState([]);
+  useEffect(() => {
+    obtenerAlertas()
+  }, [alertas])
+  const obtenerAlertas = async () => {
+    await clienteAxios.get('/alertas')
+    .then(res => {
+      setAlertas(res.data)
+    })
+  }
+
+
    //FACTURAS API
    const [facturas, setFacturas] = useState([]);
    useEffect(() => {
@@ -104,7 +117,7 @@ export function PedidosProvider(props){
       ventaCredito, setVentaCredito,
       showRemito, setShowRemito,
       showTicket, setShowTicket, facturas,
-      currentFactura, setCurrentFactura
+      currentFactura, setCurrentFactura, alertas
       }
   return <PedidosContext.Provider value={value} {...props} />
 }
