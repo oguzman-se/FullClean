@@ -1,7 +1,7 @@
 import React from 'react'
-import Table from '../home/Table'
+import TablePed from './TablePed'
 function TablePedidos(){
 return (
-    <Table/>
+    <TablePed/>
 )}
 export default TablePedidos;

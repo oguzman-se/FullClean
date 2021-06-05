@@ -426,12 +426,8 @@
   padding: 0%;
   margin-top: 1vh;
 }
-.tabla2{
-  min-height: 60vh;
-  border: 1px solid #383c44;
-  padding: 0%;
-  margin-top: 1vh;
-}
+
+
 .titulo{
   font-weight: bold;
   font-size: large;
@@ -540,6 +536,16 @@
 }
 .tabla2{
   height: 40vh;
+  border: 1px solid #383c44;
+  padding: 0%;
+  margin-top: 1vh;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  overflow:scroll;
+  overflow-x: hidden;
+}
+.tabla90{
+  height: 80vh;
   border: 1px solid #383c44;
   padding: 0%;
   margin-top: 1vh;

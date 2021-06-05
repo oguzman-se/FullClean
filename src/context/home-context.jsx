@@ -6,6 +6,8 @@ const HomeContext = React.createContext();
 export function HomeProvider(props){
   // ESTE ESTADO ES PARA LOS ITEMS DEL CARRITO, LOS PRODUCTOS.
     const [cartItems, setCartItems] = useState([]);
+     // ESTE ESTADO ES PARA LOS ITEMS DEL CARRITO, LOS PRODUCTOS.
+     const [cartPedidos, setCartPedidos] = useState([]);
   //DISABLED BOTONES
     const [enable, setEnable] = useState(false);
     //SIRVE PARA EL BOTON DE NUEVA COMPRA, PARA SABER CUANDO MOSTRAR EL MODAL
@@ -144,7 +146,10 @@ export function HomeProvider(props){
   
   //FUNCION PARA AGREGAR CLIENTE
   const [labelCliente, setLabelCliente] = useState([]);
-  
+   //FUNCION PARA AGREGAR CLIENTE
+   const [labelPedido, setLabelPedido] = useState([]);
+  //CLIENTE PEDIDOS
+  const [labelPed, setLabelPed] = useState([]);
   //CURRENT METODOOOO
   const [currentMetodo, setCurrentMetodo] = useState({})
 
@@ -185,7 +190,8 @@ export function HomeProvider(props){
         enable, setEnable,
         pendiente, setPendiente,
         showNuevoCliente, setShowNuevoCliente,
-        currentMetodo, setCurrentMetodo
+        currentMetodo, setCurrentMetodo, labelPed, setLabelPed,
+        cartPedidos, setCartPedidos, labelPedido, setLabelPedido
       }
   return <HomeContext.Provider value={value} {...props} />
 }

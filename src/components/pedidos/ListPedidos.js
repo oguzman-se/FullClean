@@ -4,7 +4,7 @@ import {useHome} from '../../context/home-context'
 import Pendiente from './Pedidos'
 import {usePedidos} from '../../context/pedidos-context'
 function ListPedidos(props) {
-    const {products, cartItems,setCartItems, Allclientes, setLabelCliente, setEnable, pendiente} = useHome()
+    const {products, cartPedidos, setCartPedidos, Allclientes, setLabelPedido, setEnable, pendiente} = useHome()
     const {setCurrentPedido, setHelpCurrentPedido} = usePedidos()
     const [showPendiente, setShowPendiente] = useState(false);
     const {setShowPedidosPendientes, showPedidosPendientes} = props;
@@ -26,7 +26,7 @@ function ListPedidos(props) {
                 }
                 return ""
             })
-            setCartItems(ArrayFinal)
+            setCartPedidos(ArrayFinal)
             setEnable(true)
         })
         .catch((e)=>{
@@ -34,7 +34,7 @@ function ListPedidos(props) {
         })
     }
     const masterSubmit = async(pedido)=>{
-        if(cartItems.length > 0 && pendiente === false){
+        if(cartPedidos.length > 0 && pendiente === false){
             setShowPendiente(true)
             setHelpCurrentPedido(pedido)
         }else{
@@ -48,7 +48,7 @@ function ListPedidos(props) {
                     cliente: "Consumidor Final"
                 }]
             }
-            setLabelCliente(currentCliente[0])
+            setLabelPedido(currentCliente[0])
             onSubmit(pedido.id)
             if(showPedidosPendientes === true){
                 setShowPedidosPendientes(false)

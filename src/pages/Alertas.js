@@ -4,25 +4,41 @@ import Layout from '../components/home/Layout'
 import {usePedidos} from '../context/pedidos-context'
 import {useHome} from '../context/home-context'
 import clienteAxios from '../config/clienteAxios'
+import { useToasts } from "react-toast-notifications";
 function Alertas() {
 const {alertas, setAlertas} = usePedidos()
 const {products} = useHome()
+const { addToast } = useToasts();
 
 const eliminar = async (a) => {
     await clienteAxios.delete(`/alertas/${a.id}`)
     .then((res) =>{
       console.log(res.data)
+      const getAlerts = async () => {
+        await clienteAxios
+            .get("/alertas")
+            .then((r) => {
+                setAlertas(r.data);
+                addToast("Alerta eliminada", {
+                    appearance: "success",
+                    autoDismiss: true,
+                });
+            })
+            .catch((r) => {
+                console.log("error get", r);
+            });
+      };
+      getAlerts();
     })
     .catch((err) => {
       console.log("error delete", err);
     });
-    
   }
   return(
     <Layout>
        <div className="container-fluid">
             <label className="titulo">Lista de Alertas</label>
-            <div className="tabla2 ">
+            <div className="tabla90 ">
                 <table className="table">
                 <thead className="thead-dark">
                     <tr>

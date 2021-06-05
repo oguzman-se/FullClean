@@ -2,7 +2,7 @@ import React from 'react'
 import {useHome} from '../../context/home-context'
 import {usePedidos} from '../../context/pedidos-context'
 function TopLabel(){
-    const {labelCliente} = useHome([]);
+    const {labelPedido} = useHome([]);
     const {currentPedido} = usePedidos()
 return (
     <div className="container-fluid">
@@ -21,14 +21,14 @@ return (
                 </div>
 
                 <div className="col-md-8 label2">
-                <label>Cliente: {labelCliente.id} - {labelCliente.nombre}</label>
+                <label>Cliente: {labelPedido.id} - {labelPedido.nombre}</label>
                 </div>
                 <div className="col-md-4 ajuste-label">
 
                 </div>
                 
                 <div className="col-md-8 label2">
-                    <label >Domicilio: {labelCliente.domicilio}</label>
+                    <label >Domicilio: {labelPedido.domicilio}</label>
                 </div>
                 <div className="col-md-4 ajuste-label">
                     <button className="btn btn-label"

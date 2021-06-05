@@ -21,7 +21,7 @@ export function PedidosProvider(props){
   const [alertas, setAlertas] = useState([]);
   useEffect(() => {
     obtenerAlertas()
-  }, [alertas])
+  }, [])
   const obtenerAlertas = async () => {
     await clienteAxios.get('/alertas')
     .then(res => {
@@ -117,7 +117,7 @@ export function PedidosProvider(props){
       ventaCredito, setVentaCredito,
       showRemito, setShowRemito,
       showTicket, setShowTicket, facturas,
-      currentFactura, setCurrentFactura, alertas
+      currentFactura, setCurrentFactura, alertas, setAlertas
       }
   return <PedidosContext.Provider value={value} {...props} />
 }
