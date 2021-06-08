@@ -13,9 +13,23 @@ export function PedidosProvider(props){
   const obtenerDatos = async () => {
     await clienteAxios.get('/pedidos')
     .then(res => {
+      console.log("pedidos", res.data)
       setPedidos(res.data)
     })
   }
+
+   //FACTURAS ID API
+   const [facturasId, setFacturasId] = useState([]);
+   useEffect(() => {
+        obtenerFacturasId()
+       }, [])
+       const obtenerFacturasId = async () => {
+         await clienteAxios.get(`/pedidosfacturados/factura/${currentFactura.id}`)
+         .then(res => {
+           setFacturasId(res.data)
+         })
+       }
+
 
 
   const [alertas, setAlertas] = useState([]);
@@ -29,6 +43,20 @@ export function PedidosProvider(props){
     })
   }
 
+  //FUNCION PARA ASOCIAR PEDIDOS O AGREGAR A LA DERECHA
+  const [agregarOno, setAgregarOno] = useState(false)
+
+  //FUNCION PARA AGREGAR PRODUCTOS AL CARRITO
+  const [checked, setChecked] = useState(false)
+  const [pedidosArray, setPedidosArray] = useState([])
+  const onAddFactura = (pedido) => {
+    setChecked(!checked)
+    if (checked === false) {
+      setPedidosArray([...pedidosArray, pedido.id]);
+    }else{
+      setPedidosArray(pedidosArray.filter((x) => x.id === pedido.id));
+    }
+  };
 
    //FACTURAS API
    const [facturas, setFacturas] = useState([]);
@@ -117,7 +145,10 @@ export function PedidosProvider(props){
       ventaCredito, setVentaCredito,
       showRemito, setShowRemito,
       showTicket, setShowTicket, facturas,
-      currentFactura, setCurrentFactura, alertas, setAlertas, obtenerFacturas
+      currentFactura, setCurrentFactura, alertas, setAlertas, obtenerFacturas,
+      onAddFactura, pedidosArray, setPedidosArray, agregarOno, setAgregarOno,
+      facturasId, setFacturasId, obtenerFacturasId,
+      
       }
   return <PedidosContext.Provider value={value} {...props} />
 }

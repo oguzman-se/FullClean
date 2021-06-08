@@ -37,6 +37,32 @@ export function HomeProvider(props){
         setProducts(res.data)
       })
     }
+
+//FACTURAS ID API
+const [facturasXcliente, setFacturaXcliente] = useState([]);
+useEffect(() => {
+  obtenerFacturasXcliente()
+    }, [])
+    const obtenerFacturasXcliente = async () => {
+      await clienteAxios.get(`/facturas/cliente/${labelCliente.id}`)
+      .then(res => {
+        setFacturaXcliente(res.data)
+      })
+    }
+
+  //PEDIDO ID API
+  const [pedidosXcliente, setPedidoXcliente] = useState([]);
+  useEffect(() => {
+    obtPedidoXcliente()
+      }, [])
+      const obtPedidoXcliente = async () => {
+        await clienteAxios.get(`/pedidos/cliente/${labelCliente.id}`)
+        .then(res => {
+          setFacturaXcliente(res.data)
+          console.log("pedidosXcliente", pedidosXcliente)
+        })
+      }  
+
   //PRODUCTOS CODIGO API
   const [AllCodigos, setAllCodigos] = useState([])
     useEffect(() => {
@@ -191,7 +217,9 @@ export function HomeProvider(props){
         pendiente, setPendiente,
         showNuevoCliente, setShowNuevoCliente,
         currentMetodo, setCurrentMetodo, labelPed, setLabelPed,
-        cartPedidos, setCartPedidos, labelPedido, setLabelPedido
+        cartPedidos, setCartPedidos, labelPedido, setLabelPedido,
+        facturasXcliente, setFacturaXcliente,obtenerFacturasXcliente,
+        pedidosXcliente, setPedidoXcliente, obtPedidoXcliente
       }
   return <HomeContext.Provider value={value} {...props} />
 }

@@ -1,7 +1,10 @@
 import React from 'react'
-import PedidoPendiente from '../home/PedidoPendiente'
+import TableFacturaIdClientes from './TableFacturaIdClientes'
+import {usePedidos} from '../../context/pedidos-context'
+import {useHome} from '../../context/home-context'
 
 function ListClientes() {
+    const {facturasXcliente, setFacturaXcliente,obtenerFacturasXcliente, Allclientes} = useHome();
     return (
     <div>
         <div className="container-fluid">
@@ -27,38 +30,10 @@ function ListClientes() {
                 </div>
             </div>
         </div>
-        <div className="tabla">
-        <table className="table">
-        <thead className="thead-dark">
-            <tr>
-                <th  scope="col">Codigo</th>
-                <th scope="col">Producto</th>
-                <th scope="col">Cantidad</th>
-                <th scope="col">price Un.</th>
-                <th scope="col">Total</th>
-                <th scope="col"></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>22</td>
-                <td className="name">Trapo</td>
-                <td>
-                    <button className="btn-minus">-</button>
-                    
-                    <button className="btn-plus">+</button>
-                </td>
-                <td>
-                    <input/>
-                </td>
-                <td>$323</td>
-                <td>
-                    <button className="btn-cross">X</button>
-                </td>
-            </tr>
-        </tbody>            
-        </table>
-    </div>
+        <TableFacturaIdClientes
+                    facturasXcliente={facturasXcliente}
+                    Allclientes={Allclientes}
+                />
     </div>
     )
 }

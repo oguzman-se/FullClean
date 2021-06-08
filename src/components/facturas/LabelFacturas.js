@@ -1,10 +1,15 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {usePedidos} from '../../context/pedidos-context'
 import {useHome} from '../../context/home-context'
 import ModalAsociarFactura from './modales/ModalAsociarFactura'
+import { useToasts } from "react-toast-notifications";
+import clienteAxios from "../../config/clienteAxios"
+import TableFacturaId from './TableFacturaId';
 function LabelFacturas() {
+    const { addToast } = useToasts();
     const [showAsociar, setShowAsociar] = useState(false);
-    const {currentFactura} = usePedidos()
+    const {currentFactura, setCurrentFactura, facturasId} = usePedidos();
+    
     const {Allclientes} = useHome()
     return (
         <div className="container-fluid">
@@ -33,35 +38,17 @@ function LabelFacturas() {
             
             <div className="row">
                 <label className="col-md-12 label-facturas">Listado de Pedidos Asociados a la Factura</label>
-            
-                
-                <div className="col-md-12 tabla2">
-                    <table className="table">
-                    <thead className="thead-dark">
-                        <tr>
-                            <th  scope="col">ID</th>
-                            <th scope="col">Empresa</th>
-                            <th scope="col">Total</th>
-                            <th scope="col">Estado</th>
-                            <th scope="col">Estado</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>00001</td>
-                            <td>Consorcio Mitre</td>
-                            <td>520</td>
-                            <td className="pendiente">Pendiente</td>
-                            <td className="confirm">Confirmado</td>
-                        </tr>
-                    </tbody>            
-                    </table>
-                </div>
+        
+                <TableFacturaId
+                    facturasId={facturasId}
+                    Allclientes={Allclientes}
+                />
         
             </div>
             <ModalAsociarFactura
                 showAsociar={showAsociar}
                 setShowAsociar={setShowAsociar}
+                Allclientes={Allclientes}
             />
         </div>
     )

@@ -6,7 +6,14 @@ export class ComponentToPrint extends React.PureComponent {
       return (
         <div className="container-fluid bordes">
             <div className="row bb">
-                <div className="col-6 br">Full Clean Express</div>
+                <div className="col-6 br">
+                    <label className="col-12">Full Clean Express</label>
+                    <label className="col-12">VENTA Y DISTRIBUCION DE PRODUCTOS DE LIMPIEZA</label>
+                    <label className="col-12">BERUTI 70 - (1870) AVELLANEDA</label>
+                    <label className="col-12">Buenos Aires - Cel.: 11 6017 - 4060</label>
+                    <label className="col-12">Facebook: FULL CLEAN EXPRESS</label>
+                    <label className="col-12">Instagram: @fullcleanexpress</label>
+                </div>
                 <div className="col-6">
                    
                         <div className="row">
