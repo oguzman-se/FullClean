@@ -9,7 +9,8 @@ import ButtonToPrint from './ButtonToPrint'
 import ModalRemito from './modals/ModalRemito';
 function LabelBottomSM(){
     const {labelCliente, totalPrice, cartItems, enable, setEnable, setPendiente,
-         setShowNuevoCliente, currentMetodo, setCurrentMetodo} = useHome();
+         setShowNuevoCliente, currentMetodo, setCurrentMetodo, setLabelCliente,
+         onRemoveAll} = useHome();
     const {pedidos, setPedidos, currentPedido, ventaCredito, showRemito, setShowRemito} = usePedidos()
     const [showModalConfirmar, setShowModalConfirmar] = useState(false);
     const { addToast } = useToasts();
@@ -55,7 +56,14 @@ function LabelBottomSM(){
                 appearance: "success",
                 autoDismiss: true,
             });
+            setLabelCliente({})
+            onRemoveAll()
+            setEnable(false)
           }else{
+            setLabelCliente({})
+            onRemoveAll()
+            setEnable(false)
+            setCurrentMetodo("efectivo")
             addToast("Pedido pendiente", {
                 appearance: "success",
                 autoDismiss: true,

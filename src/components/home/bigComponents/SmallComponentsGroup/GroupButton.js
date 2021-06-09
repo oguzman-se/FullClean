@@ -14,6 +14,7 @@ function GroupButton(){
          setEnable, pendiente, setPendiente, setCurrentMetodo} = useHome();
     const {showNuevaCompra, setShowNuevaCompra, setVentaCredito} = usePedidos()
     const [showPedidosPendientes, setShowPedidosPendientes] = useState(false);
+    
     const nuevaCompra = ()=>{
         console.log(cartItems)
         if(cartItems.length > 0 && enable === false && pendiente === false){
