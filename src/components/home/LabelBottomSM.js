@@ -56,9 +56,6 @@ function LabelBottomSM(){
                 appearance: "success",
                 autoDismiss: true,
             });
-            setLabelCliente({})
-            onRemoveAll()
-            setEnable(false)
           }else{
             setLabelCliente({})
             onRemoveAll()
