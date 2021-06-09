@@ -30,22 +30,35 @@ function PedidoPendienteBody(props) {
 
     return (
         <div>
-            <div>
-                {pedidos && (
-                    <input
-                        className="col-md-12 form-control modal-search ajustes9"
-                        type="text"
-                        placeholder="Buscar"
-                        aria-label="Search"
-                        onChange={(e) =>
-                            setBuscarPedidos({
-                                ...buscarPedidos,
-                                text: e.target.value.toLowerCase(),
-                            })
-                        }
-                    />
-                )}
+            <div className="container-fluid">
+        <div className="row">
+            <input className="col-md-12 form-control searchPed ajustes" placeholder="Buscar pedido..."/>
+        </div>
+        </div>
+        <div>
+            <div className="row">
+                <div className="col-md-6 ">
+                    <input className="form-control searchPed" placeholder="Desde"/>
+                    <input className="form-control searchPed" placeholder="Hasta"/>
+                </div>
+                <div className="col-md-3">
+                    <select className="select labelsm">
+                    <option value="efectivo" selected>Efectivo</option>
+                    <option value="tarjeta credito">Tarjeta de credito</option>
+                    <option value="tarjeta debito">Tarjeta de Debito</option>
+                    <option value="cuenta corriente">Cuenta Corriente</option>
+                </select>    
+                </div>
+                <div className="col-md-3">
+                    <select className="select labelsm">
+                    <option value="efectivo" selected>Efectivo</option>
+                    <option value="tarjeta credito">Tarjeta de credito</option>
+                    <option value="tarjeta debito">Tarjeta de Debito</option>
+                    <option value="cuenta corriente">Cuenta Corriente</option>
+                </select>    
+                </div>
             </div>
+        </div>
 
             <div className="lista">
                 <h5>Lista de Pedidos</h5>
@@ -64,8 +77,7 @@ function PedidoPendienteBody(props) {
                 </tr>
             </thead>
             <tbody>
-            {pedidos.filter(pedido => pedido.estado === "pendiente" || "confirmado")
-            .filter(buscadorPedidos(buscarPedidos)).map((pedido)=>{
+            {pedidos.map((pedido)=>{
                 return(
                     <PedidosItem
                             Allclientes={Allclientes}

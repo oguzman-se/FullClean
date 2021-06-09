@@ -18,15 +18,21 @@ function ListClientes() {
                     <input className="form-control searchPed" placeholder="Desde"/>
                     <input className="form-control searchPed" placeholder="Hasta"/>
                 </div>
-                <div className="col-md-6">
-                    <label className="state">Estado:</label>
-                    <select className="sel">
-                        <option selected>Efectivo</option>
-                        <option value="1">Tarjeta de credito</option>
-                        <option value="2">Tarjeta de Debito</option>
-                        <option value="3">Rapipago</option>
-                    </select>
-                                    
+                <div className="col-md-3">
+                    <select className="select labelsm">
+                    <option value="efectivo" selected>Efectivo</option>
+                    <option value="tarjeta credito">Tarjeta de credito</option>
+                    <option value="tarjeta debito">Tarjeta de Debito</option>
+                    <option value="cuenta corriente">Cuenta Corriente</option>
+                </select>    
+                </div>
+                <div className="col-md-3">
+                    <select className="select labelsm">
+                    <option value="efectivo" selected>Efectivo</option>
+                    <option value="tarjeta credito">Tarjeta de credito</option>
+                    <option value="tarjeta debito">Tarjeta de Debito</option>
+                    <option value="cuenta corriente">Cuenta Corriente</option>
+                </select>    
                 </div>
             </div>
         </div>
