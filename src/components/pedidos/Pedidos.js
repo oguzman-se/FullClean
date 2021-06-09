@@ -1,27 +1,55 @@
-import React from 'react'
-import PedidosItem from './PedidosItem'
-import {useHome} from '../../context/home-context'
-import ModalPendienteConf from '../home/modals/ModalPedidoPendienteConfirmar'
-import {usePedidos} from '../../context/pedidos-context'
+import React, {useEffect} from "react";
+import PedidosItem from "./PedidosItem";
+import { useHome } from "../../context/home-context";
+import ModalPendienteConf from "../home/modals/ModalPedidoPendienteConfirmar";
+import { usePedidos } from "../../context/pedidos-context";
+
 function PedidoPendienteBody(props) {
-    const {pedidos, currentPedido, setCurrentPedido, helpCurrentPedido} = usePedidos()
-    const {Allclientes} = useHome()
-    const {setBuscarPedidos, buscadorPedidos, buscarPedidos, masterSubmit, showPendiente,
-        setShowPendiente, onSubmit, setShowPedidosPendientes, showPedidosPendientes} = props;
-    return(
+    const {
+        pedidos,
+        currentPedido,
+        setCurrentPedido,
+        helpCurrentPedido,
+    } = usePedidos();
+    const { Allclientes } = useHome();
+    const {
+        setBuscarPedidos,
+        buscadorPedidos,
+        buscarPedidos,
+        masterSubmit,
+        showPendiente,
+        setShowPendiente,
+        onSubmit,
+        setShowPedidosPendientes,
+        showPedidosPendientes,
+    } = props;
+
+    useEffect(() => {
+        console.log('pedidos: ', pedidos);
+    }, [pedidos]);
+
+    return (
         <div>
-        <div>
-            {pedidos && (
-            <input className="col-md-12 form-control modal-search ajustes9"  type="text"
-            placeholder="Buscar" aria-label="Search"
-            onChange={e => setBuscarPedidos(e.target.value.toLowerCase())}
-            />
-            )}
-        </div>
-        
-        <div className="lista">
-            <h5>Lista de Pedidos</h5>
-        </div>
+            <div>
+                {pedidos && (
+                    <input
+                        className="col-md-12 form-control modal-search ajustes9"
+                        type="text"
+                        placeholder="Buscar"
+                        aria-label="Search"
+                        onChange={(e) =>
+                            setBuscarPedidos({
+                                ...buscarPedidos,
+                                text: e.target.value.toLowerCase(),
+                            })
+                        }
+                    />
+                )}
+            </div>
+
+            <div className="lista">
+                <h5>Lista de Pedidos</h5>
+            </div>
         <div className="tabla2">
             <table className="table">
             <thead className="thead-dark">

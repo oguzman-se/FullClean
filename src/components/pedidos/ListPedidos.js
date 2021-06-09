@@ -1,31 +1,34 @@
-import React, {useState} from 'react'
-import clienteAxios from '../../config/clienteAxios'
-import {useHome} from '../../context/home-context'
-import Pendiente from './Pedidos'
-import {usePedidos} from '../../context/pedidos-context'
+import React, { useState } from "react";
+import clienteAxios from "../../config/clienteAxios";
+import { useHome } from "../../context/home-context";
+import Pendiente from "./Pedidos";
+import { usePedidos } from "../../context/pedidos-context";
 function ListPedidos(props) {
     const {products, cartPedidos, setCartPedidos, Allclientes, setLabelPedido, setEnable, pendiente} = useHome()
     const {setCurrentPedido, setHelpCurrentPedido} = usePedidos()
     const [showPendiente, setShowPendiente] = useState(false);
-    const {setShowPedidosPendientes, showPedidosPendientes} = props;
-    const onSubmit = async(id)=>{
-        await clienteAxios.get(`/pedidodetalles/pedido/${id}`)
-        .then((res)=>{
-            let arr = res.data;
-            let ArrayFinal = []
-            arr.map((item)=> {
-                let dataProduct = products.filter((p)=> p.id === item.producto_id) 
-                if(dataProduct[0]){
-                    let productoIdeal = {
-                        id: dataProduct[0].id,
-                        nombre: dataProduct[0].nombre,
-                        precio: item.precio,
-                        qty: item.cantidad,
+    const { setShowPedidosPendientes, showPedidosPendientes } = props;
+    const onSubmit = async (id) => {
+        await clienteAxios
+            .get(`/pedidodetalles/pedido/${id}`)
+            .then((res) => {
+                let arr = res.data;
+                let ArrayFinal = [];
+                arr.map((item) => {
+                    let dataProduct = products.filter(
+                        (p) => p.id === item.producto_id
+                    );
+                    if (dataProduct[0]) {
+                        let productoIdeal = {
+                            id: dataProduct[0].id,
+                            nombre: dataProduct[0].nombre,
+                            precio: item.precio,
+                            qty: item.cantidad,
+                        };
+                        ArrayFinal.push(productoIdeal);
                     }
-                    ArrayFinal.push(productoIdeal)
-                }
-                return ""
-            })
+                    return "";
+                });
             setCartPedidos(ArrayFinal)
             setEnable(true)
         })
@@ -53,19 +56,24 @@ function ListPedidos(props) {
             if(showPedidosPendientes === true){
                 setShowPedidosPendientes(false)
             }
-            
         }
-    }
+    };
     //BUSCADOR DE PEDIDOS
-    const [buscarPedidos, setBuscarPedidos] = useState("");
-    const buscadorPedidos = (buscarPedidos) => {
-        return function(x){
-            console.log(x.ciente_id)
-        return (
-            x.estado.toLowerCase().includes(buscarPedidos) || !buscarPedidos
-        ) 
+    const [buscarPedidos, setBuscarPedidos] = useState({
+        text: "",
+        estado: "confirmado",
+    });
+    const buscadorPedidos = (pedido) => {
+        if (pedido.tipo_pedido === "venta") {
+            if (buscarPedidos.text !== "") {
+                if (pedido.id.toString().includes(buscarPedidos.text)) {
+                    return pedido;
+                }
+            } else {
+                return pedido;
+            }
         }
-    }
+    };
     return (
         <Pendiente
             buscarPedidos={buscarPedidos}
@@ -77,9 +85,8 @@ function ListPedidos(props) {
             onSubmit={onSubmit}
             showPedidosPendientes={showPedidosPendientes}
             setShowPedidosPendientes={setShowPedidosPendientes}
-            
         />
-    )
+    );
 }
 
 export default ListPedidos;
