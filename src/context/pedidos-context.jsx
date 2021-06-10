@@ -68,7 +68,7 @@ export function PedidosProvider(props){
      })
    }
   //NUEVA VENTA NOTA DE CREDITO
-  const [ventaCredito, setVentaCredito] = useState({});
+  const [ventaCredito, setVentaCredito] = useState(null);
   //CURRENT FACTURA
   const [currentFactura, setCurrentFactura] = useState({});
   //STATE PARA MODAL NUEVA VENTA

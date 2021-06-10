@@ -103,7 +103,7 @@ function LabelBottomSM(){
             </div>
             <div className="row ">
                 <div className="col-md-6" >
-                <select className="select labelsm"
+                <select value={currentMetodo.metodo} className="select labelsm"
                  onChange={(e) => handle(e)} name="metodo">
                     <option value="efectivo" selected>Efectivo</option>
                     <option value="tarjeta credito">Tarjeta de credito</option>

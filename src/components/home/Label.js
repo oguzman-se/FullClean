@@ -9,7 +9,7 @@ function Label(){
         setEnable(false)
         onRemoveAll()
     }
-    if (!labelCliente.nombre) {
+    if (labelCliente === undefined || !labelCliente.nombre) {
     return(
         <div className="container-fluid">
             <div className="row combo-label">
@@ -23,7 +23,7 @@ function Label(){
                     >Cargar Cliente</button>
                 </div>
                 <div className="col-md-8 label">
-                    <label >Domicilio: {labelCliente.domicilio}</label>
+                    <label >Domicilio: </label>
                 </div>
                 <div className="col-md-4 ajuste-label">
                     <button className="btn btn-label"
