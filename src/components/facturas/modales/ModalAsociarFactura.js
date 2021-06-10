@@ -8,18 +8,27 @@ import clienteAxios from '../../../config/clienteAxios'
 import { useToasts } from "react-toast-notifications";
 function ModalAsociarFactura(props) {
   const { addToast } = useToasts();
-  const {pedidos, obtenerFacturas, currentFactura, pedidosArray} = usePedidos()
+  const {pedidos,obtenerFacturasId, currentFactura, pedidosArray, setCurrentFactura, facturas, setFacturas} = usePedidos()
   const [modalAociar, setModalAsociar] = useState(false)
-  const {showAsociar, setShowAsociar, Allclientes} = props;
+  const {showAsociar, setShowAsociar, Allclientes, valorTotal} = props;
   const handleClose = () => {
   setShowAsociar(false);
   }
   const handleYes = async () => {
     console.log(currentFactura.pedido_id)
+    let valorTotal = pedidosArray.map((p)=>{
+      let este = pedidos.filter((ped)=>ped.id === p)
+      if(este[0]){
+        return(
+          este[0].valor_total
+        )
+      }
+    })
+      console.log("valorTotal", valorTotal)
       await clienteAxios
           .post("/pedidosfacturados", {
             pedido_id: pedidosArray,
-            factura_id: currentFactura.id
+            factura_id: currentFactura.id,
           })
           .then((res) => {
               console.log(res.data);
@@ -27,10 +36,23 @@ function ModalAsociarFactura(props) {
                 await clienteAxios
                     .put(`/facturas/${currentFactura.id}`, {
                       pedido_id: pedidosArray,
+                      valor_total: parseFloat(currentFactura.valor_total) + parseFloat(valorTotal)
                     })
                     .then((res) => {
                       console.log(res.data);
-                      obtenerFacturas()
+                      obtenerFacturasId()
+                      const obtenerFacturas = async () => {
+                        await clienteAxios.get('/facturas')
+                        .then(res => {
+                         setFacturas(res.data)
+                         res.data.map((f)=>{
+                          if(f.id === currentFactura.id){
+                            setCurrentFactura(f)
+                          }
+                        })
+                        })
+                      }
+                      obtenerFacturas();
                       handleClose()
                     })
                     .catch((err) => {
@@ -40,7 +62,6 @@ function ModalAsociarFactura(props) {
                           autoDismiss: true,
                       });
                       handleClose()
-                      obtenerFacturas()
                     });
             };
             actualizar();

@@ -21,8 +21,8 @@ export function PedidosProvider(props){
    //FACTURAS ID API
    const [facturasId, setFacturasId] = useState([]);
   
-       const obtenerFacturasId = async () => {
-         await clienteAxios.get(`/pedidosfacturados/factura/${currentFactura.id}`)
+       const obtenerFacturasId = async (params) => {
+         await clienteAxios.get(`/pedidosfacturados/factura/${ params ? params : currentFactura.id}`)
          .then(res => {
            setFacturasId(res.data)
          })
@@ -127,6 +127,8 @@ export function PedidosProvider(props){
   setValorCorriente(PrecioCorriente)
   }, [pedidos])
 
+ 
+
   //CURRENT PEDIDO PENDIENTE
   const [currentPedido, setCurrentPedido] = useState(0)
   //DECLARO QUIEN ES EL CONTEXT
@@ -145,7 +147,7 @@ export function PedidosProvider(props){
       showTicket, setShowTicket, facturas,
       currentFactura, setCurrentFactura, alertas, setAlertas, obtenerFacturas,
       onAddFactura, pedidosArray, setPedidosArray, agregarOno, setAgregarOno,
-      facturasId, setFacturasId, obtenerFacturasId,
+      facturasId, setFacturasId, obtenerFacturasId, setFacturas
       
       }
   return <PedidosContext.Provider value={value} {...props} />

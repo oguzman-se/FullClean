@@ -8,7 +8,7 @@ import TableFacturaId from './TableFacturaId';
 function LabelFacturas() {
     const { addToast } = useToasts();
     const [showAsociar, setShowAsociar] = useState(false);
-    const {currentFactura, setCurrentFactura, facturasId} = usePedidos();
+    const {currentFactura, valorTotal, facturasId} = usePedidos();
     
     const {Allclientes} = useHome()
     return (

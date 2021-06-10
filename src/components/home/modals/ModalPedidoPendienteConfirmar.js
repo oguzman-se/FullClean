@@ -3,31 +3,31 @@ import {Modal} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.css';
 import {useHome} from '../../../context/home-context'
 import Button from '../Button';
+import { usePedidos } from '../../../context/pedidos-context';
 
 
 function ModalPendienteConf(props) {
-  const {onRemoveAll, setLabelCliente, Allclientes} = useHome()
-
+  const {onRemoveAll, setLabelCliente, Allclientes, setCurrentMetodo, currentMetodo} = useHome()
+  const {setCurrentPedido} = usePedidos()
   const handleClose = () => setShowPendiente(false);  
   const {showPendiente, setShowPendiente, onSubmit, currentPedido,
-     setShowPedidosPendientes, showPedidosPendientes, helpCurrentPedido,setCurrentPedido} = props;
+     setShowPedidosPendientes, showPedidosPendientes, helpCurrentPedido} = props;
   const yes = ()=>{
+    console.log("helpCurrentPedido", helpCurrentPedido)
     setCurrentPedido(helpCurrentPedido)
     let currentCliente ;
-    if (currentPedido.cliente_id !== 0){
-        currentCliente = Allclientes.filter((c)=> c.id === currentPedido.cliente_id)
+    if (helpCurrentPedido.cliente_id !== 0){
+        currentCliente = Allclientes.filter((c)=> c.id === helpCurrentPedido.cliente_id)
     } else{
         currentCliente = [{
             id: 0,
             cliente: "Consumidor Final"
         }]
     }
-    onRemoveAll()
     handleClose()
-    console.log("currentCliente", currentCliente)
-    console.log("currentPedido", currentPedido)
     setLabelCliente(currentCliente[0])
-    onSubmit(currentPedido.id)
+    setCurrentMetodo({ ...currentMetodo, metodo: helpCurrentPedido.metodo_pago });
+    onSubmit(helpCurrentPedido.id)
     if(showPedidosPendientes === true){
       setShowPedidosPendientes(false)
   }

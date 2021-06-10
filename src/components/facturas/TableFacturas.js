@@ -7,9 +7,9 @@ function TableFacturas() {
     const {facturas, currentFactura, setCurrentFactura, agregarOno, obtenerFacturasId} = usePedidos();
 
     const {Allclientes} = useHome()
-    const onAddFactura = (factura) => {
-        setCurrentFactura(factura)
-        obtenerFacturasId()
+    const onAddFactura = async(factura) => {
+        obtenerFacturasId(factura.id)
+        await setCurrentFactura(factura)
         addToast("Factura agregada", {
             appearance: "success",
             autoDismiss: true,

@@ -1,6 +1,7 @@
 import React from 'react'
-
+import {useHome} from '../../context/home-context'
 function TableFacturaId(props) {
+    const {estadoOvalor} = useHome()
     const {facturasXcliente, Allclientes} = props;
     return (
         <div className="col-md-12 tabla110 ">
@@ -10,7 +11,7 @@ function TableFacturaId(props) {
                         <th  scope="col">ID</th>
                         <th scope="col">Cliente</th>
                         <th scope="col">Valor Total</th>
-                        <th scope="col">Valor Cubierto</th>
+                        <th scope="col">{facturasXcliente && facturasXcliente[0]?.estado ? "Estado" : "Valor Cubierto"}</th>
                         <th scope="col">Fecha y Hora</th>
                     </tr>
                 </thead>
@@ -26,7 +27,8 @@ function TableFacturaId(props) {
                             })
                         }</td>
                         <td>${f.valor_total}</td>
-                        <td>${f.valor_cubierto}</td>
+                        {f.estado ? f.estado === "pendiente" ?<td className="pendiente">{f.estado.toUpperCase()}</td>
+                        : <td className="confirm">{f.estado.toUpperCase()}</td> : <td>{`$${f.valor_cubierto}`}</td>}
                         <td>{f.fechayhora}</td>
                         </tr>
                         ))}

@@ -1,10 +1,28 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Link } from "react-router-dom";
 import {useHome} from '../../context/home-context'
 import ModalDetalleCliente from './ModalDetalleCliente';
 function TopClientes() {
-    const {labelCliente, setLabelCliente, obtenerFacturasXcliente, obtPedidoXcliente} = useHome();
+    const {labelCliente, setLabelCliente, obtenerFacturasXcliente, obtPedidoXcliente, facturasXcliente} = useHome();
     const [showDetalleCliente, setShowDetalleCliente] = useState(false)
+    const [deuda, setDeuda] = useState(0)
+    useEffect(() => {
+        if(facturasXcliente.length > 0){
+            let tuDeuda = 0;
+            facturasXcliente.map((f)=>{
+                if(f.valor_cubierto){
+                    tuDeuda = tuDeuda + parseFloat(f.valor_total) - parseFloat(f.valor_cubierto)
+                    console.log(f)
+                }else{
+                    tuDeuda = tuDeuda + parseFloat(f.valor_total)
+                    console.log(f)
+                }
+            })
+            setDeuda(tuDeuda)
+        }else{
+            setDeuda(0)
+        }
+    }, [facturasXcliente])
     return (
         <div className="container-fluid">
             <div className="row">
@@ -24,7 +42,7 @@ function TopClientes() {
                 </div>
                 <div>
                     <label className="label-deuda">Deuda: </label>
-                    <label className="label-deuda rojo">$17.758</label>
+                    <label className="label-deuda rojo">${deuda}</label>
                 </div>
             </div>
             

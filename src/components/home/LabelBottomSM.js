@@ -10,7 +10,7 @@ import ModalRemito from './modals/ModalRemito';
 function LabelBottomSM(){
     const {labelCliente, totalPrice, cartItems, enable, setEnable, setPendiente,
          setShowNuevoCliente, currentMetodo, setCurrentMetodo, setLabelCliente,
-         onRemoveAll} = useHome();
+         onRemoveAll, obtenerDatos} = useHome();
     const {pedidos, setPedidos, currentPedido, ventaCredito, showRemito, setShowRemito} = usePedidos()
     const [showModalConfirmar, setShowModalConfirmar] = useState(false);
     const { addToast } = useToasts();
@@ -60,7 +60,7 @@ function LabelBottomSM(){
             setLabelCliente({})
             onRemoveAll()
             setEnable(false)
-            setCurrentMetodo("efectivo")
+            setCurrentMetodo({ ...currentMetodo, metodo: "efectivo" });
             addToast("Pedido pendiente", {
                 appearance: "success",
                 autoDismiss: true,
@@ -70,6 +70,7 @@ function LabelBottomSM(){
           await clienteAxios.post('/pedidos/array', dataArray)
           setPedidos(dataArray)
           getPedido();
+          obtenerDatos();
         }
         catch (error) {
             console.log(error)

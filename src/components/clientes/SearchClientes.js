@@ -5,7 +5,7 @@ import { useToasts } from "react-toast-notifications";
 
 
 function SearchClientes() {
-    const {Allclientes, setShowNuevoCliente, setLabelCliente, setFacturaXcliente} = useHome();
+    const {Allclientes, setShowNuevoCliente, setLabelCliente, setFacturaXcliente, obtPedidoXcliente} = useHome();
     const [buscarCliente, setBuscarCliente] = useState("");
     const { addToast } = useToasts();
     function buscadorClientes(buscarCliente){
@@ -20,6 +20,7 @@ function SearchClientes() {
       const onAddCliente = (clientes) => {
         setLabelCliente(clientes)
         setFacturaXcliente([])
+        obtPedidoXcliente(clientes.id)
         addToast("Cliente agregado", {
             appearance: "success",
             autoDismiss: true,

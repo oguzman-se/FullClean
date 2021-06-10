@@ -3,6 +3,7 @@ import clienteAxios from "../config/clienteAxios";
 const HomeContext = React.createContext();
 
 export function HomeProvider(props) {
+    //estado o valor total
     // ESTE ESTADO ES PARA LOS ITEMS DEL CARRITO, LOS PRODUCTOS.
     const [cartItems, setCartItems] = useState([]);
     // ESTE ESTADO ES PARA LOS ITEMS DEL CARRITO, LOS PRODUCTOS.
@@ -51,9 +52,9 @@ export function HomeProvider(props) {
 
     //PEDIDO ID API
     const [pedidosXcliente, setPedidoXcliente] = useState([]);
-    const obtPedidoXcliente = async () => {
+    const obtPedidoXcliente = async (params) => {
         await clienteAxios
-            .get(`/pedidos/cliente/${labelCliente.id}`)
+            .get(`/pedidos/cliente/${params ? params : labelCliente.id}`)
             .then((res) => {
                 setFacturaXcliente(res.data);
                 console.log("pedidosXcliente", pedidosXcliente);
@@ -227,7 +228,7 @@ export function HomeProvider(props) {
         pedidosXcliente,
         setPedidoXcliente,
         obtPedidoXcliente,
-        barcodeRef
+        barcodeRef,obtenerDatos
     };
     return <HomeContext.Provider value={value} {...props} />;
 }

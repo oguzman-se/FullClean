@@ -856,3 +856,8 @@ cursor: pointer;
   margin-top: 0 !important;
   border: 0px transparent ;
 }
+
+.relative{
+  position: relative !important;
+  margin-right: 10px !important;
+}

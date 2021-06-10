@@ -31,9 +31,8 @@ function FacturasItem(props) {
                 <td>${pedido.valor_total}</td>  
                 <td>{pedido.fechayhora.toUpperCase()}</td> 
                 {currentFactura.cliente_id === pedido.cliente_id 
-                ?  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" onChange={()=>onAddFactura(pedido)}/>
-                :  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled/>} 
-               
+                ?  <input class="form-check-input relative" type="checkbox" value="" id="flexCheckDefault" onChange={()=>onAddFactura(pedido)}/>
+                :  <input class="form-check-input relative" type="checkbox" value="" id="flexCheckDefault" disabled/>} 
                 <button className="iconos"
                 onClick={()=>setShowNota(true)}
                 ><i class="bi bi-stickies"></i></button> 
