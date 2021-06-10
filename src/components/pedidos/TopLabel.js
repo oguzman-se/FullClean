@@ -21,14 +21,14 @@ return (
                 </div>
 
                 <div className="col-md-8 label2">
-                <label>Cliente: {labelPedido.id} - {labelPedido.nombre}</label>
+                <label>Cliente: {labelPedido?.id} - {labelPedido?.nombre}</label>
                 </div>
                 <div className="col-md-4 ajuste-label">
 
                 </div>
                 
                 <div className="col-md-8 label2">
-                    <label >Domicilio: {labelPedido.domicilio}</label>
+                    <label >Domicilio: {labelPedido?.domicilio}</label>
                 </div>
                 <div className="col-md-4 ajuste-label">
                     <button className="btn btn-label"

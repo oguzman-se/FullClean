@@ -7,6 +7,7 @@ import clienteAxios from "../../../config/clienteAxios";
 import { useToasts } from "react-toast-notifications";
 
 function ModalIconos(props) {
+    let { obtenerDatos } = useHome();
     const [margenCategory, setMargenCategory] = useState({
         prodsOn: false,
         aumento: 0,
@@ -43,6 +44,8 @@ function ModalIconos(props) {
                     appearance: "success",
                     autoDismiss: true,
                 });
+                handleClose();
+                obtenerDatos();
                 setMargenCategory({ prodsOn: false, aumento: 0 });
             })
             .catch((err) => {
