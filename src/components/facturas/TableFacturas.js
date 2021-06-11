@@ -2,10 +2,10 @@ import React from 'react'
 import {usePedidos} from '../../context/pedidos-context'
 import {useHome} from '../../context/home-context'
 import { useToasts } from "react-toast-notifications";
-function TableFacturas() {
+function TableFacturas(props) {
     const { addToast } = useToasts();
     const {facturas, currentFactura, setCurrentFactura, agregarOno, obtenerFacturasId} = usePedidos();
-
+    const {filtroBuscador} = props;
     const {Allclientes} = useHome()
     const onAddFactura = async(factura) => {
         obtenerFacturasId(factura.id)
@@ -30,7 +30,7 @@ function TableFacturas() {
                     </tr>
                 </thead>
                 <tbody>
-                {facturas.map((factura)=>(
+                {facturas.filter(filtroBuscador).map((factura)=>(
                     <tr>
                         <td>{factura.id}</td>
                         <td>{

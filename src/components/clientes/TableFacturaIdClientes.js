@@ -1,8 +1,7 @@
 import React from 'react'
 import {useHome} from '../../context/home-context'
 function TableFacturaId(props) {
-    const {estadoOvalor} = useHome()
-    const {facturasXcliente, Allclientes} = props;
+    const {facturasXcliente, Allclientes, filtroBuscador} = props;
     return (
         <div className="col-md-12 tabla110 ">
                 <table className="table">
@@ -16,7 +15,7 @@ function TableFacturaId(props) {
                     </tr>
                 </thead>
                 <tbody>
-                {facturasXcliente.map((f)=>(
+                {facturasXcliente.filter(filtroBuscador).map((f)=>(
                     <tr>
                         <td>{f.id}</td>
                         <td>{

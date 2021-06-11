@@ -2,10 +2,11 @@ import React, {useState, useEffect} from 'react'
 import { Link } from "react-router-dom";
 import {useHome} from '../../context/home-context'
 import ModalDetalleCliente from './ModalDetalleCliente';
-function TopClientes() {
+function TopClientes(props) {
     const {labelCliente, setLabelCliente, obtenerFacturasXcliente, obtPedidoXcliente, facturasXcliente} = useHome();
     const [showDetalleCliente, setShowDetalleCliente] = useState(false)
     const [deuda, setDeuda] = useState(0)
+    const {search,setSearch} = props;
     useEffect(() => {
         if(facturasXcliente.length > 0){
             let tuDeuda = 0;

@@ -4,7 +4,7 @@ import ModalCargarCliente from '../home/modals/ModalCargarCliente'
 import { useToasts } from "react-toast-notifications";
 
 
-function SearchClientes() {
+function SearchClientes(props) {
     const {Allclientes, setShowNuevoCliente, setLabelCliente, setFacturaXcliente, obtPedidoXcliente} = useHome();
     const [buscarCliente, setBuscarCliente] = useState("");
     const { addToast } = useToasts();

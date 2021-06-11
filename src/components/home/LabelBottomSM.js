@@ -5,7 +5,7 @@ import { useHome } from '../../context/home-context'
 import { usePedidos } from '../../context/pedidos-context';
 import { useToasts } from "react-toast-notifications";
 import ModalConfirmarPedido from './modals/ModalConfirmarPedido';
-import ButtonToPrint from './ButtonToPrint'
+
 import ModalRemito from './modals/ModalRemito';
 function LabelBottomSM(){
     const {labelCliente, totalPrice, cartItems, enable, setEnable, setPendiente,
