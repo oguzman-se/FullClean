@@ -9,7 +9,7 @@ function Home() {
     const { cartItems, setShowTable, barcodeRef } = useHome();
 
     const handleKeyDown = (e) => {
-        //console.log("A key was pressed", e.keyCode, e.key);
+        console.log("A key was pressed", e.keyCode, e.key);
         if (e.keyCode === 112) {
             //es el 'F1'
             setShowTable(true);
