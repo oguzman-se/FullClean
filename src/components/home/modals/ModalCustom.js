@@ -1,30 +1,54 @@
-import React from "react";
+import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import { useHome } from "../../../context/home-context";
 import clienteAxios from "../../../config/clienteAxios";
 import { useToasts } from "react-toast-notifications";
 import SelectCategoria from "../selectCategoria";
+import BarcodeItem from "./nuevoProducto/BarcodeItem";
 
 function ModalCustom() {
     const { addToast } = useToasts();
     const { setShow, show } = useHome();
     const { setProducts } = useHome();
     const handleClose = () => setShow(false);
-    const { currentProducto, setCurrentProducto, AllCategorias } = useHome();
+    const {
+        currentProducto,
+        setCurrentProducto,
+        AllCategorias,
+        setAllCodigos,
+    } = useHome();
+
+    const [barcodes, setBarcodes] = useState([]);
+
+    const barcodePressed = (e, current, setCurrent) => {
+        if (e.key === "Enter") {
+            setBarcodes([...barcodes, current]);
+            setCurrent("");
+        }
+    };
+
+    const byeBARCODE = (that) => {
+        let newBarcodeArr = [...barcodes].filter((b) => b !== that);
+        setBarcodes(newBarcodeArr);
+    };
 
     const submit = async () => {
         console.log(currentProducto);
         await clienteAxios
-            .post("/productos", {
+            .post("/productos/conBarcodes", {
                 nombre: currentProducto.nombre,
                 costo: currentProducto.costo,
                 precio: currentProducto.precio,
                 categoria_id: currentProducto.category_id,
                 destacado: false,
                 stock: currentProducto.stock,
-                margen: currentProducto.margen,
+                margen:
+                    currentProducto?.margen !== ""
+                        ? currentProducto.margen
+                        : null,
                 alerta: currentProducto.alerta,
+                barcodes: barcodes,
             })
             .then((res) => {
                 console.log(res.data);
@@ -47,6 +71,17 @@ function ModalCustom() {
                             });
                         });
                 };
+                const getCod = async () => {
+                    await clienteAxios
+                        .get("/productoscodigo")
+                        .then((r) => {
+                            setAllCodigos(r.data);
+                        })
+                        .catch((r) => {
+                            console.log("error get", r);
+                        });
+                };
+                getCod();
                 getProd();
             })
             .catch((e) => {
@@ -56,6 +91,7 @@ function ModalCustom() {
                 });
             });
     };
+
     function handle(e) {
         if (e.target.name === "costo") {
             if (currentProducto.margen && currentProducto.margen > 0) {
@@ -106,6 +142,7 @@ function ModalCustom() {
             setCurrentProducto(newProducto);
         }
     }
+
     return (
         <>
             <Modal
@@ -203,6 +240,30 @@ function ModalCustom() {
                                 cats={AllCategorias}
                             />
                         </div>
+                    </div>
+                    <div style={{ marginTop: 15 }}>
+                        <label for="exampleInputEmail1">BARCODES</label>
+                        {barcodes.length > 0 ? (
+                            <ol style={{ marginLeft: 50 }}>
+                                {barcodes.map((b) => {
+                                    return (
+                                        <li style={{ padding: "5px 0" }}>
+                                            {b}
+                                            <button
+                                                className="iconos"
+                                                onClick={() => byeBARCODE(b)}
+                                                style={{ float: "right" }}
+                                            >
+                                                <i className="bi bi-x-octagon"></i>
+                                            </button>
+                                        </li>
+                                    );
+                                })}
+                            </ol>
+                        ) : (
+                            ""
+                        )}
+                        <BarcodeItem barcodePressed={barcodePressed} />
                     </div>
                 </Modal.Body>
                 <Modal.Footer>

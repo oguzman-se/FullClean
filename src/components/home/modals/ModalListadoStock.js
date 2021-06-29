@@ -1,18 +1,28 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Modal } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import Button from "../Button";
-import ButtonToPrint from "../ButtonToPrintRemito";
+import { ListadoStock } from "../ListadoStock";
+import { useReactToPrint } from "react-to-print";
+import { useHome } from "../../../context/home-context";
 
-function ModalRemito(props) {
-    const { showRemito, setShowRemito } = props;
+function ModalListadoStock({ show, setShow }) {
+    const { products } = useHome();
+
+    const handlePrint = useReactToPrint({
+        content: () => listadoRef.current,
+    });
+
+    const listadoRef = useRef();
+
     const handleClose = () => {
-        setShowRemito(false);
+        setShow(false);
     };
+
     return (
         <>
             <Modal
-                show={showRemito}
+                show={show}
                 onHide={handleClose}
                 backdrop="static"
                 keyboard={false}
@@ -21,9 +31,12 @@ function ModalRemito(props) {
                     <Modal.Title id="modal-tittle">Impresión</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <ButtonToPrint />
+                    <ListadoStock ref={listadoRef} products={products} />
                 </Modal.Body>
-                <Modal.Footer>
+                <Modal.Footer style={{ justifyContent: "space-between" }}>
+                    <Button className="btn" onClick={() => handlePrint()}>
+                        Imprimir listado
+                    </Button>
                     <Button
                         className="modal-button-cancel"
                         onClick={handleClose}
@@ -36,4 +49,4 @@ function ModalRemito(props) {
     );
 }
 
-export default ModalRemito;
+export default ModalListadoStock;

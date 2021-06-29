@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { useReactToPrint } from "react-to-print";
 import { useHome } from "../../context/home-context";
-import { ComponentToPrint } from "./Recibo";
+import { ComponentToPrint } from "./Remito";
 
 const Example = () => {
     const { cartItems, labelCliente } = useHome();

@@ -21,6 +21,16 @@ function Alertas() {
         }
     };
 
+    //De: 2021-06-29T00:58:20.000Z A: 29-06-2021 00:58:20 hs
+    const getFechaYHora = (fyh) => {
+        //ESTO ES PARA QUE SI ES 000 ME PONGA EL DIA ANTERIOR
+        //if(parseInt(fyh.substr(11,2)) > 20){ }
+        return `${fyh.substr(8, 2)}-${fyh.substr(5, 2)}-${fyh.substr(
+            2,
+            2
+        )} ${fyh.substr(11, 2)}:${fyh.substr(14, 2)}:${fyh.substr(17, 2)} hs`;
+    };
+
     useEffect(() => {
         window.addEventListener("keydown", handleKeyDown);
         return () => {
@@ -80,8 +90,7 @@ function Alertas() {
                                                         <label className="titulo45">
                                                             {p.nombre}
                                                         </label>{" "}
-                                                        se esta quedando sin
-                                                        stock
+                                                        Se esta agotando stock
                                                     </td>
                                                 );
                                             }
@@ -89,14 +98,18 @@ function Alertas() {
                                             if (p.id === a.producto_id) {
                                                 return (
                                                     <td>
-                                                        El producto {p.nombre}{" "}
-                                                        se le cambio el precio
+                                                        El producto{" "}
+                                                        <label className="titulo45">
+                                                            {p.nombre}
+                                                        </label>{" "}
+                                                        recibio un cambio en sus
+                                                        costos/precios
                                                     </td>
                                                 );
                                             }
                                         }
                                     })}
-                                    <td>{a.fechayhora}</td>
+                                    <td>{getFechaYHora(a.fechayhora)}</td>
                                     <button
                                         className="iconos"
                                         onClick={() => eliminar(a)}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useHome } from "../../context/home-context";
 import ModalDetalleCliente from "./ModalDetalleCliente";
+import ModalEliminarCliente from "./ModalEliminarCliente";
 function TopClientes() {
     const {
         labelCliente,
@@ -11,6 +12,7 @@ function TopClientes() {
         facturasXcliente,
     } = useHome();
     const [showDetalleCliente, setShowDetalleCliente] = useState(false);
+    const [showElimCliente, setShowElimCliente] = useState(false);
     const [deuda, setDeuda] = useState(0);
     useEffect(() => {
         if (facturasXcliente.length > 0) {
@@ -82,9 +84,9 @@ function TopClientes() {
                     >
                         Facturas
                     </button>
-        {/*<button className="btn btn-custom-clientes-chicos">
+                    {/*<button className="btn btn-custom-clientes-chicos">
                         Nuevo Pago
-                    </button>*/} 
+                    </button>*/}
                     <Link className="btn btn-custom-clientes-chicos" to="/">
                         Nuevo Pedido
                     </Link>
@@ -95,11 +97,19 @@ function TopClientes() {
                 </div>*/}
             </div>
 
+            <ModalEliminarCliente
+                show={showElimCliente}
+                setShow={setShowElimCliente}
+                setShowDetalle={setShowDetalleCliente}
+                labelCliente={labelCliente}
+            />
+
             <ModalDetalleCliente
                 showDetalleCliente={showDetalleCliente}
                 setShowDetalleCliente={setShowDetalleCliente}
                 labelCliente={labelCliente}
                 setLabelCliente={setLabelCliente}
+                setShowElimCliente={setShowElimCliente}
             />
         </div>
     );

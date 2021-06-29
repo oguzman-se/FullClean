@@ -195,6 +195,7 @@ function ModalCategoria() {
                                         >
                                             <i class="bi bi-x-octagon"></i>
                                         </button>
+                                    {/*
                                         <button
                                             className="iconos"
                                             onClick={() => {
@@ -204,6 +205,7 @@ function ModalCategoria() {
                                         >
                                             <i class="bi bi-arrow-up-square-fill"></i>
                                         </button>
+                                    */}
                                     </div>
                                 </li>
                             </ol>

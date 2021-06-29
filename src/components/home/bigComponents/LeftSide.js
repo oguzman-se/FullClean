@@ -1,37 +1,14 @@
-import React from 'react'
-import Productos from '../Productos'
-import GroupButton from './SmallComponentsGroup/GroupButton';
+import React from "react";
+import Productos from "../Productos";
+import GroupButton from "./SmallComponentsGroup/GroupButton";
 
-function LeftSide(){
-    return(
+function LeftSide() {
+    return (
         <div>
-            <div>
-                <div>
-                    <GroupButton/>
-                </div>
-            </div>
-            
-            <div>
-                <div >
-                    <Productos/>          
-                </div>
-            </div>
+            <GroupButton />
+            <Productos />
         </div>
-    )
+    );
 }
 
 export default LeftSide;
-
-
-
-
-
-
-
-
-
-
-
-
-
-

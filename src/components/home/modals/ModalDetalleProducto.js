@@ -25,14 +25,16 @@ function ModalCargarCliente(props) {
             if (currentProducto.margen && currentProducto.margen > 0) {
                 setCurrentProducto({
                     ...currentProducto,
-                    [e.target.name]: e.target.value,
-                    precio: e.target.value * (1 + currentProducto.margen / 100),
+                    [e.target.name]: parseFloat(e.target.value),
+                    precio: parseFloat(
+                        e.target.value * (1 + currentProducto.margen / 100)
+                    ),
                 });
             } else {
                 setCurrentProducto({
                     ...currentProducto,
-                    [e.target.name]: e.target.value,
-                    precio: e.target.value,
+                    [e.target.name]: parseFloat(e.target.value),
+                    precio: parseFloat(e.target.value),
                 });
             }
         } else if (e.target.name === "margen") {
@@ -76,13 +78,10 @@ function ModalCargarCliente(props) {
         console.log(currentcodigo);
     };
     const actualizar = async (producto) => {
+        let toSend = { ...currentProducto };
+        delete toSend.nombreCat;
         await clienteAxios
-            .put(`/productos/${producto.id}`, {
-                nombre: currentProducto.nombre,
-                costo: currentProducto.costo,
-                precio: currentProducto.precio,
-                destacado: currentProducto.destacado,
-            })
+            .put(`/productos/${producto.id}`, toSend)
             .then((res) => {
                 console.log(res.data);
                 setShowDetalleProd(false);
@@ -187,7 +186,7 @@ function ModalCargarCliente(props) {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <div>
+                    <div className="detalleProd">
                         <div>
                             <label for="exampleInputEmail1">
                                 ID del Producto
@@ -216,6 +215,29 @@ function ModalCargarCliente(props) {
                             <label for="exampleInputEmail1">
                                 Costo del Producto
                             </label>
+                            {currentProducto?.fecha_costo ? (
+                                <span
+                                    style={{
+                                        fontSize: 13,
+                                        marginLeft: 18,
+                                        fontStyle: "italic",
+                                    }}
+                                >
+                                    Última modif:
+                                    <span
+                                        style={{
+                                            fontSize: 14,
+                                            fontWeight: "bold",
+                                            fontStyle: "italic",
+                                        }}
+                                    >
+                                        {" "}
+                                        {currentProducto.fecha_costo}
+                                    </span>
+                                </span>
+                            ) : (
+                                ""
+                            )}
                             <label
                                 for="exampleInputEmail1"
                                 className=" costoMargen"
@@ -229,7 +251,7 @@ function ModalCargarCliente(props) {
                                 onChange={handleChange}
                                 name="margen"
                                 value={currentProducto.margen}
-                            />
+                            />{" "}
                             <input
                                 type="number"
                                 className="form-control custom-input costoMargen"
@@ -243,6 +265,29 @@ function ModalCargarCliente(props) {
                             <label for="exampleInputEmail1">
                                 Precio del Producto
                             </label>
+                            {currentProducto?.fecha_precio ? (
+                                <span
+                                    style={{
+                                        fontSize: 13,
+                                        marginLeft: 13,
+                                        fontStyle: "italic",
+                                    }}
+                                >
+                                    Última modif:
+                                    <span
+                                        style={{
+                                            fontSize: 14,
+                                            fontWeight: "bold",
+                                            fontStyle: "italic",
+                                        }}
+                                    >
+                                        {" "}
+                                        {currentProducto.fecha_precio}
+                                    </span>
+                                </span>
+                            ) : (
+                                ""
+                            )}
                             <input
                                 type="number"
                                 className="form-control custom-input"

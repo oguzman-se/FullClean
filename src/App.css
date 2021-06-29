@@ -426,7 +426,8 @@
     margin-top: 20px;
 }
 .titulo45 {
-    font-weight: 500;
+    font-weight: bold;
+    font-style: italic;
 }
 .table thead {
     font-size: 14px;
@@ -852,7 +853,7 @@
     margin-right: 10px !important;
 }
 
-.printRemito .bb .info .col-9{
+.printRemito .bb .info .col-9 {
     font-size: 21px;
     font-weight: bold;
     padding-top: 10px;
@@ -864,21 +865,21 @@
     display: block;
 }
 
-.printRemito .bb .info .direc{
-    font-size: 15px;
+.printRemito .bb .info .direc {
+    font-size: 14px;
     font-weight: bold;
     text-align: center;
 }
 
-.printRemito .bb .info .redes{
+.printRemito .bb .info .redes {
     font-size: 14px;
     margin-left: 20px;
 }
 
-.printRemito .withCuadrado{
+.printRemito .withCuadrado {
     display: inline-block;
 }
-.printRemito .withCuadrado div{
+.printRemito .withCuadrado div {
     height: 17px;
     width: 17px;
     margin-left: 5px;
@@ -886,4 +887,16 @@
     border: 1px solid black;
     display: inline-block;
     border-radius: 5px;
+}
+
+.rowModalCliente .col-6,
+.rowModalCliente .col-4,
+.rowModalCliente .col-3,
+.rowModalCliente .col-12,
+.rowModalCliente .col-8 {
+    padding-top: 10px;
+}
+
+.detalleProd div {
+    margin: 8px 0;
 }

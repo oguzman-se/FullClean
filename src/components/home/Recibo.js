@@ -1,7 +1,8 @@
 import React from "react";
 import Cabecera from "./recibo/Cabecera";
 import ClienteInfo from "./recibo/ClienteInfo";
-import ListadoRemito from "./recibo/ListadoRemito";
+import ClienteIVA from "./recibo/ClienteIVA";
+import ListadoRecibo from "./recibo/ListadoRecibo";
 
 export class ComponentToPrint extends React.PureComponent {
     render() {
@@ -10,12 +11,13 @@ export class ComponentToPrint extends React.PureComponent {
         return (
             <div className="container-fluid bordes printRemito">
                 <div className="row bb">
-                    <Cabecera type="REMITO"/>
+                    <Cabecera type="RECIBO" />
                 </div>
                 <div className="row">
                     <ClienteInfo cliente={cliente} />
                 </div>
-                <ListadoRemito cartItems={cartItems}/>
+                <ClienteIVA cliente={cliente} />
+                <ListadoRecibo cartItems={cartItems} />
             </div>
         );
     }

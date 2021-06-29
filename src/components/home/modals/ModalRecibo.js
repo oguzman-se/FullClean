@@ -2,9 +2,9 @@ import React from "react";
 import { Modal } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import Button from "../Button";
-import ButtonToPrint from "../ButtonToPrintRemito";
+import ButtonToPrint from "../ButtonToPrint";
 
-function ModalRemito(props) {
+function ModalRecibo(props) {
     const { showRemito, setShowRemito } = props;
     const handleClose = () => {
         setShowRemito(false);
@@ -36,4 +36,4 @@ function ModalRemito(props) {
     );
 }
 
-export default ModalRemito;
+export default ModalRecibo;
