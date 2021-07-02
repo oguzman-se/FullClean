@@ -5,7 +5,7 @@ import Button from "../Button";
 import ButtonToPrint from "../ButtonToPrintRemito";
 
 function ModalRemito(props) {
-    const { showRemito, setShowRemito } = props;
+    const { showRemito, setShowRemito, type } = props;
     const handleClose = () => {
         setShowRemito(false);
     };
@@ -21,7 +21,7 @@ function ModalRemito(props) {
                     <Modal.Title id="modal-tittle">Impresión</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <ButtonToPrint />
+                    <ButtonToPrint type={type}/>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button

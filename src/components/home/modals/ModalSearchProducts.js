@@ -57,7 +57,7 @@ function ModalSearchProducts() {
                 show={showTable}
                 onHide={handleClose}
                 backdrop="static"
-                keyboard={false}
+                className="modalProductos"
             >
                 <Modal.Header>
                     <div className="">

@@ -7,7 +7,7 @@ import { useToasts } from "react-toast-notifications";
 
 function ModalPago({ showPago, setShowPago, factura }) {
     const { addToast } = useToasts();
-    let { obtenerFacturasXcliente } = useHome();
+    let { obtenerFacturasXcliente, getDeudaXcliente } = useHome();
     const handleClose = () => setShowPago(false);
 
     const [pago, setPago] = useState(0);
@@ -26,6 +26,7 @@ function ModalPago({ showPago, setShowPago, factura }) {
                     .put(`facturas/${factura.id}`, { valor_cubierto: tot })
                     .then(() => {
                         obtenerFacturasXcliente();
+                        getDeudaXcliente();
                         setShowPago(false);
                         addToast("Pago realizado", {
                             appearance: "success",

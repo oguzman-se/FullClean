@@ -5,6 +5,15 @@ import Tooltip from "react-bootstrap/Tooltip";
 function PedidosItem(props) {
     const { pedido, Allclientes, masterSubmit } = props;
     const [showNota, setShowNota] = useState(false);
+
+    const calculateDay = (diaSQL) => {
+        let dateObj = new Date(diaSQL);
+        let month = dateObj.getUTCMonth() + 1; //months from 1-12
+        let day = dateObj.getUTCDate();
+        let year = dateObj.getUTCFullYear();
+        return `${day}-${month}-${year} ${diaSQL.substr(11, 5)}`;
+    };
+
     return (
         <tr>
             <td>{pedido.id}</td>
@@ -33,7 +42,7 @@ function PedidosItem(props) {
             )}
 
             <td>${pedido.valor_total}</td>
-            <td>{pedido.fechayhora.toUpperCase()}</td>
+            <td>{calculateDay(pedido.fechayhora)}</td>
             <button className="iconos" onClick={() => masterSubmit(pedido)}>
                 <i class="bi bi-plus-circle-fill"></i>
             </button>

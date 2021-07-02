@@ -900,3 +900,24 @@
 .detalleProd div {
     margin: 8px 0;
 }
+
+.searchFact {
+    width: 100% !important;
+    float: left;
+    margin-right: 5%;
+    height: 35px !important;
+    border: 1.5px solid black !important;
+    border-radius: 0% !important;
+    box-shadow: none !important;
+    margin-bottom: 8px;
+    margin-top: 20px;
+}
+
+.modalProductos .modal-content {
+    width: 130%;
+    margin-left: -15%;
+}
+
+.inLower {
+    text-transform: lowercase;
+}

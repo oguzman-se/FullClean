@@ -3,8 +3,8 @@ import { useReactToPrint } from "react-to-print";
 import { useHome } from "../../context/home-context";
 import { ComponentToPrint } from "./Recibo";
 
-const Example = () => {
-    const { cartItems, labelCliente } = useHome();
+const Example = ({ type }) => {
+    const { cartItems, cartPedidos, labelCliente, labelPedido } = useHome();
     const componentRef = useRef();
     const handlePrint = useReactToPrint({
         content: () => componentRef.current,
@@ -14,8 +14,8 @@ const Example = () => {
         <div>
             <ComponentToPrint
                 ref={componentRef}
-                cartItems={cartItems}
-                cliente={labelCliente}
+                cartItems={type === "home" ? cartItems : cartPedidos}
+                cliente={type === "home" ? labelCliente : labelPedido}
             />
             <br></br>
             <button className="btn btn-custom" onClick={() => handlePrint()}>

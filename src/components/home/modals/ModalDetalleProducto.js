@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import { useHome } from "../../../context/home-context";
 import clienteAxios from "../../../config/clienteAxios";
 import { useToasts } from "react-toast-notifications";
+import CalcPorcentual from "./nuevoProducto/CalcPorcentual";
 function ModalCargarCliente(props) {
     const { addToast } = useToasts();
     const { AllCodigos, setAllCodigos } = useHome([]);
@@ -20,58 +21,13 @@ function ModalCargarCliente(props) {
         setCurrentProducto,
     } = props;
     const handleClose = () => setShowDetalleProd(false);
+
     function handleChange(e) {
-        if (e.target.name === "costo") {
-            if (currentProducto.margen && currentProducto.margen > 0) {
-                setCurrentProducto({
-                    ...currentProducto,
-                    [e.target.name]: parseFloat(e.target.value),
-                    precio: parseFloat(
-                        e.target.value * (1 + currentProducto.margen / 100)
-                    ),
-                });
-            } else {
-                setCurrentProducto({
-                    ...currentProducto,
-                    [e.target.name]: parseFloat(e.target.value),
-                    precio: parseFloat(e.target.value),
-                });
-            }
-        } else if (e.target.name === "margen") {
-            if (currentProducto.costo && currentProducto.costo > 0) {
-                setCurrentProducto({
-                    ...currentProducto,
-                    [e.target.name]: e.target.value,
-                    precio: currentProducto.costo * (1 + e.target.value / 100),
-                });
-            } else {
-                setCurrentProducto({
-                    ...currentProducto,
-                    [e.target.name]: e.target.value,
-                    precio: e.target.value,
-                });
-            }
-        } else if (e.target.name === "precio") {
-            if (currentProducto.costo && currentProducto.costo > 0) {
-                setCurrentProducto({
-                    ...currentProducto,
-                    [e.target.name]: e.target.value,
-                    margen: e.target.value / currentProducto.costo,
-                });
-            } else {
-                setCurrentProducto({
-                    ...currentProducto,
-                    [e.target.name]: e.target.value,
-                    margen: 0,
-                    costo: 0,
-                });
-            }
-        } else {
-            let newProducto = { ...currentProducto };
-            newProducto[e.target.name] = e.target.value;
-            setCurrentProducto(newProducto);
-        }
+        let newProducto = { ...currentProducto };
+        newProducto[e.target.name] = e.target.value;
+        setCurrentProducto(newProducto);
     }
+
     const handleChangeBarcode = (e) => {
         const { name, value } = e.target;
         setCurrentcodigo({ ...currentcodigo, [name]: value });
@@ -211,92 +167,60 @@ function ModalCargarCliente(props) {
                                 onChange={handleChange}
                             />
                         </div>
-                        <div>
-                            <label for="exampleInputEmail1">
-                                Costo del Producto
-                            </label>
-                            {currentProducto?.fecha_costo ? (
-                                <span
-                                    style={{
-                                        fontSize: 13,
-                                        marginLeft: 18,
-                                        fontStyle: "italic",
-                                    }}
-                                >
-                                    Última modif:
+                        <CalcPorcentual
+                            currentProducto={currentProducto}
+                            setCurrentProducto={setCurrentProducto}
+                            ultModifCost={
+                                currentProducto?.fecha_costo ? (
                                     <span
                                         style={{
-                                            fontSize: 14,
-                                            fontWeight: "bold",
+                                            fontSize: 13,
+                                            marginLeft: 18,
                                             fontStyle: "italic",
                                         }}
                                     >
-                                        {" "}
-                                        {currentProducto.fecha_costo}
+                                        Última modif:
+                                        <span
+                                            style={{
+                                                fontSize: 14,
+                                                fontWeight: "bold",
+                                                fontStyle: "italic",
+                                            }}
+                                        >
+                                            {" "}
+                                            {currentProducto.fecha_costo}
+                                        </span>
                                     </span>
-                                </span>
-                            ) : (
-                                ""
-                            )}
-                            <label
-                                for="exampleInputEmail1"
-                                className=" costoMargen"
-                            >
-                                Margen del Producto
-                            </label>
-                            <input
-                                type="number"
-                                className="form-control custom-input costoMargen"
-                                placeholder="Margen"
-                                onChange={handleChange}
-                                name="margen"
-                                value={currentProducto.margen}
-                            />{" "}
-                            <input
-                                type="number"
-                                className="form-control custom-input costoMargen"
-                                placeholder="Costo"
-                                onChange={handleChange}
-                                name="costo"
-                                value={currentProducto.costo}
-                            />
-                        </div>
-                        <div>
-                            <label for="exampleInputEmail1">
-                                Precio del Producto
-                            </label>
-                            {currentProducto?.fecha_precio ? (
-                                <span
-                                    style={{
-                                        fontSize: 13,
-                                        marginLeft: 13,
-                                        fontStyle: "italic",
-                                    }}
-                                >
-                                    Última modif:
+                                ) : (
+                                    ""
+                                )
+                            }
+                            ultModifPrec={
+                                currentProducto?.fecha_precio ? (
                                     <span
                                         style={{
-                                            fontSize: 14,
-                                            fontWeight: "bold",
+                                            fontSize: 13,
+                                            marginLeft: 13,
                                             fontStyle: "italic",
                                         }}
                                     >
-                                        {" "}
-                                        {currentProducto.fecha_precio}
+                                        Última modif:
+                                        <span
+                                            style={{
+                                                fontSize: 14,
+                                                fontWeight: "bold",
+                                                fontStyle: "italic",
+                                            }}
+                                        >
+                                            {" "}
+                                            {currentProducto.fecha_precio}
+                                        </span>
                                     </span>
-                                </span>
-                            ) : (
-                                ""
-                            )}
-                            <input
-                                type="number"
-                                className="form-control custom-input"
-                                placeholder="Precio"
-                                onChange={handleChange}
-                                name="precio"
-                                value={currentProducto.precio}
-                            />
-                        </div>
+                                ) : (
+                                    ""
+                                )
+                            }
+                        />
                         <div>
                             <label for="exampleInputEmail1">Stock</label>
                             <input

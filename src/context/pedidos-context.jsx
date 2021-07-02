@@ -22,7 +22,8 @@ export function PedidosProvider(props){
    const [facturasId, setFacturasId] = useState([]);
   
        const obtenerFacturasId = async (params) => {
-         await clienteAxios.get(`/pedidosfacturados/factura/${ params ? params : currentFactura.id}`)
+         //await clienteAxios.get(`/pedidosfacturados/factura/${ params ? params : currentFactura.id}`)
+         await clienteAxios.get(`/pedidosfacturados/facturacompleta/${ params ? params : currentFactura.id}`)
          .then(res => {
            setFacturasId(res.data)
          })

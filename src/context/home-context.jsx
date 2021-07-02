@@ -42,9 +42,9 @@ export function HomeProvider(props) {
 
     //FACTURAS ID API
     const [facturasXcliente, setFacturaXcliente] = useState([]);
-    const obtenerFacturasXcliente = async () => {
+    const obtenerFacturasXcliente = async (params) => {
         await clienteAxios
-            .get(`/facturas/cliente/${labelCliente.id}`)
+            .get(`/facturas/cliente/${params ? params : labelCliente.id}`)
             .then((res) => {
                 setFacturaXcliente(res.data);
             });
@@ -57,8 +57,41 @@ export function HomeProvider(props) {
             .get(`/pedidos/cliente/${params ? params : labelCliente.id}`)
             .then((res) => {
                 setFacturaXcliente(res.data);
-                console.log("pedidosXcliente", pedidosXcliente);
+                //console.log("pedidosXcliente", pedidosXcliente);
             });
+    };
+
+    const [pedidosOrFactura, setPedidosOrFactura] = useState(true); //si es TRUE muestra pedidos del cliente, si es FALSE, muestra facturas
+    const [arrGenerateFact, setArrGenerateFact] = useState([]); //este array es para contar los pedidos checkeados (en la pantalla de clientes) y habilitar un boton para generar una factura, se tiene que setear en 0 cada vez que elegimos un cliente en la pantalla de clientes.
+    const [deudaXCliente, setDeudaXCliente] = useState(0); //DEUDA por cliente vista en la pantalla de CLIENTES
+
+    function round(num, decimales = 2) {
+        var signo = num >= 0 ? 1 : -1;
+        num = num * signo;
+        if (decimales === 0)
+            //con 0 decimales
+            return signo * Math.round(num);
+        // round(x * 10 ^ decimales)
+        num = num.toString().split("e");
+        num = Math.round(
+            +(num[0] + "e" + (num[1] ? +num[1] + decimales : decimales))
+        );
+        // x * 10 ^ (-decimales)
+        num = num.toString().split("e");
+        return (
+            signo * (num[0] + "e" + (num[1] ? +num[1] - decimales : -decimales))
+        );
+    }
+
+    const getDeudaXcliente = async (params) => {
+        await clienteAxios
+            .get(`/clientes/deuda/${params ? params : labelCliente.id}`)
+            .then((res) => {
+                setDeudaXCliente(round(res.data.deuda));
+            })
+            .catch((err) =>
+                console.log("Error trayendo la deuda del cliente", err)
+            );
     };
 
     //PRODUCTOS CODIGO API
@@ -122,7 +155,9 @@ export function HomeProvider(props) {
         if (exist) {
             setCartItems(
                 cartItems.map((x) =>
-                    x.id === product.id ? { ...exist, qty: exist.qty + 1 } : x
+                    x.id === product.id
+                        ? { ...exist, qty: exist.qty + 1, precio: exist.precio }
+                        : x
                 )
             );
         } else {
@@ -132,9 +167,30 @@ export function HomeProvider(props) {
 
     //FUNCION PARA QUITAR PRODUCTOS DEL CARRITO
     const onRemove = (product) => {
+        console.log("QUE ELIMINAMOS", product);
         const exist = cartItems.find((x) => x.id === product.id);
         if (exist.qty === 1) {
-            setCartItems(cartItems.filter((x) => x.id !== product.id));
+            let PrecioTotal = 0;
+            let QtyTotal = 0;
+            //setCartItems(
+            //cartItems
+            //.filter((x) => x.id !== product.id)
+            //.map((it) => {
+            //PrecioTotal = PrecioTotal + it.precio * it.qty;
+            //QtyTotal = QtyTotal + it.qty;
+            //return it;
+            //})
+            //);
+
+            let newCarro = [...cartItems];
+
+            let prueba = cartItems.findIndex((a) => a.id === product.id);
+            console.log("Esta es la posicion: ", prueba);
+            newCarro.splice(prueba, 1);
+            setCartItems(newCarro);
+
+            //setTotalPrice(PrecioTotal);
+            //setQty(QtyTotal);
         } else {
             setCartItems(
                 cartItems.map((x) =>
@@ -144,27 +200,28 @@ export function HomeProvider(props) {
         }
     };
     const onRemoveItem = (product) => {
-        setCartItems(cartItems.filter((x) => x.id !== product.id));
+        console.log("QUE ELIMINAMOS", product);
+        let PrecioTotal = 0;
+        let QtyTotal = 0;
+        setCartItems(
+            cartItems
+                .filter((x) => x.id !== product.id)
+                .map((it) => {
+                    PrecioTotal = PrecioTotal + it.precio * it.qty;
+                    QtyTotal = QtyTotal + it.qty;
+                    return it;
+                })
+        );
+        setTotalPrice(PrecioTotal);
+        setQty(QtyTotal);
     };
     //VACIA EL CARRITO
     const onRemoveAll = () => {
         setCartItems([]);
     };
-    //PRECIO TOTAL DE TODO EL CARRITO
-    useEffect(() => {
-        let PrecioTotal = 0;
-        let QtyTotal = 0;
-        cartItems.map((item) => {
-            PrecioTotal = PrecioTotal + item.precio * item.qty;
-            QtyTotal = QtyTotal + item.qty;
-            return "";
-        });
-        setTotalPrice(PrecioTotal);
-        setQty(QtyTotal);
-        console.log(cartItems);
-    }, [cartItems]);
-    let [totalPrice, setTotalPrice] = useState(0);
-    let [qty, setQty] = useState(0);
+
+    let [totalPrice, setTotalPrice] = useState(0); //precio total de todo el carrito
+    let [qty, setQty] = useState(0); //qty total de todo el carrito
 
     //FUNCION PARA AGREGAR CLIENTE
     const [labelCliente, setLabelCliente] = useState([]);
@@ -228,7 +285,16 @@ export function HomeProvider(props) {
         pedidosXcliente,
         setPedidoXcliente,
         obtPedidoXcliente,
-        barcodeRef,obtenerDatos
+        barcodeRef,
+        obtenerDatos,
+        pedidosOrFactura,
+        setPedidosOrFactura,
+        arrGenerateFact,
+        setArrGenerateFact,
+        deudaXCliente,
+        setDeudaXCliente,
+        getDeudaXcliente,
+        setQty,
     };
     return <HomeContext.Provider value={value} {...props} />;
 }

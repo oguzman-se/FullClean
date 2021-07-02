@@ -208,10 +208,12 @@ function LabelBottomSM() {
                 setShowModalConfirmar={setShowModalConfirmar}
             />
             <ModalRecibo
+                type="home"
                 showRemito={showRemito}
                 setShowRemito={setShowRemito}
             />
             <ModalRemito
+                type="home"
                 showRemito={showTicket}
                 setShowRemito={setShowTicket}
             />

@@ -13,7 +13,7 @@ function LabelBottomXL(){
                     <label>Total</label>
                 </div>
                 <div className="col-xs-12 col-md-4 labelbottom">
-                    <label>$ {totalPrice.toFixed(2)}</label>
+                    <label>$ {totalPrice}</label>
                 </div>
             </div>
         </div>

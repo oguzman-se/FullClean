@@ -10,6 +10,7 @@ import Alertas from "./pages/Alertas";
 import { HomeProvider } from "./context/home-context";
 import { PedidosProvider } from "./context/pedidos-context";
 import { ToastProvider } from "react-toast-notifications";
+import { OfflineProvider } from "./context/offline-context";
 
 function App() {
     return (
@@ -19,15 +20,25 @@ function App() {
                 autoDismissTimeout={3000}
                 placement="bottom-right"
             >
-                <PedidosProvider>
-                    <HomeProvider>
-                        <Route exact path="/" component={Home} />
-                        <Route exact path="/pedidos" component={Pedidos} />
-                        <Route exact path="/clientes" component={Clientes} />
-                        <Route exact path="/facturas" component={Facturas} />
-                        <Route exact path="/alertas" component={Alertas} />
-                    </HomeProvider>
-                </PedidosProvider>
+                <OfflineProvider>
+                    <PedidosProvider>
+                        <HomeProvider>
+                            <Route exact path="/" component={Home} />
+                            <Route exact path="/pedidos" component={Pedidos} />
+                            <Route
+                                exact
+                                path="/clientes"
+                                component={Clientes}
+                            />
+                            <Route
+                                exact
+                                path="/facturas"
+                                component={Facturas}
+                            />
+                            <Route exact path="/alertas" component={Alertas} />
+                        </HomeProvider>
+                    </PedidosProvider>
+                </OfflineProvider>
             </ToastProvider>
         </Router>
     );

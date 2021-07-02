@@ -22,6 +22,9 @@ function GroupButton() {
         pendiente,
         setPendiente,
         setCurrentMetodo,
+        barcodeRef,
+        setQty,
+        setTotalPrice,
     } = useHome();
     const {
         showNuevaCompra,
@@ -45,6 +48,9 @@ function GroupButton() {
                 appearance: "success",
                 autoDismiss: true,
             });
+            setQty(0);
+            setTotalPrice(0);
+            barcodeRef.current.focus();
         }
     };
     return (

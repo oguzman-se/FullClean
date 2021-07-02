@@ -75,9 +75,7 @@ const Busqueda = ({ search, setSearch }) => {
                             <option value="TODOS" selected>
                                 TODOS
                             </option>
-                            <option value="efectivo">
-                                Efectivo
-                            </option>
+                            <option value="efectivo">Efectivo</option>
                             <option value="tarjeta credito">
                                 Tarjeta de credito
                             </option>

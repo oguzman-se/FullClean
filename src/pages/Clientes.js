@@ -29,10 +29,10 @@ function Clientes() {
         <Layout>
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-md-6">
+                    <div className="col-md-4">
                         <LeftSideClientes />
                     </div>
-                    <div className="col-md-6">
+                    <div className="col-md-8">
                         <RightSideClientes />
                     </div>
                 </div>
