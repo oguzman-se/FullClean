@@ -31,7 +31,7 @@ function TableFacturas(props) {
                             <th scope="col">N° Factura</th>
                             <th scope="col">Cliente</th>
                             <th scope="col">Valor Total</th>
-                            <th scope="col">Valor Cubierto</th>
+                            <th scope="col">Pagado</th>
                             <th scope="col">Estado</th>
                             <th scope="col"></th>
                         </tr>
@@ -45,13 +45,7 @@ function TableFacturas(props) {
                                         ? factura.num_factura
                                         : ""}
                                 </td>
-                                <td>
-                                    {Allclientes.map((c) => {
-                                        if (c.id === factura.cliente_id) {
-                                            return c.nombre;
-                                        }
-                                    })}
-                                </td>
+                                <td>{factura.nombre}</td>
                                 <td>${factura.valor_total}</td>
                                 <td>${factura.valor_cubierto}</td>
                                 <td>

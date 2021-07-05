@@ -15,13 +15,13 @@ const Cabecera = ({ type }) => {
                         alt="logo"
                         src={logo}
                         style={{
-                            width: "100px",
-                            marginLeft: "-25px",
-                            marginTop: "-20px",
+                            width: "175px",
+                            marginLeft: "-10px",
+                            marginTop: "20px",
                         }}
                     />
                 </label>
-                <label className="col-9">
+                <label className="col-9" style={{paddingLeft: 80, textAlign: 'center'}}>
                     Full Clean Express
                     <span>VENTA Y DISTRIBUCION DE PRODUCTOS DE LIMPIEZA</span>
                 </label>

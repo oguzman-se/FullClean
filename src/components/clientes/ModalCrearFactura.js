@@ -19,10 +19,6 @@ const ModalCrearFactura = ({ show, setShow }) => {
 
     const handleClose = () => setShow(false);
 
-    const handleChange = (e) => {
-        setFact({ ...fact, [e.target.name]: e.target.value });
-    };
-
     const submitFact = async () => {
         let factConPedidos = { arr: [fact, ...pedidosElegidos] };
         console.log("esto vamos a mandar", factConPedidos);
@@ -77,17 +73,8 @@ const ModalCrearFactura = ({ show, setShow }) => {
                 <Modal.Body>
                     <div className="container-fluid">
                         <div className="row">
-                            <div className="col-3">
-                                <label>N° Factura</label>
-                                <input
-                                    type="text"
-                                    className="form-control custom-input"
-                                    placeholder="N° de Factura"
-                                    aria-label="Username"
-                                    onChange={handleChange}
-                                    name="num_factura"
-                                    value={fact.num_factura}
-                                />
+                            <div className="col-12">
+                                ¿Confirmar creación de factura?
                             </div>
                         </div>
                     </div>

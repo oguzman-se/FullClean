@@ -13,7 +13,7 @@ function TablePed(){
                 <th  scope="col">Codigo</th>
                 <th scope="col">Producto</th>
                 <th scope="col">Cantidad</th>
-                <th scope="col">price Un.</th>
+                <th scope="col">Precio Un.</th>
                 <th scope="col">Total</th>
                 <th scope="col"></th>
             </tr>

@@ -65,7 +65,7 @@ export function HomeProvider(props) {
     const [arrGenerateFact, setArrGenerateFact] = useState([]); //este array es para contar los pedidos checkeados (en la pantalla de clientes) y habilitar un boton para generar una factura, se tiene que setear en 0 cada vez que elegimos un cliente en la pantalla de clientes.
     const [deudaXCliente, setDeudaXCliente] = useState(0); //DEUDA por cliente vista en la pantalla de CLIENTES
 
-    function round(num, decimales = 2) {
+    function roundDeuda(num, decimales = 2) {
         var signo = num >= 0 ? 1 : -1;
         num = num * signo;
         if (decimales === 0)
@@ -87,7 +87,7 @@ export function HomeProvider(props) {
         await clienteAxios
             .get(`/clientes/deuda/${params ? params : labelCliente.id}`)
             .then((res) => {
-                setDeudaXCliente(round(res.data.deuda));
+                setDeudaXCliente(roundDeuda(res.data.deuda));
             })
             .catch((err) =>
                 console.log("Error trayendo la deuda del cliente", err)
@@ -141,7 +141,6 @@ export function HomeProvider(props) {
     const obtenerClientes = async () => {
         await clienteAxios.get("/clientes").then((res) => {
             setAllClientes(res.data);
-            console.log("clientes", Allclientes);
         });
     };
 
@@ -220,6 +219,16 @@ export function HomeProvider(props) {
         setCartItems([]);
     };
 
+    //vaciar el carrito, el cliente, totales, qty, todotodo...
+    const vaciarCompra = () => {
+        setEnable(false);
+        setLabelCliente({});
+        setCurrentMetodo({ ...currentMetodo, metodo: "efectivo" });
+        setTotalPrice(0);
+        setQty(0);
+        onRemoveAll();
+    };
+
     let [totalPrice, setTotalPrice] = useState(0); //precio total de todo el carrito
     let [qty, setQty] = useState(0); //qty total de todo el carrito
 
@@ -231,6 +240,34 @@ export function HomeProvider(props) {
     const [labelPed, setLabelPed] = useState([]);
     //CURRENT METODOOOO
     const [currentMetodo, setCurrentMetodo] = useState({});
+
+    //destacamos un producto
+    const destacarProd = async (producto, destacado, setProducto) => {
+        await clienteAxios
+            .put(`/productos/${producto.id}`, {
+                destacado: destacado,
+            })
+            .then((res) => {
+                console.log(res.data);
+                const getProduct = async () => {
+                    await clienteAxios
+                        .get("/productos")
+                        .then((r) => {
+                            setProducts(r.data);
+                            r.data.forEach((p) => {
+                                if (p.id === producto.id) setProducto(p);
+                            });
+                        })
+                        .catch((r) => {
+                            console.log("error get", r);
+                        });
+                };
+                getProduct();
+            })
+            .catch((err) => {
+                console.log("error put", err);
+            });
+    };
 
     //DECLARO QUIEN ES EL CONTEXT
     const value = {
@@ -294,7 +331,11 @@ export function HomeProvider(props) {
         deudaXCliente,
         setDeudaXCliente,
         getDeudaXcliente,
+        roundDeuda,
         setQty,
+        destacarProd,
+        vaciarCompra,
+        obtenerClientes,
     };
     return <HomeContext.Provider value={value} {...props} />;
 }

@@ -3,11 +3,12 @@ import { useReactToPrint } from "react-to-print";
 import { useHome } from "../../context/home-context";
 import { ComponentToPrint } from "./Recibo";
 
-const Example = ({ type }) => {
+const Example = ({ type, setShowRemito }) => {
     const { cartItems, cartPedidos, labelCliente, labelPedido } = useHome();
     const componentRef = useRef();
     const handlePrint = useReactToPrint({
         content: () => componentRef.current,
+        onAfterPrint: () => setShowRemito(false),
     });
 
     return (

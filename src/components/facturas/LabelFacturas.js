@@ -2,36 +2,15 @@ import React, { useState, useEffect } from "react";
 import { usePedidos } from "../../context/pedidos-context";
 import { useHome } from "../../context/home-context";
 import ModalAsociarFactura from "./modales/ModalAsociarFactura";
-import { useToasts } from "react-toast-notifications";
 import TableFacturaId from "./TableFacturaId";
-import clienteAxios from "../../config/clienteAxios";
+import ModalFacturado from "./modales/ModalFacturado";
 
 function LabelFacturas() {
-    const { addToast } = useToasts();
     const [showAsociar, setShowAsociar] = useState(false);
-    const {
-        currentFactura,
-        setCurrentFactura,
-        valorTotal,
-        facturasId,
-        obtenerFacturas,
-    } = usePedidos();
+    const [showFacturado, setShowFacturado] = useState(false);
+    const { currentFactura, facturasId } = usePedidos();
 
     const { Allclientes } = useHome();
-
-    const handleFacturado = async () => {
-        await clienteAxios
-            .put(`/facturas/${currentFactura.id}`, { estado: "facturado" })
-            .then(() => {
-                obtenerFacturas();
-                setCurrentFactura({});
-                addToast(`Factura ${currentFactura.id}: FACTURADO`, {
-                    autoDismiss: true,
-                    appearance: "success",
-                });
-            })
-            .catch((err) => console.log("error pasando a facturado", err));
-    };
 
     return (
         <div className="container-fluid">
@@ -44,7 +23,7 @@ function LabelFacturas() {
                         </label>
                         <button
                             className="col-md-4 btn btn-facturas"
-                            onClick={handleFacturado}
+                            onClick={() => setShowFacturado(true)}
                         >
                             Pasar a: Facturado
                         </button>
@@ -68,7 +47,11 @@ function LabelFacturas() {
                         ? currentFactura.num_factura
                         : ""}
                 </label>
+                <label className="col-md-12 label-border">
+                    Importe: ${currentFactura.valor_total}
+                </label>
 
+                {/*
                 <label className="col-md-7 label-border">
                     Importe: ${currentFactura.valor_total}
                 </label>
@@ -78,6 +61,7 @@ function LabelFacturas() {
                 >
                     Asociar Pedido
                 </button>
+            */}
             </div>
 
             <div className="row">
@@ -94,6 +78,10 @@ function LabelFacturas() {
                 showAsociar={showAsociar}
                 setShowAsociar={setShowAsociar}
                 Allclientes={Allclientes}
+            />
+            <ModalFacturado
+                showFacturado={showFacturado}
+                setShowFacturado={setShowFacturado}
             />
         </div>
     );

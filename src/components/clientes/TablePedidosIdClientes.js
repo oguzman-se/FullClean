@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import CheckboxPedido from "./CheckboxPedido";
 import CheckboxPedidoPagado from "./CheckboxPedidoPagado";
+import ModalPagoPedido from "./ModalPagoPedido";
 
 function TablePedidosId({ facturasXcliente, filtroBuscador }) {
+    const [showPago, setShowPago] = useState(false);
+    const [currentPedido, setCurrentPedido] = useState({});
+
     const calculateDay = (diaSQL) => {
         let dateObj = new Date(diaSQL);
         let month = dateObj.getUTCMonth() + 1; //months from 1-12
@@ -31,7 +35,28 @@ function TablePedidosId({ facturasXcliente, filtroBuscador }) {
                             <td>{f.id}</td>
                             <td>
                                 {f.status_factura === "SIN FACTURAR" ? (
-                                    <CheckboxPedidoPagado pedido={f} />
+                                    f?.pagado === f?.valor_total ? (
+                                        <td
+                                            style={{
+                                                color: "tomato",
+                                            }}
+                                        >
+                                            PAGADA
+                                        </td>
+                                    ) : (
+                                        <td
+                                            onClick={() => {
+                                                setCurrentPedido(f);
+                                                setShowPago(true);
+                                            }}
+                                            style={{
+                                                color: "tomato",
+                                                cursor: "pointer",
+                                            }}
+                                        >
+                                            NUEVO PAGO
+                                        </td>
+                                    )
                                 ) : (
                                     ""
                                 )}
@@ -64,6 +89,11 @@ function TablePedidosId({ facturasXcliente, filtroBuscador }) {
                     ))}
                 </tbody>
             </table>
+            <ModalPagoPedido
+                showPago={showPago}
+                setShowPago={setShowPago}
+                currentPedido={currentPedido}
+            />
         </div>
     );
 }

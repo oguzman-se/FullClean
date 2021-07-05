@@ -3,6 +3,7 @@ import React, { useState } from "react";
 const ClienteInfo = ({ cliente }) => {
     const [info, setInfo] = useState({
         nombre: cliente?.id ? cliente.nombre : "",
+        telefono: cliente?.id ? cliente.telefono: "",
         domic:
             cliente?.id && cliente.domicilio && cliente.domicilio_nro
                 ? `${cliente.domicilio} - ${cliente.domicilio_nro}`
@@ -24,8 +25,24 @@ const ClienteInfo = ({ cliente }) => {
                     name="nombre"
                     onChange={handleChange}
                     style={{
-                        width: "85%",
+                        width: "45%",
                         marginLeft: 15,
+                        marginRight: 15,
+                        border: "unset",
+                        borderBottom: "1px dashed black",
+                    }}
+                />
+                Tel:
+                <input
+                    type="text"
+                    value={info.telefono}
+                    name="telefono"
+                    onChange={handleChange}
+                    style={{
+                        width: "30%",
+                        margin: "0 15px",
+                        marginRight: 0,
+                        marginLeft: 21,
                         border: "unset",
                         borderBottom: "1px dashed black",
                     }}

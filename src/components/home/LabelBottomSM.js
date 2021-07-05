@@ -14,20 +14,18 @@ function LabelBottomSM() {
         labelCliente,
         totalPrice,
         cartItems,
-        enable,
-        setEnable,
         setPendiente,
         setShowNuevoCliente,
         currentMetodo,
         setCurrentMetodo,
-        setLabelCliente,
-        onRemoveAll,
         obtenerDatos,
+        vaciarCompra,
     } = useHome();
     const {
         pedidos,
         setPedidos,
         currentPedido,
+        setCurrentPedido,
         ventaCredito,
         showRemito,
         setShowRemito,
@@ -72,17 +70,16 @@ function LabelBottomSM() {
             let dataArray = [data, ...detallePedido];
             console.log("dataArray", dataArray);
             if (data.estado === "confirmado") {
-                setEnable(true);
+                //setEnable(true);
+                vaciarCompra();
+                setCurrentPedido({});
                 setShowModalConfirmar(false);
                 addToast("Pedido confirmado", {
                     appearance: "success",
                     autoDismiss: true,
                 });
             } else {
-                setLabelCliente({});
-                onRemoveAll();
-                setEnable(false);
-                setCurrentMetodo({ ...currentMetodo, metodo: "efectivo" });
+                vaciarCompra();
                 addToast("Pedido pendiente", {
                     appearance: "success",
                     autoDismiss: true,
@@ -125,6 +122,8 @@ function LabelBottomSM() {
                     )}
                 </div>
                 <div className="col-3 ajuste">
+                    {/*
+                    SI DESCOMENTAMOS ESTO Y BORRAMOS EL BOTON DE ABAJO, VUELVE A ESTAR CON LA MODALIDAD ANTERIOR DE CONFIRMAR ANTES DE IMPRIMIR
                     {enable === false ||
                     currentPedido.estado === "pendiente" ? (
                         <button
@@ -143,6 +142,14 @@ function LabelBottomSM() {
                             Recibo
                         </button>
                     )}
+                        */}
+                    <button
+                        type="button"
+                        className="btn btn-custom"
+                        onClick={() => setShowRemito(true)}
+                    >
+                        Recibo
+                    </button>
                 </div>
             </div>
             <div className="row ">
@@ -168,20 +175,24 @@ function LabelBottomSM() {
                     </select>
                 </div>
                 <div className="col-3 ajuste">
-                    {cartItems.length > 0 &&
-                    currentPedido.estado !== "pendiente" ? (
-                        <Button
-                            onClick={() => {
-                                handleEstado("pendiente");
-                            }}
-                        >
-                            Pendiente
-                        </Button>
-                    ) : (
-                        <Button disabled>Pendiente</Button>
-                    )}
+                    {
+                        //currentPedido.estado !== "pendiente" &&
+                        cartItems.length > 0 ? (
+                            <Button
+                                onClick={() => {
+                                    handleEstado("pendiente");
+                                }}
+                            >
+                                Pendiente
+                            </Button>
+                        ) : (
+                            <Button disabled>Pendiente</Button>
+                        )
+                    }
                 </div>
                 <div className="col-3 ajuste">
+                    {/*
+                    SI DESCOMENTAMOS ESTO Y BORRAMOS EL BOTON DE ABAJO, VUELVE A ESTAR CON LA MODALIDAD ANTERIOR DE CONFIRMAR ANTES DE IMPRIMIR
                     {enable === false ||
                     currentPedido.estado === "pendiente" ? (
                         <button
@@ -200,6 +211,14 @@ function LabelBottomSM() {
                             Remito
                         </button>
                     )}
+                    */}
+                    <button
+                        type="button"
+                        className="btn btn-custom"
+                        onClick={() => setShowTicket(true)}
+                    >
+                        Remito
+                    </button>
                 </div>
             </div>
             <ModalConfirmarPedido

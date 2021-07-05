@@ -13,6 +13,7 @@ function SearchClientes(props) {
         setPedidosOrFactura,
         setArrGenerateFact,
         getDeudaXcliente,
+        roundDeuda,
     } = useHome();
     const [buscarCliente, setBuscarCliente] = useState("");
     const { addToast } = useToasts();
@@ -60,14 +61,17 @@ function SearchClientes(props) {
                         />
                     )}
 
-                    <div className="col-md-12 tabla4">
+                    <div
+                        className="col-md-12 tabla4"
+                        style={{ height: "75vh" }}
+                    >
                         <table className="table">
                             <thead className="thead-dark">
                                 <tr>
                                     <th scope="col">ID</th>
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Domicilio</th>
-                                    <th scope="col">Telefono</th>
+                                    <th scope="col">Deuda</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -87,11 +91,33 @@ function SearchClientes(props) {
                                         <td>{clientes.id}</td>
                                         <td>{clientes.nombre}</td>
                                         <td>{clientes.domicilio}</td>
-                                        <td>{clientes.telefono}</td>
+                                        <td>
+                                            $
+                                            {clientes.deuda
+                                                ? roundDeuda(clientes.deuda)
+                                                : 0}
+                                        </td>
                                     </tr>
                                 ))}
                             </tbody>
                         </table>
+                    </div>
+                </div>
+                <div className="row" style={{paddingTop: 5}}>
+                    <div className="col-6">Deuda total:</div>
+                    <div className="col-6" style={{ textAlign: "right", fontWeight: 'bold', paddingRight: 30 }}>
+                        $
+                        {Allclientes.length > 0
+                            ? roundDeuda(
+                                  Allclientes.reduce((acc, curr) => {
+                                      if (curr.deuda > 0) {
+                                          return (acc += curr.deuda);
+                                      } else {
+                                          return acc;
+                                      }
+                                  }, 0)
+                              )
+                            : ""}
                     </div>
                 </div>
             </div>

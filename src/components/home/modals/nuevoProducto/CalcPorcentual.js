@@ -8,44 +8,72 @@ const CalcPorcentual = ({
 }) => {
     function handle(e) {
         if (e.target.name === "costo") {
-            if (currentProducto.margen && currentProducto.margen > 0) {
-                setCurrentProducto({
-                    ...currentProducto,
-                    [e.target.name]: e.target.value,
-                    precio: e.target.value * (1 + currentProducto.margen / 100),
-                });
+            if (e.target.value > -1) {
+                if (currentProducto.margen && currentProducto.margen > 0) {
+                    setCurrentProducto({
+                        ...currentProducto,
+                        [e.target.name]: e.target.value,
+                        precio:
+                            e.target.value * (1 + currentProducto.margen / 100),
+                    });
+                } else {
+                    setCurrentProducto({
+                        ...currentProducto,
+                        [e.target.name]: e.target.value,
+                        precio: e.target.value,
+                    });
+                }
             } else {
                 setCurrentProducto({
                     ...currentProducto,
-                    [e.target.name]: e.target.value,
-                    precio: e.target.value,
+                    [e.target.name]: 0,
+                    precio: 0,
                 });
             }
         } else if (e.target.name === "margen") {
-            if (currentProducto.costo && currentProducto.costo > 0) {
-                setCurrentProducto({
-                    ...currentProducto,
-                    [e.target.name]: e.target.value,
-                    precio: currentProducto.costo * (1 + e.target.value / 100),
-                });
+            if (e.target.value > -1) {
+                if (currentProducto.costo && currentProducto.costo > 0) {
+                    setCurrentProducto({
+                        ...currentProducto,
+                        [e.target.name]: e.target.value,
+                        precio:
+                            currentProducto.costo * (1 + e.target.value / 100),
+                    });
+                } else {
+                    setCurrentProducto({
+                        ...currentProducto,
+                        [e.target.name]: e.target.value,
+                        precio: e.target.value,
+                    });
+                }
             } else {
                 setCurrentProducto({
                     ...currentProducto,
-                    [e.target.name]: e.target.value,
-                    precio: e.target.value,
+                    [e.target.name]: 0,
+                    precio: 0,
                 });
             }
         } else if (e.target.name === "precio") {
-            if (currentProducto.costo && currentProducto.costo > 0) {
-                setCurrentProducto({
-                    ...currentProducto,
-                    [e.target.name]: e.target.value,
-                    margen: ((e.target.value / currentProducto.costo) - 1) * 100,
-                });
+            if (e.target.value > -1) {
+                if (currentProducto.costo && currentProducto.costo > 0) {
+                    setCurrentProducto({
+                        ...currentProducto,
+                        [e.target.name]: e.target.value,
+                        margen:
+                            (e.target.value / currentProducto.costo - 1) * 100,
+                    });
+                } else {
+                    setCurrentProducto({
+                        ...currentProducto,
+                        [e.target.name]: e.target.value,
+                        margen: 0,
+                        costo: 0,
+                    });
+                }
             } else {
                 setCurrentProducto({
                     ...currentProducto,
-                    [e.target.name]: e.target.value,
+                    [e.target.name]: 0,
                     margen: 0,
                     costo: 0,
                 });

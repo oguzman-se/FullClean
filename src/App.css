@@ -920,4 +920,41 @@
 
 .inLower {
     text-transform: lowercase;
+    font-size: 14px !important;
+    padding: 0 !important;
+}
+
+.trHover {
+    cursor: pointer;
+}
+
+.trHover:hover {
+    background: #eeeeee;
+}
+
+.trHover:hover .iconos {
+    background: #eeeeee;
+}
+
+.inHere {
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: underline;
+}
+
+.modalRecibo .modal-content {
+    width: 170%;
+    margin-left: -35%;
+}
+
+.modalRecibo .modal-content .info .col-9 {
+    font-size: 30px;
+}
+
+.modalRecibo .modal-content .info .col-9 span {
+    font-size: 18px;
+}
+
+.printRemito .bb .info .direc {
+    font-size: 18px;
 }

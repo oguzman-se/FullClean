@@ -23,7 +23,7 @@ function TableFacturaId({ facturasXcliente, filtroBuscador }) {
                         <th scope="col">ID</th>
                         <th scope="col">N° Factura</th>
                         <th scope="col">Valor Total</th>
-                        <th scope="col">Valor Cubierto</th>
+                        <th scope="col">Pagado</th>
                         <th scope="col">Estado</th>
                         <th scope="col">Pagar</th>
                         <th scope="col">Info</th>

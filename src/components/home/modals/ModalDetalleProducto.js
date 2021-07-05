@@ -5,7 +5,7 @@ import { useHome } from "../../../context/home-context";
 import clienteAxios from "../../../config/clienteAxios";
 import { useToasts } from "react-toast-notifications";
 import CalcPorcentual from "./nuevoProducto/CalcPorcentual";
-function ModalCargarCliente(props) {
+function ModalDetalleProducto(props) {
     const { addToast } = useToasts();
     const { AllCodigos, setAllCodigos } = useHome([]);
     const [currentcodigo, setCurrentcodigo] = useState({
@@ -13,7 +13,7 @@ function ModalCargarCliente(props) {
         codigo: "",
         producto_id: "",
     });
-    const { setProducts } = useHome();
+    const { setProducts, destacarProd } = useHome();
     const {
         showDetalleProd,
         setShowDetalleProd,
@@ -24,7 +24,13 @@ function ModalCargarCliente(props) {
 
     function handleChange(e) {
         let newProducto = { ...currentProducto };
-        newProducto[e.target.name] = e.target.value;
+        if (e.target.name !== "nombre") {
+            newProducto[e.target.name] = e.target.value;
+        } else {
+            if (e.target.value.length < 58) {
+                newProducto[e.target.name] = e.target.value;
+            }
+        }
         setCurrentProducto(newProducto);
     }
 
@@ -143,17 +149,70 @@ function ModalCargarCliente(props) {
                 </Modal.Header>
                 <Modal.Body>
                     <div className="detalleProd">
-                        <div>
-                            <label for="exampleInputEmail1">
-                                ID del Producto
-                            </label>
-                            <input
-                                type="text"
-                                className="form-control custom-input"
-                                value={currentProducto.id}
-                                onChange={handleChange}
-                                disabled
-                            />
+                        <div className="container-fluid" style={{ padding: 0 }}>
+                            <div className="row">
+                                <div className="col-9" style={{ padding: 0 }}>
+                                    <label for="exampleInputEmail1">
+                                        ID del Producto
+                                    </label>
+                                    <input
+                                        type="text"
+                                        className="form-control custom-input"
+                                        value={currentProducto.id}
+                                        onChange={handleChange}
+                                        disabled
+                                    />
+                                </div>
+                                <div
+                                    className="col-3"
+                                    style={{
+                                        paddingRight: 0,
+                                        textAlign: "center",
+                                        marginTop: 10,
+                                    }}
+                                >
+                                    <label for="exampleInputEmail1">
+                                        Destacar producto
+                                    </label>
+                                    {currentProducto.destacado ? (
+                                        <button
+                                            className="iconos"
+                                            style={{
+                                                paddingRight: 0,
+                                                display: "block",
+                                                margin: "auto",
+                                            }}
+                                            onClick={() =>
+                                                destacarProd(
+                                                    currentProducto,
+                                                    false,
+                                                    setCurrentProducto
+                                                )
+                                            }
+                                        >
+                                            <i className="bi bi-star-fill"></i>
+                                        </button>
+                                    ) : (
+                                        <button
+                                            className="iconos"
+                                            style={{
+                                                paddingRight: 0,
+                                                display: "block",
+                                                margin: "auto",
+                                            }}
+                                            onClick={() =>
+                                                destacarProd(
+                                                    currentProducto,
+                                                    true,
+                                                    setCurrentProducto
+                                                )
+                                            }
+                                        >
+                                            <i className="bi bi-star"></i>
+                                        </button>
+                                    )}
+                                </div>
+                            </div>
                         </div>
                         <div>
                             <label for="exampleInputEmail1">
@@ -309,4 +368,4 @@ function ModalCargarCliente(props) {
     );
 }
 
-export default ModalCargarCliente;
+export default ModalDetalleProducto;

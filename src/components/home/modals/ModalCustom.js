@@ -42,7 +42,7 @@ function ModalCustom() {
                 costo: currentProducto.costo,
                 precio: currentProducto.precio,
                 categoria_id: currentProducto.category_id,
-                destacado: false,
+                destacado: currentProducto.destacado,
                 stock: currentProducto.stock,
                 margen:
                     currentProducto?.margen !== ""
@@ -95,7 +95,13 @@ function ModalCustom() {
 
     function handle(e) {
         let newProducto = { ...currentProducto };
-        newProducto[e.target.name] = e.target.value;
+        if (e.target.name !== "nombre") {
+            newProducto[e.target.name] = e.target.value;
+        } else {
+            if (e.target.value.length < 58) {
+                newProducto[e.target.name] = e.target.value;
+            }
+        }
         setCurrentProducto(newProducto);
     }
 
@@ -112,19 +118,73 @@ function ModalCustom() {
                 </Modal.Header>
                 <Modal.Body>
                     <div>
-                        <div>
-                            <label for="exampleInputEmail1">
-                                Nombre del Producto
-                            </label>
-                            <input
-                                type="text"
-                                className="form-control custom-input"
-                                placeholder="Nombre"
-                                aria-label="Username"
-                                onChange={(e) => handle(e)}
-                                name="nombre"
-                                value={currentProducto.nombre}
-                            />
+                        <div
+                            className="container-fluid"
+                            style={{ marginBottom: 5 }}
+                        >
+                            <div className="row">
+                                <div className="col-9" style={{ padding: 0 }}>
+                                    <label for="exampleInputEmail1">
+                                        Nombre del Producto
+                                    </label>
+                                    <input
+                                        type="text"
+                                        className="form-control custom-input"
+                                        placeholder="Nombre"
+                                        aria-label="Username"
+                                        onChange={handle}
+                                        name="nombre"
+                                        value={currentProducto.nombre}
+                                    />
+                                </div>
+                                <div
+                                    className="col-3"
+                                    style={{
+                                        paddingRight: 0,
+                                        textAlign: "center",
+                                        marginTop: 10,
+                                    }}
+                                >
+                                    <label for="exampleInputEmail1">
+                                        Destacar producto
+                                    </label>
+                                    {currentProducto.destacado ? (
+                                        <button
+                                            className="iconos"
+                                            style={{
+                                                paddingRight: 0,
+                                                display: "block",
+                                                margin: "auto",
+                                            }}
+                                            onClick={() =>
+                                                setCurrentProducto({
+                                                    ...currentProducto,
+                                                    destacado: false,
+                                                })
+                                            }
+                                        >
+                                            <i className="bi bi-star-fill"></i>
+                                        </button>
+                                    ) : (
+                                        <button
+                                            className="iconos"
+                                            style={{
+                                                paddingRight: 0,
+                                                display: "block",
+                                                margin: "auto",
+                                            }}
+                                            onClick={() =>
+                                                setCurrentProducto({
+                                                    ...currentProducto,
+                                                    destacado: true,
+                                                })
+                                            }
+                                        >
+                                            <i className="bi bi-star"></i>
+                                        </button>
+                                    )}
+                                </div>
+                            </div>
                         </div>
                         <CalcPorcentual
                             currentProducto={currentProducto}

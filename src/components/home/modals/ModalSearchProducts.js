@@ -13,44 +13,30 @@ function ModalSearchProducts() {
     const { showTable, setShowTable } = useHome();
     const handleClose = () => setShowTable(false);
     const [currentProducto, setCurrentProducto] = useState({});
-    const { products, onAdd, term, setTerm, setProducts } = useHome();
+    const { products, onAdd, term, setTerm, destacarProd } = useHome();
 
     const [showListadoStock, setShowListadoStock] = useState(false);
 
-    function searchingTerm(term) {
-        return function (x) {
-            return (
-                x.nombreCat.toLowerCase().includes(term.toLowerCase()) ||
-                !term ||
-                x.nombre.toLowerCase().includes(term) ||
-                !term
-            );
+    const filtroBuscador = (item) => {
+        console.log("tenemos este producto", item);
+        const validText = (it) => {
+            let validator = false;
+            if (term.length > 0) {
+                if (it.id.toString().includes(term.toLowerCase())) {
+                    validator = true;
+                } else if (
+                    it.nombre.toLowerCase().includes(term.toLowerCase())
+                ) {
+                    validator = true;
+                }
+            } else {
+                validator = true;
+            }
+            return validator;
         };
-    }
-
-    const destacar = async (producto, destacado) => {
-        await clienteAxios
-            .put(`/productos/${producto.id}`, {
-                destacado: destacado,
-            })
-            .then((res) => {
-                console.log(res.data);
-                const getProduct = async () => {
-                    await clienteAxios
-                        .get("/productos")
-                        .then((r) => {
-                            setProducts(r.data);
-                        })
-                        .catch((r) => {
-                            console.log("error get", r);
-                        });
-                };
-                getProduct();
-            })
-            .catch((err) => {
-                console.log("error put", err);
-            });
+        if (validText(item)) return item;
     };
+
     return (
         <div>
             <Modal
@@ -83,16 +69,19 @@ function ModalSearchProducts() {
                                     <th scope="col">Categoria</th>
                                     <th scope="col">Costo</th>
                                     <th scope="col">Precio</th>
-                                    <th scope="col"></th>
-                                    <th scope="col"></th>
-                                    <th scope="col"></th>
+                                    <th scope="col">Editar</th>
+                                    {/* <th scope="col"></th>*/}
                                 </tr>
                             </thead>
                             <tbody>
                                 {products
-                                    .filter(searchingTerm(term))
+                                    .filter(filtroBuscador)
                                     .map((product) => (
-                                        <tr key={product.id}>
+                                        <tr
+                                            key={product.id}
+                                            onClick={() => onAdd(product)}
+                                            className="trHover"
+                                        >
                                             <td>{product.id}</td>
                                             <td className="name">
                                                 {product.nombre}
@@ -105,6 +94,7 @@ function ModalSearchProducts() {
                                             <td>
                                                 <button
                                                     className="iconos"
+                                                    style={{ paddingLeft: 10 }}
                                                     onClick={() => {
                                                         setCurrentProducto(
                                                             product
@@ -114,46 +104,38 @@ function ModalSearchProducts() {
                                                         );
                                                     }}
                                                 >
-                                                    <i class="bi bi-pencil-square"></i>
+                                                    <i className="bi bi-pencil-square"></i>
                                                 </button>
                                             </td>
-                                            <td>
-                                                <button
-                                                    className="iconos"
-                                                    onClick={() =>
-                                                        onAdd(product)
-                                                    }
-                                                >
-                                                    <i class="bi bi-plus-circle-fill"></i>
-                                                </button>
-                                            </td>
+                                            {/*
                                             <td>
                                                 {product.destacado === 1 ? (
                                                     <button
                                                         className="iconos"
                                                         onClick={() =>
-                                                            destacar(
+                                                            destacarProd(
                                                                 product,
                                                                 false
                                                             )
                                                         }
                                                     >
-                                                        <i class="bi bi-star-fill"></i>
+                                                        <i className="bi bi-star-fill"></i>
                                                     </button>
                                                 ) : (
                                                     <button
                                                         className="iconos"
                                                         onClick={() =>
-                                                            destacar(
+                                                            destacarProd(
                                                                 product,
                                                                 true
                                                             )
                                                         }
                                                     >
-                                                        <i class="bi bi-star"></i>
+                                                        <i className="bi bi-star"></i>
                                                     </button>
                                                 )}
                                             </td>
+                                        */}
                                         </tr>
                                     ))}
                             </tbody>
@@ -180,7 +162,6 @@ function ModalSearchProducts() {
                 setShowDetalleProd={setShowDetalleProd}
                 currentProducto={currentProducto}
                 setCurrentProducto={setCurrentProducto}
-                destacar={destacar}
             />
             <ModalListadoStock
                 show={showListadoStock}

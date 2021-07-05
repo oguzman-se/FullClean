@@ -25,6 +25,12 @@ function LeftSideFacturas() {
                         .includes(search.text.toString().toLowerCase())
                 ) {
                     validator = true;
+                } else if (
+                    it.nombre
+                        ?.toString().toLowerCase()
+                        .includes(search.text.toString().toLowerCase())
+                ) {
+                    validator = true;
                 }
             } else {
                 validator = true;

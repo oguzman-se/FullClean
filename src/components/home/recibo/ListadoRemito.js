@@ -28,6 +28,7 @@ const ListadoRemito = ({ cartItems }) => {
                     </tbody>
                 </table>
             </div>
+            {/*
             <div className="row bt">
                 <div className="col-9 br">Total</div>
                 <div
@@ -41,6 +42,7 @@ const ListadoRemito = ({ cartItems }) => {
                     }, 0)}
                 </div>
             </div>
+*/}
         </>
     );
 };
