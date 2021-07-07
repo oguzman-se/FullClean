@@ -156,13 +156,12 @@ function LabelBottomSM() {
                 <div className="col-md-6">
                     <select
                         value={currentMetodo.metodo}
+                        defaultValue="efectivo"
                         className="select labelsm"
                         onChange={(e) => handle(e)}
                         name="metodo"
                     >
-                        <option value="efectivo" selected>
-                            Efectivo
-                        </option>
+                        <option value="efectivo">Efectivo</option>
                         <option value="tarjeta credito">
                             Tarjeta de credito
                         </option>

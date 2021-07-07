@@ -18,7 +18,7 @@ function ModalSearchProducts() {
     const [showListadoStock, setShowListadoStock] = useState(false);
 
     const filtroBuscador = (item) => {
-        console.log("tenemos este producto", item);
+        //console.log("tenemos este producto", item);
         const validText = (it) => {
             let validator = false;
             if (term.length > 0) {
@@ -36,6 +36,11 @@ function ModalSearchProducts() {
         };
         if (validText(item)) return item;
     };
+
+    const onAddAndClose = product => {
+        onAdd(product);
+        setShowTable(false);
+    }
 
     return (
         <div>
@@ -79,18 +84,33 @@ function ModalSearchProducts() {
                                     .map((product) => (
                                         <tr
                                             key={product.id}
-                                            onClick={() => onAdd(product)}
                                             className="trHover"
                                         >
-                                            <td>{product.id}</td>
-                                            <td className="name">
+                                            <td onClick={() => onAddAndClose(product)}>
+                                                {product.id}
+                                            </td>
+
+                                            <td
+                                                onClick={() => onAddAndClose(product)}
+                                                className="name"
+                                            >
                                                 {product.nombre}
                                             </td>
-                                            <td className="name">
+
+                                            <td
+                                                onClick={() => onAddAndClose(product)}
+                                                className="name"
+                                            >
                                                 {product.nombreCat}
                                             </td>
-                                            <td>${product.precio}</td>
-                                            <td>${product.costo}</td>
+
+                                            <td onClick={() => onAddAndClose(product)}>
+                                                ${product.precio}
+                                            </td>
+
+                                            <td onClick={() => onAddAndClose(product)}>
+                                                ${product.costo}
+                                            </td>
                                             <td>
                                                 <button
                                                     className="iconos"

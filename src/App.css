@@ -853,18 +853,6 @@
     margin-right: 10px !important;
 }
 
-.printRemito .bb .info .col-9 {
-    font-size: 21px;
-    font-weight: bold;
-    padding-top: 10px;
-}
-
-.printRemito .bb .info .col-9 span {
-    font-size: 7px;
-    font-weight: initial;
-    display: block;
-}
-
 .printRemito .bb .info .direc {
     font-size: 14px;
     font-weight: bold;
@@ -942,17 +930,21 @@
     text-decoration: underline;
 }
 
+.printRemito .bb .info .col-9 {
+    font-size: 30px;
+    font-weight: bold;
+    padding-top: 20px;
+}
+
+.printRemito .bb .info .col-9 span {
+    font-size: 16px;
+    font-weight: initial;
+    display: block;
+}
+
 .modalRecibo .modal-content {
     width: 170%;
     margin-left: -35%;
-}
-
-.modalRecibo .modal-content .info .col-9 {
-    font-size: 30px;
-}
-
-.modalRecibo .modal-content .info .col-9 span {
-    font-size: 18px;
 }
 
 .printRemito .bb .info .direc {

@@ -25,7 +25,7 @@ const ClienteInfo = ({ cliente }) => {
                     name="nombre"
                     onChange={handleChange}
                     style={{
-                        width: "45%",
+                        width: "55%",
                         marginLeft: 15,
                         marginRight: 15,
                         border: "unset",
@@ -39,7 +39,7 @@ const ClienteInfo = ({ cliente }) => {
                     name="telefono"
                     onChange={handleChange}
                     style={{
-                        width: "30%",
+                        width: "20%",
                         margin: "0 15px",
                         marginRight: 0,
                         marginLeft: 21,
@@ -56,7 +56,7 @@ const ClienteInfo = ({ cliente }) => {
                     name="domic"
                     onChange={handleChange}
                     style={{
-                        width: "45%",
+                        width: "55%",
                         margin: "0 15px",
                         border: "unset",
                         borderBottom: "1px dashed black",
@@ -69,7 +69,7 @@ const ClienteInfo = ({ cliente }) => {
                     name="localidad"
                     onChange={handleChange}
                     style={{
-                        width: "30%",
+                        width: "20%",
                         margin: "0 15px",
                         marginRight: 0,
                         border: "unset",

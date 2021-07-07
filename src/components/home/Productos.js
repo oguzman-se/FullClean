@@ -64,10 +64,10 @@ function Productos() {
                                     }
                                 }
                             })
-                            .map((product) => {
+                            .map((product, i) => {
                                 if (product.destacado === 1) {
                                     return (
-                                        <div className="col-md-3 grilla">
+                                        <div key={i} className="col-md-3 grilla">
                                             <Product
                                                 key={product.id}
                                                 product={product}

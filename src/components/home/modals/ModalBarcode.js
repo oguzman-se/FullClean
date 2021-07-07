@@ -96,7 +96,7 @@ function ModalBarcode(props) {
                         name="producto_id"
                     >
                         {products.map((product) => (
-                            <option value={product.id}>{product.nombre}</option>
+                            <option key={product.id} value={product.id}>{product.nombre}</option>
                         ))}
                     </select>
                 </Modal.Body>

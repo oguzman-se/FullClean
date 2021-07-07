@@ -5,6 +5,8 @@ import { useHome } from "../../../context/home-context";
 import clienteAxios from "../../../config/clienteAxios";
 import { useToasts } from "react-toast-notifications";
 import CalcPorcentual from "./nuevoProducto/CalcPorcentual";
+import ModalEliminarProducto from "./ModalEliminarProducto";
+
 function ModalDetalleProducto(props) {
     const { addToast } = useToasts();
     const { AllCodigos, setAllCodigos } = useHome([]);
@@ -21,6 +23,7 @@ function ModalDetalleProducto(props) {
         setCurrentProducto,
     } = props;
     const handleClose = () => setShowDetalleProd(false);
+    const [showElim, setShowElim] = useState(false);
 
     function handleChange(e) {
         let newProducto = { ...currentProducto };
@@ -304,6 +307,13 @@ function ModalDetalleProducto(props) {
                         </div>
                         <ModalFooter>
                             <button
+                                style={{ color: "tomato" }}
+                                className="modal-button-cancel"
+                                onClick={() => setShowElim(true)}
+                            >
+                                Eliminar Producto
+                            </button>
+                            <button
                                 className="modal-button-create"
                                 onClick={() => actualizar(currentProducto)}
                             >
@@ -364,6 +374,12 @@ function ModalDetalleProducto(props) {
                     </button>
                 </Modal.Footer>
             </Modal>
+            <ModalEliminarProducto
+                show={showElim}
+                setShow={setShowElim}
+                setShowDetalle={setShowDetalleProd}
+                producto={currentProducto}
+            />
         </>
     );
 }

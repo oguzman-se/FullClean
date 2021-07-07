@@ -21,7 +21,7 @@ const ModalCrearFactura = ({ show, setShow }) => {
 
     const submitFact = async () => {
         let factConPedidos = { arr: [fact, ...pedidosElegidos] };
-        console.log("esto vamos a mandar", factConPedidos);
+        console.log("esto vamos a mandar", factConPedidos, pedidosElegidos);
         await clienteAxios
             .post("/facturas/conpedidos", factConPedidos)
             .then((res) => {

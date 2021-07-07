@@ -9,13 +9,13 @@ const Cabecera = ({ type }) => {
 
     return (
         <>
-            <div className="col-6 br info">
+            <div className="col-7 br info">
                 <label className="col-3">
                     <img
                         alt="logo"
                         src={logo}
                         style={{
-                            width: "175px",
+                            width: "250px",
                             marginLeft: "-10px",
                             marginTop: "20px",
                         }}
@@ -58,7 +58,7 @@ const Cabecera = ({ type }) => {
                     FULL CLEAN EXPRESS
                 </label>
             </div>
-            <div className="col-6">
+            <div className="col-5">
                 <div className="row">
                     <div
                         className="col-3 br bb"
