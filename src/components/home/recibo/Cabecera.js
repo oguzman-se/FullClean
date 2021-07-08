@@ -21,7 +21,7 @@ const Cabecera = ({ type }) => {
                         }}
                     />
                 </label>
-                <label className="col-9" style={{paddingLeft: 80, textAlign: 'center'}}>
+                <label className="col-9" style={{paddingLeft: 42, textAlign: 'center'}}>
                     Full Clean Express
                     <span>VENTA Y DISTRIBUCION DE PRODUCTOS DE LIMPIEZA</span>
                 </label>
