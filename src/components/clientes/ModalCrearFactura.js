@@ -57,7 +57,7 @@ const ModalCrearFactura = ({ show, setShow }) => {
             valor_cubierto: 0,
             estado: "pendiente",
         });
-    }, [facturasXcliente]);
+    }, [facturasXcliente, arrGenerateFact]);
 
     return (
         <>
