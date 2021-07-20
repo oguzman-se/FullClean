@@ -7,30 +7,7 @@ const CalcPorcentual = ({
     ultModifPrec,
 }) => {
     function handle(e) {
-        if (e.target.name === "costo") {
-            if (e.target.value > -1) {
-                if (currentProducto.margen && currentProducto.margen > 0) {
-                    setCurrentProducto({
-                        ...currentProducto,
-                        [e.target.name]: e.target.value,
-                        precio:
-                            e.target.value * (1 + currentProducto.margen / 100),
-                    });
-                } else {
-                    setCurrentProducto({
-                        ...currentProducto,
-                        [e.target.name]: e.target.value,
-                        precio: e.target.value,
-                    });
-                }
-            } else {
-                setCurrentProducto({
-                    ...currentProducto,
-                    [e.target.name]: 0,
-                    precio: 0,
-                });
-            }
-        } else if (e.target.name === "margen") {
+        if (e.target.name === "margen") {
             if (e.target.value > -1) {
                 if (currentProducto.costo && currentProducto.costo > 0) {
                     setCurrentProducto({
@@ -51,6 +28,29 @@ const CalcPorcentual = ({
                     ...currentProducto,
                     [e.target.name]: 0,
                     precio: 0,
+                });
+            }
+        } else if (e.target.name === "costo") {
+            if (e.target.value > -1) {
+                if (currentProducto.margen && currentProducto.margen > 0) {
+                    setCurrentProducto({
+                        ...currentProducto,
+                        [e.target.name]: e.target.value,
+                        //precio:
+                            //e.target.value * (1 + currentProducto.margen / 100),
+                    });
+                } else {
+                    setCurrentProducto({
+                        ...currentProducto,
+                        [e.target.name]: e.target.value,
+                        //precio: e.target.value,
+                    });
+                }
+            } else {
+                setCurrentProducto({
+                    ...currentProducto,
+                    [e.target.name]: 0,
+                    //precio: 0,
                 });
             }
         } else if (e.target.name === "precio") {

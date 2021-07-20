@@ -5,6 +5,7 @@ import Button from "../Button";
 import { ListadoStock } from "../ListadoStock";
 import { useReactToPrint } from "react-to-print";
 import { useHome } from "../../../context/home-context";
+import ReactHTMLTableToExcel from "react-html-table-to-excel";
 
 function ModalListadoStock({ show, setShow }) {
     const { products } = useHome();
@@ -34,6 +35,14 @@ function ModalListadoStock({ show, setShow }) {
                     <ListadoStock ref={listadoRef} products={products} />
                 </Modal.Body>
                 <Modal.Footer style={{ justifyContent: "space-between" }}>
+                    <ReactHTMLTableToExcel
+                        id="botonExportarExcel"
+                        className="btn btn-success btnExcelLarge"
+                        table="tablaStock"
+                        filename={`${Date.now()}`}
+                        sheet="pagina 1"
+                        buttonText="Exportar a Excel"
+                    />
                     <Button className="btn" onClick={() => handlePrint()}>
                         Imprimir listado
                     </Button>

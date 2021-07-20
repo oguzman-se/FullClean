@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../home/Button";
 import clienteAxios from "../../config/clienteAxios";
 import { useHome } from "../../context/home-context";
@@ -20,7 +20,9 @@ function LabelBottomSM() {
         setCurrentMetodo,
         obtenerDatos,
         vaciarCompra,
+        barcodeRef,
     } = useHome();
+
     const {
         pedidos,
         setPedidos,
@@ -32,8 +34,11 @@ function LabelBottomSM() {
         showTicket,
         setShowTicket,
     } = usePedidos();
+
     const [showModalConfirmar, setShowModalConfirmar] = useState(false);
+
     const { addToast } = useToasts();
+
     const getPedido = async () => {
         await clienteAxios
             .get("/pedidos")
@@ -45,13 +50,20 @@ function LabelBottomSM() {
                 console.log("error get", r);
             });
     };
-    if (currentMetodo.metodo === "cuenta corriente" && !labelCliente.nombre) {
-        setShowNuevoCliente(true);
-    }
+
+    useEffect(() => {
+        if (
+            currentMetodo.metodo === "cuenta corriente" &&
+            !labelCliente.nombre
+        ) {
+            setShowNuevoCliente(true);
+        }
+    }, [currentMetodo, labelCliente]);
+
     const handleEstado = async (estado) => {
         try {
             let data = {
-                cliente_id: labelCliente.id,
+                cliente_id: labelCliente?.id ? labelCliente.id : undefined,
                 estado: estado,
                 valor_total: totalPrice,
                 notas: "",
@@ -68,7 +80,12 @@ function LabelBottomSM() {
                 });
             });
             let dataArray = [data, ...detallePedido];
-            console.log("dataArray", dataArray);
+            console.log(
+                "dataArray",
+                dataArray,
+                "y este currentPedido",
+                currentPedido
+            );
             if (data.estado === "confirmado") {
                 //setEnable(true);
                 vaciarCompra();
@@ -86,21 +103,34 @@ function LabelBottomSM() {
                 });
                 setPendiente(true);
             }
-            await clienteAxios.post("/pedidos/array", dataArray);
+            if (!isNaN(currentPedido?.id)) {
+                await clienteAxios.put(
+                    `/pedidos/array/${currentPedido.id}`,
+                    dataArray
+                );
+            } else {
+                await clienteAxios.post("/pedidos/array", dataArray);
+            }
             setPedidos(dataArray);
             getPedido();
             obtenerDatos();
+            console.log("este barcode", barcodeRef.current);
         } catch (error) {
             console.log(error);
             console.log("pedidos", pedidos);
         }
+        setTimeout(() => {
+            barcodeRef.current.focus();
+        }, 500);
     };
+
     function handle(e) {
         let newMetodo = { ...currentMetodo };
         newMetodo[e.target.name] = e.target.value;
         console.log(newMetodo);
         setCurrentMetodo(newMetodo);
     }
+
     return (
         <div className="container group-vh-5">
             <div className="row ">

@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import { useToasts } from "react-toast-notifications";
 import { usePedidos } from "../../../context/pedidos-context";
 import clienteAxios from "../../../config/clienteAxios";
+import ReactHTMLTableToExcel from "react-html-table-to-excel";
 
 function ModalFacturado({ showFacturado, setShowFacturado }) {
     const { addToast } = useToasts();
@@ -68,7 +69,7 @@ function ModalFacturado({ showFacturado, setShowFacturado }) {
                     <div className="container-fluid">
                         <div className="row">
                             <div className="col-12">
-                                <table className="table">
+                                <table className="table" id="tablaFact">
                                     <thead className="thead-dark">
                                         <tr>
                                             <th scope="col">Cantidad</th>
@@ -106,6 +107,16 @@ function ModalFacturado({ showFacturado, setShowFacturado }) {
                                         })}
                                     </tbody>
                                 </table>
+                            </div>
+                            <div className="col-12" style={{textAlign: 'center', marginBottom: 15, paddingBottom: 15, borderBottom: '1px solid grey'}}>
+                                <ReactHTMLTableToExcel
+                                    id="botonExportarExcel"
+                                    className="btn btn-success"
+                                    table="tablaFact"
+                                    filename={`${Date.now()}`}
+                                    sheet="pagina 1"
+                                    buttonText="Exportar a Excel"
+                                />
                             </div>
                             <div className="col-6">Número de factura:</div>
                             <div className="col-6">

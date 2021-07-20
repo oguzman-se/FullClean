@@ -11,6 +11,7 @@ export class ListadoStock extends React.PureComponent {
                             <table
                                 className="table table-bordered"
                                 style={{ textAlign: "center" }}
+                                id="tablaStock"
                             >
                                 <thead className="thead-dark">
                                     <tr>

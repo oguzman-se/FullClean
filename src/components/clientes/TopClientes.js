@@ -48,7 +48,7 @@ function TopClientes() {
                 )}
 
                 <label className="col-md-12 label-border-none">
-                    Domicilio: {labelCliente.domicilio}
+                    Domicilio: {labelCliente.domicilio} - {labelCliente.domicilio_nro}
                 </label>
                 <div>
                     <button

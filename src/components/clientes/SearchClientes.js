@@ -90,7 +90,7 @@ function SearchClientes(props) {
                                     >
                                         <td>{clientes.id}</td>
                                         <td>{clientes.nombre}</td>
-                                        <td>{clientes.domicilio}</td>
+                                        <td>{clientes.domicilio} - {clientes.domicilio_nro}</td>
                                         <td>
                                             $
                                             {clientes.deuda
