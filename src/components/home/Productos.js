@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import Product from "./Product";
 import { useState } from "react";
 import { useHome } from "../../context/home-context";
+import Tooltip from "../Tooltip";
 
 function Productos() {
     const { products, onAdd } = useHome();
@@ -54,11 +55,10 @@ function Productos() {
                                                 className="btn btn-secundario inLower"
                                                 onClick={() => onAdd(product)}
                                             >
-                                                {product.nombre.slice(0, 25) +
-                                                    "..."}
-                                                <span className="tooltext">
-                                                    {product.nombre}
-                                                </span>
+                                                <Tooltip
+                                                    text={product.nombre}
+                                                    max={25}
+                                                />
                                             </button>
                                         );
                                     }
@@ -67,7 +67,10 @@ function Productos() {
                             .map((product, i) => {
                                 if (product.destacado === 1) {
                                     return (
-                                        <div key={i} className="col-md-3 grilla">
+                                        <div
+                                            key={i}
+                                            className="col-md-3 grilla"
+                                        >
                                             <Product
                                                 key={product.id}
                                                 product={product}

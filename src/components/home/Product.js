@@ -1,4 +1,5 @@
 import React from "react";
+import Tooltip from "../Tooltip";
 function Product(props) {
     const { product, onAdd } = props;
     if (product.nombre.length < 20) {
@@ -21,8 +22,7 @@ function Product(props) {
                     className="btn boton-secundario inLower"
                     onClick={() => onAdd(product)}
                 >
-                    {product.nombre.slice(0, 25) + "..."}
-                    <span className="tooltext">{product.nombre}</span>
+                    <Tooltip text={product.nombre} max={25} />
                 </button>
             </div>
         );

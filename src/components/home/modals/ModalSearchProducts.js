@@ -10,7 +10,7 @@ import ModalListadoStock from "./ModalListadoStock";
 
 function ModalSearchProducts() {
     const [showDetalleProd, setShowDetalleProd] = useState(false);
-    const { showTable, setShowTable } = useHome();
+    const { showTable, setShowTable, barcodeRef } = useHome();
     const handleClose = () => setShowTable(false);
     const [currentProducto, setCurrentProducto] = useState({});
     const { products, onAdd, term, setTerm, destacarProd } = useHome();
@@ -37,10 +37,13 @@ function ModalSearchProducts() {
         if (validText(item)) return item;
     };
 
-    const onAddAndClose = product => {
+    const onAddAndClose = (product) => {
         onAdd(product);
+        setTimeout(() => {
+            barcodeRef.current.focus();
+        }, 300);
         setShowTable(false);
-    }
+    };
 
     return (
         <div>
@@ -86,30 +89,47 @@ function ModalSearchProducts() {
                                             key={product.id}
                                             className="trHover"
                                         >
-                                            <td onClick={() => onAddAndClose(product)}>
+                                            <td
+                                                onClick={() =>
+                                                    onAddAndClose(product)
+                                                }
+                                            >
                                                 {product.id}
                                             </td>
 
                                             <td
-                                                onClick={() => onAddAndClose(product)}
-                                                className="name"
+                                                onClick={() =>
+                                                    onAddAndClose(product)
+                                                }
+                                                className=""
+                                                //className="name"
                                             >
                                                 {product.nombre}
                                             </td>
 
                                             <td
-                                                onClick={() => onAddAndClose(product)}
+                                                onClick={() =>
+                                                    onAddAndClose(product)
+                                                }
                                                 className="name"
                                             >
                                                 {product.nombreCat}
                                             </td>
 
-                                            <td onClick={() => onAddAndClose(product)}>
-                                                ${product.precio}
+                                            <td
+                                                onClick={() =>
+                                                    onAddAndClose(product)
+                                                }
+                                            >
+                                                ${product.costo}
                                             </td>
 
-                                            <td onClick={() => onAddAndClose(product)}>
-                                                ${product.costo}
+                                            <td
+                                                onClick={() =>
+                                                    onAddAndClose(product)
+                                                }
+                                            >
+                                                ${product.precio}
                                             </td>
                                             <td>
                                                 <button

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHome } from "../../context/home-context";
+import Tooltip from "../Tooltip";
 function TableItem(props) {
     const {
         onRemove,
@@ -58,7 +59,9 @@ function TableItem(props) {
     return (
         <tr key={item.id}>
             <td>{item.id}</td>
-            <td className="name">{item.nombre}</td>
+            <td className="name">
+                <Tooltip max={25} text={item.nombre} />
+            </td>
             <td>
                 <button className="btn-minus" onClick={() => onRemove(item)}>
                     -
