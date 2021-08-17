@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import CheckboxPedido from "./CheckboxPedido";
 import CheckboxPedidoPagado from "./CheckboxPedidoPagado";
 import ModalPagoPedido from "./ModalPagoPedido";
+import ModalPedidoDetalle from "./ModalPedidoDetalle";
 
 function TablePedidosId({ facturasXcliente, filtroBuscador }) {
     const [showPago, setShowPago] = useState(false);
+    const [showDetalle, setShowDetalle] = useState(false);
     const [currentPedido, setCurrentPedido] = useState({});
 
     const calculateDay = (diaSQL) => {
@@ -27,6 +29,7 @@ function TablePedidosId({ facturasXcliente, filtroBuscador }) {
                         <th scope="col">Estado</th>
                         <th scope="col">Estado de facturación</th>
                         <th scope="col">Fecha y Hora</th>
+                        <th scope="col">Info</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -85,6 +88,18 @@ function TablePedidosId({ facturasXcliente, filtroBuscador }) {
                             <td>
                                 {f.fechayhora ? calculateDay(f.fechayhora) : ""}
                             </td>
+                            <td>
+                                <button
+                                    className="iconos"
+                                    onClick={() => {
+                                        console.log("viene este", f);
+                                        setCurrentPedido(f);
+                                        setShowDetalle(true);
+                                    }}
+                                >
+                                    <i className="bi bi-plus-circle-fill"></i>
+                                </button>
+                            </td>
                         </tr>
                     ))}
                 </tbody>
@@ -93,6 +108,12 @@ function TablePedidosId({ facturasXcliente, filtroBuscador }) {
                 showPago={showPago}
                 setShowPago={setShowPago}
                 currentPedido={currentPedido}
+            />
+            <ModalPedidoDetalle
+                showDetalle={showDetalle}
+                setShowDetalle={setShowDetalle}
+                currentPedido={currentPedido}
+                calculateDay={calculateDay}
             />
         </div>
     );

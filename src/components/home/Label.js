@@ -62,7 +62,12 @@ function Label() {
                         </button>
                     </div>
                     <div className="col-md-8 label">
-                        <label>Domicilio: {labelCliente.domicilio}</label>
+                        <label>
+                            Domicilio: {labelCliente.domicilio} -{" "}
+                            {labelCliente.domicilio_nro
+                                ? labelCliente.domicilio_nro
+                                : ""}
+                        </label>
                     </div>
                     <div className="col-md-4 ajuste-label">
                         <button

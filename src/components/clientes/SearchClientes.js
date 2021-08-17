@@ -83,29 +83,53 @@ function SearchClientes(props) {
                                 </tr>
                                 {Allclientes.filter(
                                     buscadorClientes(buscarCliente)
-                                ).map((clientes) => (
-                                    <tr
-                                        className="hover-tr"
-                                        onClick={() => onAddCliente(clientes)}
-                                    >
-                                        <td>{clientes.id}</td>
-                                        <td>{clientes.nombre}</td>
-                                        <td>{clientes.domicilio} - {clientes.domicilio_nro}</td>
-                                        <td>
-                                            $
-                                            {clientes.deuda
-                                                ? roundDeuda(clientes.deuda)
-                                                : 0}
-                                        </td>
-                                    </tr>
-                                ))}
+                                )
+                                    .sort((a, b) => {
+                                        if (b.id !== 0) {
+                                            if (a.nombre.toLowerCase() > b.nombre.toLowerCase()) {
+                                                return 1;
+                                            } else {
+                                                return -1;
+                                            }
+                                        } else {
+                                            return 1;
+                                        }
+                                    })
+                                    .map((clientes) => (
+                                        <tr
+                                            className="hover-tr"
+                                            onClick={() =>
+                                                onAddCliente(clientes)
+                                            }
+                                        >
+                                            <td>{clientes.id}</td>
+                                            <td>{clientes.nombre}</td>
+                                            <td>
+                                                {clientes.domicilio} -{" "}
+                                                {clientes.domicilio_nro}
+                                            </td>
+                                            <td>
+                                                $
+                                                {clientes.deuda
+                                                    ? roundDeuda(clientes.deuda)
+                                                    : 0}
+                                            </td>
+                                        </tr>
+                                    ))}
                             </tbody>
                         </table>
                     </div>
                 </div>
-                <div className="row" style={{paddingTop: 5}}>
+                <div className="row" style={{ paddingTop: 5 }}>
                     <div className="col-6">Deuda total:</div>
-                    <div className="col-6" style={{ textAlign: "right", fontWeight: 'bold', paddingRight: 30 }}>
+                    <div
+                        className="col-6"
+                        style={{
+                            textAlign: "right",
+                            fontWeight: "bold",
+                            paddingRight: 30,
+                        }}
+                    >
                         $
                         {Allclientes.length > 0
                             ? roundDeuda(

@@ -30,6 +30,16 @@ function Productos() {
                     {
                         // eslint-disable-next-line
                         products
+                            .sort((a, b) => {
+                                if (
+                                    a.nombre.toLowerCase() >
+                                    b.nombre.toLowerCase()
+                                ) {
+                                    return 1;
+                                } else {
+                                    return -1;
+                                }
+                            })
                             .filter((product) => {
                                 if (searchTerm === "") {
                                     return product;

@@ -84,6 +84,16 @@ function ModalSearchProducts() {
                             <tbody>
                                 {products
                                     .filter(filtroBuscador)
+                                    .sort((a, b) => {
+                                        if (
+                                            a.nombre.toLowerCase() >
+                                            b.nombre.toLowerCase()
+                                        ) {
+                                            return 1;
+                                        } else {
+                                            return -1;
+                                        }
+                                    })
                                     .map((product) => (
                                         <tr
                                             key={product.id}
@@ -128,6 +138,10 @@ function ModalSearchProducts() {
                                                 onClick={() =>
                                                     onAddAndClose(product)
                                                 }
+                                                style={{
+                                                    fontWeight: "bold",
+                                                    fontSize: 16,
+                                                }}
                                             >
                                                 ${product.precio}
                                             </td>

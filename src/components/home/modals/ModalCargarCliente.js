@@ -71,20 +71,40 @@ function ModalCargarCliente(props) {
                                     <td></td>
                                     <td></td>
                                 </tr>
-                                {Allclientes.filter(
-                                    searchingCli(searchCli)
-                                ).map((clientes, i) => (
-                                    <tr
-                                        key={i}
-                                        onClick={() => onAddCliente(clientes)}
-                                        className="hover-tr"
-                                    >
-                                        <td>{clientes.id}</td>
-                                        <td>{clientes.nombre}</td>
-                                        <td>{clientes.domicilio}</td>
-                                        <td>{clientes.telefono}</td>
-                                    </tr>
-                                ))}
+                                {Allclientes.filter(searchingCli(searchCli))
+                                    .sort((a, b) => {
+                                        if (b.id !== 0) {
+                                            if (
+                                                a.nombre.toLowerCase() >
+                                                b.nombre.toLowerCase()
+                                            ) {
+                                                return 1;
+                                            } else {
+                                                return -1;
+                                            }
+                                        } else {
+                                            return 1;
+                                        }
+                                    })
+                                    .map((clientes, i) => (
+                                        <tr
+                                            key={i}
+                                            onClick={() =>
+                                                onAddCliente(clientes)
+                                            }
+                                            className="hover-tr"
+                                        >
+                                            <td>{clientes.id}</td>
+                                            <td>{clientes.nombre}</td>
+                                            <td>
+                                                {clientes.domicilio} -{" "}
+                                                {clientes.domicilio_nro
+                                                    ? clientes.domicilio_nro
+                                                    : ""}
+                                            </td>
+                                            <td>{clientes.telefono}</td>
+                                        </tr>
+                                    ))}
                             </tbody>
                         </table>
                     </div>

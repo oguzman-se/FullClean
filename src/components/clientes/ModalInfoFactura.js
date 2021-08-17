@@ -13,7 +13,6 @@ const ModalInfoFactura = ({ show, setShow, currentFact, calculateDay }) => {
             .get(`/pedidosfacturados/facturacompleta/${currentFact.id}`)
             .then((res) => {
                 setFactura(res.data);
-                console.log("NOS LLEGA ESTA FACTURA", res.data);
             })
             .catch((err) => console.log("error trayendo data de esta factura"));
     };
