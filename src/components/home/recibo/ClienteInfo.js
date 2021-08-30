@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const ClienteInfo = ({ cliente }) => {
     const [info, setInfo] = useState({
         nombre: cliente?.id ? cliente.nombre : "",
-        telefono: cliente?.id ? cliente.telefono: "",
+        telefono: cliente?.id ? cliente.telefono : "",
         domic:
             cliente?.id && cliente.domicilio && cliente.domicilio_nro
                 ? `${cliente.domicilio} - ${cliente.domicilio_nro}`
@@ -16,7 +16,7 @@ const ClienteInfo = ({ cliente }) => {
     };
 
     return (
-        <div className="col-12 bb">
+        <div className="col-12 bb" style={{ padding: "0 50px" }}>
             <div style={{ marginTop: 15 }}>
                 Señor/es:
                 <input

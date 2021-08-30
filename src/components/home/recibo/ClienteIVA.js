@@ -18,7 +18,7 @@ const ClienteIVA = ({ cliente }) => {
             <div className="row bb">
                 <div
                     className="col-1 br"
-                    style={{ height: 50, paddingTop: 15 }}
+                    style={{ height: 50, paddingTop: 15, paddingLeft: 50 }}
                 >
                     IVA
                 </div>
@@ -28,7 +28,7 @@ const ClienteIVA = ({ cliente }) => {
                         textAlign: "center",
                         fontSize: 13,
                         height: 50,
-                        paddingTop: 5,
+                        paddingTop: 15,
                     }}
                 >
                     <div className="withCuadrado">
@@ -109,7 +109,7 @@ const ClienteIVA = ({ cliente }) => {
             <div className="row bb">
                 <div
                     className="col-7 br"
-                    style={{ height: 40, paddingTop: 12 }}
+                    style={{ height: 40, paddingTop: 12,paddingLeft: 50 }}
                 >
                     Condición de Venta:
                     <div className="withCuadrado" style={{ marginLeft: 10 }}>

@@ -58,7 +58,7 @@ const Cabecera = ({ type }) => {
                     FULL CLEAN EXPRESS
                 </label>
             </div>
-            <div className="col-5">
+            <div className="col-5" style={{paddingTop: 30}}>
                 <div className="row">
                     <div
                         className="col-3 br bb"

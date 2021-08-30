@@ -41,7 +41,7 @@ function ModalSearchProducts() {
         onAdd(product);
         setTimeout(() => {
             barcodeRef.current.focus();
-        }, 300);
+        }, 900);
         setShowTable(false);
     };
 

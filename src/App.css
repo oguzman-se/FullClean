@@ -957,3 +957,12 @@
 .btnExcelLarge {
     width: 100%;
 }
+
+.table6 table thead{
+    font-size: 16px;
+}
+
+.table6 table tbody{
+    font-size: 16px;
+}
+

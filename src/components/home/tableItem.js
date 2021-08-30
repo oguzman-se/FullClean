@@ -11,6 +11,7 @@ function TableItem(props) {
         cartItems,
         setCartItems,
         setQty,
+        barcodeRef,
     } = useHome();
     const { item } = props;
     const [precio, setPrecio] = useState(item.precio);
@@ -63,13 +64,22 @@ function TableItem(props) {
                 <Tooltip max={25} text={item.nombre} />
             </td>
             <td>
-                <button className="btn-minus" onClick={() => onRemove(item)}>
+                <button
+                    className="btn-minus"
+                    onClick={() => {
+                        onRemove(item);
+                        setTimeout(() => barcodeRef.current.focus(), 400);
+                    }}
+                >
                     -
                 </button>
                 {item.qty}
                 <button
                     className="btn-plus"
-                    onClick={() => onAdd(item, precio)}
+                    onClick={() => {
+                        onAdd(item, precio);
+                        setTimeout(() => barcodeRef.current.focus(), 400);
+                    }}
                 >
                     +
                 </button>

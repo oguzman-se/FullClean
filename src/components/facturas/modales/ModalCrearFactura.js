@@ -64,7 +64,7 @@ function ModalCrearFactura(props) {
                     >
                         {Allclientes.map((clientes) => (
                             <option value={clientes.id}>
-                                {clientes.nombre}
+                                {clientes.nombre} - {clientes.cuit}
                             </option>
                         ))}
                     </select>

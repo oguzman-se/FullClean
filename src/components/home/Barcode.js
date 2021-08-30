@@ -16,20 +16,20 @@ function Barcode() {
     const searchProduct = () => {
         let returnProduct;
         AllCodigos.forEach((cod) => {
-            console.log(cod);
+            //console.log(cod);
             if (cod.codigo !== null) {
                 if (cod.codigo === undefined) {
-                    console.log("hola");
+                    //console.log("hola");
                 } else if (
                     cod.codigo.toString().toLowerCase() ===
                     barcode.toString().toLowerCase()
                 ) {
                     returnProduct = cod.producto_id;
                 } else if (errorMatch === false) {
-                    console.log("no encuentra");
+                    //console.log("no encuentra");
                 }
             } else {
-                console.log("cod.cod != null");
+                //console.log("cod.cod != null");
             }
         });
         return returnProduct;

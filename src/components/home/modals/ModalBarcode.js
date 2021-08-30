@@ -5,6 +5,7 @@ import { useHome } from "../../../context/home-context";
 import Button from "../Button";
 import clienteAxios from "../../../config/clienteAxios";
 import { useToasts } from "react-toast-notifications";
+import SelectProd from "./modalBarcode/SelectProd";
 
 function ModalBarcode(props) {
     const { addToast } = useToasts();
@@ -27,11 +28,11 @@ function ModalBarcode(props) {
                     ? currentProducto.producto_id
                     : products[0].id,
             };
-            console.log("que manda al barcode:", barcode);
+            //console.log("que manda al barcode:", barcode);
             await clienteAxios
                 .post("/productoscodigo", toSend)
                 .then((res) => {
-                    console.log("respuesta", res.data);
+                    //console.log("respuesta", res.data);
                     const getCod = async () => {
                         await clienteAxios
                             .get("/productoscodigo")
@@ -60,19 +61,21 @@ function ModalBarcode(props) {
             });
         }
     };
+
     const handleClose = () => {
-        console.log("products", products);
-        console.log("barcode", barcode);
+        //console.log("products", products);
+        //console.log("barcode", barcode);
         setShowBarcode(false);
     };
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setCurrentProducto((prevState) => ({
             ...prevState,
             [name]: value,
         }));
-        console.log("currentProducto", currentProducto);
     };
+
     return (
         <>
             <Modal
@@ -89,16 +92,12 @@ function ModalBarcode(props) {
                         El codigo de barra que ha ingresado no existe ¿Desea
                         crearlo?
                     </h3>
-                    <select
-                        className="form-select form-control custom-input"
-                        aria-label="Default select example"
-                        onChange={(e) => handleChange(e)}
-                        name="producto_id"
-                    >
-                        {products.map((product) => (
-                            <option key={product.id} value={product.id}>{product.nombre}</option>
-                        ))}
-                    </select>
+                    <SelectProd
+                        setter={setCurrentProducto}
+                        products={products.map((p) => {
+                            return { label: p.nombre, value: p.id };
+                        })}
+                    />
                 </Modal.Body>
                 <Modal.Footer>
                     <Button className="modal-button-create" onClick={submit}>

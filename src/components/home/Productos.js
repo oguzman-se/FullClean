@@ -3,7 +3,6 @@ import "bootstrap/dist/css/bootstrap.css";
 import Product from "./Product";
 import { useState } from "react";
 import { useHome } from "../../context/home-context";
-import Tooltip from "../Tooltip";
 
 function Productos() {
     const { products, onAdd } = useHome();
@@ -30,6 +29,19 @@ function Productos() {
                     {
                         // eslint-disable-next-line
                         products
+                            .filter((product) => {
+                                if (product.destacado === 1) {
+                                    if (searchTerm === "") {
+                                        return product;
+                                    } else if (
+                                        product.nombre
+                                            .toLowerCase()
+                                            .includes(searchTerm.toLowerCase())
+                                    ) {
+                                        return product;
+                                    }
+                                }
+                            })
                             .sort((a, b) => {
                                 if (
                                     a.nombre.toLowerCase() >
@@ -40,56 +52,16 @@ function Productos() {
                                     return -1;
                                 }
                             })
-                            .filter((product) => {
-                                if (searchTerm === "") {
-                                    return product;
-                                } else if (
-                                    product.nombre
-                                        .toLowerCase()
-                                        .includes(searchTerm.toLowerCase())
-                                ) {
-                                    if (product.nombre.length < 20) {
-                                        return (
-                                            <button
-                                                type="button"
-                                                className="btn btn-secundario inLower"
-                                                onClick={() => onAdd(product)}
-                                            >
-                                                {product.nombre}
-                                            </button>
-                                        );
-                                    } else {
-                                        return (
-                                            <button
-                                                type="button"
-                                                className="btn btn-secundario inLower"
-                                                onClick={() => onAdd(product)}
-                                            >
-                                                <Tooltip
-                                                    text={product.nombre}
-                                                    max={25}
-                                                />
-                                            </button>
-                                        );
-                                    }
-                                }
-                            })
                             .map((product, i) => {
-                                if (product.destacado === 1) {
-                                    return (
-                                        <div
-                                            key={i}
-                                            className="col-md-3 grilla"
-                                        >
-                                            <Product
-                                                key={product.id}
-                                                product={product}
-                                                onAdd={onAdd}
-                                            ></Product>
-                                        </div>
-                                    );
-                                }
-                                return "";
+                                return (
+                                    <div key={i} className="col-md-3 grilla">
+                                        <Product
+                                            key={product.id}
+                                            product={product}
+                                            onAdd={onAdd}
+                                        ></Product>
+                                    </div>
+                                );
                             })
                     }
                 </div>

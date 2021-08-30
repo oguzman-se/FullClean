@@ -45,7 +45,7 @@ function TableFacturas(props) {
                                         ? factura.num_factura
                                         : ""}
                                 </td>
-                                <td>{factura.nombre}</td>
+                                <td>{factura.nombre} - {factura.domicilio} - {factura.domicilio_nro}</td>
                                 <td>${factura.valor_total}</td>
                                 <td>${factura.valor_cubierto}</td>
                                 <td>
