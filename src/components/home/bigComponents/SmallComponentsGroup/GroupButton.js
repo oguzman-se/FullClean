@@ -8,116 +8,114 @@ import { usePedidos } from "../../../../context/pedidos-context";
 import ModalNuevaCompra from "../../modals/ModalNuevaCompra";
 import ModalPedidosPendientes from "../../modals/ModalPedidosPendientes";
 import { useToasts } from "react-toast-notifications";
+import ModalNotaCredito from "../../modals/ModalNotaCredito";
 function GroupButton() {
-    const { addToast } = useToasts();
-    const {
-        setShow,
-        setShowTable,
-        setShowCategoria,
-        cartItems,
-        setLabelCliente,
-        enable,
-        onRemoveAll,
-        setEnable,
-        pendiente,
-        setPendiente,
-        setCurrentMetodo,
-        barcodeRef,
-        setQty,
-        setTotalPrice,
-    } = useHome();
-    const {
-        showNuevaCompra,
-        setShowNuevaCompra,
-        setVentaCredito,
-    } = usePedidos();
-    const [showPedidosPendientes, setShowPedidosPendientes] = useState(false);
+  const { addToast } = useToasts();
+  const {
+    setShow,
+    setShowTable,
+    setShowCategoria,
+    cartItems,
+    setLabelCliente,
+    enable,
+    onRemoveAll,
+    setEnable,
+    pendiente,
+    setPendiente,
+    setCurrentMetodo,
+    barcodeRef,
+    setQty,
+    setTotalPrice,
+    showNotaCredito,
+    setShowNotaCredito,
+  } = useHome();
+  const {showNuevaCompra, setShowNuevaCompra, setVentaCredito, setCurrentPedido } = usePedidos();
+  const [showPedidosPendientes, setShowPedidosPendientes] = useState(false);
 
-    const nuevaCompra = () => {
-        console.log(cartItems);
-        if (cartItems.length > 0 && enable === false && pendiente === false) {
-            setShowNuevaCompra(true);
-        } else {
-            setLabelCliente({});
-            onRemoveAll();
-            setEnable(false);
-            setPendiente(false);
-            setCurrentMetodo("efectivo");
-            setVentaCredito("venta");
-            addToast("Nueva Venta Seteada", {
-                appearance: "success",
-                autoDismiss: true,
-            });
-            setQty(0);
-            setTotalPrice(0);
-            barcodeRef.current.focus();
-        }
-    };
-    return (
-        <div className="group-vh-1">
-            <div className="container-fluid">
-                <div className="row">
-                    <div className="col-3 ajuste">
-                        <Button onClick={nuevaCompra}>Nueva Venta</Button>
-                    </div>
-                    <div className="col-3 ajuste">
-                        <Button onClick={() => setShow(true)}>
-                            Crear Producto
-                        </Button>
-                    </div>
-                    <div className="col-2 ajuste"></div>
-                    <div className="col-4 ajuste2">
-                        <Button onClick={() => setShowPedidosPendientes(true)}>
-                            Pedidos Pendientes
-                        </Button>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-3 ajuste">
-                        <Button
-                            onClick={() => {
-                                setVentaCredito("notadecredito");
-                                addToast("Nota de Credito Seteada", {
-                                    appearance: "success",
-                                    autoDismiss: true,
-                                });
-                            }}
-                        >
-                            Nota de Credito
-                        </Button>
-                    </div>
-                    <div className="col-3 ajuste">
-                        <Button onClick={() => setShowCategoria(true)}>
-                            Crear Categoria
-                        </Button>
-                    </div>
-                    <div className="col-2 ajuste"></div>
-                    <div className="col-4 ajuste2">
-                        <Button onClick={() => setShowTable(true)}>
-                            Buscar Productos
-                        </Button>
-                    </div>
-                </div>
-            </div>
-
-            {/*Modal de creación de producto*/}
-            <ModalCustom />
-            {/*Modal de busqueda de productos*/}
-            <ModalSearchProducts />
-            {/*Modal de categorias*/}
-            <ModalCategoria />
-            {/*Modal de confirmación de nueva compra*/}
-            <ModalNuevaCompra
-                showNuevaCompra={showNuevaCompra}
-                setShowNuevaCompra={setShowNuevaCompra}
-                setVentaCredito={setVentaCredito}
-            />
-            {/*Modal de pedidos pendientes*/}
-            <ModalPedidosPendientes
-                showPedidosPendientes={showPedidosPendientes}
-                setShowPedidosPendientes={setShowPedidosPendientes}
-            />
+  const nuevaCompra = () => {
+    if (cartItems.length > 0 && enable === false && pendiente === false) {
+      setShowNuevaCompra(true);
+    } else {
+      setLabelCliente({});
+      onRemoveAll();
+      setEnable(false);
+      setPendiente(false);
+      setCurrentMetodo("efectivo");
+      setVentaCredito("venta");
+      addToast("Nueva Venta Seteada", {
+        appearance: "success",
+        autoDismiss: true,
+      });
+      setQty(0);
+      setTotalPrice(0);
+      barcodeRef.current.focus();
+    }
+  };
+  return (
+    <div className="group-vh-1">
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-3 ajuste">
+            <Button onClick={nuevaCompra}>Nueva Venta</Button>
+          </div>
+          <div className="col-3 ajuste">
+            <Button onClick={() => setShow(true)}>Crear Producto</Button>
+          </div>
+          <div className="col-2 ajuste"></div>
+          <div className="col-4 ajuste2">
+            <Button onClick={() => setShowPedidosPendientes(true)}>
+              Pedidos Pendientes
+            </Button>
+          </div>
         </div>
-    );
+        <div className="row">
+          <div className="col-3 ajuste">
+            <Button
+              onClick={() => {
+                setShowNotaCredito(true);
+              }}
+            >
+              Nota de Credito
+            </Button>
+          </div>
+          <div className="col-3 ajuste">
+            <Button onClick={() => setShowCategoria(true)}>
+              Crear Categoria
+            </Button>
+          </div>
+          <div className="col-2 ajuste"></div>
+          <div className="col-4 ajuste2">
+            <Button onClick={() => setShowTable(true)}>Buscar Productos</Button>
+          </div>
+        </div>
+      </div>
+
+      {/*Modal de creación de producto*/}
+      <ModalCustom />
+
+      {/*Modal de seleccion pedido nota credito*/}
+      <ModalNotaCredito
+        setCurrent={setCurrentPedido}
+        setVentaCredito={setVentaCredito}
+        show={showNotaCredito}
+        setShow={() => setShowNotaCredito(false)}
+      />
+      {/*Modal de busqueda de productos*/}
+      <ModalSearchProducts />
+      {/*Modal de categorias*/}
+      <ModalCategoria />
+      {/*Modal de confirmación de nueva compra*/}
+      <ModalNuevaCompra
+        showNuevaCompra={showNuevaCompra}
+        setShowNuevaCompra={setShowNuevaCompra}
+        setVentaCredito={setVentaCredito}
+      />
+      {/*Modal de pedidos pendientes*/}
+      <ModalPedidosPendientes
+        showPedidosPendientes={showPedidosPendientes}
+        setShowPedidosPendientes={setShowPedidosPendientes}
+      />
+    </div>
+  );
 }
 export default GroupButton;

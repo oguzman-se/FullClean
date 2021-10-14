@@ -27,6 +27,9 @@ export function HomeProvider(props) {
     //ESTE ES EL REF DEL INPUT DE BARCODE
     const barcodeRef = useRef(null);
 
+    //ESRE ESTADO SIRVE PARA ABRIR Y CERRAR EL MODAL DE "+ CATEGORIA"
+    const [showNotaCredito, setShowNotaCredito] = useState(false);
+
     //API
 
     //PRODUCTOS API
@@ -336,6 +339,8 @@ export function HomeProvider(props) {
         destacarProd,
         vaciarCompra,
         obtenerClientes,
+        showNotaCredito, 
+        setShowNotaCredito
     };
     return <HomeContext.Provider value={value} {...props} />;
 }

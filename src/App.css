@@ -1,8 +1,7 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css");
 @font-face {
     font-family: "Gilroy";
-    src: url("assets/fonts/Gilroy-Black.woff2") format("woff2"),
-        url("assets/fonts/Gilroy-Black.woff") format("woff");
+    src: url("assets/fonts/Gilroy-Black.woff2") format("woff2"), url("assets/fonts/Gilroy-Black.woff") format("woff");
     font-weight: 900;
     font-style: normal;
     font-display: swap;
@@ -10,8 +9,7 @@
 
 @font-face {
     font-family: "Gilroy";
-    src: url("assets/fonts/Gilroy-Bold.woff2") format("woff2"),
-        url("assets/fonts/Gilroy-Bold.woff") format("woff");
+    src: url("assets/fonts/Gilroy-Bold.woff2") format("woff2"), url("assets/fonts/Gilroy-Bold.woff") format("woff");
     font-weight: bold;
     font-style: normal;
     font-display: swap;
@@ -46,8 +44,7 @@
 
 @font-face {
     font-family: "Gilroy";
-    src: url("assets/fonts/Gilroy-Light.woff2") format("woff2"),
-        url("assets/fonts/Gilroy-Light.woff") format("woff");
+    src: url("assets/fonts/Gilroy-Light.woff2") format("woff2"), url("assets/fonts/Gilroy-Light.woff") format("woff");
     font-weight: 300;
     font-style: normal;
     font-display: swap;
@@ -82,8 +79,7 @@
 
 @font-face {
     font-family: "Gilroy";
-    src: url("assets/fonts/Gilroy-Heavy.woff2") format("woff2"),
-        url("assets/fonts/Gilroy-Heavy.woff") format("woff");
+    src: url("assets/fonts/Gilroy-Heavy.woff2") format("woff2"), url("assets/fonts/Gilroy-Heavy.woff") format("woff");
     font-weight: 900;
     font-style: normal;
     font-display: swap;
@@ -118,8 +114,7 @@
 
 @font-face {
     font-family: "Gilroy";
-    src: url("assets/fonts/Gilroy-Medium.woff2") format("woff2"),
-        url("assets/fonts/Gilroy-Medium.woff") format("woff");
+    src: url("assets/fonts/Gilroy-Medium.woff2") format("woff2"), url("assets/fonts/Gilroy-Medium.woff") format("woff");
     font-weight: 500;
     font-style: normal;
     font-display: swap;
@@ -136,8 +131,7 @@
 
 @font-face {
     font-family: "Gilroy";
-    src: url("assets/fonts/Gilroy-Thin.woff2") format("woff2"),
-        url("assets/fonts/Gilroy-Thin.woff") format("woff");
+    src: url("assets/fonts/Gilroy-Thin.woff2") format("woff2"), url("assets/fonts/Gilroy-Thin.woff") format("woff");
     font-weight: 100;
     font-style: normal;
     font-display: swap;
@@ -958,11 +952,19 @@
     width: 100%;
 }
 
-.table6 table thead{
+.table6 table thead {
     font-size: 16px;
 }
 
-.table6 table tbody{
+.table6 table tbody {
     font-size: 16px;
 }
 
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.sticky {
+    position: sticky;
+    top: 0;
+}
