@@ -13,7 +13,6 @@ export function PedidosProvider(props){
   const obtenerDatos = async () => {
     await clienteAxios.get('/pedidos')
     .then(res => {
-      console.log("pedidos", res.data)
       setPedidos(res.data)
     })
   }
